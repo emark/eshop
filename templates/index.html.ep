@@ -1,4 +1,6 @@
 % layout 'default';
-% title 'Welcome';
-Welcome to the Mojolicious real-time web framework!
-
+% title 'Catalog items';
+Catalog<br/>
+<%foreach my $key (@{$catalog}){%>
+<%=$key->[0]%><br/>
+<%}%>

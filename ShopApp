@@ -1,25 +1,77 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite;
+use strict;
+use DBIx::Custom;
 
-# Documentation browser under "/perldoc"
-plugin 'PODRenderer';
+open (DBCONF,"< app.conf") || die "Error open dbconfig file";
+my @appconf=<DBCONF>;
+close DBCONF;
+chomp @appconf;
+our $dbi = DBIx::Custom->connect(
+			dsn => $appconf[0],
+			user => $appconf[1],
+			password => $appconf[2],
+			option => {mysql_enable_utf8=>1}
+);
 
-get '/' => sub {
+$dbi->do('SET NAMES utf8');
+
+get '/:catalog' => sub {
   my $self = shift;
-  $self->render('index');
+  my $caturl=$self->param('catalog');
+  my $result=$dbi->select(
+						table => 'router_a',
+						column => ['product.title','product.url','product.set','product.instore',
+									'product.image','product.id','product.price'],
+						where => {'catalog.url' => $caturl},
+						join => [
+								 'right join catalog on router_a.catid=catalog.id',
+								 'left join product on router_a.prodid=product.id'
+								]
+						);
+
+  $self->stash(product => $result->fetch_hash_all);
+  $self->render('catalog');
+};
+
+get '/:catalog/:product' => sub {
+  my $self = shift;
+  my $caturl=$self->param('catalog');
+  my $produrl=$self->param('product');
+  my $result=$dbi->select(
+                        table => 'router_a',
+                        column => ['product.id','product.title','product.price','product.desc',
+									'product.set','product.features','product.image','product.instore'],
+                        where => {
+									'catalog.url' => $caturl,
+									'product.url' => $produrl
+								 },
+                        join => [
+                                 'right join catalog on router_a.catid=catalog.id',
+                                 'left join product on router_a.prodid=product.id'
+                                ]
+                        );
+  $self->stash(product => $result->fetch_hash);
+  $self->render('product');
+};
+
+post '/cart/:id' => sub{
+	my $self=shift;
+	my $productid=$self->param('id');
+	my $cart=$self->session('cart');
+	#$cart->{$productid}++;
+	my @pid=(1,2);
+	#$self->session(cart => $cart);
+	my $result=$dbi->select(
+							table => 'product',
+							column => ['product.title'],
+							where => [
+									['and',':id{=}'],
+									{id => 1, id => 2}
+								]
+							);
+	$self->stash(product => $result->fetch_all);
+	$self->render('cart');
 };
 
 app->start;
-__DATA__
-
-@@ index.html.ep
-% layout 'default';
-% title 'Welcome';
-Welcome to the Mojolicious real-time web framework!
-
-@@ layouts/default.html.ep
-<!DOCTYPE html>
-<html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
-</html>

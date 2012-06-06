@@ -1,0 +1,11 @@
+% layout 'default';
+% title 'Catalog items';
+Product page<br/>
+<h1><%=$product->{'title'}%></h1>
+<i><%=$product->{'desc'}%></i><br/>
+<i><%=$product->{'set'}%></i><br/>
+<i><%=$product->{'features'}%></i><br/>
+Цена <%=$product->{'price'}%> руб.<br/>
+Наличие на складе: <%=$product->{'instore'}%>
+<form action="/cart/<%=$product->{'id'}%>/" method=post>
+<input type="submit" value="In cart"></form>

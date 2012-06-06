@@ -1,0 +1,9 @@
+% layout 'default';
+% title 'Catalog items';
+Catalog<br/>
+<%foreach my $productid (@{$product}){%>
+<b><a href="<%=$productid->{'url'}%>.html"><%=$productid->{'title'}%></a></b><br/>
+<%=$productid->{'set'}%><br/>
+Price: <%=$productid->{'price'}%><br/>
+In store: <%=$productid->{'instore'}%><br/>
+<%}%>

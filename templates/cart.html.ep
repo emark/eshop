@@ -1,0 +1,7 @@
+% layout 'default';
+% title 'Catalog items';
+Your cart<br/>
+<%foreach my $key(@{$product}){%>
+<%=$key->[0]%>
+<%}%>
+<%test%>
