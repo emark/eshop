@@ -24,16 +24,19 @@ get '/cart' => sub {
 	$pid=$pid.join(' or id=',@pid);	
 	my $result=$dbi->select(
 		table => 'product',
-		column => ['id','title'],
+		column => ['id','title','price'],
 		where => $pid
 	);
-    $self->stash(cart => $cart,product => $result->fetch_all);
+    $self->stash(
+		cart => $cart,
+		products => $result->fetch_hash_all
+	);
     $self->render('cart');
 };
 
 post '/cart' => sub{
     my $self=shift;
-    my $productid=$self->param('id');
+    my $productid=$self->param('id') || 0;
     my $cart=$self->session('cart');
     $cart->{$productid}++;
     $self->session(cart => $cart);
@@ -42,36 +45,39 @@ post '/cart' => sub{
     $pid=$pid.join(' or id=',@pid);
     my $result=$dbi->select(
         table => 'product',
-        column => ['id','title'],
+        column => ['id','title','price'],
         where => $pid
     );
-    $self->stash(product => $result->fetch_all,cart => $cart);
+    $self->stash(
+		products => $result->fetch_hash_all,
+		cart => $cart
+	);
     $self->render('cart');
 };
 
 get '/:catalog' => sub {
-  my $self = shift;
-  my $caturl=$self->param('catalog');
-  my $result=$dbi->select(
-						table => 'router_a',
-						column => ['product.title','product.url','product.set','product.instore',
-									'product.image','product.id','product.price'],
-						where => {'catalog.url' => $caturl},
-						join => [
-								 'right join catalog on router_a.catid=catalog.id',
-								 'left join product on router_a.prodid=product.id'
-								]
-						);
-
-  $self->stash(product => $result->fetch_hash_all);
-  $self->render('catalog');
+	my $self = shift;
+	my $caturl=$self->param('catalog');
+	my $result=$dbi->select(
+		table => 'router_a',
+		column => ['product.title','product.url','product.set','product.instore',
+			'product.image','product.id','product.price'
+		],
+		where => {'catalog.url' => $caturl},
+		join => [
+			'right join catalog on router_a.catid=catalog.id',
+			'left join product on router_a.prodid=product.id'
+		]
+	);
+	$self->stash(product => $result->fetch_hash_all);
+	$self->render('catalog');
 };
 
 get '/:catalog/:product' => sub {
-  my $self = shift;
-  my $caturl=$self->param('catalog');
-  my $produrl=$self->param('product');
-  my $result=$dbi->select(
+	my $self = shift;
+	my $caturl=$self->param('catalog');
+	my $produrl=$self->param('product');
+	my $result=$dbi->select(
                         table => 'router_a',
                         column => ['product.id','product.title','product.price','product.desc',
 									'product.set','product.features','product.image','product.instore'],

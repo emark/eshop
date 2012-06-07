@@ -1,7 +1,14 @@
 % layout 'default';
 % title 'Catalog items';
 Your cart<br/>
-<%foreach my $key(@{$product}){%>
-<%=$key->[1]%> <%=$cart->{$key->[0]} %><br/>
+%my $total_cart=0;
+<%=form_for cart => () => begin%>
+<%foreach my $product(@{$products}){%>
+<%=$product->{'title'}%> <%=$product->{'price'}%> руб. 
+<input type=text value=<%=$cart->{$product->{'id'}}%> name=count size=2> = 
+<%=$product->{'price'}*$cart->{$product->{'id'}}%> руб. <br/>
+%$total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
 <%}%>
-<test%>
+<%=submit_button 'Update cart'%>
+<%end%>
+<p>Total cart: <%=$total_cart%> руб.</p>
