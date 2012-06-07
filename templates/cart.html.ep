@@ -2,6 +2,6 @@
 % title 'Catalog items';
 Your cart<br/>
 <%foreach my $key(@{$product}){%>
-<%=$key->[0]%>
+<%=$key->[1]%> <%=$cart->{$key->[0]} %><br/>
 <%}%>
-<%test%>
+<test%>

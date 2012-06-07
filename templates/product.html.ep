@@ -7,5 +7,6 @@ Product page<br/>
 <i><%=$product->{'features'}%></i><br/>
 Цена <%=$product->{'price'}%> руб.<br/>
 Наличие на складе: <%=$product->{'instore'}%>
-<form action="/cart/<%=$product->{'id'}%>/" method=post>
+<form action="/cart/" method=post>
+<input type=hidden value=<%=$product->{'id'}%> name=id>
 <input type="submit" value="In cart"></form>

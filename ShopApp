@@ -16,6 +16,39 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
+get '/cart' => sub {
+    my $self=shift;
+    my $cart=$self->session('cart');
+	my @pid= keys $cart;
+	my $pid=' id=';
+	$pid=$pid.join(' or id=',@pid);	
+	my $result=$dbi->select(
+		table => 'product',
+		column => ['id','title'],
+		where => $pid
+	);
+    $self->stash(cart => $cart,product => $result->fetch_all);
+    $self->render('cart');
+};
+
+post '/cart' => sub{
+    my $self=shift;
+    my $productid=$self->param('id');
+    my $cart=$self->session('cart');
+    $cart->{$productid}++;
+    $self->session(cart => $cart);
+	my @pid= keys $cart;
+	my $pid=' id=';
+    $pid=$pid.join(' or id=',@pid);
+    my $result=$dbi->select(
+        table => 'product',
+        column => ['id','title'],
+        where => $pid
+    );
+    $self->stash(product => $result->fetch_all,cart => $cart);
+    $self->render('cart');
+};
+
 get '/:catalog' => sub {
   my $self = shift;
   my $caturl=$self->param('catalog');
@@ -59,18 +92,14 @@ post '/cart/:id' => sub{
 	my $self=shift;
 	my $productid=$self->param('id');
 	my $cart=$self->session('cart');
-	#$cart->{$productid}++;
-	my @pid=(1,2);
-	#$self->session(cart => $cart);
+	$cart->{$productid}++;
+	$self->session(cart => $cart);
 	my $result=$dbi->select(
-							table => 'product',
-							column => ['product.title'],
-							where => [
-									['and',':id{=}'],
-									{id => 1, id => 2}
-								]
+							column => 'title',
+							where => 'id=1 or id=2',
+							table => 'product'
 							);
-	$self->stash(product => $result->fetch_all);
+	$self->stash(product => $result->fetch_all,cart => $cart);
 	$self->render('cart');
 };
 
