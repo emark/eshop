@@ -1,0 +1,29 @@
+% layout 'default';
+% title 'Checkout page';
+%my $total_cart=0;
+<%foreach my $product(@{$products}){%>
+<%=$product->{'title'}%> |
+<%=$cart->{$product->{'id'}}%> pcs. |
+<%=$product->{'price'}*$cart->{$product->{'id'}}%> руб. <br/>
+%$total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
+<%}%>
+<p>Total cart: <%=$total_cart%> руб.</p>
+
+<h2>Contacts</h2>
+<%=form_for 'checkout' => (method=>'post')=>begin%>
+Name: <%=text_field 'name'%><br/>
+tel: <%=text_field 'tel'%><br/>
+email: <%=text_field 'email'%><br/>
+
+<h2>Delivery</h2>
+<%=radio_button delivery_type=>'store', id=>1%>Store<br/>
+<p>See avialable stores</p>
+<%=radio_button delivery_type=>'courier', id=>2%>Courier<br/>
+<p>Address for delivery: <%=text_field 'address'%><br/></p>
+
+<h2>Payment</h2>
+<%=radio_button payment_type=>'cash', id=>1%>Cash<br/>
+<%=radio_button payment_type=>'check', id=>2%>Check<br/>
+
+<%=submit_button 'Complete order'%>
+<%end%>

@@ -2,13 +2,29 @@
 % title 'Catalog items';
 Your cart<br/>
 %my $total_cart=0;
-<%=form_for cart => () => begin%>
+%dev
+
 <%foreach my $product(@{$products}){%>
 <%=$product->{'title'}%> <%=$product->{'price'}%> руб. 
-<input type=text value=<%=$cart->{$product->{'id'}}%> name=count size=2> = 
+
+<%=form_for cart => (method=>'post') => begin%>
+<input type=hidden name=id value=<%=$product->{'id'}%>>
+<input type=hidden name="action" value="remove">
+<%=submit_button '-'%>
+<%end%>
+
+<%=$cart->{$product->{'id'}}%>
+
+<%=form_for cart => (method=>'post') => begin%>
+<input type=hidden name=id value=<%=$product->{'id'}%>>
+<input type=hidden name="action" value="add">
+<%=submit_button '+'%>
+<%end%>
+ =
 <%=$product->{'price'}*$cart->{$product->{'id'}}%> руб. <br/>
 %$total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
 <%}%>
-<%=submit_button 'Update cart'%>
-<%end%>
+
 <p>Total cart: <%=$total_cart%> руб.</p>
+
+<%=link_to 'Finish order'=>'/checkout'%>

@@ -9,4 +9,5 @@ Product page<br/>
 Наличие на складе: <%=$product->{'instore'}%>
 <form action="/cart/" method=post>
 <input type=hidden value=<%=$product->{'id'}%> name=id>
+<input type=hidden name="action" value="add">
 <input type="submit" value="In cart"></form>
