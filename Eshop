@@ -72,9 +72,6 @@ post '/checkout' => sub {
 		delivery_type => [
 			'defined'
 		],
-		address => [
-			'not_blank'
-		],
 		payment_type => [
 			'defined'
 		],
