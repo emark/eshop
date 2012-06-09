@@ -2,7 +2,7 @@
 % title 'Catalog items';
 Your cart<br/>
 %my $total_cart=0;
-%dev
+dev
 
 <%foreach my $product(@{$products}){%>
 <%=$product->{'title'}%> <%=$product->{'price'}%> руб. 
