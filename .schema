@@ -1,0 +1,53 @@
+CREATE TABLE `product` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `desc` TEXT,
+  `set` TEXT,
+  `features` TEXT,
+  `image` TINYTEXT,
+  `url` TEXT,
+  `title` TINYTEXT,
+  `price` INT,
+  `instore` INT,
+  PRIMARY KEY  (`id`)
+);
+
+CREATE TABLE `catalog` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `link` TEXT,
+  `url` TEXT,
+  PRIMARY KEY  (`id`)
+);
+
+CREATE TABLE `router_a` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `prodid` INT,
+  `catid` INT,
+  PRIMARY KEY  (`id`)
+);
+
+CREATE TABLE `delivery` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `link` TEXT,
+  PRIMARY KEY  (`id`)
+);
+
+CREATE TABLE `payment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `link` TEXT,
+  PRIMARY KEY  (`id`)
+);
+
+CREATE TABLE `order` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `person` TEXT,
+  `tel` TEXT,
+  `email` TEXT,
+  `address` TEXT,
+  `deliveryid` INT,
+  `paymentid` INT,
+  `product` TEXT,
+  `count` INT,
+  `price` INT,
+  PRIMARY KEY  (`id`)
+);
+

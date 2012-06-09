@@ -19,8 +19,8 @@ $dbi->do('SET NAMES utf8');
 
 get '/checkout' => sub {
 	my $self=shift;
-	my $cart=$self->session('cart');
-    my @pid= keys $cart;
+	my $cart=$self->session('cart') || undef;
+    my @pid = keys %{$cart};
     my $countpid=@pid || 0;
     $self->stash(message => 'Sorry, your cart is empty :(');
     return $self->render('dummy') if $countpid==0 ;
@@ -42,7 +42,7 @@ get '/checkout' => sub {
 post '/checkout' => sub {
 	my $self = shift;
 	my $cart=$self->session('cart');
-    my @pid= keys $cart;
+    my @pid= keys %{$cart};
     my $countpid=@pid || 0;
     $self->stash(message => 'Sorry, your cart is empty :(');
     return $self->render('dummy') if $countpid==0 ;
@@ -107,7 +107,7 @@ get '/thankyou' => sub {
 get '/cart' => sub {
     my $self = shift;
     my $cart = $self->session('cart');
-	my @pid = keys $cart if $cart;
+	my @pid = keys %{$cart} if $cart;
 	my $countpid=@pid || 0;
 	$self->stash(
 		page_title => 'Your cart',
@@ -142,7 +142,7 @@ post '/cart' => sub{
 		delete $cart->{$productid} if $cart->{$productid}==0;
 	}
 	$self->session(cart => $cart);
-	my @pid= keys $cart;
+	my @pid= keys %{$cart};
 	my $countpid=@pid || 0;
     $self->stash(message => 'Sorry, your cart is empty :(');
     return $self->render('dummy') if $countpid==0 ;
