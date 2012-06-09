@@ -64,6 +64,20 @@ post '/checkout' => sub {
 		tel => {message => 'Input your tel. number'} => [
 			'not_blank'
 		],
+		email => {message => 'Input correct mail'} => [
+			'not_blank',{
+				'regex' => qr/^.*\@.*\...+/
+			}
+		],
+		delivery_type => [
+			'defined'
+		],
+		address => [
+			'not_blank'
+		],
+		payment_type => [
+			'defined'
+		],
 	];
 	my $vresult = $vc->validate($param,$rule);
 	if($vresult->is_ok){
@@ -82,7 +96,11 @@ post '/checkout' => sub {
 get '/thankyou' => sub {
 	my $self = shift;
 	$self->session(expires => 1);
-	$self->stash(message=>'Thank you for order');
+	$self->stash(
+		page_title => 'Thank you',
+		page_caption => 'Thank you for order',
+		message=>'Thank you for order'
+	);
 	$self->render('dummy');
 };
 
@@ -91,7 +109,11 @@ get '/cart' => sub {
     my $cart = $self->session('cart');
 	my @pid = keys $cart if $cart;
 	my $countpid=@pid || 0;
-	$self->stash(message => 'Sorry, your cart is empty :(');
+	$self->stash(
+		page_title => 'Your cart',
+		page_caption => 'Your cart',
+		message => 'Sorry, your cart is empty :('
+	);
 	return $self->render('dummy') if $countpid==0 ;
 
 	my $pid=' id=';

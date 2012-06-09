@@ -1,29 +1,52 @@
 % layout 'default';
 % title 'Checkout page';
-%my $total_cart=0;
-<%foreach my $product(@{$products}){%>
+% my $total_cart=0;
+% my $missing = stash->{missing};
+% my $messages = stash->{messages};
+
+
+% foreach my $product(@{$products}){
 <%=$product->{'title'}%> |
 <%=$cart->{$product->{'id'}}%> pcs. |
 <%=$product->{'price'}*$cart->{$product->{'id'}}%> руб. <br/>
 %$total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
-<%}%>
+% };
 <p>Total cart: <%=$total_cart%> руб.</p>
+<%= link_to 'Edit cart' => '/cart'%>
+
+% if ($missing){
+<span style="color:red">Заполните поля со знаком *</span>
+% }
 
 <h2>Contacts</h2>
-<%=form_for 'checkout' => (method=>'post')=>begin%>
+%= form_for 'checkout' => (method=>'post') => begin
+% if(my $message = $messages->{name}){
+<span style="color:#ff0000"><%= $message %></span>
+% }
 Name: <%=text_field 'name'%><br/>
-tel: <%=text_field 'tel'%><br/>
-email: <%=text_field 'email'%><br/>
+
+% if(my $message = $messages->{tel}){
+<span style="color:#ff0000"><%= $message %></span>
+% }
+tel: <%= text_field 'tel'%><br/>
+
+% if(my $message = $messages->{email}){
+<span style="color:#ff0000"><%= $message %></span>
+% }
+email: <%= text_field 'email'%><br/>
 
 <h2>Delivery</h2>
-<%=radio_button delivery_type=>'store', id=>1%>Store<br/>
+<%= radio_button delivery_type=>'store', id=>1%>Store<br/>
 <p>See avialable stores</p>
-<%=radio_button delivery_type=>'courier', id=>2%>Courier<br/>
+<%= radio_button delivery_type=>'courier', id=>2%>Courier<br/>
+% if(my $message = $messages->{address}){
+<span style="color:#ff0000"><%= $message %></span>
+% }
 <p>Address for delivery: <%=text_field 'address'%><br/></p>
 
 <h2>Payment</h2>
-<%=radio_button payment_type=>'cash', id=>1%>Cash<br/>
-<%=radio_button payment_type=>'check', id=>2%>Check<br/>
+<%= radio_button payment_type=>'cash', id=>1%>Cash<br/>
+<%= radio_button payment_type=>'check', id=>2%>Check<br/>
 
-<%=submit_button 'Complete order'%>
-<%end%>
+<%= submit_button 'Complete order'%>
+% end
