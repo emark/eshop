@@ -79,7 +79,6 @@ post '/checkout' => sub {
 	my $vresult = $vc->validate($param,$rule);
 	if($vresult->is_ok){
 		$dbi->insert(
-			table => 'order',
 			{
 				person => $param->{'name'},
 				tel => $param->{'tel'},
@@ -87,8 +86,11 @@ post '/checkout' => sub {
 				address => $param->{'address'},
 				deliveryid => $param->{'delivery_type'},
 				paymentid => $param->{'payment_type'},
+				sysdate => \"NOW()"
 			},
+			table => 'orders',
 		);
+		my $orderid=
 		return $self->redirect_to('/thankyou');
 	}else{
 		$self->stash(

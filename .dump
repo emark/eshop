@@ -1,0 +1,223 @@
+-- MySQL dump 10.13  Distrib 5.5.24, for debian-linux-gnu (i686)
+--
+-- Host: localhost    Database: eshop
+-- ------------------------------------------------------
+-- Server version	5.5.24-0ubuntu0.12.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `catalog`
+--
+
+DROP TABLE IF EXISTS `catalog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `catalog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `link` text,
+  `url` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `catalog`
+--
+
+LOCK TABLES `catalog` WRITE;
+/*!40000 ALTER TABLE `catalog` DISABLE KEYS */;
+INSERT INTO `catalog` VALUES (1,'DSK','dsk-wall');
+/*!40000 ALTER TABLE `catalog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `delivery`
+--
+
+DROP TABLE IF EXISTS `delivery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `delivery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `link` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `delivery`
+--
+
+LOCK TABLES `delivery` WRITE;
+/*!40000 ALTER TABLE `delivery` DISABLE KEYS */;
+INSERT INTO `delivery` VALUES (1,'store'),(2,'courier');
+/*!40000 ALTER TABLE `delivery` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `item`
+--
+
+DROP TABLE IF EXISTS `item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `productid` int(11) DEFAULT NULL,
+  `title` text,
+  `count` int(11) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `orderid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `item_fk1` (`orderid`),
+  CONSTRAINT `item_fk1` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `item`
+--
+
+LOCK TABLES `item` WRITE;
+/*!40000 ALTER TABLE `item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person` text,
+  `tel` text,
+  `email` text,
+  `address` text,
+  `deliveryid` int(11) DEFAULT NULL,
+  `paymentid` int(11) DEFAULT NULL,
+  `sysdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `orders_fk1` (`deliveryid`),
+  KEY `orders_fk2` (`paymentid`),
+  CONSTRAINT `orders_fk2` FOREIGN KEY (`paymentid`) REFERENCES `payment` (`id`),
+  CONSTRAINT `orders_fk1` FOREIGN KEY (`deliveryid`) REFERENCES `delivery` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'?????? ??????????','sss',NULL,NULL,NULL,NULL,NULL),(3,'admin','sada','asdasd@asda.ru','',1,1,NULL),(4,'sdfs','sss','msvirid@mail.ru','',1,1,'2012-06-13 18:28:58'),(5,'sdf','sdfs','sviridenko.maxim@gmail.com','',1,1,'2012-06-13 18:51:36');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `payment`
+--
+
+DROP TABLE IF EXISTS `payment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `payment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `link` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payment`
+--
+
+LOCK TABLES `payment` WRITE;
+/*!40000 ALTER TABLE `payment` DISABLE KEYS */;
+INSERT INTO `payment` VALUES (1,'cash'),(2,'check');
+/*!40000 ALTER TABLE `payment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desc` text,
+  `set` text,
+  `features` text,
+  `image` tinytext,
+  `url` text,
+  `title` tinytext,
+  `price` int(11) DEFAULT NULL,
+  `instore` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,NULL,NULL,NULL,NULL,'orlenok-1c','Orlenok',3440,NULL),(2,NULL,NULL,NULL,NULL,'stella-1cplus','Stella',5250,NULL);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `router_a`
+--
+
+DROP TABLE IF EXISTS `router_a`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `router_a` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prodid` int(11) DEFAULT NULL,
+  `catid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `router_a_fk1` (`prodid`),
+  KEY `router_a_fk2` (`catid`),
+  CONSTRAINT `router_a_fk2` FOREIGN KEY (`catid`) REFERENCES `catalog` (`id`),
+  CONSTRAINT `router_a_fk1` FOREIGN KEY (`prodid`) REFERENCES `product` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `router_a`
+--
+
+LOCK TABLES `router_a` WRITE;
+/*!40000 ALTER TABLE `router_a` DISABLE KEYS */;
+INSERT INTO `router_a` VALUES (1,1,1),(2,2,1);
+/*!40000 ALTER TABLE `router_a` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2012-06-13 18:57:28

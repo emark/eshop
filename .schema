@@ -39,7 +39,7 @@ CREATE TABLE `payment` (
   PRIMARY KEY  (`id`)
 );
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `person` TEXT,
   `tel` TEXT,
@@ -67,6 +67,6 @@ ALTER TABLE `router_a` ADD CONSTRAINT `router_a_fk1` FOREIGN KEY (`prodid`) REFE
 ALTER TABLE `router_a` ADD CONSTRAINT `router_a_fk2` FOREIGN KEY (`catid`) REFERENCES catalog(`id`);
 
 
-ALTER TABLE `order` ADD CONSTRAINT `order_fk1` FOREIGN KEY (`deliveryid`) REFERENCES delivery(`id`);
-ALTER TABLE `order` ADD CONSTRAINT `order_fk2` FOREIGN KEY (`paymentid`) REFERENCES payment(`id`);
-ALTER TABLE `item` ADD CONSTRAINT `item_fk1` FOREIGN KEY (`orderid`) REFERENCES order(`id`);
+ALTER TABLE `orders` ADD CONSTRAINT `orders_fk1` FOREIGN KEY (`deliveryid`) REFERENCES delivery(`id`);
+ALTER TABLE `orders` ADD CONSTRAINT `orders_fk2` FOREIGN KEY (`paymentid`) REFERENCES payment(`id`);
+ALTER TABLE `item` ADD CONSTRAINT `item_fk1` FOREIGN KEY (`orderid`) REFERENCES orders(`id`);
