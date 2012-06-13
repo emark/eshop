@@ -78,8 +78,6 @@ post '/checkout' => sub {
 	];
 	my $vresult = $vc->validate($param,$rule);
 	if($vresult->is_ok){
-		while (my $row = $result->fetch_hash_all)
-		{
 		$dbi->insert(
 			table => 'order',
 			{
@@ -89,12 +87,8 @@ post '/checkout' => sub {
 				address => $param->{'address'},
 				deliveryid => $param->{'delivery_type'},
 				paymentid => $param->{'payment_type'},
-				product => $row->{'id'},
-				count => $cart->{$row->{'id'}},
-				price => $row->{'price'},
 			},
 		);
-		}
 		return $self->redirect_to('/thankyou');
 	}else{
 		$self->stash(
