@@ -78,6 +78,23 @@ post '/checkout' => sub {
 	];
 	my $vresult = $vc->validate($param,$rule);
 	if($vresult->is_ok){
+		while (my $row = $result->fetch_hash_all)
+		{
+		$dbi->insert(
+			table => 'order',
+			{
+				person => $param->{'name'},
+				tel => $param->{'tel'},
+				email => $param->{'email'},
+				address => $param->{'address'},
+				deliveryid => $param->{'delivery_type'},
+				paymentid => $param->{'payment_type'},
+				product => $row->{'id'},
+				count => $cart->{$row->{'id'}},
+				price => $row->{'price'},
+			},
+		);
+		}
 		return $self->redirect_to('/thankyou');
 	}else{
 		$self->stash(
@@ -141,7 +158,11 @@ post '/cart' => sub{
 	$self->session(cart => $cart);
 	my @pid= keys %{$cart};
 	my $countpid=@pid || 0;
-    $self->stash(message => 'Sorry, your cart is empty :(');
+	$self->stash(
+        page_title => 'Your cart',
+        page_caption => 'Your cart',
+        message => 'Sorry, your cart is empty :('
+    );
     return $self->render('dummy') if $countpid==0 ;
 
 	my $pid=' id=';
