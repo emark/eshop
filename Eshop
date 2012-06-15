@@ -78,6 +78,12 @@ post '/checkout' => sub {
 	];
 	my $vresult = $vc->validate($param,$rule);
 	if($vresult->is_ok){
+		#Generating sign for order
+		my $sign = '';
+		my $len = 11 + int(rand(10));
+		$sign .= chr(48 + rand(74)) for (1..$len);
+		$sign =~ s/\W//g;
+		#Create order
 		$dbi->insert(
 			{
 				person => $param->{'name'},
@@ -86,11 +92,28 @@ post '/checkout' => sub {
 				address => $param->{'address'},
 				deliveryid => $param->{'delivery_type'},
 				paymentid => $param->{'payment_type'},
-				sysdate => \"NOW()"
+				sysdate => \"NOW()",
+				sign => $sign,
 			},
 			table => 'orders',
 		);
-		my $orderid=
+		my $orderid = $dbi->select(
+							column => 'id',
+							table => 'orders',
+							where => {sign => $sign},
+						)->fetch;
+		while(my $ref=$result->fetch_hash){
+			$dbi->insert(
+				{
+					productid => $ref->{'id'},
+					title => $ref->{'title'},
+					price => $ref->{'price'},
+					count => $cart->{$ref->{'id'}},
+					orderid => $orderid,
+				},
+				table => 'item',
+			);
+		};
 		return $self->redirect_to('/thankyou');
 	}else{
 		$self->stash(
@@ -105,7 +128,7 @@ post '/checkout' => sub {
 
 get '/thankyou' => sub {
 	my $self = shift;
-	$self->session(expires => 1);
+	$self->session(expires => 1);#Clearing cart
 	$self->stash(
 		page_title => 'Thank you',
 		page_caption => 'Thank you for order',
