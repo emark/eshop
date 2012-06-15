@@ -80,8 +80,8 @@ CREATE TABLE `item` (
   `orderid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `item_fk1` (`orderid`),
-  CONSTRAINT `item_fk1` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `item_fk1` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,12 +109,13 @@ CREATE TABLE `orders` (
   `deliveryid` int(11) DEFAULT NULL,
   `paymentid` int(11) DEFAULT NULL,
   `sysdate` datetime DEFAULT NULL,
+  `sign` text,
   PRIMARY KEY (`id`),
   KEY `orders_fk1` (`deliveryid`),
   KEY `orders_fk2` (`paymentid`),
-  CONSTRAINT `orders_fk2` FOREIGN KEY (`paymentid`) REFERENCES `payment` (`id`),
-  CONSTRAINT `orders_fk1` FOREIGN KEY (`deliveryid`) REFERENCES `delivery` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  CONSTRAINT `orders_fk1` FOREIGN KEY (`deliveryid`) REFERENCES `delivery` (`id`),
+  CONSTRAINT `orders_fk2` FOREIGN KEY (`paymentid`) REFERENCES `payment` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +124,6 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'?????? ??????????','sss',NULL,NULL,NULL,NULL,NULL),(3,'admin','sada','asdasd@asda.ru','',1,1,NULL),(4,'sdfs','sss','msvirid@mail.ru','',1,1,'2012-06-13 18:28:58'),(5,'sdf','sdfs','sviridenko.maxim@gmail.com','',1,1,'2012-06-13 18:51:36');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,8 +196,8 @@ CREATE TABLE `router_a` (
   PRIMARY KEY (`id`),
   KEY `router_a_fk1` (`prodid`),
   KEY `router_a_fk2` (`catid`),
-  CONSTRAINT `router_a_fk2` FOREIGN KEY (`catid`) REFERENCES `catalog` (`id`),
-  CONSTRAINT `router_a_fk1` FOREIGN KEY (`prodid`) REFERENCES `product` (`id`)
+  CONSTRAINT `router_a_fk1` FOREIGN KEY (`prodid`) REFERENCES `product` (`id`),
+  CONSTRAINT `router_a_fk2` FOREIGN KEY (`catid`) REFERENCES `catalog` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-06-13 18:57:28
+-- Dump completed on 2012-06-15 15:40:41

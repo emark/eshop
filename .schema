@@ -48,6 +48,7 @@ CREATE TABLE `orders` (
   `deliveryid` INT,
   `paymentid` INT,
   `sysdate` DATETIME,
+  `sign` TEXT,
   PRIMARY KEY  (`id`)
 );
 
