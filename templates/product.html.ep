@@ -1,6 +1,8 @@
 % layout 'default';
-% title 'Catalog items';
-Product page<br/>
+% title $product->{'title'}.' - '.$catlink->{'link'};
+
+Catalog: <%= link_to $catlink->{'link'} => "/$catlink->{'url'}/" %> <br/>
+
 <h1><%=$product->{'title'}%></h1>
 <i><%=$product->{'desc'}%></i><br/>
 <i><%=$product->{'set'}%></i><br/>
@@ -10,4 +12,4 @@ Product page<br/>
 <form action="/cart/" method=post>
 <input type=hidden value=<%=$product->{'id'}%> name=id>
 <input type=hidden name="action" value="add">
-<input type="submit" value="In cart"></form>
+<input type="submit" value="Add to cart"></form>

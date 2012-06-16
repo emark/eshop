@@ -1,4 +1,5 @@
-#!/usr/bin/env perl
+#!/usr/bin/env perl -w
+
 use Mojolicious::Lite;
 use strict;
 use DBIx::Custom;
@@ -200,11 +201,22 @@ post '/cart' => sub{
 
 get '/:catalog' => sub {
 	my $self = shift;
-	my $caturl=$self->param('catalog');
-	my $result=$dbi->select(
+	my $caturl = $self->param('catalog');
+	my $catlink = $dbi->select(
+						table => 'catalog',
+						column => ['catalog.link','catalog.url'],
+						where => {'catalog.url' => $caturl},
+					);
+	my $result = $dbi->select(
 		table => 'router_a',
-		column => ['product.title','product.url','product.set','product.instore',
-			'product.image','product.id','product.price'
+		column => [
+			'product.title',
+			'product.url',
+			'product.set',
+			'product.instore',
+			'product.image',
+			'product.id',
+			'product.price',
 		],
 		where => {'catalog.url' => $caturl},
 		join => [
@@ -212,7 +224,10 @@ get '/:catalog' => sub {
 			'left join product on router_a.prodid=product.id'
 		]
 	);
-	$self->stash(product => $result->fetch_hash_all);
+	$self->stash(
+		product => $result->fetch_hash_all,
+		catlink => $catlink->one
+	);
 	$self->render('catalog');
 };
 
@@ -220,21 +235,37 @@ get '/:catalog/:product' => sub {
 	my $self = shift;
 	my $caturl=$self->param('catalog');
 	my $produrl=$self->param('product');
+    my $catlink = $dbi->select(
+		table => 'catalog',
+        column => ['catalog.link','catalog.url'],
+        where => {'catalog.url' => $caturl},
+	);
 	my $result=$dbi->select(
-                        table => 'router_a',
-                        column => ['product.id','product.title','product.price','product.desc',
-									'product.set','product.features','product.image','product.instore'],
-                        where => {
-									'catalog.url' => $caturl,
-									'product.url' => $produrl
-								 },
-                        join => [
-                                 'right join catalog on router_a.catid=catalog.id',
-                                 'left join product on router_a.prodid=product.id'
-                                ]
-                        );
-  $self->stash(product => $result->fetch_hash);
-  $self->render('product');
+		table => 'router_a',
+        column => [
+			'product.id',
+			'product.title',
+			'product.price',
+			'product.desc',
+			'product.set',
+			'product.features',
+			'product.image',
+			'product.instore'
+		],
+		where => {
+			'catalog.url' => $caturl,
+			'product.url' => $produrl
+		},
+        join => [
+        	'right join catalog on router_a.catid=catalog.id',
+            'left join product on router_a.prodid=product.id'
+		]
+	);
+	$self->stash(
+		product => $result->fetch_hash,
+		catlink => $catlink->one,
+	);
+	$self->render('product');
 };
 
 app->start;
