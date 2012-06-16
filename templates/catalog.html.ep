@@ -1,20 +1,35 @@
 % layout 'default';
-% title $catlink->{'link'}.'- Каталог товаров';
+% title $catlink->{'link'};
 
-Catalog: <%= $catlink->{'link'} %><br/>
+<div class="page-header">
+<h1><%= $catlink->{'link'} %></h1>
+</div><!--.page-header-->
+
+<ul class="thumbnails">
 
 % foreach my $productid (@{$product}){
+<li class="span3">
+	<div class="thumbnail">
+      <img src="/images/products/thumb/1.jpg" alt="">
+      <h5><%= link_to $productid->{'title'} => "/$catlink->{'url'}/$productid->{'url'}.html" %></h5>
+      <p>
 
-<b><%= link_to $productid->{'title'} => "/$catlink->{'url'}/$productid->{'url'}.html" %></b><br/>
 <%=$productid->{'set'}%><br/>
-Price: <%=$productid->{'price'}%><br/>
-In store: <%=$productid->{'instore'}%><br/>
+Цена: <%=$productid->{'price'}%><br/>
+Наличие: <%=$productid->{'instore'}%><br/>
+
+	</p>
 
 <%= form_for '/cart' => (method => 'post') => begin %>
 <%= hidden_field 'id' => $productid->{'id'} %>
 <%= hidden_field 'action' => 'add' %>
-<%= submit_button 'Add to cart' %>
+<%= link_to "Подробнее" => "/$catlink->{'url'}/$productid->{'url'}.html" => (class => 'btn btn-primary') %>
+<%= submit_button 'В корзину' => (class => 'btn') %>
 <% end %>
+
+    </div>
+  </li>
 
 % }
 
+</ul>

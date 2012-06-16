@@ -1,4 +1,4 @@
-% layout 'default';
+% layout 'nocartinfo';
 % title 'Checkout page';
 % my $total_cart=0;
 % my $missing = stash->{missing};
@@ -15,7 +15,10 @@
 <%= link_to 'Edit cart' => '/cart'%>
 
 % if ($missing){
+<div class="alert">
+<button class="close" data-dismiss="alert">×</button>
 <span style="color:red">Заполните поля со знаком *</span>
+</div><!--.alert-->
 % }
 
 <h2>Contacts</h2>

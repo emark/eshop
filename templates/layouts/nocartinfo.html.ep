@@ -31,61 +31,30 @@
 
   <body>
 
+	<div id="top-links">
+		<%= link_to "Распорные спортивные комплексы" => '/dsk-wall/' %> |
+		<%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/' %> |
+		<%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/' %> |
+		<%= link_to "Где купить?" => '/dsk-wall/' %> |
+		<%= link_to "Гарантия" => '/dsk-wall/' %> |
+		<%= link_to "Доставка и оплата" => '/dsk-wall/' %>
+	</div> <!--#footer-links-->
+
     <div class="container">
-
-	<!--div class="row">
-	<div class="span12"-->
-	<div class="navigation">
-	<center>	
-	<div class="nav">
-		<%= link_to "Распорные спортивные комплексы" => '/dsk-wall/'%>
-		<%= link_to "Пристенные спортивные комплексы" => '/dsk-slide/'%>
-		<%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/'%>
-		<%= link_to "Где купить?" => '/dsk-wall/'%>
-		<%= link_to "Гарантия" => '/dsk-wall/'%>
-		<%= link_to "Доставка и оплата" => '/dsk-wall/'%>
-	</div><!--.nav-->
-	</center>
-	</div>
-	<!--/div>
-	</div-->
-
 	<div id="quik-info">
-		<div class="row">
-			<div class="span4">
-			<h1><a href="/"><img src="/images/logo.png" border=0 title="На главную страницу" alt="Логотип интернет-магазина"></a> 
-			<a href="/" class="brand">На Старт.рф</a>
-			</h1>
-			</div><div class="span4">
-% #Cart information
-% my $cartinfo=0;
-% my @productid = keys session->{'cart'} if session->{'cart'};
-% foreach my $key (@productid){
-%	$cartinfo=$cartinfo+session->{'cart'}{$key};
-% }
-		<p>
-% if($cartinfo==0){
-	Корзина пока пуста :(	
-% }else{
-	<a href="/cart">В корзине <%= $cartinfo %> тов.</a>
-% }
-		</p>
-			</div><div class="span4">
-				<p>
-					<font style="font-size:24px">+7 (391) 29-202-29</font>
-				</p>
-			</div>
+		<h1><a href="/"><img src="/images/logo.png" border=0 title="На главную страницу" alt="Логотип интернет-магазина"></a> 
+		<a href="/">На Старт.рф</a>
+		</h1>
 	</div><!--#quik-info-->
 	<%=content%>
 
 	<footer>
-	<hr>
-		<div id="footer-links"><center>
+		<div id="footer-links">
 			<%= link_to "Распорные спортивные комплексы" => '/dsk-wall/' %> |
 			<%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/' %> |
 			<%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/' %> |
 			<%= link_to "Адреса магазинов" => '/dsk-wall/' %>
-		</center></div> <!--#footer-links-->
+		</div> <!--#footer-links-->
 	<hr>
 	<p>Копирайт, описание магазина, варианты оплаты, соц.сети</p>		
 	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>

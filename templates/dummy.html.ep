@@ -1,4 +1,4 @@
-% layout 'default';
+% layout 'nocartinfo';
 % title $page_title;
 <h1><%= $page_caption %></h1>
 <center>
