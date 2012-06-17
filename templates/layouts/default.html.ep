@@ -9,11 +9,6 @@
 
     <!-- Le styles -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
     <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -27,55 +22,79 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/bootstrap/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+
+	<!--Include google webfonts-->
+	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+	<style>
+		.top-links{
+			padding: 10px 0px 10px 0px;
+			font-size: 14px;
+		}
+		.logotype{
+			font-family: 'Lobster', cursive;
+			font-size: 38px;
+		}
+	</style>
   </head>
 
   <body>
 
-    <div class="container">
+<div class="modal hide" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Обратный звонок</h3>
+  </div>
+  <div class="modal-body">
+    Перезвоните мне на номер +7 <input type="text" name="phone" class="input-small"/>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
+    <a href="#" class="btn btn-primary">Жду звонка</a>
+  </div>
+</div>
 
-	<!--div class="row">
-	<div class="span12"-->
-	<div class="navigation">
-	<center>	
-	<div class="nav">
-		<%= link_to "Распорные спортивные комплексы" => '/dsk-wall/'%>
-		<%= link_to "Пристенные спортивные комплексы" => '/dsk-slide/'%>
-		<%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/'%>
-		<%= link_to "Где купить?" => '/dsk-wall/'%>
-		<%= link_to "Гарантия" => '/dsk-wall/'%>
-		<%= link_to "Доставка и оплата" => '/dsk-wall/'%>
-	</div><!--.nav-->
-	</center>
+<div class="container">
+% my %active_link=();
+% $active_link{$catlink->{'url'}}='class="active"';
+<div class="top-links">
+	<ul class="nav nav-pills">
+		<li <%==$active_link{'dsk-slide'}%>><%= link_to "Распорные спортивные комплексы" => '/dsk-slide/'%></li>
+		<li <%==$active_link{'dsk-wall'}%>><%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/'%></li>
+		<li <%=$active_link{'dsk-wall'}%>><%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/'%></li>
+		<li <%=$active_link{'dsk-wall'}%>><%= link_to "Где купить?" => '/dsk-wall/'%></li>
+				<li><%= link_to "Гарантия" => '/dsk-wall/'%></li>
+				<li><%= link_to "Доставка и оплата" => '/dsk-wall/'%></li>
+	</ul>
+<hr>
 	</div>
-	<!--/div>
-	</div-->
-
-	<div id="quik-info">
 		<div class="row">
 			<div class="span4">
-			<h1><a href="/"><img src="/images/logo.png" border=0 title="На главную страницу" alt="Логотип интернет-магазина"></a> 
-			<a href="/" class="brand">На Старт.рф</a>
-			</h1>
+<img src="/images/logo.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста"> 
+<a href="/"><span class="logotype">На Старт.рф</span></a>
 			</div><div class="span4">
+		<p align=center>
 % #Cart information
 % my $cartinfo=0;
 % my @productid = keys session->{'cart'} if session->{'cart'};
 % foreach my $key (@productid){
 %	$cartinfo=$cartinfo+session->{'cart'}{$key};
 % }
-		<p>
 % if($cartinfo==0){
-	Корзина пока пуста :(	
+	<img src="/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста">
+	<p align=center>Корзина пока пуста :(</p>
 % }else{
-	<a href="/cart">В корзине <%= $cartinfo %> тов.</a>
+	<a href="/cart"><img src="/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
+	<p align=center><a href="/cart">В корзине</a> <span class="badge badge-info"><%= $cartinfo %> товара</span></p>
 % }
 		</p>
 			</div><div class="span4">
-				<p>
-					<font style="font-size:24px">+7 (391) 29-202-29</font>
+				<p class="" align=right>
+					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font><br/>
+					<a href="#myModal" data-toggle="modal">заказать обратный звонок</a>
 				</p>
 			</div>
-	</div><!--#quik-info-->
+		</div>
+
 	<%=content%>
 
 	<footer>
