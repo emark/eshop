@@ -17,13 +17,14 @@
 <div class="row">
 <div class="span12">
 
-<table class="table">
+<table class="table" border=0>
 <thead>
 <tr>
 	<th>Наименование товара</th>
 	<th>Цена</th>
-	<th>Количество</th>
+	<th><center>Количество</center></th>
 	<th>Стоимость</th>
+	<th>&nbsp;</th>
 </tr>
 <thead>
 <tbody>
@@ -32,27 +33,33 @@
 <tr>
 <td><%= link_to $product->{'title'} => "/$product->{'caturl'}/$product->{'url'}.html"%></td>
 <td><%= $product->{'price'} %> руб.</td> 
-<td>
+<td><center>
 <a href="#" onClick="submitDetailsForm('remove',<%= $product->{'id'} %>)" class="btn"><i class="icon-minus"></i></a>&nbsp;
 <%=$cart->{$product->{'id'}}%>
 &nbsp;<a href="#" onClick="submitDetailsForm('add',<%= $product->{'id'} %>)" class="btn"><i class="icon-plus"></i></a>
-</td>
+</center></td>
 <td>
 <%= $product->{'price'}*$cart->{$product->{'id'}} %> руб. 
 </td>
-<td>
-<a href="#" class="btn btn-danger" title="Убрать товар из корзины" onClick="submitDetailsForm('drop',<%= $product->{'id'} %>)"><i class="icon-remove icon-white"></i></a>
+<td align=center>
+<a href="#" title="Убрать товар из корзины" class="btn btn-danger" onClick="submitDetailsForm('drop',<%= $product->{'id'} %>)"><i class="icon-remove icon-white"></i></a>
 </td>
 </tr>
 % $total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
 % }
-
+<tr>
+<td colspan=3><h3 align=right>Итого:</h3></td>
+<td colspan=><h3><%=$total_cart%> руб.</h3></td>
+<td colspan=></td>
+</tr>
 </tbody>
 </table>
 
-<p>Total cart: <%=$total_cart%> руб.</p>
-
-<%= link_to 'Finish order'=>'/checkout' %>
+<div class="row">
+<div class="span4">
+	<a href="/checkout" class="btn btn-large">Оформить заказ&nbsp;&rarr;</a>
+</div>
+</div>
 
 <script language ="javascript" type = "text/javascript" >
     function submitDetailsForm($action,$id)
