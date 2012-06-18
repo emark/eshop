@@ -1,5 +1,5 @@
 % layout 'default';
-% title $product->{'title'}.' - '.$catlink->{'link'};
+% title $product->{'title'}.' - '.$catalog->{'title'};
 
 <div class="page-header">
 <h1><%=$product->{'title'}%></h1>
@@ -7,7 +7,7 @@
 
 <ul class="breadcrumb"
 	<li><a href="#">Главная</a><span class="divider">/</span></li>
-	<li><a href="#"><%= link_to $catlink->{'link'} => "/$catlink->{'url'}/" %></a><span class="divider">/</span></li>
+	<li><a href="#"><%= link_to $catalog->{'title'} => "/$catalog->{'url'}/" %></a><span class="divider">/</span></li>
 	<li><%=$product->{'title'}%></li>
 </ul>
 
@@ -24,9 +24,9 @@
 <p><span class="label label-important">Нет в наличии</span></p>
 <p><h2>Цена <%=$product->{'price'}%> р.</h3></p>
 <form action="/cart/" method=post>
-<input type=hidden value=<%=$product->{'id'}%> name=id>
+<input type=hidden value=<%=$product->{'id'}%> name=prodid>
 <input type=hidden name="action" value="add">
-<input type="submit" value="Добавить в корзину" class="btn btn-large"></form>
+<input type="submit" value="Добавить в корзину" class="btn btn-large btn-primary"></form>
 
 <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir"></div> 
 

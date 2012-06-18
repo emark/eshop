@@ -1,9 +1,11 @@
 % layout 'nocartinfo';
-% title 'Catalog items';
+% title 'Ваша корзина';
 
 <div class="page-header">
 <h1>Ваша корзина</h1>
 </div><!--.page-header-->
+
+%#dev
 
 <ul class="breadcrumb"
 	<li><a href="#">Главная</a><span class="divider">/</span></li>
@@ -31,14 +33,17 @@
 <td><%= link_to $product->{'title'} => "/$product->{'caturl'}/$product->{'url'}.html"%></td>
 <td><%= $product->{'price'} %> руб.</td> 
 <td>
-<input type=hidden name=id value=<%= $product->{'id'} %>>
-<input type=hidden name="action" value="">
-<a href="#" class="btn">-</a>&nbsp;
+<a href="#" onClick="submitDetailsForm('remove',<%= $product->{'id'} %>)" class="btn"><i class="icon-minus"></i></a>&nbsp;
 <%=$cart->{$product->{'id'}}%>
-&nbsp;<a href="#" class="btn">+</a>
+&nbsp;<a href="#" onClick="submitDetailsForm('add',<%= $product->{'id'} %>)" class="btn"><i class="icon-plus"></i></a>
 </td>
 <td>
-<%=$product->{'price'}*$cart->{$product->{'id'}}%> руб. </td></tr>
+<%= $product->{'price'}*$cart->{$product->{'id'}} %> руб. 
+</td>
+<td>
+<a href="#" class="btn btn-danger" title="Убрать товар из корзины" onClick="submitDetailsForm('drop',<%= $product->{'id'} %>)"><i class="icon-remove icon-white"></i></a>
+</td>
+</tr>
 % $total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
 % }
 
@@ -47,7 +52,21 @@
 
 <p>Total cart: <%=$total_cart%> руб.</p>
 
-<%=link_to 'Finish order'=>'/checkout'%>
+<%= link_to 'Finish order'=>'/checkout' %>
+
+<script language ="javascript" type = "text/javascript" >
+    function submitDetailsForm($action,$id)
+    {
+	document.getElementById('action').value=$action;
+	document.getElementById('prodid').value=$id;
+       $("#updatecart").submit();
+    }
+</script>
+
+<%= form_for '/cart/' => (method => 'post', id => 'updatecart') => begin %>
+<input type=hidden id=action value="" name=action>
+<input type=hidden id=prodid value="" name=prodid>
+<% end %>
 
 </div>
 </div>

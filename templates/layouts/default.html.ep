@@ -60,7 +60,7 @@
 
 <div class="container">
 % my %active_link=();
-% $active_link{$catlink->{'url'}}='class="active"';
+% $active_link{$catalog->{'url'}}='class="active"';
 <div class="top-links">
 	<ul class="nav nav-pills">
 		<li <%==$active_link{'dsk-slide'}%>><%= link_to "Распорные спортивные комплексы" => '/dsk-slide/'%></li>

@@ -153,19 +153,15 @@ get '/cart' => sub {
 	my $pid=' product.id=';
 	$pid=$pid.join(' or product.id=',@pid);	
 	my $result=$dbi->select(
-		table => 'router_a',
+		table => 'product',
 		column => [
 			'product.id',
 			'product.title',
 			'product.price',
 			'product.url',
-			'catalog.url as caturl',
+			'product.caturl',
 		],
 		where => $pid,
-		join => [
-            'right join catalog on router_a.catid=catalog.id',
-            'left join product on router_a.prodid=product.id'
-        ]
 	);
     $self->stash(
 		cart => $cart,
@@ -176,14 +172,17 @@ get '/cart' => sub {
 
 post '/cart' => sub{
     my $self=shift;
-    my $productid=$self->param('id') || 0;
+    my $productid=$self->param('prodid') || 0;
 	my $action=$self->param('action');
     my $cart=$self->session('cart');
 	if($action eq 'add'){
 	    $cart->{$productid}++;
 	}elsif($action eq 'remove'){
 		$cart->{$productid}-- if $cart->{$productid}>0;
-		delete $cart->{$productid} if $cart->{$productid}==0;
+		#delete $cart->{$productid} if $cart->{$productid}==0;
+	}
+	if($cart->{$productid}==0 || $action eq 'drop'){
+		delete $cart->{$productid};
 	}
 	$self->session(cart => $cart);
 	my @pid= keys %{$cart};
@@ -199,7 +198,13 @@ post '/cart' => sub{
     $pid=$pid.join(' or id=',@pid);
     my $result=$dbi->select(
         table => 'product',
-        column => ['id','title','price'],
+        column => [
+			'product.id',
+			'product.title',
+			'product.price',
+			'product.caturl',
+			'product.url',
+		],
         where => $pid
     );
     $self->stash(
@@ -209,20 +214,20 @@ post '/cart' => sub{
     $self->render('cart');
 };
 
-get '/:catalog' => sub {
+get '/:caturl' => sub {
 	my $self = shift;
-	my $caturl = $self->param('catalog');
-	my $catlink = $dbi->select(
+	my $caturl = $self->param('caturl');
+	my $catalog = $dbi->select(
 						table => 'catalog',
 						column => [
-							'catalog.link',
+							'catalog.title',
 							'catalog.url',
 							'catalog.desc',
 						],
 						where => {'catalog.url' => $caturl},
 					);
 	my $result = $dbi->select(
-		table => 'router_a',
+		table => 'product',
 		column => [
 			'product.title',
 			'product.url',
@@ -231,15 +236,11 @@ get '/:catalog' => sub {
 			'product.id',
 			'product.price',
 		],
-		where => {'catalog.url' => $caturl},
-		join => [
-			'right join catalog on router_a.catid=catalog.id',
-			'left join product on router_a.prodid=product.id'
-		]
+		where => {'product.caturl' => $caturl},
 	);
 	$self->stash(
 		product => $result->fetch_hash_all,
-		catlink => $catlink->one
+		catalog => $catalog->one
 	);
 	$self->render('catalog');
 };
@@ -248,13 +249,13 @@ get '/:caturl/:produrl' => sub {
 	my $self = shift;
 	my $caturl=$self->param('caturl');
 	my $produrl=$self->param('produrl');
-    my $catlink = $dbi->select(
+    my $catalog = $dbi->select(
 		table => 'catalog',
-        column => ['catalog.link','catalog.url'],
+        column => ['catalog.title','catalog.url'],
         where => {'catalog.url' => $caturl},
 	);
 	my $result=$dbi->select(
-		table => 'router_a',
+		table => 'product',
         column => [
 			'product.id',
 			'product.title',
@@ -266,17 +267,12 @@ get '/:caturl/:produrl' => sub {
 			'product.instore'
 		],
 		where => {
-			'catalog.url' => $caturl,
 			'product.url' => $produrl
 		},
-        join => [
-        	'right join catalog on router_a.catid=catalog.id',
-            'left join product on router_a.prodid=product.id'
-		]
 	);
 	$self->stash(
 		product => $result->fetch_hash,
-		catlink => $catlink->one,
+		catalog => $catalog->one,
 	);
 	$self->render('product');
 };
