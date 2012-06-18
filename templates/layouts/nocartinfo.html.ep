@@ -9,11 +9,6 @@
 
     <!-- Le styles -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
     <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -27,43 +22,94 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/bootstrap/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+
+	<!--Include google webfonts-->
+	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+	<style>
+		.top-links{
+			padding: 10px 0px 10px 0px;
+			font-size: 14px;
+		}
+		.logotype{
+			font-family: 'Lobster', cursive;
+			font-size: 38px;
+		}
+		.small-price{
+			font-size:14px;
+			color:#f45;
+		}
+	</style>
   </head>
 
   <body>
 
-	<div id="top-links">
-		<%= link_to "Распорные спортивные комплексы" => '/dsk-wall/' %> |
-		<%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/' %> |
-		<%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/' %> |
-		<%= link_to "Где купить?" => '/dsk-wall/' %> |
-		<%= link_to "Гарантия" => '/dsk-wall/' %> |
-		<%= link_to "Доставка и оплата" => '/dsk-wall/' %>
-	</div> <!--#footer-links-->
+<div class="modal hide" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Обратный звонок</h3>
+  </div>
+  <div class="modal-body">
+    Перезвоните мне на номер +7 <input type="text" name="phone" class="input-medium"/>
+	<!--br/>по поводу: <input type="text" name="phone" class="input-large"/-->
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
+    <a href="#" class="btn btn-primary">Жду звонка</a>
+  </div>
+</div>
 
-    <div class="container">
-	<div id="quik-info">
-		<h1><a href="/"><img src="/images/logo.png" border=0 title="На главную страницу" alt="Логотип интернет-магазина"></a> 
-		<a href="/">На Старт.рф</a>
-		</h1>
-	</div><!--#quik-info-->
+<div class="container">
+<div class="top-links">
+	<ul class="nav nav-pills">
+		<li><%= link_to "Распорные спортивные комплексы" => '/dsk-slide/'%></li>
+		<li><%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/'%></li>
+		<li><%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/'%></li>
+		<li><%= link_to "Где купить?" => '/dsk-wall/'%></li>
+		<li><%= link_to "Гарантия" => '/dsk-wall/'%></li>
+		<li><%= link_to "Доставка и оплата" => '/dsk-wall/'%></li>
+	</ul>
+<hr>
+	</div>
+		<div class="row">
+			<div class="span3">
+<p align=center><a href="/"><img src="/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
+<a href="/"><span class="logotype">НаСтарт.рф</span></a><br/>
+<em>интернет-магазин</em></p>
+			</div><div class="span5">
+		<p align=center>
+<img src="/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину">
+<p align=center>Ваша корзина</p>
+		</p>
+			</div><div class="span4">
+				<div class="pull-right" align=right>
+					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
+					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
+					<br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a>
+				</div>
+			</div>
+		</div>
+
 	<%=content%>
 
 	<footer>
-		<div id="footer-links">
+	<hr>
+		<div id="footer-links"><center>
 			<%= link_to "Распорные спортивные комплексы" => '/dsk-wall/' %> |
 			<%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/' %> |
 			<%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/' %> |
 			<%= link_to "Адреса магазинов" => '/dsk-wall/' %>
-		</div> <!--#footer-links-->
+		</center></div> <!--#footer-links-->
 	<hr>
 	<p>Копирайт, описание магазина, варианты оплаты, соц.сети</p>		
 	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>
 	</footer>
+	<p>&nbsp;</p><!--#bottom-padding-->
     </div> <!-- /container -->
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
     <script src="/bootstrap/js/bootstrap-transition.js"></script>
     <script src="/bootstrap/js/bootstrap-alert.js"></script>
     <script src="/bootstrap/js/bootstrap-modal.js"></script>

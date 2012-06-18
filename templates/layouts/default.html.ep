@@ -34,6 +34,10 @@
 			font-family: 'Lobster', cursive;
 			font-size: 38px;
 		}
+		.small-price{
+			font-size:14px;
+			color:#f45;
+		}
 	</style>
   </head>
 
@@ -45,7 +49,8 @@
     <h3>Обратный звонок</h3>
   </div>
   <div class="modal-body">
-    Перезвоните мне на номер +7 <input type="text" name="phone" class="input-small"/>
+    Перезвоните мне на номер +7 <input type="text" name="phone" class="input-medium"/>
+	<!--br/>по поводу: <input type="text" name="phone" class="input-large"/-->
   </div>
   <div class="modal-footer">
     <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
@@ -68,10 +73,11 @@
 <hr>
 	</div>
 		<div class="row">
-			<div class="span4">
-<img src="/images/logo.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста"> 
-<a href="/"><span class="logotype">На Старт.рф</span></a>
-			</div><div class="span4">
+			<div class="span3">
+<p align=center><a href="/"><img src="/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
+<a href="/"><span class="logotype">НаСтарт.рф</span></a><br/>
+<em>интернет-магазин</em></p>
+			</div><div class="span5">
 		<p align=center>
 % #Cart information
 % my $cartinfo=0;
@@ -83,15 +89,16 @@
 	<img src="/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста">
 	<p align=center>Корзина пока пуста :(</p>
 % }else{
-	<a href="/cart"><img src="/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
-	<p align=center><a href="/cart">В корзине</a> <span class="badge badge-info"><%= $cartinfo %> товара</span></p>
+	<a href="/cart/"><img src="/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
+	<p align=center><a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span></p>
 % }
 		</p>
 			</div><div class="span4">
-				<p class="" align=right>
-					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font><br/>
-					<a href="#myModal" data-toggle="modal">заказать обратный звонок</a>
-				</p>
+				<div class="pull-right" align=right>
+					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
+					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
+					<br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a>
+				</div>
 			</div>
 		</div>
 
@@ -109,11 +116,13 @@
 	<p>Копирайт, описание магазина, варианты оплаты, соц.сети</p>		
 	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>
 	</footer>
+	<p>&nbsp;</p><!--#bottom-padding-->
     </div> <!-- /container -->
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
     <script src="/bootstrap/js/bootstrap-transition.js"></script>
     <script src="/bootstrap/js/bootstrap-alert.js"></script>
     <script src="/bootstrap/js/bootstrap-modal.js"></script>

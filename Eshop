@@ -144,18 +144,28 @@ get '/cart' => sub {
 	my @pid = keys %{$cart} if $cart;
 	my $countpid=@pid || 0;
 	$self->stash(
-		page_title => 'Your cart',
-		page_caption => 'Your cart',
+		page_title => 'Ваша корзина',
+		page_caption => 'Ваша корзина',
 		message => 'Sorry, your cart is empty :('
 	);
 	return $self->render('dummy') if $countpid==0 ;
 
-	my $pid=' id=';
-	$pid=$pid.join(' or id=',@pid);	
+	my $pid=' product.id=';
+	$pid=$pid.join(' or product.id=',@pid);	
 	my $result=$dbi->select(
-		table => 'product',
-		column => ['id','title','price'],
-		where => $pid
+		table => 'router_a',
+		column => [
+			'product.id',
+			'product.title',
+			'product.price',
+			'product.url',
+			'catalog.url as caturl',
+		],
+		where => $pid,
+		join => [
+            'right join catalog on router_a.catid=catalog.id',
+            'left join product on router_a.prodid=product.id'
+        ]
 	);
     $self->stash(
 		cart => $cart,
@@ -204,7 +214,11 @@ get '/:catalog' => sub {
 	my $caturl = $self->param('catalog');
 	my $catlink = $dbi->select(
 						table => 'catalog',
-						column => ['catalog.link','catalog.url'],
+						column => [
+							'catalog.link',
+							'catalog.url',
+							'catalog.desc',
+						],
 						where => {'catalog.url' => $caturl},
 					);
 	my $result = $dbi->select(
@@ -212,9 +226,8 @@ get '/:catalog' => sub {
 		column => [
 			'product.title',
 			'product.url',
-			'product.set',
+			'product.anonse',
 			'product.instore',
-			'product.image',
 			'product.id',
 			'product.price',
 		],
@@ -231,10 +244,10 @@ get '/:catalog' => sub {
 	$self->render('catalog');
 };
 
-get '/:catalog/:product' => sub {
+get '/:caturl/:produrl' => sub {
 	my $self = shift;
-	my $caturl=$self->param('catalog');
-	my $produrl=$self->param('product');
+	my $caturl=$self->param('caturl');
+	my $produrl=$self->param('produrl');
     my $catlink = $dbi->select(
 		table => 'catalog',
         column => ['catalog.link','catalog.url'],

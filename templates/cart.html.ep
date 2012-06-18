@@ -1,29 +1,53 @@
 % layout 'nocartinfo';
 % title 'Catalog items';
-Your cart<br/>
+
+<div class="page-header">
+<h1>Ваша корзина</h1>
+</div><!--.page-header-->
+
+<ul class="breadcrumb"
+	<li><a href="#">Главная</a><span class="divider">/</span></li>
+	<li>Корзина</li>
+</ul>
+
 %my $total_cart=0;
 
+<div class="row">
+<div class="span12">
+
+<table class="table">
+<thead>
+<tr>
+	<th>Наименование товара</th>
+	<th>Цена</th>
+	<th>Количество</th>
+	<th>Стоимость</th>
+</tr>
+<thead>
+<tbody>
+
 <%foreach my $product(@{$products}){%>
-<%=$product->{'title'}%> <%=$product->{'price'}%> руб. 
-
-<%=form_for cart => (method=>'post') => begin%>
-<input type=hidden name=id value=<%=$product->{'id'}%>>
-<input type=hidden name="action" value="remove">
-<%=submit_button '-'%>
-<%end%>
-
+<tr>
+<td><%= link_to $product->{'title'} => "/$product->{'caturl'}/$product->{'url'}.html"%></td>
+<td><%= $product->{'price'} %> руб.</td> 
+<td>
+<input type=hidden name=id value=<%= $product->{'id'} %>>
+<input type=hidden name="action" value="">
+<a href="#" class="btn">-</a>&nbsp;
 <%=$cart->{$product->{'id'}}%>
+&nbsp;<a href="#" class="btn">+</a>
+</td>
+<td>
+<%=$product->{'price'}*$cart->{$product->{'id'}}%> руб. </td></tr>
+% $total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
+% }
 
-<%=form_for cart => (method=>'post') => begin%>
-<input type=hidden name=id value=<%=$product->{'id'}%>>
-<input type=hidden name="action" value="add">
-<%=submit_button '+'%>
-<%end%>
- =
-<%=$product->{'price'}*$cart->{$product->{'id'}}%> руб. <br/>
-%$total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
-<%}%>
+</tbody>
+</table>
 
 <p>Total cart: <%=$total_cart%> руб.</p>
 
 <%=link_to 'Finish order'=>'/checkout'%>
+
+</div>
+</div>

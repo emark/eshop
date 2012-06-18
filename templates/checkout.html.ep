@@ -4,6 +4,15 @@
 % my $missing = stash->{missing};
 % my $messages = stash->{messages};
 
+<div class="page-header">
+<h1>Оформление заказа</h1>
+</div><!--.page-header-->
+
+<ul class="breadcrumb"
+	<li><a href="#">Главная</a><span class="divider">/</span></li>
+	<li><a href="/cart/">Корзина</a><span class="divider">/</span></li>
+	<li>Оформление заказа</li>
+</ul>
 
 % foreach my $product(@{$products}){
 <%=$product->{'title'}%> |

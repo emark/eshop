@@ -15,34 +15,68 @@
 <div class="span4">
 <ul class="thumbnails">
 <li class="span4">
-	<a href="#" class="thumbnail">
-      <img src="http://placehold.it/360x268" alt="">
-    </a></li>
+		<a href="#" class="thumbnail">
+      		<img src="/images/products/product/2.jpg" alt="">
+    		</a>
+</li>
 </ul>
-</div>
 
-<div class="span8">
-<i><%=$product->{'desc'}%></i><br/>
-<i><%=$product->{'set'}%></i><br/>
-<i><%=$product->{'features'}%></i><br/>
-Цена <%=$product->{'price'}%> руб.<br/>
-Наличие на складе: <%=$product->{'instore'}%>
+<p><span class="label label-important">Нет в наличии</span></p>
+<p><h2>Цена <%=$product->{'price'}%> р.</h3></p>
 <form action="/cart/" method=post>
 <input type=hidden value=<%=$product->{'id'}%> name=id>
 <input type=hidden name="action" value="add">
 <input type="submit" value="Добавить в корзину" class="btn btn-large"></form>
-</div>
+
+<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir"></div> 
+
 </div>
 
+<div class="span8">
+
 <ul class="nav nav-tabs">
-<li class="active"><a href="#comments" data-toggle="tab">Отзывы о товаре</a></li>
+<li class="active"><a href="#description" data-toggle="tab">Описание и характеристики</a></li>
+<li><a href="#comments" data-toggle="tab">Отзывы о товаре</a></li>
 <li><a href="#video" data-toggle="tab">Видео</a></li>
 <li><a href="#slides" data-toggle="tab">Больше изображений</a></li>
 </ul>
 
 <div id="prod-ext-info" class="tab-content">
-	<div id="comments" class="tab-pane active">
-		Comments must be here
+	<div id="description" class="tab-pane active">
+
+<i><%=$product->{'desc'}%></i><br/>
+<dl>
+<dt>Комплектация</dt>
+<dd>
+<ol>
+% my @set=split('#',$product->{'set'});
+% foreach my $key(@set){
+	<li><%= $key %></li>
+% }
+</ol>
+</dd>
+
+% my @set=split('#',$product->{'features'});
+% if(@set){
+<dl>
+<dt>Параметры</strong></dt>
+</dl>
+<table class="table">
+<tbody>
+
+% foreach my $key(@set){
+%	my($param,$value)=split(':',$key);
+	<tr><td><%= $param %></td><td><%= $value %></td></tr>
+% }
+</tbody>
+</table>
+
+% }
+
+</div>
+	<div id="comments" class="tab-pane">
+
+Comments must be here
 	</div>
 	<div id="video" class="tab-pane">
 		Video from youtube channel
@@ -50,4 +84,7 @@
 	<div id="slides" class="tab-pane">
 		More images of product
 	</div>
+</div>
+</div>
+
 </div>
