@@ -11,33 +11,27 @@ CREATE TABLE `product` (
   `price` INT,
   `instore` INT,
   `anonse` TEXT,
+  `catid` INT,
   PRIMARY KEY  (`id`)
 );
 
 CREATE TABLE `catalog` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `link` TEXT,
+  `title` TEXT,
   `url` TEXT,
   `desc` TEXT,
   PRIMARY KEY  (`id`)
 );
 
-CREATE TABLE `router_a` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `prodid` INT,
-  `catid` INT,
-  PRIMARY KEY  (`id`)
-);
-
 CREATE TABLE `delivery` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `link` TEXT,
+  `title` TEXT,
   PRIMARY KEY  (`id`)
 );
 
 CREATE TABLE `payment` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `link` TEXT,
+  `title` TEXT,
   PRIMARY KEY  (`id`)
 );
 
@@ -64,13 +58,10 @@ CREATE TABLE `item` (
   PRIMARY KEY  (`id`)
 );
 
+ALTER TABLE `product` ADD CONSTRAINT `product_fk1` FOREIGN KEY (`catid`) REFERENCES catalog(`id`);
 
-
-ALTER TABLE `router_a` ADD CONSTRAINT `router_a_fk1` FOREIGN KEY (`prodid`) REFERENCES product(`id`);
-ALTER TABLE `router_a` ADD CONSTRAINT `router_a_fk2` FOREIGN KEY (`catid`) REFERENCES catalog(`id`);
 
 
 ALTER TABLE `orders` ADD CONSTRAINT `orders_fk1` FOREIGN KEY (`deliveryid`) REFERENCES delivery(`id`);
 ALTER TABLE `orders` ADD CONSTRAINT `orders_fk2` FOREIGN KEY (`paymentid`) REFERENCES payment(`id`);
 ALTER TABLE `item` ADD CONSTRAINT `item_fk1` FOREIGN KEY (`orderid`) REFERENCES orders(`id`);
-

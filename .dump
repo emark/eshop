@@ -24,10 +24,11 @@ DROP TABLE IF EXISTS `catalog`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `catalog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `link` text,
+  `title` text,
   `url` text,
+  `desc` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +37,7 @@ CREATE TABLE `catalog` (
 
 LOCK TABLES `catalog` WRITE;
 /*!40000 ALTER TABLE `catalog` DISABLE KEYS */;
-INSERT INTO `catalog` VALUES (1,'DSK','dsk-wall');
+INSERT INTO `catalog` VALUES (1,'Пристенные спортивные комплексы','dsk-wall','<p>Домашний спортивный комплекс (ДСК) - это повод папе оторваться от компьютера, а маме от телевизора, ведь спорткомплекс выдерживает вес и взрослого человека. Вспомните себя в детстве, как вам нравилось лазить по деревьям. Их сейчас становится все меньше во дворах. Пусть вашим малышам будет на чем виснуть и скакать, вместо маминых рук и папиных плеч.</p>\n<p>Мы предлагаем спортивные комплексы двух видов крепления:<br /><strong>распорный</strong> комплекс устанавливается между полом и потолком, которые имеют капитальную основу<br /><strong>пристенный</strong> комплекс крепится только к несущим стенам</p>'),(2,'Распорные спорткомплексы','dsk-slide','<p>Нет времени посещать спортивный зал? Устройте его дома! Для этого достаточно всего лишь выделить часть комнаты и установить спортивный комплекс для дома. Занимаясь ежедневно, Вы укрепляете и развиваете мускулатуру, тренируете и оздоравливаете свой организм. Занятия на таких спортивных комплексах могут выполнять и дети, и взрослые.</p>\n<p>Домашний спортивный комплекс (ДСК) - это повод папе оторваться от компьютера, а маме от телевизора, ведь спорткомплекс выдерживает вес и взрослого человека. Вспомните себя в детстве, как вам нравилось лазить по деревьям. Их сейчас становится все меньше во дворах. Пусть вашим малышам будет на чем виснуть и скакать, вместо маминых рук и папиных плеч.</p>\n<p>Мы предлагаем спортивные комплексы двух видов крепления:<br /><strong>распорный</strong> комплекс устанавливается между полом и потолком, которые имеют капитальную основу<br /><strong>пристенный</strong> комплекс крепится только к несущим стенам</p>');
 /*!40000 ALTER TABLE `catalog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,9 +50,9 @@ DROP TABLE IF EXISTS `delivery`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `delivery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `link` text,
+  `link` text CHARACTER SET latin1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +82,7 @@ CREATE TABLE `item` (
   PRIMARY KEY (`id`),
   KEY `item_fk1` (`orderid`),
   CONSTRAINT `item_fk1` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,6 +91,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES (38,1,'ДСК \"Стелла\" - 1С',2,3440,38),(39,2,'Велосипед 3-х колёсный \"Бамбино\" (Т12)',3,5250,38),(40,2,'Велосипед 3-х колёсный \"Бамбино\" (Т12)',1,5250,39),(41,1,'ДСК \"Стелла\" - 1С',1,3440,40),(42,2,'Велосипед 3-х колёсный \"Бамбино\" (Т12)',2,5250,40);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,20 +104,20 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `person` text,
-  `tel` text,
-  `email` text,
-  `address` text,
+  `person` text CHARACTER SET latin1,
+  `tel` text CHARACTER SET latin1,
+  `email` text CHARACTER SET latin1,
+  `address` text CHARACTER SET latin1,
   `deliveryid` int(11) DEFAULT NULL,
   `paymentid` int(11) DEFAULT NULL,
   `sysdate` datetime DEFAULT NULL,
-  `sign` text,
+  `sign` text CHARACTER SET latin1,
   PRIMARY KEY (`id`),
   KEY `orders_fk1` (`deliveryid`),
   KEY `orders_fk2` (`paymentid`),
   CONSTRAINT `orders_fk1` FOREIGN KEY (`deliveryid`) REFERENCES `delivery` (`id`),
   CONSTRAINT `orders_fk2` FOREIGN KEY (`paymentid`) REFERENCES `payment` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,6 +126,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (38,'?????? ??????????','11','sviridenko.maxim@gmail.com','??????????????',1,1,'2012-06-15 16:16:46','unFxWI9GFPbB3atG'),(39,'Maxim','sd','sviridenko.maxim@gmail.com','',1,1,'2012-06-16 15:20:38','p2wQPfq8TkHNJMq'),(40,'Maxim','+79080321768','sviridenko@mail.ru','',2,1,'2012-06-16 19:04:22','ki7S9Hr7INDcOhJ');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,9 +139,9 @@ DROP TABLE IF EXISTS `payment`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `link` text,
+  `link` text CHARACTER SET latin1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,12 +167,14 @@ CREATE TABLE `product` (
   `set` text,
   `features` text,
   `image` tinytext,
-  `url` text,
+  `url` text CHARACTER SET latin1,
   `title` tinytext,
   `price` int(11) DEFAULT NULL,
   `instore` int(11) DEFAULT NULL,
+  `anonse` varchar(120) DEFAULT NULL,
+  `caturl` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,37 +183,8 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,NULL,NULL,NULL,NULL,'orlenok-1c','Orlenok',3440,NULL),(2,NULL,NULL,NULL,NULL,'stella-1cplus','Stella',5250,NULL);
+INSERT INTO `product` VALUES (1,'Детский домашний спорткомплекс \"Орленок-1А плюс+\" Обрезиненные перекладины лестницы обеспечат комфорт и безопасность.','лестница#кольца#канат','Ширина комплекса:525 мм#Ширина турника:950 мм#Ширина металлической перекладины: 450 мм#Высота комплекса: 2300 мм#Высота турника регулируется:от 1560 до 2020 мм','noimage.png','orlenok-1c','ДСК \"Стелла\" - 1С',3440,NULL,'Спортивный комплекс широкого применения, для всех возрастов','dsk-wall'),(2,'Трехколесный велосипед повышенной комфортности','Корзина#Солнцезащитный тент#Металлическая рама#\"Родительская\" ручка управления#Поддон для ног#Страховочный обод#Мягкая резина','','noimage.png','stella-1cplus','Велосипед 3-х колёсный \"Бамбино\" (Т12)',5250,NULL,'Трехколосный вездеход для малышей','dsk-wall');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `router_a`
---
-
-DROP TABLE IF EXISTS `router_a`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `router_a` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prodid` int(11) DEFAULT NULL,
-  `catid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `router_a_fk1` (`prodid`),
-  KEY `router_a_fk2` (`catid`),
-  CONSTRAINT `router_a_fk1` FOREIGN KEY (`prodid`) REFERENCES `product` (`id`),
-  CONSTRAINT `router_a_fk2` FOREIGN KEY (`catid`) REFERENCES `catalog` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `router_a`
---
-
-LOCK TABLES `router_a` WRITE;
-/*!40000 ALTER TABLE `router_a` DISABLE KEYS */;
-INSERT INTO `router_a` VALUES (1,1,1),(2,2,1);
-/*!40000 ALTER TABLE `router_a` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -220,8 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-06-15 15:40:41
-Usage: mysqldump [OPTIONS] database [tables]
-OR     mysqldump [OPTIONS] --databases [OPTIONS] DB1 [DB2 DB3...]
-OR     mysqldump [OPTIONS] --all-databases [OPTIONS]
-For more options, use mysqldump --help
+-- Dump completed on 2012-06-18 18:41:36
