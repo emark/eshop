@@ -63,12 +63,12 @@
 % $active_link{$catalog->{'url'}}='class="active"';
 <div class="top-links">
 	<ul class="nav nav-pills">
-		<li <%==$active_link{'dsk-slide'}%>><%= link_to "Распорные спортивные комплексы" => '/dsk-slide/'%></li>
-		<li <%==$active_link{'dsk-wall'}%>><%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/'%></li>
-		<li <%=$active_link{'dsk-wall'}%>><%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/'%></li>
-		<li <%=$active_link{'dsk-wall'}%>><%= link_to "Где купить?" => '/dsk-wall/'%></li>
-				<li><%= link_to "Гарантия" => '/dsk-wall/'%></li>
-				<li><%= link_to "Доставка и оплата" => '/dsk-wall/'%></li>
+		<li <%==$active_link{'dsk-slide'}%>><%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/'%></li>
+		<li <%==$active_link{'dsk-wall'}%>><%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/'%></li>
+		<li <%=$active_link{'dsk-wall'}%>><%= link_to "Трёхколёсные велосипеды" => '/catalog/dsk-wall/'%></li>
+		<li <%=$active_link{'dsk-wall'}%>><%= link_to "Где купить?" => '/about/stores/'%></li>
+		<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
+		<li><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
 	</ul>
 <hr>
 	</div>
@@ -107,8 +107,8 @@
 	<footer>
 	<hr>
 		<div id="footer-links"><center>
-			<%= link_to "Распорные спортивные комплексы" => '/dsk-wall/' %> |
-			<%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/' %> |
+			<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-wall/' %> |
+			<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
 			<%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/' %> |
 			<%= link_to "Адреса магазинов" => '/dsk-wall/' %>
 		</center></div> <!--#footer-links-->

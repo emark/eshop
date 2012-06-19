@@ -24,7 +24,7 @@
 <%= form_for '/cart' => (method => 'post') => begin %>
 <%= hidden_field 'prodid' => $productid->{'id'} %>
 <%= hidden_field 'action' => 'add' %>
-<%= link_to "Подробнее" => "/$catalog->{'url'}/$productid->{'url'}.html" => (class => 'btn') %>&nbsp;
+<%= link_to "Подробнее" => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" => (class => 'btn') %>&nbsp;
 <%= submit_button 'В корзину' => (class => 'btn btn-primary') %>
 <% end %>
 

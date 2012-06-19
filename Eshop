@@ -59,13 +59,13 @@ post '/checkout' => sub {
 	my $vc = Validator::Custom->new;
 	my $param = $self->req->params->to_hash;
 	my $rule = [
-		name => {message => 'Input your name'} => [
+		clientname => {message => 'Input your name'} => [
 			'not_blank'
 		],
-		tel => {message => 'Input your tel. number'} => [
+		tel => {message => 'Input your phone number'} => [
 			'not_blank'
 		],
-		email => {message => 'Input correct mail'} => [
+		email => {message => 'Check your email'} => [
 			'not_blank',{
 				'regex' => qr/^.*\@.*\...+/
 			}
@@ -214,7 +214,7 @@ post '/cart' => sub{
     $self->render('cart');
 };
 
-get '/:caturl' => sub {
+get '/catalog/:caturl' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');
 	my $catalog = $dbi->select(
@@ -245,7 +245,7 @@ get '/:caturl' => sub {
 	$self->render('catalog');
 };
 
-get '/:caturl/:produrl' => sub {
+get '/catalog/:caturl/:produrl' => sub {
 	my $self = shift;
 	my $caturl=$self->param('caturl');
 	my $produrl=$self->param('produrl');

@@ -1,4 +1,4 @@
-% layout 'nocartinfo';
+% layout 'default';
 % title 'Ваша корзина';
 
 <div class="page-header">
@@ -31,12 +31,12 @@
 
 <%foreach my $product(@{$products}){%>
 <tr>
-<td><%= link_to $product->{'title'} => "/$product->{'caturl'}/$product->{'url'}.html"%></td>
+<td><%= link_to $product->{'title'} => "/catalog/$product->{'caturl'}/$product->{'url'}.html"%></td>
 <td><%= $product->{'price'} %> руб.</td> 
 <td><center>
-<a href="#" onClick="submitDetailsForm('remove',<%= $product->{'id'} %>)" class="btn"><i class="icon-minus"></i></a>&nbsp;
+<a href="#" onClick="submitDetailsForm('remove',<%= $product->{'id'} %>)" class="btn" title="Уменьшить количество товара"><i class="icon-minus"></i></a>&nbsp;
 <%=$cart->{$product->{'id'}}%>
-&nbsp;<a href="#" onClick="submitDetailsForm('add',<%= $product->{'id'} %>)" class="btn"><i class="icon-plus"></i></a>
+&nbsp;<a href="#" onClick="submitDetailsForm('add',<%= $product->{'id'} %>)" class="btn" title="Увеличить количество товара"><i class="icon-plus"></i></a>
 </center></td>
 <td>
 <%= $product->{'price'}*$cart->{$product->{'id'}} %> руб. 
