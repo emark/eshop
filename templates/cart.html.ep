@@ -1,4 +1,4 @@
-% layout 'default';
+% layout 'nocartinfo';
 % title 'Ваша корзина';
 
 <div class="page-header">

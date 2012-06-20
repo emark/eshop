@@ -7,7 +7,7 @@
 
 <ul class="breadcrumb"
 	<li><a href="#">Главная</a><span class="divider">/</span></li>
-	<li><a href="#"><%= link_to $catalog->{'title'} => "/$catalog->{'url'}/" %></a><span class="divider">/</span></li>
+	<li><a href="#"><%= link_to $catalog->{'title'} => "/catalog/$catalog->{'url'}/" %></a><span class="divider">/</span></li>
 	<li><%=$product->{'title'}%></li>
 </ul>
 

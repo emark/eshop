@@ -1,0 +1,16 @@
+% layout 'default';
+% title $catalog->{'title'};
+
+<div class="page-header">
+	<h1><%= $content->{'title'} %></h1>
+</div><!--.page-header-->
+
+<div><!--category description-->
+	<p><em><%== $catalog->{'desc'} %></em></p>
+</div>
+
+<div>
+	<%== $content->{'content'} %>
+
+</div>
+

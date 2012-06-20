@@ -5,8 +5,8 @@
 <h1><%= $catalog->{'title'} %></h1>
 </div><!--.page-header-->
 
-<div><!--categosy description-->
-<em><%== $catalog->{'desc'} %></em>
+<div><!--category description-->
+	<p><em><%== $catalog->{'desc'} %></em></p>
 </div>
 
 % if (@{$product}){
@@ -16,7 +16,7 @@
 <li class="span3">
 	<div class="thumbnail">
       <img src="/images/products/thumb/1.jpg" alt="">
-      <h4><%= link_to $productid->{'title'} => "/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
+      <h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
       <p>
 <em><%=$productid->{'anonse'}%></em></p>
 <p><span class="label label-important">Нет в наличии</span><h3>Цена:</strong> <%=$productid->{'price'}%> р.</h3></p>
@@ -38,7 +38,7 @@
 % }else{
 
 <div class="well">
-<p align=center>В этом разделе пока нет товаров. Может будут завтра?</a>
+<p>В этом разделе пока нет товаров. Может будут завтра?</a>
 </div>
 
 % }

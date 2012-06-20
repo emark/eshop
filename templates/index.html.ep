@@ -1,6 +1,0 @@
-% layout 'default';
-% title 'Catalog items';
-Catalog<br/>
-<%foreach my $key (@{$catalog}){%>
-<%=$key->[0]%><br/>
-<%}%>

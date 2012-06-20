@@ -58,6 +58,14 @@ CREATE TABLE `item` (
   PRIMARY KEY  (`id`)
 );
 
+CREATE TABLE `pages` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` TEXT,
+  `content` TEXT,
+  `url` TEXT,
+  PRIMARY KEY  (`id`)
+);
+
 ALTER TABLE `product` ADD CONSTRAINT `product_fk1` FOREIGN KEY (`catid`) REFERENCES catalog(`id`);
 
 
@@ -65,3 +73,4 @@ ALTER TABLE `product` ADD CONSTRAINT `product_fk1` FOREIGN KEY (`catid`) REFEREN
 ALTER TABLE `orders` ADD CONSTRAINT `orders_fk1` FOREIGN KEY (`deliveryid`) REFERENCES delivery(`id`);
 ALTER TABLE `orders` ADD CONSTRAINT `orders_fk2` FOREIGN KEY (`paymentid`) REFERENCES payment(`id`);
 ALTER TABLE `item` ADD CONSTRAINT `item_fk1` FOREIGN KEY (`orderid`) REFERENCES orders(`id`);
+

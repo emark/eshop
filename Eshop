@@ -4,6 +4,7 @@ use Mojolicious::Lite;
 use strict;
 use DBIx::Custom;
 use Validator::Custom;
+use utf8;
 
 open (DBCONF,"< app.conf") || die "Error open dbconfig file";
 my @appconf=<DBCONF>;
@@ -23,7 +24,7 @@ get '/checkout' => sub {
 	my $cart=$self->session('cart') || undef;
     my @pid = keys %{$cart};
     my $countpid=@pid || 0;
-    $self->stash(message => 'Sorry, your cart is empty :(');
+    $self->stash(message => 'К сожалению ваша корзина пока пуста :(');
     return $self->render('dummy') if $countpid==0 ;
 	
 	my $pid=' id=';
@@ -45,7 +46,7 @@ post '/checkout' => sub {
 	my $cart=$self->session('cart');
     my @pid= keys %{$cart};
     my $countpid=@pid || 0;
-    $self->stash(message => 'Sorry, your cart is empty :(');
+    $self->stash(message => 'Сожалеем, но ваша корзина пока ещё пуста :(');
     return $self->render('dummy') if $countpid==0 ;
 
     my $pid=' id=';
@@ -59,13 +60,13 @@ post '/checkout' => sub {
 	my $vc = Validator::Custom->new;
 	my $param = $self->req->params->to_hash;
 	my $rule = [
-		clientname => {message => 'Input your name'} => [
+		clientname => {message => 'error'} => [
 			'not_blank'
 		],
-		tel => {message => 'Input your phone number'} => [
+		tel => {message => 'error'} => [
 			'not_blank'
 		],
-		email => {message => 'Check your email'} => [
+		email => {message => 'error'} => [
 			'not_blank',{
 				'regex' => qr/^.*\@.*\...+/
 			}
@@ -131,9 +132,9 @@ get '/thankyou' => sub {
 	my $self = shift;
 	$self->session(expires => 1);#Clearing cart
 	$self->stash(
-		page_title => 'Thank you',
-		page_caption => 'Thank you for order',
-		message=>'Thank you for order'
+		page_title => 'Спасибо за заказ',
+		page_caption => 'Заказ оформлен',
+		message=>'Поздравляем! Ваш заказ оформлен. Наши менеджеры уже им занимаются и оповестят вас в самое ближйшее время. Спасибо за доверие.',
 	);
 	$self->render('dummy');
 };
@@ -146,7 +147,7 @@ get '/cart' => sub {
 	$self->stash(
 		page_title => 'Ваша корзина',
 		page_caption => 'Ваша корзина',
-		message => 'Sorry, your cart is empty :('
+		message => 'Нам очень жаль, но похоже, что ваша корзина пуста :('
 	);
 	return $self->render('dummy') if $countpid==0 ;
 
@@ -165,7 +166,7 @@ get '/cart' => sub {
 	);
     $self->stash(
 		cart => $cart,
-		products => $result->fetch_hash_all
+		products => $result->fetch_hash_all,
 	);
     $self->render('cart');
 };
@@ -188,9 +189,9 @@ post '/cart' => sub{
 	my @pid= keys %{$cart};
 	my $countpid=@pid || 0;
 	$self->stash(
-        page_title => 'Your cart',
-        page_caption => 'Your cart',
-        message => 'Sorry, your cart is empty :('
+        page_title => 'Пустая корзина',
+        page_caption => 'Ваша корзина',
+        message => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?'
     );
     return $self->render('dummy') if $countpid==0 ;
 
@@ -247,11 +248,14 @@ get '/catalog/:caturl' => sub {
 
 get '/catalog/:caturl/:produrl' => sub {
 	my $self = shift;
-	my $caturl=$self->param('caturl');
-	my $produrl=$self->param('produrl');
+	my $caturl = $self->param('caturl');
+	my $produrl = $self->param('produrl');
     my $catalog = $dbi->select(
 		table => 'catalog',
-        column => ['catalog.title','catalog.url'],
+        column => [
+			'catalog.title',
+			'catalog.url'
+		],
         where => {'catalog.url' => $caturl},
 	);
 	my $result=$dbi->select(
@@ -275,6 +279,67 @@ get '/catalog/:caturl/:produrl' => sub {
 		catalog => $catalog->one,
 	);
 	$self->render('product');
+};
+
+get '/about/:pageurl' => sub{
+	my $self=shift;
+	my $pageurl = $self->param('pageurl');
+	my $catalog = $dbi->select(
+        table => 'catalog',
+        column => [
+			'catalog.title',
+			'catalog.url',
+			'catalog.desc',
+		],
+        where => {url => $pageurl},
+    );
+	my $content = '';
+	$content = $dbi->select(
+		table => 'pages',
+		columns => [
+			'pages.title',
+			'pages.content',
+		],
+		where => {url => $pageurl},
+	);
+	$self->stash(
+		catalog => $catalog->one,
+		content => $content->fetch_hash,
+	);
+	$self->render('page');
+};
+
+get '/edit/:pageurl' => sub{
+	my $self = shift;
+	my $content = '';
+	$content = $dbi->select(
+        table => 'pages',
+        columns => [
+            'pages.title',
+            'pages.content',
+			'pages.id',
+        ],
+        where => {url => $self->param('pageurl')},
+    );
+    $self->stash(
+        content => $content->fetch_hash,
+    );
+	$self->render('admin/editpage');
+};
+
+post '/savepage' => sub{
+	my $self = shift;
+	my $params = $self->req->params->to_hash;
+	$dbi->update(
+		{
+			title => $params->{'title'},
+			content => $params->{'content'},
+		},
+		primary_key => 'id',
+		id => $params->{'pageid'},
+		table => 'pages',
+	);
+	$self->render(text => 'Page saved');
 };
 
 app->start;

@@ -61,12 +61,12 @@
 <div class="container">
 <div class="top-links">
 	<ul class="nav nav-pills">
-		<li><%= link_to "Распорные спортивные комплексы" => '/dsk-slide/'%></li>
-		<li><%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/'%></li>
-		<li><%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/'%></li>
-		<li><%= link_to "Где купить?" => '/dsk-wall/'%></li>
-		<li><%= link_to "Гарантия" => '/dsk-wall/'%></li>
-		<li><%= link_to "Доставка и оплата" => '/dsk-wall/'%></li>
+		<li><%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/'%></li>
+		<li><%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/'%></li>
+		<li><%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/'%></li>
+		<li><%= link_to "Где купить?" => '/about/stores/'%></li>
+		<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
+		<li><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
 	</ul>
 <hr>
 	</div>
@@ -94,10 +94,10 @@
 	<footer>
 	<hr>
 		<div id="footer-links"><center>
-			<%= link_to "Распорные спортивные комплексы" => '/dsk-wall/' %> |
-			<%= link_to "Пристенные спортивные комплексы" => '/dsk-wall/' %> |
-			<%= link_to "Трёхколёсные велосипеды" => '/dsk-wall/' %> |
-			<%= link_to "Адреса магазинов" => '/dsk-wall/' %>
+			<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
+			<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
+			<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
+			<%= link_to "Адреса магазинов" => '/about/stores/' %>
 		</center></div> <!--#footer-links-->
 	<hr>
 	<p>Копирайт, описание магазина, варианты оплаты, соц.сети</p>		
