@@ -1,7 +1,8 @@
 #!/usr/bin/env perl -w
 
-use Mojolicious::Lite;
 use strict;
+use lib "/home/hosting_locumtest/usr/local/lib/perl5";
+use Mojolicious::Lite;
 use DBIx::Custom;
 use Validator::Custom;
 use utf8;
