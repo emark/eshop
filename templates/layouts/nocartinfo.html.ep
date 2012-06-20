@@ -72,12 +72,12 @@
 	</div>
 		<div class="row">
 			<div class="span3">
-<p align=center><a href="/"><img src="/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
+<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
 <a href="/"><span class="logotype">НаСтарт.рф</span></a><br/>
 <em>интернет-магазин</em></p>
 			</div><div class="span5">
 		<p align=center>
-<img src="/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину">
+<img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину">
 <p align=center>Ваша корзина</p>
 		</p>
 			</div><div class="span4">

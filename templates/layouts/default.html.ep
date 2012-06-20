@@ -39,6 +39,12 @@
 			color:#f45;
 		}
 	</style>
+	<link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
+	<script src="/bootstrap/js/jquery.js"></script>
+	<script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
+	<script type="text/javascript">
+		Shadowbox.init();
+	</script>
   </head>
 
   <body>
@@ -74,7 +80,7 @@
 	</div>
 		<div class="row">
 			<div class="span3">
-<p align=center><a href="/"><img src="/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
+<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
 <a href="/"><span class="logotype">НаСтарт.рф</span></a><br/>
 <em>интернет-магазин</em></p>
 			</div><div class="span5">
@@ -86,10 +92,10 @@
 %	$cartinfo=$cartinfo+session->{'cart'}{$key};
 % }
 % if($cartinfo==0){
-	<img src="/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста">
+	<img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста">
 	<p align=center>Корзина пока пуста :(</p>
 % }else{
-	<a href="/cart/"><img src="/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
+	<a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
 	<p align=center><a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span></p>
 % }
 		</p>
@@ -121,20 +127,9 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/bootstrap/js/jquery.js"></script>
     <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
-    <script src="/bootstrap/js/bootstrap-transition.js"></script>
     <script src="/bootstrap/js/bootstrap-alert.js"></script>
     <script src="/bootstrap/js/bootstrap-modal.js"></script>
-    <script src="/bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="/bootstrap/js/bootstrap-scrollspy.js"></script>
     <script src="/bootstrap/js/bootstrap-tab.js"></script>
-    <script src="/bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="/bootstrap/js/bootstrap-popover.js"></script>
-    <script src="/bootstrap/js/bootstrap-button.js"></script>
-    <script src="/bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="/bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="/bootstrap/js/bootstrap-typeahead.js"></script>
-
   </body>
 </html>

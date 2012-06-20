@@ -237,6 +237,7 @@ get '/catalog/:caturl' => sub {
 			'product.instore',
 			'product.id',
 			'product.price',
+			'product.image',
 		],
 		where => {'product.caturl' => $caturl},
 	);
@@ -269,7 +270,9 @@ get '/catalog/:caturl/:produrl' => sub {
 			'product.set',
 			'product.features',
 			'product.image',
-			'product.instore'
+			'product.instore',
+			'product.url',
+			'product.image',
 		],
 		where => {
 			'product.url' => $produrl

@@ -15,7 +15,11 @@
 % foreach my $productid (@{$product}){
 <li class="span3">
 	<div class="thumbnail">
-      <img src="/images/products/thumb/1.jpg" alt="">
+
+% my $image_source = 'noimage';
+% $image_source = $productid->{'url'} if $productid->{'image'};
+
+      <img src="/media/images/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
       <h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
       <p>
 <em><%=$productid->{'anonse'}%></em></p>

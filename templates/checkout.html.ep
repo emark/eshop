@@ -8,7 +8,7 @@
 <h1>Оформление заказа</h1>
 </div><!--.page-header-->
 
-<ul class="breadcrumb"
+<ul class="breadcrumb">
 	<li><a href="#">Главная</a><span class="divider">/</span></li>
 	<li><a href="/cart/">Корзина</a><span class="divider">/</span></li>
 	<li>Оформление заказа</li>

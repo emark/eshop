@@ -2,12 +2,12 @@
 % title $product->{'title'}.' - '.$catalog->{'title'};
 
 <div class="page-header">
-<h1><%=$product->{'title'}%></h1>
+<h1><%= $product->{'title'} %></h1>
 </div><!--.page-header-->
 
-<ul class="breadcrumb"
+<ul class="breadcrumb">
 	<li><a href="#">Главная</a><span class="divider">/</span></li>
-	<li><a href="#"><%= link_to $catalog->{'title'} => "/catalog/$catalog->{'url'}/" %></a><span class="divider">/</span></li>
+	<li><%= link_to $catalog->{'title'} => "/catalog/$catalog->{'url'}/" %><span class="divider">/</span></li>
 	<li><%=$product->{'title'}%></li>
 </ul>
 
@@ -15,14 +15,18 @@
 <div class="span4">
 <ul class="thumbnails">
 <li class="span4">
-		<a href="#" class="thumbnail">
-      		<img src="/images/products/product/2.jpg" alt="">
+
+% my $image_source = 'noimage';
+% $image_source = $product->{'url'} if $product->{'image'};
+
+		<a href="/media/images/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
+      		<img src="/media/images/products/middle/<%= $image_source %>.jpg" alt="">
     		</a>
 </li>
 </ul>
 
 <p><span class="label label-important">Нет в наличии</span></p>
-<p><h2>Цена <%=$product->{'price'}%> р.</h3></p>
+<p><h2>Цена <%= $product->{'price'} %> р.</h2></p>
 <form action="/cart/" method=post>
 <input type=hidden value=<%=$product->{'id'}%> name=prodid>
 <input type=hidden name="action" value="add">
@@ -36,7 +40,7 @@
 
 <ul class="nav nav-tabs">
 <li class="active"><a href="#description" data-toggle="tab">Описание и характеристики</a></li>
-<li><a href="#comments" data-toggle="tab">Отзывы о товаре</a></li>
+<li><a href="#comments" data-toggle="tab">Обсуждение товаров</a></li>
 <li><a href="#video" data-toggle="tab">Видео</a></li>
 <li><a href="#slides" data-toggle="tab">Больше изображений</a></li>
 </ul>
@@ -76,13 +80,28 @@
 </div>
 	<div id="comments" class="tab-pane">
 
-Comments must be here
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 3005019, onlyWidgets: true});
+</script>
+
+<!-- Put this div tag to the place, where the Comments block will be -->
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 5, width: "496", attach: false});
+</script>
+
 	</div>
 	<div id="video" class="tab-pane">
-		Video from youtube channel
+
+		<iframe src="http://player.vimeo.com/video/44253174?color=c9ff23" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
 	</div>
 	<div id="slides" class="tab-pane">
-		More images of product
+
+
 	</div>
 </div>
 </div>
