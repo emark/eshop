@@ -67,11 +67,11 @@ post '/checkout' => sub {
 		tel => {message => 'error'} => [
 			'not_blank'
 		],
-		email => {message => 'error'} => [
-			'not_blank',{
-				'regex' => qr/^.*\@.*\...+/
-			}
-		],
+		#email => {message => 'error'} => [
+		#	'not_blank',{
+		#		'regex' => qr/^.*\@.*\...+/
+		#	}
+		#],
 		delivery_type => [
 			'defined'
 		],

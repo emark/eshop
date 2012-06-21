@@ -50,6 +50,7 @@
   <body>
 
 <div class="modal hide" id="myModal">
+<form action="http://www.nastartshop.ru/cgi-bin/service/cb/app.pl" method="post" id="callbackform">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
     <h3>Обратный звонок</h3>
@@ -60,8 +61,9 @@
   </div>
   <div class="modal-footer">
     <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
-    <a href="#" class="btn btn-primary">Жду звонка</a>
+    <input type=submit class="btn btn-primary" value="Жду звонка">
   </div>
+</form>
 </div>
 
 <div class="container">
