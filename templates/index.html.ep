@@ -1,0 +1,65 @@
+% layout 'default';
+% title 'Интернет-магазин НаСтарт.рф';
+
+<div class="row">
+  <div class="span12">
+<div id="myCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="item active">
+                <a href="/catalog/bikes/">
+		<img src="/media/slider/bambino/banner-bambino1.jpg" alt="">
+		</a>
+                <div class="carousel-caption">
+                  <h4>Велосипед "Бамбино"</h4>
+                  <p>Солнцезащитный тент защитит вашего ребёнка от палящего солнца</p>
+                </div>
+              </div>
+              <div class="item">
+                <a href="/catalog/bikes/">
+                <img src="/media/slider/bambino/banner-bambino2.jpg" alt="">
+		</a>
+                <div class="carousel-caption">
+                  <h4>Велосипед "Бамбино"</h4>
+                  <p>Мягкие колёса скроют все неровности на дороге.</p>
+                </div>
+              </div>
+              <div class="item">
+                <a href="/catalog/bikes/">
+                <img src="/media/slider/bambino/banner-bambino3.jpg" alt="">
+		</a>
+                <div class="carousel-caption">
+                  <h4>Велосипед "Бамбино"</h4>
+                  <p>В крыше тента имеется окошко с сеточкой для наблюдения за маленьким велосипедистом</p>
+                </div>
+              </div>
+              <div class="item">
+                <a href="/catalog/bikes/">
+                <img src="/media/slider/bambino/banner-bambino4.jpg" alt="">
+		</a>
+                <div class="carousel-caption">
+                  <h4>Велосипед "Бамбино"</h4>
+                  <p>Рукоятки руля и "родительской ручки управления" сделаны мягкими для удобства и антискольжения</p>
+                </div>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          </div>
+  </div>
+</div>
+
+ <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>Что мы продаём</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        </div>
+        <div class="span4">
+          <h2>Почему мы?</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+       </div>
+        <div class="span4">
+          <h2>Мы вас слышим</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        </div>
+      </div>

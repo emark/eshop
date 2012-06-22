@@ -346,4 +346,11 @@ post '/savepage' => sub{
 	$self->render(text => 'Page saved');
 };
 
+get '/' => sub{
+	my $self = shift;
+	my $catalog => {'url' => 'index'};
+	$self->stash(catalog => $catalog);
+	$self->render('index');
+};
+
 app->start;

@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title><%= $title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Интернет-магазин НаСтарт.рф">
+    <meta name="author" content="emrk">
 
     <!-- Le styles -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -22,35 +22,88 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/bootstrap/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
-
-	<!--Include google webfonts-->
-	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
-	<style>
-		.top-links{
-			padding: 10px 0px 10px 0px;
-			font-size: 14px;
-		}
-		.logotype{
-			font-family: 'Lobster', cursive;
-			font-size: 38px;
-		}
-		.small-price{
-			font-size:14px;
-			color:#f45;
-		}
-	</style>
-	<link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
-	<script src="/bootstrap/js/jquery.js"></script>
-	<script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
-	<script type="text/javascript">
-		Shadowbox.init();
-	</script>
+    <style>
+	.top-links{
+		padding: 10px 0px 10px 0px;
+		font-size: 14px;
+	}
+	.small-price{
+		font-size:14px;
+		color:#f45;
+	}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
+    <script src="/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
+    <script type="text/javascript">
+	Shadowbox.init();
+    </script>
   </head>
 
   <body>
 
-<div class="modal hide" id="myModal">
+  <div class="container">
+	% my %active_link=();
+	% $active_link{$catalog->{'url'}}='class="active"';
+	<div class="top-links">
+	<ul class="nav nav-pills">
+		<li <%==$active_link{'dsk-slide'}%>><%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/'%></li>
+		<li <%==$active_link{'dsk-wall'}%>><%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/'%></li>
+		<li <%==$active_link{'bikes'}%>><%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/'%></li>
+		<li <%==$active_link{'stores'}%>><%= link_to "Где купить?" => '/about/stores/'%></li>
+		<li <%==$active_link{'warranty'}%>><%= link_to "Гарантия" => '/about/warranty/'%></li>
+		<li <%==$active_link{'delivery-and-payment'}%>><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
+	</ul>
+	<hr>
+	</div>
+		<div class="row">
+			<div class="span4">
+				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
+				<em>интернет-магазин</em></p>
+			</div><div class="span4">
+				<p align=center>
+% #Cart information
+% my $cartinfo=0;
+% my @productid = keys session->{'cart'} if session->{'cart'};
+% foreach my $key (@productid){
+%	$cartinfo=$cartinfo+session->{'cart'}{$key};
+% }
+% if($cartinfo==0){
+					<img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста">
+					<p align=center>Корзина пока пуста :(</p>
+% }else{
+					<a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
+					<p align=center><a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span></p>
+% }
+				</p>
+			</div><div class="span4">
+				<div class="pull-right" align=right>
+					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
+					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
+					<br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a>
+				</div>
+			</div>
+		</div>
+
+	<%= content %>
+
+	<footer>
+	<hr>
+	<div id="footer-links"><center>
+		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
+		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
+		<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
+		<%= link_to "Адреса магазинов" => '/about/stores/' %>
+	</center></div> <!--#footer-links-->
+	<hr>
+	<p>ИДетские спортивные комплексы "Формула Здоровья" и трёхколесные велосипеды "Бамбино" от российского производителя. Бесплатная доставка по г. Красноярску при заказе от 800 руб.</p>
+	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>
+	</footer>
+	<p>&nbsp;</p><!--#bottom-padding-->
+    </div> <!-- /container -->
+
 <form action="http://www.nastartshop.ru/cgi-bin/service/cb/app.pl" method="post" id="callbackform">
+<div class="modal hide" id="myModal">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
     <h3>Обратный звонок</h3>
@@ -63,73 +116,15 @@
     <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
     <input type=submit class="btn btn-primary" value="Жду звонка">
   </div>
-</form>
 </div>
+</form>
 
-<div class="container">
-% my %active_link=();
-% $active_link{$catalog->{'url'}}='class="active"';
-<div class="top-links">
-	<ul class="nav nav-pills">
-		<li <%==$active_link{'dsk-slide'}%>><%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/'%></li>
-		<li <%==$active_link{'dsk-wall'}%>><%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/'%></li>
-		<li <%==$active_link{'bikes'}%>><%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/'%></li>
-		<li <%==$active_link{'stores'}%>><%= link_to "Где купить?" => '/about/stores/'%></li>
-		<li <%==$active_link{'warranty'}%>><%= link_to "Гарантия" => '/about/warranty/'%></li>
-		<li <%==$active_link{'delivery-and-payment'}%>><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
-	</ul>
-<hr>
-	</div>
-		<div class="row">
-			<div class="span3">
-<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
-<a href="/"><span class="logotype">НаСтарт.рф</span></a><br/>
-<em>интернет-магазин</em></p>
-			</div><div class="span5">
-		<p align=center>
-% #Cart information
-% my $cartinfo=0;
-% my @productid = keys session->{'cart'} if session->{'cart'};
-% foreach my $key (@productid){
-%	$cartinfo=$cartinfo+session->{'cart'}{$key};
-% }
-% if($cartinfo==0){
-	<img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста">
-	<p align=center>Корзина пока пуста :(</p>
-% }else{
-	<a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
-	<p align=center><a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span></p>
-% }
-		</p>
-			</div><div class="span4">
-				<div class="pull-right" align=right>
-					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
-					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
-					<br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a>
-				</div>
-			</div>
-		</div>
-
-	<%=content%>
-
-	<footer>
-	<hr>
-		<div id="footer-links"><center>
-			<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
-			<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
-			<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
-			<%= link_to "Адреса магазинов" => '/about/stores/' %>
-		</center></div> <!--#footer-links-->
-	<hr>
-	<p>Копирайт, описание магазина, варианты оплаты, соц.сети</p>		
-	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>
-	</footer>
-	<p>&nbsp;</p><!--#bottom-padding-->
-    </div> <!-- /container -->
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+   <script src="/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="/bootstrap/js/bootstrap-collapse.js"></script>
     <script src="/bootstrap/js/bootstrap-alert.js"></script>
     <script src="/bootstrap/js/bootstrap-modal.js"></script>
     <script src="/bootstrap/js/bootstrap-tab.js"></script>

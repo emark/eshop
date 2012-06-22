@@ -18,8 +18,9 @@
 
 % my $image_source = 'noimage';
 % $image_source = $productid->{'url'} if $productid->{'image'};
-
+<a href="<%= url_for "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %>" title="">
       <img src="/media/images/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
+</a>
       <h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
       <p>
 <em><%=$productid->{'anonse'}%></em></p>

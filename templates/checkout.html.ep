@@ -9,7 +9,7 @@
 </div><!--.page-header-->
 
 <ul class="breadcrumb">
-	<li><a href="#">Главная</a><span class="divider">/</span></li>
+	<li><a href="/">Главная</a><span class="divider">/</span></li>
 	<li><a href="/cart/">Корзина</a><span class="divider">/</span></li>
 	<li>Оформление заказа</li>
 </ul>
@@ -111,8 +111,8 @@
             </div>
 </div>
 
-<a href="/cart/trash/" title="Удалить заказ" alt="Удаление заказа" class="btn">Удалить заказ</a>
-<input type=submit class="btn btn-primary" value="Отправить заказ">
+<a href="/cart/trash/" title="Удалить заказ" alt="Удаление заказа" class="btn">Отменить заказ</a>&nbsp;
+<input type=submit class="btn btn-primary btn-large" value="Сохранить и отправить">
 
 </fieldset>
 </form>

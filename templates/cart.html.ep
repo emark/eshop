@@ -8,7 +8,7 @@
 %#dev
 
 <ul class="breadcrumb">
-	<li><a href="#">Главная</a><span class="divider">/</span></li>
+	<li><a href="/">Главная</a><span class="divider">/</span></li>
 	<li>Корзина</li>
 </ul>
 
