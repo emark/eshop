@@ -35,7 +35,7 @@
 <input type=hidden name="action" value="add">
 <input type="submit" value="Добавить в корзину" class="btn btn-large btn-primary"></form>
 
-<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir"></div> 
+<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,odnoklassniki"></div> 
 
 </div>
 

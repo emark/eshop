@@ -48,18 +48,20 @@
   </div>
 </div>
 
- <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2>Что мы продаём</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <h2>Наш ассортимент</h2>
+           <p>Интернет-магазин "НаСтарт.рф" </p>
         </div>
         <div class="span4">
           <h2>Почему мы?</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+           <p>Наше кредо: <em>"Удобство для клиента"</em></p>
        </div>
         <div class="span4">
           <h2>Мы вас слышим</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+
+<a target="_blank" class="mrc__plugin_uber_like_button" href="http://connect.mail.ru/share?share_url=http%3A%2F%2Flocalhost%3A3000" data-mrc-config="{'type' : 'button', 'caption-mm' : '1', 'caption-ok' : '1', 'counter' : 'true', 'text' : 'true', 'width' : '100%'}">Нравится</a>
+<script src="http://cdn.connect.mail.ru/js/loader.js" type="text/javascript" charset="UTF-8"></script>
+
         </div>
       </div>

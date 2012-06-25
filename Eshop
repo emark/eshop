@@ -294,21 +294,12 @@ get '/about/:pageurl' => sub{
 			'catalog.title',
 			'catalog.url',
 			'catalog.desc',
+			'catalog.content',
 		],
         where => {url => $pageurl},
     );
-	my $content = '';
-	$content = $dbi->select(
-		table => 'pages',
-		columns => [
-			'pages.title',
-			'pages.content',
-		],
-		where => {url => $pageurl},
-	);
 	$self->stash(
 		catalog => $catalog->one,
-		content => $content->fetch_hash,
 	);
 	$self->render('page');
 };
@@ -317,11 +308,12 @@ get '/edit/:pageurl' => sub{
 	my $self = shift;
 	my $content = '';
 	$content = $dbi->select(
-        table => 'pages',
+        table => 'catalog',
         columns => [
-            'pages.title',
-            'pages.content',
-			'pages.id',
+            'catalog.title',
+            'catalog.content',
+			'catalog.desc',
+			'catalog.id',
         ],
         where => {url => $self->param('pageurl')},
     );
@@ -337,11 +329,12 @@ post '/savepage' => sub{
 	$dbi->update(
 		{
 			title => $params->{'title'},
+			desc => $params->{'desc'},
 			content => $params->{'content'},
 		},
 		primary_key => 'id',
 		id => $params->{'pageid'},
-		table => 'pages',
+		table => 'catalog',
 	);
 	$self->render(text => 'Page saved');
 };
@@ -353,4 +346,5 @@ get '/' => sub{
 	$self->render('index');
 };
 
+app->secret('ReginaSpector');
 app->start;

@@ -2,7 +2,7 @@
 % title $catalog->{'title'};
 
 <div class="page-header">
-<h1><%= $catalog->{'title'} %></h1>
+	<h1><%= $catalog->{'title'} %></h1>
 </div><!--.page-header-->
 
 <div><!--category description-->

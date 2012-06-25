@@ -7,10 +7,10 @@
 
 %#dev
 
-<ul class="breadcrumb">
+<!--ul class="breadcrumb">
 	<li><a href="/">Главная</a><span class="divider">/</span></li>
 	<li>Корзина</li>
-</ul>
+</ul-->
 
 %my $total_cart=0;
 

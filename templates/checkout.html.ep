@@ -112,7 +112,7 @@
 </div>
 
 <a href="/cart/trash/" title="Удалить заказ" alt="Удаление заказа" class="btn">Отменить заказ</a>&nbsp;
-<input type=submit class="btn btn-primary btn-large" value="Сохранить и отправить">
+<input type=submit class="btn btn-primary btn-large" value="Подтвердить заказ">
 
 </fieldset>
 </form>
