@@ -135,7 +135,7 @@ get '/thankyou' => sub {
 	$self->stash(
 		page_title => 'Спасибо за заказ',
 		page_caption => 'Заказ оформлен',
-		message=>'Поздравляем! Ваш заказ оформлен. Наши менеджеры уже им занимаются и оповестят вас в самое ближйшее время. Спасибо за доверие.',
+		message=>'Поздравляем! Ваш заказ оформлен. Наши менеджеры уже им занимаются. Спасибо за доверие.',
 	);
 	$self->render('dummy');
 };
@@ -348,7 +348,7 @@ post '/savepage' => sub{
 
 get '/' => sub{
 	my $self = shift;
-	my $catalog => {'url' => 'index'};
+	my $catalog = {'url' => 'index'};
 	$self->stash(catalog => $catalog);
 	$self->render('index');
 };

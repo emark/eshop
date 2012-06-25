@@ -52,7 +52,7 @@
 		</div>
 	</div>
 
-% my $error_class = '';
+% $error_class = '';
 % $error_class = $messages->{tel};
 	<div class="control-group <%= $error_class %>">
 	<label class="control-label" for="tel">Телефон*</label>
@@ -65,7 +65,7 @@
 		</div>
 	</div>
 
-% my $error_class = '';
+% $error_class = '';
 % $error_class = $messages->{email};
 	<div class="control-group <%= $error_class %>">
 		<label class="control-label" for="email">Почта</label>

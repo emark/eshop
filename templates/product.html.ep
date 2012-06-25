@@ -19,13 +19,16 @@
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
 
-		<a href="/media/images/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
-      		<img src="/media/images/products/middle/<%= $image_source %>.jpg" alt="">
+% my @instore = ('important','success','warning');
+% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'В пути');
+
+		<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
+      		<img src="/media/products/middle/<%= $image_source %>.jpg" alt="">
     		</a>
 </li>
 </ul>
 
-<p><span class="label label-important">Нет в наличии</span></p>
+<p><span class="label label-<%= $instore[$product->{'instore'}] %>"><%= $instore_labels{$instore[$product->{'instore'}]} %></span></p>
 <p><h2>Цена <%= $product->{'price'} %> р.</h2></p>
 <form action="/cart/" method=post>
 <input type=hidden value=<%=$product->{'id'}%> name=prodid>
@@ -79,6 +82,7 @@
 </div>
 	<div id="comments" class="tab-pane">
 
+Одноклассники, Вконтакте
 
 	</div>
 	<div id="video" class="tab-pane">
