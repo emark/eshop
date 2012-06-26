@@ -1,4 +1,4 @@
-#!/usr/bin/env perl -w
+#!/usr/bin/perl -w
 
 use strict;
 use lib "/home/hosting_locumtest/usr/local/lib/perl5";
@@ -347,4 +347,10 @@ get '/' => sub{
 };
 
 app->secret('ReginaSpector');
+
+app->hook(before_dispatch => sub {
+               my $self = shift;
+               $self->req->url->base(Mojo::URL->new(q{http://test.nastartshop.ru/}))
+	       }
+	  );
 app->start;
