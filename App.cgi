@@ -6,6 +6,7 @@ use Mojolicious::Lite;
 use DBIx::Custom;
 use Validator::Custom;
 use utf8;
+use v05.10.0;
 
 open (DBCONF,"< app.conf") || die "Error open dbconfig file";
 my @appconf=<DBCONF>;

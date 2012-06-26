@@ -65,7 +65,10 @@
 				<p align=center>
 % #Cart information
 % my $cartinfo=0;
-% my @productid = keys session->{'cart'} if session->{'cart'};
+% my %cart_session = (); #hook for perl 5.10
+% %cart_session = session->{'cart'} if session->{'cart'};
+%# my @productid = keys session->{'cart'} if session->{'cart'};
+% my @productid = keys %cart_session;
 % foreach my $key (@productid){
 %	$cartinfo=$cartinfo+session->{'cart'}{$key};
 % }

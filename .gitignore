@@ -1,4 +1,4 @@
-public/bootstrap/
 templates/*.ep~
 templates/layouts/*.ep~
 app.conf
+*.swp
