@@ -39,8 +39,8 @@
   <div class="container">
 	<div class="top-links">
 	<ul class="nav nav-pills">
-		<li><%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/'%></li>
-		<li><%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/'%></li>
+		<li><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
+		<li><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
 		<li><%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/'%></li>
 		<li><%= link_to "Где купить?" => '/about/stores/'%></li>
 		<li><%= link_to "Гарантия" => '/about/warranty/'%></li>

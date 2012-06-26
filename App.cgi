@@ -182,7 +182,6 @@ post '/cart' => sub{
 	    $cart->{$productid}++;
 	}elsif($action eq 'remove'){
 		$cart->{$productid}-- if $cart->{$productid}>0;
-		#delete $cart->{$productid} if $cart->{$productid}==0;
 	}
 	if($cart->{$productid}==0 || $action eq 'drop'){
 		delete $cart->{$productid};
