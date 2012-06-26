@@ -1,0 +1,7 @@
+% layout 'blank';
+% title 'Import catalog';
+
+<form action="/import/" method=post>
+Source <input type=file name=source>
+<input type=submit>
+</form>

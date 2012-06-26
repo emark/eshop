@@ -304,6 +304,52 @@ get '/about/:pageurl' => sub{
 	$self->render('page');
 };
 
+get '/pedit/:producturl' => sub{
+	my $self=shift;
+	my $result = $dbi->select(
+		table => 'product',
+		columns => [
+			'product.id',
+			'product.title',
+			'product.anonse',
+			'product.desc',
+			'product.set',
+			'product.features',
+			'product.image',
+			'product.url',
+			'product.instore',
+			'product.price',
+			'product.caturl',
+		],
+		where => {url => $self->param('producturl'),}
+	);
+	$self->stash(product => $result->fetch_hash);
+	$self->render('admin/editproduct');
+};
+
+post '/saveproduct/' => sub{
+	my $self=shift;
+	my $params = $self->req->params->to_hash;
+	$dbi->update(
+		{
+			title => $params->{'title'},
+            anonse => $params->{'anonse'},
+            desc => $params->{'desc'},
+            set => $params->{'set'},
+            features => $params->{'features'},
+            image => $params->{'image'},
+            url => $params->{'url'},
+            instore => $params->{'instore'},
+            price => $params->{'price'},
+            caturl =>  => $params->{'caturl'},
+		},
+		primary_key => 'id',
+        id => $params->{'productid'},
+        table => 'product',
+	);
+	$self->render(text => 'Product saved');
+};
+
 get '/edit/:pageurl' => sub{
 	my $self = shift;
 	my $content = '';
@@ -337,6 +383,37 @@ post '/savepage' => sub{
 		table => 'catalog',
 	);
 	$self->render(text => 'Page saved');
+};
+
+get '/import/' => sub{
+	shift->render('admin/import');
+};
+
+post '/import' => sub {
+	my $self=shift;
+	my $source = $self->param('source');
+	$source->move_to('upload/store.csv');
+	my @data=();
+	open (FILE,"< upload/store.csv") || die "";
+	@data = <FILE>;
+	close FILE;
+	foreach my $key(@data){
+		my($url,$title)	= split(';',$key);
+		my $result = $dbi->update_or_insert(
+			{
+				title => $title,
+			},
+			table => 'product',
+			url => $url,
+		    primary_key => 'url',
+			option => {
+				select => {
+					append => 'for update'
+				}
+			},
+		);
+	};
+	$self->render(text => "Uploading ok ".$source->filename);
 };
 
 get '/' => sub{

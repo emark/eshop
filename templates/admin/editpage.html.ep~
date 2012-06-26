@@ -1,0 +1,10 @@
+% layout 'blank';
+% title 'Edit pages';
+%
+<%= form_for 'savepage' => (method => 'post',target => 'blank') => begin %>
+<p>Page caption: <%= text_field 'title' => $content->{'title'} => (size => 50) %></p>
+<p>Page description: <%= text_area 'desc' => begin %><%= $content->{'desc'} %><% end %></p>
+<p>Content: <br/><%= text_area 'content' => begin %><%= $content->{'content'} %><% end %></p>
+<%= hidden_field 'pageid' => $content->{'id'} %>
+<%= submit_button 'Save' %>
+<% end %>

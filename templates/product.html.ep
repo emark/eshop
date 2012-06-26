@@ -50,7 +50,7 @@
 <div id="prod-ext-info" class="tab-content">
 	<div id="description" class="tab-pane active">
 
-<i><%=$product->{'desc'}%></i><br/>
+<%=$product->{'desc'}%><br/>
 <dl>
 <dt>Комплектация</dt>
 <dd>
