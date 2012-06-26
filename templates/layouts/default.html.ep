@@ -48,8 +48,8 @@
 % $active_link{$catalog->{'url'}}='class="active"';
 	<div class="top-links">
 	<ul class="nav nav-pills">
-		<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/'%></li>
-		<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/'%></li>
+		<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
+		<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
 		<li <%== $active_link{'bikes'} %>><%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/'%></li>
 		<li <%== $active_link{'stores'} %>><%= link_to "Где купить?" => '/about/stores/'%></li>
 		<li <%== $active_link{'warranty'} %>><%= link_to "Гарантия" => '/about/warranty/'%></li>
@@ -65,10 +65,7 @@
 				<p align=center>
 % #Cart information
 % my $cartinfo=0;
-% my %cart_session = (); #hook for perl 5.10
-% %cart_session = session->{'cart'} if session->{'cart'};
-%# my @productid = keys session->{'cart'} if session->{'cart'};
-% my @productid = keys %cart_session;
+% my @productid = keys %{session->{'cart'}} if session->{'cart'};
 % foreach my $key (@productid){
 %	$cartinfo=$cartinfo+session->{'cart'}{$key};
 % }

@@ -6,7 +6,7 @@ use Mojolicious::Lite;
 use DBIx::Custom;
 use Validator::Custom;
 use utf8;
-use v05.10.0;
+use v5.10.0;
 
 open (DBCONF,"< app.conf") || die "Error open dbconfig file";
 my @appconf=<DBCONF>;
@@ -348,7 +348,6 @@ get '/' => sub{
 };
 
 app->secret('ReginaSpector');
-
 app->hook(before_dispatch => sub {
                my $self = shift;
                $self->req->url->base(Mojo::URL->new(q{http://test.nastartshop.ru/}))
