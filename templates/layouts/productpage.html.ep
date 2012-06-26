@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= $title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Интернет-магазин НаСтарт.рф">
+    <meta name="author" content="emrk">
+
+    <!-- Le styles -->
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <style>
+	.top-links{
+		padding: 10px 0px 10px 0px;
+		font-size: 14px;
+	}
+	.small-price{
+		font-size:14px;
+		color:#f45;
+	}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
+    <script src="/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
+    <script type="text/javascript">
+	Shadowbox.init();
+    </script>
+
+    <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
+    <script type="text/javascript">
+	VK.init({apiId: 3012373, onlyWidgets: true});
+    </script>
+  </head>
+
+  <body>
+
+  <div class="container">
+% #Initialize top-links class 
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'bikes' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '');
+% $active_link{$catalog->{'url'}}='class="active"';
+	<div class="top-links">
+	<ul class="nav nav-pills">
+		<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
+		<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
+		<li <%== $active_link{'bikes'} %>><%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/'%></li>
+		<li <%== $active_link{'stores'} %>><%= link_to "Где купить?" => '/about/stores/'%></li>
+		<li <%== $active_link{'warranty'} %>><%= link_to "Гарантия" => '/about/warranty/'%></li>
+		<li <%== $active_link{'delivery-and-payment'} %>><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
+	</ul>
+	<hr>
+	</div>
+		<div class="row">
+			<div class="span4">
+				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
+				<em>интернет-магазин</em></p>
+			</div><div class="span4">
+				<p align=center>
+% #Cart information
+% my $cartinfo=0;
+% my @productid = keys %{session->{'cart'}} if session->{'cart'};
+% foreach my $key (@productid){
+%	$cartinfo=$cartinfo+session->{'cart'}{$key};
+% }
+% if($cartinfo==0){
+					<img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста">
+					<p align=center>Корзина пока пуста :(</p>
+% }else{
+					<a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
+					<p align=center><a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span></p>
+% }
+				</p>
+			</div><div class="span4">
+				<div class="pull-right" align=right>
+					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
+					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
+					<br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a>
+				</div>
+			</div>
+		</div>
+
+	<%= content %>
+
+	<footer>
+	<hr>
+	<div id="footer-links"><center>
+		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
+		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
+		<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
+		<%= link_to "Адреса магазинов" => '/about/stores/' %>
+	</center></div> <!--#footer-links-->
+	<hr>
+	<p>В интернет-магазине <%= link_to "\"НаСтарт.рф\"" => 'http://настарт.рф' %> вы можете приобрести <%= link_to "пристенные" => '/catalog/dsk-wall/' %> и 
+<%= link_to "распорные" => '/catalog/dsk-slide/' %> детские спортивные комплексы "Формула Здоровья", 
+<%= link_to "трёхколесные велосипеды с управляемым рулём" => '/catalog/bikes/' %> "Бамбино". При заказе от 1000 рублей 
+<%= link_to "бесплатная доставка" => '/about/delivery-and-payment/' %> по г. Красноярску</p>
+	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>
+	</footer>
+	<p>&nbsp;</p><!--#bottom-padding-->
+    </div> <!-- /container -->
+
+<form action="http://www.nastartshop.ru/cgi-bin/service/cb/app.pl" method="post" id="callbackform">
+<div class="modal hide" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Обратный звонок</h3>
+  </div>
+  <div class="modal-body">
+    Перезвоните мне на номер +7 <input type="text" name="phone" class="input-medium"/>
+	<!--br/>по поводу: <input type="text" name="phone" class="input-large"/-->
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
+    <input type=submit class="btn btn-primary" value="Жду звонка">
+  </div>
+</div>
+</form>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+   <script src="/bootstrap/js/bootstrap.js"></script>
+  </body>
+</html>

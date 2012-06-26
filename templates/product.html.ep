@@ -1,4 +1,4 @@
-% layout 'default';
+% layout 'productpage';
 % title $product->{'title'}.' - '.$catalog->{'title'};
 
 <div class="page-header">
@@ -82,7 +82,10 @@
 </div>
 	<div id="comments" class="tab-pane">
 
-Одноклассники, Вконтакте
+		<div id="vk_comments"></div>
+		<script type="text/javascript">
+			VK.Widgets.Comments("vk_comments", {limit: 5, width: "496", attach: false});
+		</script>
 
 	</div>
 	<div id="video" class="tab-pane">
