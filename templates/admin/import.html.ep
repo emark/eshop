@@ -1,7 +1,0 @@
-% layout 'blank';
-% title 'Import catalog';
-
-%= form_for import => (method => 'post', enctype => 'multipart/form-data') => begin
-      %= file_field 'source'
-      %= submit_button 'Upload'
-% end
