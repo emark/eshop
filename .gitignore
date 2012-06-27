@@ -3,3 +3,5 @@ templates/layouts/*.ep~
 app.conf
 *.swp
 public
+.schema
+.dump
