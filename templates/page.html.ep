@@ -6,7 +6,7 @@
 </div><!--.page-header-->
 
 <div><!--category description-->
-	<p><em><%== $catalog->{'desc'} %></em></p>
+	<p><em><%== $catalog->{'description'} %></em></p>
 </div>
 
 <div>
