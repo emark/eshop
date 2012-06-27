@@ -224,7 +224,7 @@ get '/catalog/:caturl' => sub {
 						column => [
 							'catalog.title',
 							'catalog.url',
-							'catalog.desc',
+							'catalog.description',
 						],
 						where => {'catalog.url' => $caturl},
 					);
@@ -266,8 +266,8 @@ get '/catalog/:caturl/:produrl' => sub {
 			'product.id',
 			'product.title',
 			'product.price',
-			'product.desc',
-			'product.set',
+			'product.description',
+			'product.settings',
 			'product.features',
 			'product.image',
 			'product.instore',
@@ -293,7 +293,7 @@ get '/about/:pageurl' => sub{
         column => [
 			'catalog.title',
 			'catalog.url',
-			'catalog.desc',
+			'catalog.description',
 			'catalog.content',
 		],
         where => {url => $pageurl},

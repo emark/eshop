@@ -81,7 +81,7 @@
 				<div class="pull-right" align=right>
 					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
 					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
-					<br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a>
+					<!--br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a-->
 				</div>
 			</div>
 		</div>
