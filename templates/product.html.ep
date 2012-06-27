@@ -50,12 +50,12 @@
 <div id="prod-ext-info" class="tab-content">
 	<div id="description" class="tab-pane active">
 
-<%=$product->{'desc'}%><br/>
+<%=$product->{'description'}%><br/>
 <dl>
 <dt>Комплектация</dt>
 <dd>
 <ol>
-% my @set=split('#',$product->{'set'});
+% my @set=split('#',$product->{'settings'});
 % foreach my $key(@set){
 	<li><%= $key %></li>
 % }
