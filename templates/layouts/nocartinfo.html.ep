@@ -74,7 +74,7 @@
 	<div id="footer-links"><center>
 		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
 		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
-		<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
+		<%= link_to "Велосипеды" => '/catalog/bikes/' %> |
 		<%= link_to "Квадроциклы" => '/catalog/quad/' %> |
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
