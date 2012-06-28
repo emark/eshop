@@ -1,4 +1,4 @@
-% layout 'productpage';
+% layout 'default';
 % title $product->{'title'}.' - '.$catalog->{'title'};
 
 <div class="page-header">

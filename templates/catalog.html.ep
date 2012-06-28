@@ -22,7 +22,7 @@
 % my @instore = ('important','success','warning');
 % my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'В пути');
 <a href="<%= url_for "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %>" title="">
-      <img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
+      <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
 </a>
       <h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
       <p><%=$productid->{'anonse'}%></p>

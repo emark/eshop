@@ -51,17 +51,19 @@
       <div class="row">
         <div class="span4">
           <h2>Наш ассортимент</h2>
-           <p>Интернет-магазин "НаСтарт.рф" </p>
+           <p>Мы рады предложить вам спортивные товары от российских производителей, а так же товары изготовленные на промышленном производстве Китая 
+		не уступющих по качеству и используемым материалам.</p>
         </div>
         <div class="span4">
           <h2>Почему мы?</h2>
-           <p>Наше кредо: <em>"Удобство для клиента"</em></p>
+           <p>Мы стараемся оказывать качественное обслуживание, предлагаем выбор качественных товаров по доступным ценам.</p>
        </div>
         <div class="span4">
           <h2>Мы вас слышим</h2>
-
-<a target="_blank" class="mrc__plugin_uber_like_button" href="http://connect.mail.ru/share?share_url=http%3A%2F%2Flocalhost%3A3000" data-mrc-config="{'type' : 'button', 'caption-mm' : '1', 'caption-ok' : '1', 'counter' : 'true', 'text' : 'true', 'width' : '100%'}">Нравится</a>
-<script src="http://cdn.connect.mail.ru/js/loader.js" type="text/javascript" charset="UTF-8"></script>
-
-        </div>
+		<p>Присоединяйтесь к нашей группе ВКонтакте. Задавайте вопросы, интересуйтесь новинками. Получайте призы и подарки!</p>
+		<div id="vk_like"></div>
+			<script type="text/javascript">
+				VK.Widgets.Like("vk_like", {type: "full"});
+			</script>
+	        </div>
       </div>

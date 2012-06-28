@@ -38,6 +38,11 @@
     <script type="text/javascript">
 	Shadowbox.init();
     </script>
+
+    <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
+    <script type="text/javascript">
+	VK.init({apiId: 3012373, onlyWidgets: true});
+    </script>
   </head>
 
   <body>
@@ -101,8 +106,7 @@
 	<hr>
 	<p>В интернет-магазине <%= link_to "\"НаСтарт.рф\"" => 'http://настарт.рф' %> вы можете приобрести <%= link_to "пристенные" => '/catalog/dsk-wall/' %> и 
 <%= link_to "распорные" => '/catalog/dsk-slide/' %> детские спортивные комплексы "Формула Здоровья", 
-<%= link_to "трёхколесные велосипеды с управляемым рулём" => '/catalog/bikes/' %> "Бамбино". При заказе от 1000 рублей 
-<%= link_to "бесплатная доставка" => '/about/delivery-and-payment/' %> по г. Красноярску</p>
+<%= link_to "трёхколесные велосипеды с управляемым рулём" => '/catalog/bikes/' %> "Бамбино". <%= link_to "Бесплатная доставка" => '/about/delivery-and-payment/' %> по г. Красноярску</p>
 	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>
 	</footer>
 	<p>&nbsp;</p><!--#bottom-padding-->
@@ -133,6 +137,5 @@
 
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter14441680 = new Ya.Metrika({id:14441680, clickmap:true, trackLinks:true, webvisor:true}); } catch(e) {} }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/14441680" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
-
   </body>
 </html>
