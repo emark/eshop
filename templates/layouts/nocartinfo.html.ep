@@ -42,6 +42,7 @@
 		<li><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
 		<li><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
 		<li><%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/'%></li>
+		<li><%= link_to "Квадроциклы" => '/catalog/quad/'%></li>
 		<li><%= link_to "Где купить?" => '/about/stores/'%></li>
 		<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
 		<li><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
@@ -74,6 +75,7 @@
 		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
 		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
 		<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
+		<%= link_to "Квадроциклы" => '/catalog/quad/' %> |
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
 	<hr>

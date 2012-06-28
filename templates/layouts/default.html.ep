@@ -44,13 +44,14 @@
 
   <div class="container">
 % #Initialize top-links class 
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'bikes' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '');
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'bikes' => '', 'quad' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '');
 % $active_link{$catalog->{'url'}}='class="active"';
 	<div class="top-links">
 	<ul class="nav nav-pills">
 		<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
 		<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
 		<li <%== $active_link{'bikes'} %>><%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/'%></li>
+		<li <%== $active_link{'quad'} %>><%= link_to "Квадроциклы" => '/catalog/quad/'%></li>
 		<li <%== $active_link{'stores'} %>><%= link_to "Где купить?" => '/about/stores/'%></li>
 		<li <%== $active_link{'warranty'} %>><%= link_to "Гарантия" => '/about/warranty/'%></li>
 		<li <%== $active_link{'delivery-and-payment'} %>><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
@@ -94,6 +95,7 @@
 		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
 		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
 		<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
+		<%= link_to "Квадроциклы" => '/catalog/quad/' %> |
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
 	<hr>
