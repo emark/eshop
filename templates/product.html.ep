@@ -42,8 +42,8 @@
 <div class="span8">
 
 <ul class="nav nav-tabs">
-<li class="active"><a href="#description" data-toggle="tab">Описание и характеристики</a></li>
-<li><a href="#comments" data-toggle="tab">Отзывы и рекомендации</a></li>
+<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
+<li><a href="#comments" data-toggle="tab">Отзывы</a></li>
 <li><a href="#slides" data-toggle="tab">Больше изображений</a></li>
 </ul>
 
