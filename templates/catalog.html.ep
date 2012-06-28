@@ -20,7 +20,7 @@
 % $image_source = $productid->{'url'} if $productid->{'image'};
 
 % my @instore = ('important','success','warning');
-% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'В пути');
+% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Ожидается');
 <a href="<%= url_for "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %>" title="">
       <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
 </a>

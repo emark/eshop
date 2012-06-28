@@ -20,7 +20,7 @@
 % $image_source = $product->{'url'} if $product->{'image'};
 
 % my @instore = ('important','success','warning');
-% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'В пути');
+% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Ожидается');
 
 		<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
       		<img src="/media/products/middle/<%= $image_source %>.jpg" alt="">
