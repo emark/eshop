@@ -104,7 +104,7 @@ post '/checkout' => sub {
 				address => $param->{'address'},
 				deliveryid => $param->{'delivery_type'},
 				paymentid => $param->{'payment_type'},
-				complete => 0,
+				orderstatus => 0,
 				sysdate => \"NOW()",
 				sign => $sign,
 			},
