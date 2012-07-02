@@ -28,7 +28,7 @@
       <p><%=$productid->{'anonse'}%></p>
 <p><span class="label label-<%= $instore[$productid->{'instore'}] %>"><%= $instore_labels{$instore[$productid->{'instore'}]} %></span><h3>Цена:</strong> <%=$productid->{'price'}%> р.</h3></p>
 
-<%= form_for '/cart' => (method => 'post') => begin %>
+<%= form_for '/cart/' => (method => 'post') => begin %>
 <%= hidden_field 'prodid' => $productid->{'id'} %>
 <%= hidden_field 'action' => 'add' %>
 <%= link_to "Подробнее" => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" => (class => 'btn') %>&nbsp;

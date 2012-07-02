@@ -26,7 +26,11 @@ get '/checkout' => sub {
 	my $cart=$self->session('cart') || undef;
     my @pid = keys %{$cart};
     my $countpid=@pid || 0;
-    $self->stash(message => 'К сожалению ваша корзина пока пуста :(');
+    $self->stash(
+		page_title => 'Ваша корзина',
+        page_caption => 'Ваша корзина',
+		message => 'К сожалению ваша корзина пока пуста :(',
+	);
     return $self->render('dummy') if $countpid==0 ;
 	
 	my $pid=' id=';
@@ -48,7 +52,11 @@ post '/checkout' => sub {
 	my $cart=$self->session('cart');
     my @pid= keys %{$cart};
     my $countpid=@pid || 0;
-    $self->stash(message => 'Сожалеем, но ваша корзина пока ещё пуста :(');
+    $self->stash(
+		message => 'Сожалеем, но ваша корзина пока ещё пуста :(',
+		page_title => 'Ваша корзина',
+        page_caption => 'Ваша корзина',
+	);
     return $self->render('dummy') if $countpid==0 ;
 
     my $pid=' id=';
@@ -62,7 +70,7 @@ post '/checkout' => sub {
 	my $vc = Validator::Custom->new;
 	my $param = $self->req->params->to_hash;
 	my $rule = [
-		clientname => {message => 'error'} => [
+		person => {message => 'error'} => [
 			'not_blank'
 		],
 		tel => {message => 'error'} => [
@@ -90,12 +98,13 @@ post '/checkout' => sub {
 		#Create order
 		$dbi->insert(
 			{
-				person => $param->{'name'},
+				person => $param->{'person'},
 				tel => $param->{'tel'},
 				email => $param->{'email'},
 				address => $param->{'address'},
 				deliveryid => $param->{'delivery_type'},
 				paymentid => $param->{'payment_type'},
+				complete => 0,
 				sysdate => \"NOW()",
 				sign => $sign,
 			},

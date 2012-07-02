@@ -43,9 +43,9 @@
 % my $error_class = '';
 % $error_class = $messages->{clientname};
 	<div class="control-group <%= $error_class %>">
-	<label class="control-label" for="clientname">Имя*</label>
+	<label class="control-label" for="person">Имя*</label>
 		<div class="controls">	
-			<%= text_field 'clientname' => (class => "span2", type => "text") %>
+			<%= text_field 'person' => (class => "span2", type => "text") %>
 % if($error_class){
 			<span class="help-inline">Представьтесь, пожалуйста</span>
 % }
