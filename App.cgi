@@ -250,9 +250,11 @@ get '/catalog/:caturl' => sub {
 		],
 		where => {'product.caturl' => $caturl},
 	);
+	my $get_data = $catalog->one;
+    return $self->render('not_found') if !$get_data;
 	$self->stash(
 		product => $result->fetch_hash_all,
-		catalog => $catalog->one
+		catalog => $get_data,
 	);
 	$self->render('catalog');
 };
@@ -287,8 +289,10 @@ get '/catalog/:caturl/:produrl' => sub {
 			'product.url' => $produrl
 		},
 	);
+	my $get_data = $result->fetch_hash;
+    return $self->render('not_found') if !$get_data;
 	$self->stash(
-		product => $result->fetch_hash,
+		product => $get_data,
 		catalog => $catalog->one,
 	);
 	$self->render('product');
@@ -307,8 +311,10 @@ get '/about/:pageurl' => sub{
 		],
         where => {url => $pageurl},
     );
+	my $get_data = $catalog->one || undef;
+	return $self->render('not_found') if !$get_data;
 	$self->stash(
-		catalog => $catalog->one,
+		catalog => $get_data,
 	);
 	$self->render('page');
 };
@@ -322,8 +328,8 @@ get '/' => sub{
 
 app->secret('ReginaSpector');
 app->hook(before_dispatch => sub {
-               my $self = shift;
-               $self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}))
-	       }
-	  );
+				my $self = shift;
+				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
+			}
+		);
 app->start;
