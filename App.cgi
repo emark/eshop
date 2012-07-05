@@ -326,6 +326,32 @@ get '/' => sub{
 	$self->render('index');
 };
 
+get '/sitemap' => sub{
+	my $self = shift;
+	my $pages = $dbi->select(
+		table => 'catalog',
+        column => [
+			'url',
+			'type',
+			'priority',
+			'changefreq',
+			'lastmod',
+		],
+	);
+	my $products = $dbi->select(
+		table => 'product',
+		column => [
+			'url',
+			'caturl',
+		],
+	);
+	$self->stash(
+		pages => $pages->fetch_hash_all,
+		products => $products->fetch_hash_all,
+	);
+	$self->render('sitemap');
+};
+
 app->secret('ReginaSpector');
 app->hook(before_dispatch => sub {
 				my $self = shift;

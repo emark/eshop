@@ -23,7 +23,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
     <style>
-	.top-links{
+	#top-links{
 		padding: 10px 0px 10px 0px;
 		font-size: 14px;
 	}
@@ -51,7 +51,7 @@
 % #Initialize top-links class 
 % my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'bikes' => '', 'quad' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '');
 % $active_link{$catalog->{'url'}}='class="active"';
-	<div class="top-links">
+	<div id="top-links">
 	<ul class="nav nav-pills">
 		<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
 		<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>

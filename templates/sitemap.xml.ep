@@ -1,0 +1,19 @@
+%layout 'xmltemplate';
+
+% my $domain = 'http://www.nastartshop.ru';
+% foreach my $key (@{$pages}){
+<url>
+% my @location = ('catalog','about');
+	<loc><%= $domain %>/<%= $location[$key->{'type'}] %>/<%= $key->{'url'} %>/</loc>
+	<lastmod><%= $key->{'lastmod'} %></lastmod>
+	<changefreq><%= $key->{'changefreq'} %></changefreq>
+	<priority><%= $key->{'priority'} %></priority>
+</url>
+%}
+% foreach my $key (@{$products}){
+<url>
+	<loc><%= $domain %>/catalog/<%= $key->{'caturl'} %>/<%= $key->{'url'} %>.html</loc>
+	<changefreq>weekly</changefreq>
+	<priority>1.0</priority>
+</url>
+%}
