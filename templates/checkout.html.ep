@@ -41,7 +41,7 @@
 	<fieldset>
 
 % my $error_class = '';
-% $error_class = $messages->{clientname};
+% $error_class = $messages->{person};
 	<div class="control-group <%= $error_class %>">
 	<label class="control-label" for="person">Имя*</label>
 		<div class="controls">	
