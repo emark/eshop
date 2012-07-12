@@ -1,5 +1,5 @@
 % layout 'nocartinfo';
-% title '	';
+% title 'Оформление заказа';
 % my $total_cart=0;
 % my $missing = stash->{missing};
 % my $messages = stash->{messages};
@@ -15,7 +15,6 @@
 </ul>
 
 <div class="alert alert-info" id="checkorder">
-<a class="close" data-dismiss="alert" href="#" data-target="checkorder">×</a>
 <h4 class="alert-heading">Ваш заказ</h4>
 % my $n=0;
 % foreach my $product(@{$products}){
@@ -43,7 +42,7 @@
 % my $error_class = '';
 % $error_class = $messages->{person};
 	<div class="control-group <%= $error_class %>">
-	<label class="control-label" for="person">Имя*</label>
+	<label class="control-label" for="person">Имя</label>
 		<div class="controls">	
 			<%= text_field 'person' => (class => "span2", type => "text") %>
 % if($error_class){

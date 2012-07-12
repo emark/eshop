@@ -47,14 +47,9 @@
 </tr>
 % $total_cart=$total_cart+$cart->{$product->{'id'}}*$product->{'price'};
 % }
-<tr>
-<td colspan=3><h3 align=right>Итого:</h3></td>
-<td colspan=><h3><%=$total_cart%> руб.</h3></td>
-<td colspan=></td>
-</tr>
 </tbody>
 </table>
-
+<p align="left"><h3>Итого:&nbsp;<%=$total_cart%> руб.</h3></p>
 <div class="row">
 <div class="span4">
 	<a href="/checkout/" class="btn btn-large">Оформить заказ&nbsp;&rarr;</a>

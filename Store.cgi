@@ -42,7 +42,7 @@ get '/checkout' => sub {
     );
     $self->stash(
         cart => $cart,
-        products => $result->fetch_hash_all
+        products => $result->fetch_hash_all,
     );
 	$self->render('checkout');
 };
@@ -70,9 +70,9 @@ post '/checkout' => sub {
 	my $vc = Validator::Custom->new;
 	my $param = $self->req->params->to_hash;
 	my $rule = [
-		person => {message => 'error'} => [
-			'not_blank'
-		],
+		#person => {message => 'error'} => [
+		#	'not_blank'
+		#],
 		tel => {message => 'error'} => [
 			'not_blank'
 		],

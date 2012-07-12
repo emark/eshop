@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= $title %></title>
+    <title><%= title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Интернет-магазин НаСтарт.рф">
+    <meta name="description" content="Домашние спортивные комплексы для детей и взрослых. Интернет-магазин НаСтарт.рф">
     <meta name="author" content="emrk">
 
     <!-- Le styles -->
@@ -23,13 +23,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
     <style>
-	.top-links{
-		padding: 10px 0px 10px 0px;
-		font-size: 14px;
-	}
-	.small-price{
+	#top-links{
+		padding: 10px 0px 10px 10px ;
 		font-size:14px;
-		color:#f45;
 	}
     </style>
 
@@ -51,7 +47,7 @@
   <body>
 
   <div class="container">
-	<div class="top-links">
+	<div id="top-links">
 	<ul class="nav nav-pills">
 		<li><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
 		<li><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
@@ -75,8 +71,8 @@
 					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
 					<!--br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a-->
 	<ul class="nav nav-pills nav-stacked pull-right">
-		<li><%= link_to "Где купить?" => '/about/stores/'%></li>
 		<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
+		<li><%= link_to "Где купить?" => '/about/stores/'%></li>
 		<li><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
 	</ul>
 				</div>
