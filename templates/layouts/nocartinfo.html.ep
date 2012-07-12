@@ -57,9 +57,6 @@
 		<li><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
 		<li><%= link_to "Велосипеды" => '/catalog/bikes/'%></li>
 		<li><%= link_to "Квадроциклы" => '/catalog/quad/'%></li>
-		<li><%= link_to "Где купить?" => '/about/stores/'%></li>
-		<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
-		<li><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
 	</ul>
 	<hr>
 	</div>
@@ -77,6 +74,11 @@
 					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
 					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
 					<!--br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a-->
+	<ul class="nav nav-pills">
+		<li><%= link_to "Где купить?" => '/about/stores/'%></li>
+		<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
+		<li><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
+	</ul>
 				</div>
 			</div>
 		</div>
