@@ -22,18 +22,16 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/bootstrap/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
-    <style>
-	#top-links{
-		padding: 10px 0px 10px 0px;
-		font-size: 14px;
-	}
-	.small-price{
-		font-size:14px;
-		color:#f45;
-	}
-    </style>
     <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
+	<style>
+	#top-links{
+		padding: 10px 0px 10px 10px ;
+		font-size:14px;
+	}
+	</style>
+
     <script src="/bootstrap/js/jquery.js"></script>
+
     <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
     <script type="text/javascript">
 	Shadowbox.init();
@@ -56,6 +54,7 @@
     <script type="text/javascript">
 	VK.init({apiId: 3012373, onlyWidgets: true});
     </script>
+
   </head>
 
   <body>
@@ -70,11 +69,8 @@
 		<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
 		<li <%== $active_link{'bikes'} %>><%= link_to "Велосипеды" => '/catalog/bikes/'%></li>
 		<li <%== $active_link{'quad'} %>><%= link_to "Квадроциклы" => '/catalog/quad/'%></li>
-		<li <%== $active_link{'stores'} %>><%= link_to "Где купить?" => '/about/stores/'%></li>
-		<li <%== $active_link{'warranty'} %>><%= link_to "Гарантия" => '/about/warranty/'%></li>
-		<li <%== $active_link{'delivery-and-payment'} %>><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
 	</ul>
-	<hr>
+<hr>
 	</div>
 		<div class="row">
 			<div class="span4">
@@ -101,6 +97,12 @@
 					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
 					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
 					<!--br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a-->
+	<ul class="nav nav-pills nav-stacked pull-right">
+		<li <%== $active_link{'warranty'} %>><%= link_to "Гарантия" => '/about/warranty/'%></li>
+		<li <%== $active_link{'stores'} %>><%= link_to "Где купить?" => '/about/stores/'%></li>
+		<li <%== $active_link{'delivery-and-payment'} %>><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
+	</ul>
+
 				</div>
 			</div>
 		</div>
