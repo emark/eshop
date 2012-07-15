@@ -8,11 +8,12 @@
 <h1>Оформление заказа</h1>
 </div><!--.page-header-->
 
-<ul class="breadcrumb">
-	<li><a href="/">Главная</a><span class="divider">/</span></li>
-	<li><a href="/cart/">Корзина</a><span class="divider">/</span></li>
-	<li>Оформление заказа</li>
-</ul>
+<div class="row">
+	<div class="span6">
+		<span class="badge">1</span> Просмотр корзины&nbsp;&rarr;&nbsp;<span class="badge badge-success">2</span> <strong>Оформление</strong>&nbsp;&rarr;&nbsp;<span class="badge">3</span> Обработка заказа
+	</div>
+</div>
+<hr>
 
 <div class="alert alert-info" id="checkorder">
 <h4 class="alert-heading">Ваш заказ</h4>
@@ -36,7 +37,7 @@
 % }
 
 
-<form class="form-horizontal" action="/checkout/" method="post">
+<form class="form-horizontal" action="/checkout/" method="post" id="CheckoutForm">
 	<fieldset>
 
 % my $error_class = '';
@@ -115,4 +116,9 @@
 </fieldset>
 </form>
 
-
+<script language ="javascript" type = "text/javascript" >
+    function submitDetailsForm($action,$id)
+    {
+       $("#CheckoutForm").submit();
+    }
+</script>

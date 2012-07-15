@@ -47,7 +47,7 @@
 
 <ul class="nav nav-tabs">
 <li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
-<li><a href="#comments" data-toggle="tab">Отзывы</a></li>
+<li><a href="#comments" data-toggle="tab">Комментарии</a></li>
 <li><a href="#slides" data-toggle="tab">Больше изображений</a></li>
 </ul>
 

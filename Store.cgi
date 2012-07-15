@@ -29,7 +29,7 @@ get '/checkout' => sub {
     $self->stash(
 		page_title => 'Ваша корзина',
         page_caption => 'Ваша корзина',
-		message => 'К сожалению ваша корзина пока пуста :(',
+		message => 'К сожалению ваша корзина пока пуста. Оформлять нечего :(',
 	);
     return $self->render('dummy') if $countpid==0 ;
 	
