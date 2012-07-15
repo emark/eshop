@@ -67,7 +67,7 @@
 				</p>
 			</div><div class="span4">
 				<div align="right">
-					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
+					<p><em>Пн.-Пт. с 10:00 до 18:00<br/>суббота с 11:00 до 16:00</em></p>
 					<p style="font-size:24px">+7 (391) <strong>29-202-29</strong></p>
 					<ul class="nav nav-pills nav-stacked pull-right">
 						<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
