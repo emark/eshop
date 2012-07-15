@@ -91,30 +91,13 @@
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
 	<hr>
-	<p>В интернет-магазине <%= link_to "\"НаСтарт.рф\"" => 'http://настарт.рф' %> вы можете приобрести <%= link_to "пристенные" => '/catalog/dsk-wall/' %> и 
-<%= link_to "распорные" => '/catalog/dsk-slide/' %> детские спортивные комплексы "Формула Здоровья", 
-<%= link_to "трёхколесные велосипеды с управляемым рулём" => '/catalog/bikes/' %> "Бамбино". <%= link_to "Бесплатная доставка" => '/about/delivery-and-payment/' %> по г. Красноярску</p>
-	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>
+	<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести <a href="/catalog/dsk-wall/">пристенные</a> и 
+<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы торговой марки "Формула Здоровья", 
+<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> торговой марки "Бамбино". В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты оплаты</a>варианты доставки</a>.</p>
+	2012, <a href="http://настарт.рф">Интернет-магазин "НаСтарт.рф"</a>
 	</footer>
 	<p>&nbsp;</p><!--#bottom-padding-->
     </div> <!-- /container -->
-
-<form action="http://www.nastartshop.ru/cgi-bin/service/cb/app.pl" method="post" id="callbackform">
-<div class="modal hide" id="myModal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>Обратный звонок</h3>
-  </div>
-  <div class="modal-body">
-    Перезвоните мне на номер +7 <input type="text" name="phone" class="input-medium"/>
-	<!--br/>по поводу: <input type="text" name="phone" class="input-large"/-->
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
-    <input type=submit class="btn btn-primary" value="Жду звонка">
-  </div>
-</div>
-</form>
 
     <!-- Le javascript
     ================================================== -->
