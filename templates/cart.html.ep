@@ -5,14 +5,6 @@
 <h1>Ваша корзина</h1>
 </div><!--.page-header-->
 
-%#dev
-<div class="row">
-	<div class="span6">
-		<span class="badge badge-success">1</span> <strong>Просмотр корзины</strong>&nbsp;&rarr;&nbsp;<span class="badge">2</span> Оформление&nbsp;&rarr;&nbsp;<span class="badge">3</span> Обработка заказа
-	</div>
-</div>
-<hr>
-
 %my $total_cart=0;
 
 <div class="row">

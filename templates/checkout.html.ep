@@ -8,13 +8,6 @@
 <h1>Оформление заказа</h1>
 </div><!--.page-header-->
 
-<div class="row">
-	<div class="span6">
-		<span class="badge">1</span> Просмотр корзины&nbsp;&rarr;&nbsp;<span class="badge badge-success">2</span> <strong>Оформление</strong>&nbsp;&rarr;&nbsp;<span class="badge">3</span> Обработка заказа
-	</div>
-</div>
-<hr>
-
 <div class="alert alert-info" id="checkorder">
 <h4 class="alert-heading">Ваш заказ</h4>
 % my $n=0;
@@ -55,7 +48,7 @@
 % $error_class = '';
 % $error_class = $messages->{tel};
 	<div class="control-group <%= $error_class %>">
-	<label class="control-label" for="tel">Телефон*</label>
+	<label class="control-label" for="tel"><strong>Телефон*</strong></label>
 		<div class="controls">
 			<%= text_field 'tel' => (class => "span2", type => "text") %>
 % if($error_class){
@@ -82,7 +75,7 @@
 
 
 <div class="control-group">
-            <label class="control-label">Варианты доставки*</label>
+            <label class="control-label"><strong>Варианты доставки*</strong></label>
             <div class="controls">
               <label class="radio">
 		<%= radio_button delivery_type=>'1', id=>1%>
@@ -100,7 +93,7 @@
 </div>
 
 <div class="control-group">
-            <label class="control-label">Способ оплаты*</label>
+            <label class="control-label"><strong>Способ оплаты*</strong></label>
             <div class="controls">
               <label class="radio">
 		<%= radio_button payment_type=>'1', id=>1%>Платёж наличными курьеру или в пункте самовывоза
