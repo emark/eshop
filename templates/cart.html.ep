@@ -20,7 +20,8 @@
 <table class="table" border=0>
 <thead>
 <tr>
-	<th>Наименование товара</th>
+	<th>Товар</th>
+	<th>Арт.</th>
 	<th>Цена</th>
 	<th><center>Количество</center></th>
 	<th>Стоимость</th>
@@ -32,6 +33,10 @@
 <%foreach my $product(@{$products}){%>
 <tr>
 <td><%= link_to $product->{'title'} => "/catalog/$product->{'caturl'}/$product->{'url'}.html"%></td>
+
+% my $articul = sprintf ("%06s",$product->{'id'});
+
+<td><%= $articul %></td>
 <td><%= $product->{'price'} %> руб.</td> 
 <td><center>
 <a href="#" onClick="submitDetailsForm('remove',<%= $product->{'id'} %>)" class="btn" title="Уменьшить количество товара"><i class="icon-minus"></i></a>&nbsp;
