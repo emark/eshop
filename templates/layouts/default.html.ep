@@ -93,19 +93,17 @@
 % }
 				</p>
 			</div><div class="span4">
-				<div class="pull-right" align=right>
+ 				 <div align="right">
 					<p><em>Режим работы: Пн-Сб с 10 до 20<br/>обработка заказов на сайте: круглосуточно</em></p>
-					<font style="font-size:24px">+7 (391) <strong>29-202-29</strong></font>
-					<!--br/><a href="#myModal" data-toggle="modal">заказать обратный звонок</a-->
-	<ul class="nav nav-pills nav-stacked pull-right">
-		<li <%== $active_link{'warranty'} %>><%= link_to "Гарантия" => '/about/warranty/'%></li>
-		<li <%== $active_link{'stores'} %>><%= link_to "Где купить?" => '/about/stores/'%></li>
-		<li <%== $active_link{'delivery-and-payment'} %>><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
-	</ul>
-
-				</div>
-			</div>
-		</div>
+					<p style="font-size:24px">+7 (391) <strong>29-202-29</strong></p>
+					<ul class="nav nav-pills nav-stacked pull-right">
+						<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
+						<li><%= link_to "Где купить?" => '/about/stores/'%></li>
+						<li><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
+					</ul>
+				 </div>
+			      </div>
+		</div><!--.row-->
 
 	<%= content %>
 
@@ -119,30 +117,14 @@
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
 	<hr>
-	<p>В интернет-магазине <%= link_to "\"НаСтарт.рф\"" => 'http://настарт.рф' %> вы можете приобрести <%= link_to "пристенные" => '/catalog/dsk-wall/' %> и 
-<%= link_to "распорные" => '/catalog/dsk-slide/' %> детские спортивные комплексы "Формула Здоровья", 
-<%= link_to "трёхколесные велосипеды с управляемым рулём" => '/catalog/bikes/' %> "Бамбино". <%= link_to "Бесплатная доставка" => '/about/delivery-and-payment/' %> по г. Красноярску</p>
-	2012, <%= link_to "Интернет-магазин \"НаСтарт.рф\"" => 'http://настарт.рф' %>
+	<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести <a href="/catalog/dsk-wall/">пристенные</a> и 
+<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы торговой марки "Формула Здоровья", 
+<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> торговой марки "Бамбино". В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.</p>
+<p>Присоединяйтесь к нашей <a href="http://vk.com/nastartshop" target="vk">группе ВКонтакте</a>, читайте и пишите отзывы на <a href="http://krasnoyarsk.flamp.ru/firm/na_start_internet_magazin-985690700276675?hash=ce14Im04764277ce395795J0ecgGBA3731I2hd4doq968J0J8C4465G096" target="flamp">Флампе</a>. Задавайте вопросы, получайте призы и подарки!</p>
+	2012, <a href="http://настарт.рф">Интернет-магазин "НаСтарт.рф"</a>
 	</footer>
 	<p>&nbsp;</p><!--#bottom-padding-->
     </div> <!-- /container -->
-
-<form action="http://www.nastartshop.ru/cgi-bin/service/cb/app.pl" method="post" id="callbackform">
-<div class="modal hide" id="myModal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>Обратный звонок</h3>
-  </div>
-  <div class="modal-body">
-    Перезвоните мне на номер +7 <input type="text" name="phone" class="input-medium"/>
-	<!--br/>по поводу: <input type="text" name="phone" class="input-large"/-->
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
-    <input type=submit class="btn btn-primary" value="Жду звонка">
-  </div>
-</div>
-</form>
 
     <!-- Le javascript
     ================================================== -->
