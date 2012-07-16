@@ -48,13 +48,18 @@
 <ul class="nav nav-tabs">
 <li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
 <li><a href="#comments" data-toggle="tab">Комментарии</a></li>
-<!--li><a href="#slides" data-toggle="tab">Больше изображений</a></li-->
+
+% #Create vk_album tab-pane
+% my $vk_album = '<a href="#vk_album" data-toggle="tab">';
+% $vk_album = "<a href=\"http://vk.com/album-$product->{'vk_album'}\" target=_blank>" if $product->{'vk_album'};
+
+<li><%== $vk_album %>Больше изображений</a></li>
 </ul>
 
 <div id="prod-ext-info" class="tab-content">
 	<div id="description" class="tab-pane active">
 
-<%=$product->{'description'}%><br/>
+<%= $product->{'description'} %><br/>
 <dl>
 <dt>Комплектация</dt>
 <dd>
@@ -92,11 +97,12 @@
 		</script>
 
 	</div>
-	<div id="video" class="tab-pane">
-
-	</div>
-	<div id="slides" class="tab-pane">
-		
+	<div id="vk_album" class="tab-pane">
+		<p>Изображения пока не готовы.</p>
+		<p><strong>Если у вас возникли вопросы, мы вас проконсультируем:</strong><br/>
+		- по телефону +7 (391) 29-202-29<br/>
+		- по почте <a href="mailto:hello@nastartshop.ru">hello@nastartshop.ru</a>
+		</p>
 	</div>
 </div>
 </div>

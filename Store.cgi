@@ -284,6 +284,7 @@ get '/catalog/:caturl/:produrl' => sub {
 			'product.instore',
 			'product.url',
 			'product.image',
+			'product.vk_album',
 		],
 		where => {
 			'product.url' => $produrl
