@@ -251,7 +251,7 @@ get '/catalog/:caturl' => sub {
 		where => {'product.caturl' => $caturl},
 	);
 	my $get_data = $catalog->one;
-    return $self->render('not_found') if !$get_data;
+    return $self->render(status => 404, template =>'not_found') if !$get_data;
 	$self->stash(
 		product => $result->fetch_hash_all,
 		catalog => $get_data,
@@ -291,7 +291,7 @@ get '/catalog/:caturl/:produrl' => sub {
 		},
 	);
 	my $get_data = $result->fetch_hash;
-    return $self->render('not_found') if !$get_data;
+    return $self->render(status => 404, template => 'not_found') if !$get_data;
 	$self->stash(
 		product => $get_data,
 		catalog => $catalog->one,
@@ -313,7 +313,7 @@ get '/about/:pageurl' => sub{
         where => {url => $pageurl},
     );
 	my $get_data = $catalog->one || undef;
-	return $self->render('not_found') if !$get_data;
+	return $self->render(status => 404, template => 'not_found') if !$get_data;
 	$self->stash(
 		catalog => $get_data,
 	);
