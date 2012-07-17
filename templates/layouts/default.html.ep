@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
 	<style>
 	#top-links{
-		padding: 10px 0px 10px 10px ;
+		padding: 10px 0px 0px 0px;
 		font-size:14px;
 	}
 	</style>
@@ -70,12 +70,12 @@
 		<li <%== $active_link{'bikes'} %>><%= link_to "Велосипеды" => '/catalog/bikes/'%></li>
 		<li <%== $active_link{'quad'} %>><%= link_to "Квадроциклы" => '/catalog/quad/'%></li>
 	</ul>
-<hr>
 	</div>
+<hr>
 		<div class="row">
 			<div class="span4">
 				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
-				<em>интернет-магазин</em></p>
+				<em>интернет-магазин</em><br/>
 			</div><div class="span4">
 				<p align=center>
 % #Cart information
@@ -85,12 +85,15 @@
 %	$cartinfo=$cartinfo+session->{'cart'}{$key};
 % }
 % if($cartinfo==0){
-					<img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста">
+					<img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста"></p>
 					<p align=center>Корзина пока пуста :(</p>
 % }else{
-					<a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a>
+					<a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a></p>
 					<p align=center><a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span></p>
 % }
+				<p align=center><br/>
+					<a href="http://vk.com/nastartshop" target=_blank><img src="/media/images/socbut/vk20x20.gif" alt="Группа Вконтакте"></a>
+					<a href="http://club.nastartshop.ru" target=_blank><img src="/media/images/socbut/hf20x20.gif" alt="Клуб Здоровая Семья"></a>
 				</p>
 			</div><div class="span4">
  				 <div align="right">
@@ -117,13 +120,26 @@
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
 	<hr>
-	<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести <a href="/catalog/dsk-wall/">пристенные</a> и 
-<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы торговой марки "Формула Здоровья", 
-<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> торговой марки "Бамбино". В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.</p>
-<p>Присоединяйтесь к нашей <a href="http://vk.com/club40931878" target="vk">группе ВКонтакте</a>, читайте и пишите отзывы на <a href="http://krasnoyarsk.flamp.ru/firm/na_start_internet_magazin-985690700276675?hash=ce14Im04764277ce395795J0ecgGBA3731I2hd4doq968J0J8C4465G096" target="flamp">Флампе</a>. Задавайте вопросы, получайте призы и подарки!</p>
-	2012, <a href="http://настарт.рф">Интернет-магазин "НаСтарт.рф"</a>
+	<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести домашние <a href="/catalog/dsk-wall/">пристенные</a> и 
+<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы для всей семьи, 
+<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> и <a href="/catalog/quad/">квадроциклы для малышей</a>. В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.</p>
+<div class="row">
+	<div class="span6">
+	<address>
+	ООО "Электронный маркетинг"<br/>
+	ИНН: 2463213306<br/>
+	Телефон: +7 (391) 29-202-29<br/>
+	Электронная почта: hello@nastartshop.ru<br/>
+	2012, <a href="http://настарт.рф">Интернет-магазин "НаСтарт.рф"</a><br/>
+	</address>
+	</div><div class="span6">
+	<p align=right>
+		<a href="http://vk.com/nastartshop" target=_blank><img src="/media/images/socbut/vk.gif" alt="Группа Вконтакте"></a>
+		<a href="http://club.nastartshop.ru" target=_blank><img src="/media/images/socbut/hf.gif" alt="Клуб Здоровая Семья"></a>
+	</p>
+	</div>
+</div>
 	</footer>
-	<p>&nbsp;</p><!--#bottom-padding-->
     </div> <!-- /container -->
 
     <!-- Le javascript

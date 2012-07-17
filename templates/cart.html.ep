@@ -14,7 +14,7 @@
 <thead>
 <tr>
 	<th>Товар</th>
-	<th>Арт.</th>
+	<th>Артикул</th>
 	<th>Цена</th>
 	<th><center>Количество</center></th>
 	<th>Стоимость</th>
