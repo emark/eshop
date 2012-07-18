@@ -68,7 +68,7 @@
 		<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
 		<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
 		<li <%== $active_link{'bikes'} %>><%= link_to "Велосипеды" => '/catalog/bikes/'%></li>
-		<li <%== $active_link{'quad'} %>><%= link_to "Квадроциклы" => '/catalog/quad/'%></li>
+		<li <%== $active_link{'quad'} %>><%= link_to "Электромобили" => '/catalog/quad/'%></li>
 	</ul>
 	</div>
 <hr>
@@ -116,7 +116,7 @@
 		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
 		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
 		<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
-		<%= link_to "Квадроциклы" => '/catalog/quad/' %> |
+		<%= link_to "Электромобили" => '/catalog/quad/' %> |
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
 	<hr>
