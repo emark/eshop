@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Интернет-магазин НаСтарт.рф';
+% title 'Добро пожаловать';
 
 <div class="row">
   <div class="span12">
