@@ -57,27 +57,29 @@
 
   </head>
 
-  <body>
+  <body style="padding-top: 15px;">
 
   <div class="container">
 % #Initialize top-links class 
 % my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'bikes' => '', 'quad' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '');
 % $active_link{$catalog->{'url'}}='class="active"';
-	<div id="top-links">
-	<ul class="nav nav-pills">
-		<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
-		<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
-		<li <%== $active_link{'bikes'} %>><%= link_to "Велосипеды" => '/catalog/bikes/'%></li>
-		<li <%== $active_link{'quad'} %>><%= link_to "Электромобили" => '/catalog/quad/'%></li>
-	</ul>
-	</div>
-<hr>
 		<div class="row">
-			<div class="span4">
+			<div class="span2">
 				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
 				<em>интернет-магазин</em><br/>
-			</div><div class="span4">
-				<p align=center>
+			</div>
+			<div class="span6">
+				<strong>Что у нас нового:</strong><br/>
+				<em><a href="#">12.08.2012</a> Состоялся отчетный концерт группы Яхонт</em><br/>
+				<em><a href="#">11.08.2012</a> Внимание! Ищем продавцов</em><br/>
+				<em><a href="#">10.08.2012</a> Новая информация о нашем товаре</em><br/>
+				<em><a href="http://www.twitter.com/nastartshop/">Читать все новости @nastartshop</a></em><br/>
+			</div>
+			<div class="span4">
+ 				 <div align="right">
+					<p><em>Пн.-Пт. с 10:00 до 18:00<br/>Суббота с 11:00 до 16:00</em></p>
+					<p style="font-size:24px">+7 (391) <strong>29-202-29</strong></p>
+					<p><i class="icon-shopping-cart">&nbsp;</i>
 % #Cart information
 % my $cartinfo=0;
 % my @productid = keys %{session->{'cart'}} if session->{'cart'};
@@ -85,55 +87,69 @@
 %	$cartinfo=$cartinfo+session->{'cart'}{$key};
 % }
 % if($cartinfo==0){
-					<img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста"></p>
-					<p align=center>Корзина пока пуста :(</p>
+					<!--img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста"></p-->
+					Корзина пока пуста :(
 % }else{
-					<a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a></p>
-					<p align=center><a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span></p>
+					<!--a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a></p-->
+					<a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span>
 % }
-				<p align=center><br/>
-					<a href="http://vk.com/nastartshop" target=_blank><img src="/media/images/socbut/vk20x20.gif" alt="наша группа Вконтакте" title="наша группа Вконтакте"></a>
-					<!--a href="http://club.nastartshop.ru" target=_blank><img src="/media/images/socbut/hf20x20.gif" alt="клуб Здоровая Семья" title="клуб Здоровая Семья"></a-->
-				</p>
-			</div><div class="span4">
- 				 <div align="right">
-					<p><em>Пн.-Пт. с 10:00 до 18:00<br/>суббота с 11:00 до 16:00</em></p>
-					<p style="font-size:24px">+7 (391) <strong>29-202-29</strong></p>
-					<ul class="nav nav-pills nav-stacked pull-right">
-						<li <%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия</a></li>
-						<li <%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
-						<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
-					</ul>
+					</p>
 				 </div>
-			      </div>
+			</div>
 		</div><!--.row-->
+	<div >
+		
+	<br/>
+		
+	</div>
+		<div class="row">
+    		<div class="span2">
+    <ul class="nav nav-list">
+		<li class="nav-header">Каталог товаров</li>
+			<li <%== $active_link{'dsk-rstart'} %>><%= link_to "Развивающий комплекс \"Ранний старт\"" => '/catalog/dsk-rstart/'%></li>
+			<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные спорткомплексы" => '/catalog/dsk-wall/'%></li>
+			<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные спорткомплексы" => '/catalog/dsk-slide/'%></li>
+			<li <%== $active_link{'accessories'} %>><%= link_to "Дополнительные аксессуары" => '/catalog/quad/'%></li>
+		<li class="nav-header">Информация для покупателей</li>
+			<li <%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия на товары</a></li>
+			<li <%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
+			<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
+			<li><a href="http://club.nastartshop.ru">Клуб "Здоровая семья"</a></li>
+	</ul>
 
-	<%= content %>
+    		</div>
+    		<div class="span10">
+  
+		   		<%= content %>
+
+	   		</div>
+  		</div><!--.row-->
 
 	<footer>
 	<hr>
 	<div id="footer-links"><center>
+		<%= link_to "Развивающий комплекс \"Ранний старт\"" => '/catalog/rstart/' %> |
 		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
 		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
-		<%= link_to "Трёхколёсные велосипеды" => '/catalog/bikes/' %> |
-		<%= link_to "Электромобили" => '/catalog/quad/' %> |
+		<%= link_to "Аксессуары" => '/catalog/accessories/' %> |
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
 	<hr>
-	<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести домашние <a href="/catalog/dsk-wall/">пристенные</a> и 
-<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы для всей семьи, 
-<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> и <a href="/catalog/quad/">электромобили для малышей</a>. В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.</p>
 <div class="row">
-	<div class="span6">
+	<div class="span4">
 	<address>
 	ООО "Электронный маркетинг"<br/>
-	ИНН: 2463213306<br/>
+	ИНН 2463213306<br/>
 	Телефон: +7 (391) 29-202-29<br/>
-	Электронная почта: hello@nastartshop.ru<br/>
+	Электронная почта: <a href="mailto:hello@nastartshop.ru">hello@nastartshop.ru</a><br/>
 	2012, <a href="http://настарт.рф">Интернет-магазин "НаСтарт.рф"</a><br/>
 	</address>
-	</div><div class="span6">
-	&nbsp;
+	</div>
+	<div class="span8">
+		<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести домашние <a href="/catalog/dsk-wall/">пристенные</a> и 
+<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы для всей семьи, 
+<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> и <a href="/catalog/quad/">электромобили для малышей</a>. В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.</p>
+
 	</div>
 </div>
 	</footer>

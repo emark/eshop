@@ -3,6 +3,8 @@
 use strict;
 use lib "/home/hosting_locumtest/usr/local/lib/perl5";
 use Mojolicious::Lite;
+use Mojo::JSON;
+use Mojo::UserAgent;
 use DBIx::Custom;
 use Validator::Custom;
 use utf8;
@@ -20,6 +22,15 @@ our $dbi = DBIx::Custom->connect(
 );
 
 $dbi->do('SET NAMES utf8');
+
+get '/news' => sub(){
+	my $self = shift;
+	my $ua = Mojo::UserAgent->new();
+	my $json = Mojo::JSON->new();
+	my $result = $ua->get("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=msviridenko&count=3")->res->json;
+	$self->stash(news => $result);
+	$self->render('news');
+};
 
 get '/checkout' => sub {
 	my $self=shift;
@@ -250,11 +261,11 @@ get '/catalog/:caturl' => sub {
 		],
 		where => {'product.caturl' => $caturl},
 	);
-	my $get_data = $catalog->one;
-    return $self->render(status => 404, template =>'not_found') if !$get_data;
+	my $has_content = $catalog->one;
+    return $self->render(status => 404, template =>'not_found') if !$has_content;
 	$self->stash(
 		product => $result->fetch_hash_all,
-		catalog => $get_data,
+		catalog => $has_content,
 	);
 	$self->render('catalog');
 };
@@ -290,10 +301,10 @@ get '/catalog/:caturl/:produrl' => sub {
 			'product.url' => $produrl
 		},
 	);
-	my $get_data = $result->fetch_hash;
-    return $self->render(status => 404, template => 'not_found') if !$get_data;
+	my $has_content = $result->fetch_hash;
+    return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
-		product => $get_data,
+		product => $has_content,
 		catalog => $catalog->one,
 	);
 	$self->render('product');
@@ -307,15 +318,14 @@ get '/about/:pageurl' => sub{
         column => [
 			'catalog.title',
 			'catalog.url',
-			'catalog.description',
 			'catalog.content',
 		],
         where => {url => $pageurl},
     );
-	my $get_data = $catalog->one || undef;
-	return $self->render(status => 404, template => 'not_found') if !$get_data;
+	my $has_content = $catalog->one || undef;
+	return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
-		catalog => $get_data,
+		catalog => $has_content,
 	);
 	$self->render('page');
 };

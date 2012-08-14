@@ -5,56 +5,50 @@
 <h1><%= $product->{'title'} %></h1>
 </div><!--.page-header-->
 
-<ul class="breadcrumb">
-	<li><a href="/">Главная</a><span class="divider">/</span></li>
-	<li><%= link_to $catalog->{'title'} => "/catalog/$catalog->{'url'}/" %><span class="divider">/</span></li>
-	<li><%=$product->{'title'}%></li>
-</ul>
-
 <div class="row">
-<div class="span4">
-<ul class="thumbnails">
-<li class="span4">
+	<div class="span3">
+		<ul class="thumbnails">
+			<li class="span3">
 
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
 
 % my @instore = ('important','success','warning');
-% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Ожидается');
+% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Звоните');
 
-		<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
-      		<img src="/media/products/middle/<%= $image_source %>.jpg" alt="">
-    		</a>
-</li>
-</ul>
+				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
+      			<img src="/media/products/middle/<%= $image_source %>.jpg" alt="">
+    			</a>
+			</li>
+		</ul>
 
-<p><span class="label label-<%= $instore[$product->{'instore'}] %>"><%= $instore_labels{$instore[$product->{'instore'}]} %></span></p>
+		<p><span class="label label-<%= $instore[$product->{'instore'}] %>"><%= $instore_labels{$instore[$product->{'instore'}]} %></span></p>
 
 % my $articul = sprintf ("%06s",$product->{'id'});
 
-<p>Артикул: <%= $articul %></p>
-<p><h2>Цена <%= $product->{'price'} %> р.</h2></p>
-<form action="/cart/" method=post>
-<input type=hidden value=<%= $product->{'id'} %> name=prodid>
-<input type=hidden name="action" value="add">
-<input type="submit" value="Добавить в корзину" class="btn btn-large btn-primary"></form>
+		<p>Артикул: <%= $articul %></p>
+		<p><h2>Цена <%= $product->{'price'} %> р.</h2></p>
+		<form action="/cart/" method=post>
+		<input type=hidden value=<%= $product->{'id'} %> name=prodid>
+		<input type=hidden name="action" value="add">
+		<input type="submit" value="Добавить в корзину" class="btn btn-large btn-primary"></form>
 
-<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,odnoklassniki"></div> 
+		<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,odnoklassniki"></div> 
 
-</div>
+	</div>
 
-<div class="span8">
+	<div class="span7">
 
-<ul class="nav nav-tabs">
-<li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
-<li><a href="#comments" data-toggle="tab">Комментарии</a></li>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
+			<li><a href="#comments" data-toggle="tab">Комментарии</a></li>
 
 % #Create vk_album tab-pane
 % my $vk_album = '<a href="#vk_album" data-toggle="tab">';
 % $vk_album = "<a href=\"http://vk.com/album-$product->{'vk_album'}\" target=_blank>" if $product->{'vk_album'};
 
-<li><%== $vk_album %>Больше изображений</a></li>
-</ul>
+			<li><%== $vk_album %>Больше изображений</a></li>
+		</ul>
 
 <div id="prod-ext-info" class="tab-content">
 	<div id="description" class="tab-pane active">

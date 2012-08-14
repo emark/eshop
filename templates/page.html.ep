@@ -5,11 +5,8 @@
 	<h1><%= $catalog->{'title'} %></h1>
 </div><!--.page-header-->
 
-<div><!--category description-->
-	<p><em><%== $catalog->{'description'} %></em></p>
-</div>
-
 <div>
+	
 	<%== $catalog->{'content'} %>
 
 </div>

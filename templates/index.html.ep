@@ -2,7 +2,7 @@
 % title 'Добро пожаловать';
 
 <div class="row">
-  <div class="span12">
+  <div class="span10">
 <div id="myCarousel" class="carousel slide">
             <div class="carousel-inner">
               <div class="item active">
@@ -49,16 +49,12 @@
 </div>
 
       <div class="row">
-        <div class="span4">
-          <h2>Наш ассортимент</h2>
+        <div class="span3">
+          <h2></h2>
            <em>Мы рады предложить вам спортивные товары от российских производителей, а так же товары изготовленные на промышленном производстве Китая 
 		не уступющих по качеству и используемым материалам.</em>
         </div>
-        <div class="span4">
-          <h2>Почему мы?</h2>
-           <em>Мы стараемся оказывать качественное обслуживание, предлагаем выбор качественных товаров по доступным ценам.</em>
-       </div>
-        <div class="span4">
+        <div class="span7">
 
 		<div id="vk_comments"></div>
 <script type="text/javascript">

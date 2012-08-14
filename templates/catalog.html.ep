@@ -26,7 +26,9 @@
 </a>
       <h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
       <p><%=$productid->{'anonse'}%></p>
-<p><span class="label label-<%= $instore[$productid->{'instore'}] %>"><%= $instore_labels{$instore[$productid->{'instore'}]} %></span><h3>Цена:</strong> <%=$productid->{'price'}%> р.</h3></p>
+<p>
+	<!--span class="label label-<%= $instore[$productid->{'instore'}] %>"><%= $instore_labels{$instore[$productid->{'instore'}]} %></span-->
+	<h3>Цена:</strong> <%=$productid->{'price'}%> р.</h3></p>
 
 <%= form_for '/cart/' => (method => 'post') => begin %>
 <%= hidden_field 'prodid' => $productid->{'id'} %>

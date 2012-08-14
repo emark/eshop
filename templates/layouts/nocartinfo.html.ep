@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= title %></title>
+    <title><%= title %> - НаСтарт.рф</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Домашние спортивные комплексы для детей и взрослых. Интернет-магазин НаСтарт.рф">
     <meta name="author" content="emrk">
@@ -22,12 +22,20 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/bootstrap/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
-    <style>
-	.top-links{
-		padding: 10px 0px 0px 0px ;
+    <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
+	<style>
+	#top-links{
+		padding: 10px 0px 0px 0px;
 		font-size:14px;
 	}
-    </style>
+	</style>
+
+    <script src="/bootstrap/js/jquery.js"></script>
+
+    <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
+    <script type="text/javascript">
+	Shadowbox.init();
+    </script>
 
     <script type="text/javascript">
 	var _gaq = _gaq || [];
@@ -42,79 +50,112 @@
 	})();
     </script>
 
+    <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
+    <script type="text/javascript">
+	VK.init({apiId: 3012373, onlyWidgets: true});
+    </script>
+
   </head>
 
-  <body>
+  <body style="padding-top: 15px;">
 
   <div class="container">
-	<div class="top-links">
-			<ul class="nav nav-pills">
-				<li><%= link_to "Распорные ДСК" => '/catalog/dsk-slide/'%></li>
-				<li><%= link_to "Пристенные ДСК" => '/catalog/dsk-wall/'%></li>
-				<li><%= link_to "Велосипеды" => '/catalog/bikes/'%></li>
-				<li><%= link_to "Электромобили" => '/catalog/quad/'%></li>
-			</ul>
-	</div>
-	<hr>
 		<div class="row">
-			<div class="span4">
+			<div class="span2">
 				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
-				<em>интернет-магазин</em></p>
-			</div><div class="span4">
-				<p align=center><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></p>
-				<p align=center>Ваша корзина</p>
-				<p align=center><br/>
-					<a href="http://vk.com/nastartshop" target=_blank><img src="/media/images/socbut/vk20x20.gif" alt="наша группа Вконтакте" title="наша группа Вконтакте"></a>
-					<!--a href="http://club.nastartshop.ru" target=_blank><img src="/media/images/socbut/hf20x20.gif" alt="клуб Здоровая Семья" title="клуб Здоровая Семья"></a-->
-				</p>
-			</div><div class="span4">
-				<div align="right">
-					<p><em>Пн.-Пт. с 10:00 до 18:00<br/>суббота с 11:00 до 16:00</em></p>
-					<p style="font-size:24px">+7 (391) <strong>29-202-29</strong></p>
-					<ul class="nav nav-pills nav-stacked pull-right">
-						<li><%= link_to "Гарантия" => '/about/warranty/'%></li>
-						<li><%= link_to "Где купить?" => '/about/stores/'%></li>
-						<li><%= link_to "Доставка и оплата" => '/about/delivery-and-payment/'%></li>
-					</ul>
-				</div>
+				<em>интернет-магазин</em><br/>
+			</div><div class="span6">
+			<strong>Новости и предложения:</strong><br/>
+			<em><a href="#">12.08.2012</a> Состоялся отчетный концерт группы Яхонт</em><br/>
+			<em><a href="#">11.08.2012</a> Внимание! Ищем продавцов</em><br/>
+			<em><a href="#">10.08.2012</a> Новая информация о нашем товаре</em><br/>
+			<em><a href="/news/">Читать все новости</a></em><br/>
 			</div>
-		</div>
+			<div class="span4">
+ 				 <div align="right">
+					<p><em>Пн.-Пт. с 10:00 до 18:00<br/>Суббота с 11:00 до 16:00</em></p>
+					<p style="font-size:24px">+7 (391) <strong>29-202-29</strong></p>
+					<p><i class="icon-shopping-cart">&nbsp;</i>
+% #Cart information
+% my $cartinfo=0;
+% my @productid = keys %{session->{'cart'}} if session->{'cart'};
+% foreach my $key (@productid){
+%	$cartinfo=$cartinfo+session->{'cart'}{$key};
+% }
+% if($cartinfo==0){
+					<!--img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста"></p-->
+					Корзина пока пуста :(
+% }else{
+					<!--a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a></p-->
+					<a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span>
+% }
+					</p>
+				 </div>
+			</div>
+		</div><!--.row-->
+	<div >
+		
+	<br/>
+		
+	</div>
+		<div class="row">
+    		<div class="span2">
+    <ul class="nav nav-list">
+		<li class="nav-header">Каталог товаров</li>
+			<li><%= link_to "Развивающий комплекс \"Ранний старт\"" => '/catalog/dsk-rstart/'%></li>
+			<li><%= link_to "Пристенные спорткомплексы" => '/catalog/dsk-wall/'%></li>
+			<li><%= link_to "Распорные спорткомплексы" => '/catalog/dsk-slide/'%></li>
+			<li><%= link_to "Дополнительные аксессуары" => '/catalog/quad/'%></li>
+		<li class="nav-header">Информация для покупателей</li>
+			<li><a href="/about/warranty/">Гарантия на товары</a></li>
+			<li><a href="/about/stores/">Где купить?</a></li>
+			<li><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
+			<li><a href="http://club.nastartshop.ru">Клуб "Здоровая семья"</a></li>
+	</ul>
 
-	<%= content %>
+    		</div>
+    		<div class="span10">
+  
+		   		<%= content %>
+
+	   		</div>
+  		</div><!--.row-->
 
 	<footer>
 	<hr>
 	<div id="footer-links"><center>
+		<%= link_to "Развивающий комплекс \"Ранний старт\"" => '/catalog/rstart/' %> |
 		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
 		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
-		<%= link_to "Велосипеды" => '/catalog/bikes/' %> |
-		<%= link_to "Электромобили" => '/catalog/quad/' %> |
+		<%= link_to "Аксессуары" => '/catalog/accessories/' %> |
 		<%= link_to "Адреса магазинов" => '/about/stores/' %>
 	</center></div> <!--#footer-links-->
 	<hr>
-	<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести домашние <a href="/catalog/dsk-wall/">пристенные</a> и 
-<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы для всей семьи, 
-<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> и <a href="/catalog/quad/">электромобили для малышей</a>. В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.</p>
 <div class="row">
-	<div class="span6">
+	<div class="span4">
 	<address>
 	ООО "Электронный маркетинг"<br/>
-	ИНН: 2463213306<br/>
+	ИНН 2463213306<br/>
 	Телефон: +7 (391) 29-202-29<br/>
-	Электронная почта: hello@nastartshop.ru<br/>
+	Электронная почта: <a href="mailto:hello@nastartshop.ru">hello@nastartshop.ru</a><br/>
 	2012, <a href="http://настарт.рф">Интернет-магазин "НаСтарт.рф"</a><br/>
 	</address>
-	</div><div class="span6">
-	&nbsp;
+	</div>
+	<div class="span8">
+		<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести домашние <a href="/catalog/dsk-wall/">пристенные</a> и 
+<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы для всей семьи, 
+<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> и <a href="/catalog/quad/">электромобили для малышей</a>. В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.</p>
+
 	</div>
 </div>
+	</footer>
     </div> <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/bootstrap/js/jquery.js"></script>
-    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+   <script src="/bootstrap/js/bootstrap.js"></script>
 
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter14441680 = new Ya.Metrika({id:14441680, clickmap:true, trackLinks:true, webvisor:true}); } catch(e) {} }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/14441680" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
