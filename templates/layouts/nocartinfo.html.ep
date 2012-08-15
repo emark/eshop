@@ -66,11 +66,11 @@
 				<em>интернет-магазин</em><br/>
 			</div><div class="span6">
 				<strong>Что у нас нового:</strong><br/>
-% foreach my $key (@{$news->{'posts'}}){
-%	my ($date, $time) = split(' ', $key->{'date'});
-				<em><a href="<%= $key->{'url'} %>"><%= $date %></a> <%= $key->{'title'} %></em><br/>	
+% for (my $n=0; $n<3; $n++){
+%	my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
+				<em><a href="<%= $news->{'posts'}[$n]->{'url'} %>"><%= $date %></a> <%= $news->{'posts'}[$n]->{'title'} %></em><br/>	
 % }
-				<em><a href="http://club.nastartshop.ru/news/">Читать все новости&nbsp;&rarr;</a></em><br/>
+				<em><a href="http://club.nastartshop.ru/category/news/">Читать все новости&nbsp;&rarr;</a></em><br/>
 			</div>
 			<div class="span4">
  				 <div align="right">
