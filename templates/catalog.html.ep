@@ -21,21 +21,22 @@
 
 % my @instore = ('important','success','warning');
 % my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Ожидается');
-<a href="<%= url_for "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %>" title="">
-      <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
-</a>
-      <h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
-      <p><%=$productid->{'anonse'}%></p>
-<p>
-	<!--span class="label label-<%= $instore[$productid->{'instore'}] %>"><%= $instore_labels{$instore[$productid->{'instore'}]} %></span-->
-	<h3>Цена:</strong> <%=$productid->{'price'}%> р.</h3></p>
+		<a href="<%= url_for "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %>" title="">
+      	<center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
+		</a>
+      	<h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
+      	<p><%=$productid->{'anonse'}%></p>
+		<p>
+		<!--span class="label label-<%= $instore[$productid->{'instore'}] %>"><%= $instore_labels{$instore[$productid->{'instore'}]} %></span-->
+			<h3>Цена:</strong> <%=$productid->{'price'}%> р.</h3>
+		</p>
 
-<%= form_for '/cart/' => (method => 'post') => begin %>
-<%= hidden_field 'prodid' => $productid->{'id'} %>
-<%= hidden_field 'action' => 'add' %>
-<%= link_to "Подробнее" => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" => (class => 'btn') %>&nbsp;
-<%= submit_button 'В корзину' => (class => 'btn btn-primary') %>
-<% end %>
+		<%= form_for '/cart/' => (method => 'post') => begin %>
+		<%= hidden_field 'prodid' => $productid->{'id'} %>
+		<%= hidden_field 'action' => 'add' %>
+		<%= link_to "Подробнее" => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" => (class => 'btn') %>&nbsp;
+		<%= submit_button 'В корзину' => (class => 'btn btn-primary') %>
+		<% end %>
 
     </div>
   </li>
@@ -47,7 +48,7 @@
 % }else{
 
 <div class="well">
-<p>В этом разделе пока нет товаров. Может будут завтра?</a>
+	<p>В этом разделе пока нет товаров. Может быть будут завтра?</a>
 </div>
 
 % }

@@ -13,8 +13,10 @@
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
 
-% my @instore = ('important','success','warning');
-% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Звоните');
+% my $instore_class = 'success'; #Setting up instore
+% $instore_class = 'important' if $product->{'instore'} == -1;
+% $instore_class = 'warning' if $product->{'instore'} == 0;
+% my %instore_labels = ('important' => 'Отсутствует','success' => 'На складе','warning' => 'Уточняйте');
 
 				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
       			<img src="/media/products/middle/<%= $image_source %>.jpg" alt="">
@@ -22,7 +24,7 @@
 			</li>
 		</ul>
 
-		<p><span class="label label-<%= $instore[$product->{'instore'}] %>"><%= $instore_labels{$instore[$product->{'instore'}]} %></span></p>
+		<p>Наличие: <span class="label label-<%= $instore_class %>"><%= $instore_labels{$instore_class} %></span></p>
 
 % my $articul = sprintf ("%06s",$product->{'id'});
 

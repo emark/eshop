@@ -61,7 +61,7 @@
 
   <div class="container">
 % #Initialize top-links class 
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'bikes' => '', 'quad' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '');
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '');
 % $active_link{$catalog->{'url'}}='class="active"';
 		<div class="row">
 			<div class="span2">
@@ -72,7 +72,7 @@
 				<strong>Что у нас нового:</strong><br/>
 % for (my $n=0; $n<3; $n++){
 %	my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
-				<em><a href="<%= $news->{'posts'}[$n]->{'url'} %>"><%= $date %></a> <%= $news->{'posts'}[$n]->{'title'} %></em><br/>	
+				<em><a href="<%= $news->{'posts'}[$n]->{'url'} %>" target=_blank><%= $date %></a> <%= $news->{'posts'}[$n]->{'title'} %></em><br/>	
 % }
 				<em><a href="http://club.nastartshop.ru/category/news/">Читать все новости&nbsp;&rarr;</a></em><br/>
 			</div>
@@ -88,10 +88,8 @@
 %	$cartinfo=$cartinfo+session->{'cart'}{$key};
 % }
 % if($cartinfo==0){
-					<!--img src="/media/images/emptycart.png" border=0 title="Пожалуйста, заполните корзину" alt="Корзина пока пуста"></p-->
 					Корзина пока пуста :(
 % }else{
-					<!--a href="/cart/"><img src="/media/images/fuelcart.png" border=0 title="Открыть корзину" alt="Переход в корзину"></a></p-->
 					<a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span>
 % }
 					</p>
@@ -103,33 +101,32 @@
 	<br/>
 		
 	</div>
-		<div class="row">
-    		<div class="span2">
-    <ul class="nav nav-list">
-		<li class="nav-header">Каталог товаров</li>
-			<li <%== $active_link{'dsk-rstart'} %>><%= link_to "Развивающий комплекс \"Ранний старт\"" => '/catalog/dsk-rstart/'%></li>
-			<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные спорткомплексы" => '/catalog/dsk-wall/'%></li>
-			<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные спорткомплексы" => '/catalog/dsk-slide/'%></li>
-			<li <%== $active_link{'accessories'} %>><%= link_to "Дополнительные аксессуары" => '/catalog/quad/'%></li>
-		<li class="nav-header">Информация для покупателей</li>
-			<li <%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия на товары</a></li>
-			<li <%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
-			<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
-			<li><a href="http://club.nastartshop.ru">Клуб "Здоровая семья"</a></li>
-	</ul>
+	<div class="row">
+    	<div class="span2">
+		    <ul class="nav nav-list">
+				<li class="nav-header">Каталог товаров</li>
+					<li <%== $active_link{'dsk-rstart'} %>><%= link_to "Развивающий комплекс \"Ранний старт\"" => '/catalog/dsk-rstart/'%></li>
+					<li <%== $active_link{'dsk-wall'} %>><%= link_to "Пристенные спорткомплексы" => '/catalog/dsk-wall/'%></li>
+					<li <%== $active_link{'dsk-slide'} %>><%= link_to "Распорные спорткомплексы" => '/catalog/dsk-slide/'%></li>
+					<li <%== $active_link{'accessories'} %>><%= link_to "Дополнительные аксессуары" => '/catalog/accessories/'%></li>
+				<li class="nav-header">Информация для покупателей</li>
+					<li <%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия на товары</a></li>
+					<li <%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
+					<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
+					<li><a href="http://club.nastartshop.ru"><strong>Клуб "Здоровая семья"</strong></a></li>
+			</ul>
+   		</div>
+   		<div class="span10">
 
-    		</div>
-    		<div class="span10">
-  
-		   		<%= content %>
+	   		<%= content %>
 
-	   		</div>
-  		</div><!--.row-->
+   		</div>
+	</div><!--.row-->
 
 	<footer>
 	<hr>
 	<div id="footer-links"><center>
-		<%= link_to "Развивающий комплекс \"Ранний старт\"" => '/catalog/rstart/' %> |
+		<%= link_to "Развивающий комплекс \"Ранний старт\"" => '/catalog/dsk-rstart/' %> |
 		<%= link_to "Распорные спортивные комплексы" => '/catalog/dsk-slide/' %> |
 		<%= link_to "Пристенные спортивные комплексы" => '/catalog/dsk-wall/' %> |
 		<%= link_to "Аксессуары" => '/catalog/accessories/' %> |
