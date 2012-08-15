@@ -74,7 +74,7 @@
 %	my ($date, $time) = split(' ', $key->{'date'});
 				<em><a href="<%= $key->{'url'} %>"><%= $date %></a> <%= $key->{'title'} %></em><br/>	
 % }
-				<em><a href="http://club.nastartshop.ru/news/">Читать все новости</a></em><br/>
+				<em><a href="http://club.nastartshop.ru/news/">Читать все новости&nbsp;&rarr;</a></em><br/>
 			</div>
 			<div class="span4">
  				 <div align="right">
