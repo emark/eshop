@@ -321,6 +321,7 @@ get '/about/:pageurl' => sub{
         column => [
 			'catalog.title',
 			'catalog.url',
+			'catalog.description',
 			'catalog.content',
 		],
         where => {url => $pageurl},
