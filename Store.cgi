@@ -3,7 +3,6 @@
 use strict;
 use lib "/home/hosting_locumtest/usr/local/lib/perl5";
 use Mojolicious::Lite;
-use Mojo::JSON;
 use Mojo::UserAgent;
 use DBIx::Custom;
 use Validator::Custom;
@@ -23,14 +22,8 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
-get '/news' => sub(){
-	my $self = shift;
-	my $ua = Mojo::UserAgent->new();
-	my $json = Mojo::JSON->new();
-	my $result = $ua->get("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=msviridenko&count=3")->res->json;
-	$self->stash(news => $result);
-	$self->render('news');
-};
+my $ua = Mojo::UserAgent->new();
+my $news = $ua->get("http://club.nastartshop.ru/api/get_recent_posts/")->res->json;
 
 get '/checkout' => sub {
 	my $self=shift;
@@ -41,6 +34,7 @@ get '/checkout' => sub {
 		page_title => 'Ваша корзина',
         page_caption => 'Ваша корзина',
 		message => 'К сожалению ваша корзина пока пуста. Оформлять нечего :(',
+		news => $news,
 	);
     return $self->render('dummy') if $countpid==0 ;
 	
@@ -54,6 +48,7 @@ get '/checkout' => sub {
     $self->stash(
         cart => $cart,
         products => $result->fetch_hash_all,
+		news => $news,
     );
 	$self->render('checkout');
 };
@@ -67,6 +62,7 @@ post '/checkout' => sub {
 		message => 'Сожалеем, но ваша корзина пока ещё пуста :(',
 		page_title => 'Ваша корзина',
         page_caption => 'Ваша корзина',
+		news => $news,
 	);
     return $self->render('dummy') if $countpid==0 ;
 
@@ -142,7 +138,8 @@ post '/checkout' => sub {
 	}else{
 		$self->stash(
         	cart => $cart,
-	        products => $result->fetch_hash_all
+	        products => $result->fetch_hash_all,
+			news => $news,
 	    );
 		$self->stash(missing => 1) if $vresult->has_missing;
 		$self->stash(messages => $vresult->messages_to_hash) if $vresult->has_invalid;
@@ -156,7 +153,8 @@ get '/thankyou' => sub {
 	$self->stash(
 		page_title => 'Спасибо за заказ',
 		page_caption => 'Заказ оформлен',
-		message=>'Поздравляем! Ваш заказ оформлен. Наши менеджеры уже им занимаются. Спасибо за доверие.',
+		message=>'Поздравляем! Ваш заказ оформлен. Ожидайте звонка от менеджера.',
+		news => $news,
 	);
 	$self->render('dummy');
 };
@@ -189,6 +187,7 @@ get '/cart' => sub {
     $self->stash(
 		cart => $cart,
 		products => $result->fetch_hash_all,
+		news => $news,
 	);
     $self->render('cart');
 };
@@ -212,7 +211,8 @@ post '/cart' => sub{
 	$self->stash(
         page_title => 'Пустая корзина',
         page_caption => 'Ваша корзина',
-        message => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?'
+        message => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?',
+		news => $news,
     );
     return $self->render('dummy') if $countpid==0 ;
 
@@ -231,7 +231,8 @@ post '/cart' => sub{
     );
     $self->stash(
 		products => $result->fetch_hash_all,
-		cart => $cart
+		cart => $cart,
+		news => $news,
 	);
     $self->render('cart');
 };
@@ -262,6 +263,7 @@ get '/catalog/:caturl' => sub {
 		where => {'product.caturl' => $caturl},
 	);
 	my $has_content = $catalog->one;
+	$self->stash(news => $news);
     return $self->render(status => 404, template =>'not_found') if !$has_content;
 	$self->stash(
 		product => $result->fetch_hash_all,
@@ -306,6 +308,7 @@ get '/catalog/:caturl/:produrl' => sub {
 	$self->stash(
 		product => $has_content,
 		catalog => $catalog->one,
+		news => $news,
 	);
 	$self->render('product');
 };
@@ -326,6 +329,7 @@ get '/about/:pageurl' => sub{
 	return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
 		catalog => $has_content,
+		news => $news,
 	);
 	$self->render('page');
 };
@@ -333,7 +337,10 @@ get '/about/:pageurl' => sub{
 get '/' => sub{
 	my $self = shift;
 	my $catalog = {'url' => 'index'};
-	$self->stash(catalog => $catalog);
+	$self->stash(
+		news => $news,
+		catalog => $catalog,
+	);
 	$self->render('index');
 };
 
@@ -359,6 +366,7 @@ get '/sitemap' => sub{
 	$self->stash(
 		pages => $pages->fetch_hash_all,
 		products => $products->fetch_hash_all,
+		news => $news,
 	);
 	$self->render('sitemap');
 };

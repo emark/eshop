@@ -65,11 +65,12 @@
 				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
 				<em>интернет-магазин</em><br/>
 			</div><div class="span6">
-			<strong>Новости и предложения:</strong><br/>
-			<em><a href="#">12.08.2012</a> Состоялся отчетный концерт группы Яхонт</em><br/>
-			<em><a href="#">11.08.2012</a> Внимание! Ищем продавцов</em><br/>
-			<em><a href="#">10.08.2012</a> Новая информация о нашем товаре</em><br/>
-			<em><a href="/news/">Читать все новости</a></em><br/>
+				<strong>Что у нас нового:</strong><br/>
+% foreach my $key (@{$news->{'posts'}}){
+%	my ($date, $time) = split(' ', $key->{'date'});
+				<em><a href="<%= $key->{'url'} %>"><%= $date %></a> <%= $key->{'title'} %></em><br/>	
+% }
+				<em><a href="http://club.nastartshop.ru/news/">Читать все новости</a></em><br/>
 			</div>
 			<div class="span4">
  				 <div align="right">
