@@ -69,7 +69,7 @@
 				<em>интернет-магазин</em><br/>
 			</div>
 			<div class="span6">
-				<strong>Что у нас нового:</strong><br/>
+				<h3>Обратите внимание</h3>
 % for (my $n=0; $n<3; $n++){
 %	my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
 				<em><a href="<%= $news->{'posts'}[$n]->{'url'} %>" target=_blank><%= $date %></a> <%= $news->{'posts'}[$n]->{'title'} %></em><br/>	
@@ -144,10 +144,9 @@
 	</address>
 	</div>
 	<div class="span8">
-		<p>В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести домашние <a href="/catalog/dsk-wall/">пристенные</a> и 
-<a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы для всей семьи, 
-<a href="/catalog/bikes/">трёхколесные велосипеды с управляемым рулём</a> и <a href="/catalog/quad/">электромобили для малышей</a>. В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.</p>
-
+		<p>
+			В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести домашние <a href="/catalog/dsk-wall/">пристенные</a> и <a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы для всей семьи, развивающие комплексы <a href="/catalog/dsk-rstart/">"Ранний старт"</a> и различные <a href="/catalog/accessories/">дополнительные аксессуары</a> для спорткомплексов. В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.
+		</p>
 	</div>
 </div>
 	</footer>

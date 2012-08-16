@@ -50,7 +50,8 @@
 
       <div class="row">
         <div class="span3">
-           <em>Приветствуем вас в интернет-магазине "НаСтарт.рф". Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>"Ранний старт"</strong><br/>Коллектив и-м "НаСтарт.рф"</em>
+           <p><em>Приветствуем вас в интернет-магазине "НаСтарт.рф". Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>"Ранний старт"</strong> для детей от 0 до 6 лет. Физическим развитием ребёнка необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь.</em></p>
+           <p align=right><em><strong>Коллектив и-м "НаСтарт.рф"</strong></em></p>
         </div>
         <div class="span7">
 
@@ -64,3 +65,49 @@ window.onload = function () {
 
         </div><!--.span4-->
       </div><!--.row-->
+      
+      <h3>Мы рекомендуем</h3><br/>
+      <div class="row">
+        <div class="span10">
+
+% if (@{$product}){
+<ul class="thumbnails">
+
+% foreach my $productid (@{$product}){
+
+<li class="span3">
+  <div class="thumbnail">
+
+% my $image_source = 'noimage';
+% $image_source = $productid->{'url'} if $productid->{'image'};
+% my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
+
+    <a href="<%= url_for $product_link %>" title="">
+        <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
+    </a>
+    <h4><%= link_to $productid->{'title'} => $product_link %></h4>
+    <p>
+      <%= $productid->{'anonse'} %>
+    </p>
+    <p>
+      <h3>Цена:</strong> <%= $productid->{'price'} %> р.</h3>
+    </p>
+
+    <%= form_for '/cart/' => (method => 'post') => begin %>
+    <%= hidden_field 'prodid' => $productid->{'id'} %>
+    <%= hidden_field 'action' => 'add' %>
+    <%= link_to "Подробнее" => $product_link => (class => 'btn') %>&nbsp;
+    <%= submit_button 'В корзину' => (class => 'btn btn-primary') %>
+    <% end %>
+
+    </div>
+  </li>
+
+% }
+
+</ul>
+
+% }   
+        </div><!--.span10-->
+      </div><!--.row-->
+

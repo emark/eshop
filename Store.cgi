@@ -304,11 +304,11 @@ get '/catalog/:caturl/:produrl' => sub {
 		},
 	);
 	my $has_content = $result->fetch_hash;
+	$self->stash(news => $news);
     return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
 		product => $has_content,
 		catalog => $catalog->one,
-		news => $news,
 	);
 	$self->render('product');
 };
@@ -338,9 +338,24 @@ get '/about/:pageurl' => sub{
 get '/' => sub{
 	my $self = shift;
 	my $catalog = {'url' => 'index'};
+	my $result = $dbi->select(
+        table => 'product',
+        column => [
+            'product.title',
+            'product.url',
+            'product.anonse',
+            'product.instore',
+            'product.id',
+            'product.price',
+            'product.image',
+			'product.caturl',
+        ],
+		where => {'popular' => 1},
+    );
 	$self->stash(
 		news => $news,
 		catalog => $catalog,
+		product => $result->fetch_hash_all,
 	);
 	$self->render('index');
 };
