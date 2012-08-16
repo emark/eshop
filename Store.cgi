@@ -41,8 +41,12 @@ get '/checkout' => sub {
 	my $pid=' id=';
     $pid=$pid.join(' or id=',@pid); 
     my $result=$dbi->select(
-        table => 'product',
-        column => ['id','title','price'],
+        table => 'products',
+        column => [
+			'id',
+			'title',
+			'price',
+		],
         where => $pid
     );
     $self->stash(
@@ -69,8 +73,12 @@ post '/checkout' => sub {
     my $pid=' id=';
     $pid=$pid.join(' or id=',@pid);
     my $result=$dbi->select(
-        table => 'product',
-        column => ['id','title','price'],
+        table => 'products',
+        column => [
+			'id',
+			'title',
+			'price',
+		],
         where => $pid
     );
 
@@ -80,20 +88,14 @@ post '/checkout' => sub {
 		#person => {message => 'error'} => [
 		#	'not_blank'
 		#],
-		tel => {message => 'error'} => [
-			'not_blank'
-		],
+		tel => {message => 'error'} => ['not_blank'],
 		#email => {message => 'error'} => [
 		#	'not_blank',{
 		#		'regex' => qr/^.*\@.*\...+/
 		#	}
 		#],
-		delivery_type => [
-			'defined'
-		],
-		payment_type => [
-			'defined'
-		],
+		delivery_type => ['defined'],
+		payment_type => ['defined'],
 	];
 	my $vresult = $vc->validate($param,$rule);
 	if($vresult->is_ok){
@@ -109,15 +111,15 @@ post '/checkout' => sub {
 				tel => $param->{'tel'},
 				email => $param->{'email'},
 				address => $param->{'address'},
-				deliveryid => $param->{'delivery_type'},
-				paymentid => $param->{'payment_type'},
-				orderstatus => 0,
+				delivery => $param->{'delivery_type'},
+				payment => $param->{'payment_type'},
+				status => 0,
 				sysdate => \"NOW()",
 				sign => $sign,
 			},
 			table => 'orders',
 		);
-		my $orderid = $dbi->select(
+		my $order_id = $dbi->select(
 							column => 'id',
 							table => 'orders',
 							where => {sign => $sign},
@@ -129,9 +131,9 @@ post '/checkout' => sub {
 					title => $ref->{'title'},
 					price => $ref->{'price'},
 					count => $cart->{$ref->{'id'}},
-					orderid => $orderid,
+					orderid => $order_id,
 				},
-				table => 'item',
+				table => 'items',
 			);
 		};
 		return $self->redirect_to('/thankyou');
@@ -169,18 +171,18 @@ get '/cart' => sub {
 		page_caption => 'Ваша корзина',
 		message => 'Нам очень жаль, но похоже, что ваша корзина пуста :('
 	);
-	return $self->render('dummy') if $countpid==0 ;
+	return $self->render('dummy') if $countpid == 0;
 
-	my $pid=' product.id=';
-	$pid=$pid.join(' or product.id=',@pid);	
+	my $pid=' id=';
+	$pid=$pid.join(' or id=',@pid);	
 	my $result=$dbi->select(
-		table => 'product',
+		table => 'products',
 		column => [
-			'product.id',
-			'product.title',
-			'product.price',
-			'product.url',
-			'product.caturl',
+			'id',
+			'title',
+			'price',
+			'url',
+			'caturl',
 		],
 		where => $pid,
 	);
@@ -214,18 +216,18 @@ post '/cart' => sub{
         message => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?',
 		news => $news,
     );
-    return $self->render('dummy') if $countpid==0 ;
+    return $self->render('dummy') if $countpid == 0;
 
 	my $pid=' id=';
     $pid=$pid.join(' or id=',@pid);
     my $result=$dbi->select(
-        table => 'product',
+        table => 'products',
         column => [
-			'product.id',
-			'product.title',
-			'product.price',
-			'product.caturl',
-			'product.url',
+			'id',
+			'title',
+			'price',
+			'caturl',
+			'url',
 		],
         where => $pid
     );
@@ -241,26 +243,26 @@ get '/catalog/:caturl' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');
 	my $catalog = $dbi->select(
-						table => 'catalog',
+						table => 'pages',
 						column => [
-							'catalog.title',
-							'catalog.url',
-							'catalog.description',
+							'title',
+							'url',
+							'description',
 						],
-						where => {'catalog.url' => $caturl},
+						where => {'url' => $caturl},
 					);
 	my $result = $dbi->select(
-		table => 'product',
+		table => 'products',
 		column => [
-			'product.title',
-			'product.url',
-			'product.anonse',
-			'product.instore',
-			'product.id',
-			'product.price',
-			'product.image',
+			'title',
+			'url',
+			'anonse',
+			'instore',
+			'id',
+			'price',
+			'image',
 		],
-		where => {'product.caturl' => $caturl},
+		where => {'caturl' => $caturl},
 	);
 	my $has_content = $catalog->one;
 	$self->stash(news => $news);
@@ -277,30 +279,30 @@ get '/catalog/:caturl/:produrl' => sub {
 	my $caturl = $self->param('caturl');
 	my $produrl = $self->param('produrl');
     my $catalog = $dbi->select(
-		table => 'catalog',
+		table => 'pages',
         column => [
-			'catalog.title',
-			'catalog.url'
+			'title',
+			'url'
 		],
-        where => {'catalog.url' => $caturl},
+        where => {'url' => $caturl},
 	);
 	my $result=$dbi->select(
-		table => 'product',
+		table => 'products',
         column => [
-			'product.id',
-			'product.title',
-			'product.price',
-			'product.description',
-			'product.settings',
-			'product.features',
-			'product.image',
-			'product.instore',
-			'product.url',
-			'product.image',
-			'product.vk_album',
+			'id',
+			'title',
+			'price',
+			'description',
+			'settings',
+			'features',
+			'image',
+			'instore',
+			'url',
+			'vk_album',
 		],
 		where => {
-			'product.url' => $produrl
+			'url' => $produrl,
+			'caturl' => $caturl,
 		},
 	);
 	my $has_content = $result->fetch_hash;
@@ -316,17 +318,17 @@ get '/catalog/:caturl/:produrl' => sub {
 get '/about/:pageurl' => sub{
 	my $self=shift;
 	my $pageurl = $self->param('pageurl');
-	my $catalog = $dbi->select(
-        table => 'catalog',
+	my $result = $dbi->select(
+        table => 'pages',
         column => [
-			'catalog.title',
-			'catalog.url',
-			'catalog.description',
-			'catalog.content',
+			'title',
+			'url',
+			'description',
+			'content',
 		],
-        where => {url => $pageurl},
+        where => {'url' => $pageurl},
     );
-	my $has_content = $catalog->one || undef;
+	my $has_content = $result->one || undef;
 	return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
 		catalog => $has_content,
@@ -339,23 +341,23 @@ get '/' => sub{
 	my $self = shift;
 	my $catalog = {'url' => 'index'};
 	my $result = $dbi->select(
-        table => 'product',
+        table => 'products',
         column => [
-            'product.title',
-            'product.url',
-            'product.anonse',
-            'product.instore',
-            'product.id',
-            'product.price',
-            'product.image',
-			'product.caturl',
+            'title',
+            'url',
+            'anonse',
+            'instore',
+            'id',
+            'price',
+            'image',
+			'caturl',
         ],
 		where => {'popular' => 1},
     );
 	$self->stash(
 		news => $news,
 		catalog => $catalog,
-		product => $result->fetch_hash_all,
+		products => $result->fetch_hash_all,
 	);
 	$self->render('index');
 };
@@ -363,7 +365,7 @@ get '/' => sub{
 get '/sitemap' => sub{
 	my $self = shift;
 	my $pages = $dbi->select(
-		table => 'catalog',
+		table => 'pages',
         column => [
 			'url',
 			'type',
@@ -373,7 +375,7 @@ get '/sitemap' => sub{
 		],
 	);
 	my $products = $dbi->select(
-		table => 'product',
+		table => 'products',
 		column => [
 			'url',
 			'caturl',
