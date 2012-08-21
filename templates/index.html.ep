@@ -6,39 +6,21 @@
 <div id="myCarousel" class="carousel slide">
             <div class="carousel-inner">
               <div class="item active">
-                <a href="/catalog/bikes/">
-		<img src="/media/slider/bambino/banner-bambino1.jpg" alt="">
+                <a href="/catalog/dsk-rstart/">
+		<img src="/media/slider/rstart/rs-standard.jpg" alt="">
 		</a>
                 <div class="carousel-caption">
-                  <h4>Велосипед "Бамбино"</h4>
-                  <p>Солнцезащитный тент защитит вашего ребёнка от палящего солнца</p>
+                  <h4>"Ранний старт"</h4>
+                  <p>Уникальный спортивно-игровой комплекс "пять в одном" для детей от года до 6-7 лет.</p>
                 </div>
               </div>
               <div class="item">
-                <a href="/catalog/bikes/">
-                <img src="/media/slider/bambino/banner-bambino2.jpg" alt="">
+                <a href="http://club.nastartshop.ru/">
+                <img src="/media/slider/rstart/hf-banner.jpg" alt="">
 		</a>
                 <div class="carousel-caption">
-                  <h4>Велосипед "Бамбино"</h4>
-                  <p>Мягкие колёса скроют все неровности на дороге.</p>
-                </div>
-              </div>
-              <div class="item">
-                <a href="/catalog/bikes/">
-                <img src="/media/slider/bambino/banner-bambino3.jpg" alt="">
-		</a>
-                <div class="carousel-caption">
-                  <h4>Велосипед "Бамбино"</h4>
-                  <p>В крыше тента имеется окошко с сеточкой для наблюдения за маленьким велосипедистом</p>
-                </div>
-              </div>
-              <div class="item">
-                <a href="/catalog/bikes/">
-                <img src="/media/slider/bambino/banner-bambino4.jpg" alt="">
-		</a>
-                <div class="carousel-caption">
-                  <h4>Велосипед "Бамбино"</h4>
-                  <p>Рукоятки руля и "родительской ручки управления" сделаны мягкими для удобства и антискольжения</p>
+                  <h4>Клуб "Здоровая Семья"</h4>
+                  <p>Присоединяйтесь к нашему сообществу</p>
                 </div>
               </div>
             </div>
@@ -86,9 +68,7 @@ window.onload = function () {
         <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
     </a>
     <h4><%= link_to $productid->{'title'} => $product_link %></h4>
-    <p>
-      <%= $productid->{'anonse'} %>
-    </p>
+    
     <p>
       <h3>Цена:</strong> <%= $productid->{'price'} %> р.</h3>
     </p>

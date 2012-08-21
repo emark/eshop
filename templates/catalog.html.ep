@@ -19,15 +19,12 @@
 % my $image_source = 'noimage';
 % $image_source = $productid->{'url'} if $productid->{'image'};
 
-% my @instore = ('important','success','warning');
-% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Ожидается');
-		<a href="<%= url_for "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %>" title="">
+	<a href="<%= url_for "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %>" title="">
       	<center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
 		</a>
       	<h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4>
-      	<p><%=$productid->{'anonse'}%></p>
+      	<!--p><%=$productid->{'anonse'}%></p-->
 		<p>
-		<!--span class="label label-<%= $instore[$productid->{'instore'}] %>"><%= $instore_labels{$instore[$productid->{'instore'}]} %></span-->
 			<h3>Цена:</strong> <%=$productid->{'price'}%> р.</h3>
 		</p>
 

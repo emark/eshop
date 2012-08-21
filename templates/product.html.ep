@@ -55,27 +55,37 @@
 <div id="prod-ext-info" class="tab-content">
 	<div id="description" class="tab-pane active">
 
-<%= $product->{'description'} %><br/>
+% my @content = ();
+% @content=split('#',$product->{'description'});
+% if(@content){
+% foreach my $key(@content){
+	<p><%= $key %></p>
+% }
+% }
+
+% @content=split('#',$product->{'settings'});
+% if(@content){
 <dl>
 <dt>Комплектация</dt>
 <dd>
 <ol>
-% my @set=split('#',$product->{'settings'});
-% foreach my $key(@set){
+% @content=split('#',$product->{'settings'});
+% foreach my $key(@content){
 	<li><%= $key %></li>
 % }
 </ol>
 </dd>
+% }
 
-% my @set=split('#',$product->{'features'});
-% if(@set){
+% @content=split('#',$product->{'features'});
+% if(@content){
 <dl>
 <dt>Параметры</strong></dt>
 </dl>
 <table class="table">
 <tbody>
 
-% foreach my $key(@set){
+% foreach my $key(@content){
 %	my($param,$value)=split(':',$key);
 	<tr><td><%= $param %></td><td><%= $value %></td></tr>
 % }
