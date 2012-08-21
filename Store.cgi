@@ -169,7 +169,8 @@ get '/cart' => sub {
 	$self->stash(
 		page_title => 'Ваша корзина',
 		page_caption => 'Ваша корзина',
-		message => 'Нам очень жаль, но похоже, что ваша корзина пуста :('
+		message => 'Нам очень жаль, но похоже, что ваша корзина пуста :(',
+		news => $news,
 	);
 	return $self->render('dummy') if $countpid == 0;
 
@@ -189,7 +190,6 @@ get '/cart' => sub {
     $self->stash(
 		cart => $cart,
 		products => $result->fetch_hash_all,
-		news => $news,
 	);
     $self->render('cart');
 };
