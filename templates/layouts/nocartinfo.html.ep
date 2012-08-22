@@ -65,7 +65,7 @@
 				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
 				<em>интернет-магазин</em><br/>
 			</div><div class="span6">
-				<h3>Обратите внимание:</h3>
+				<h3>Обратите внимание</h3>
 % if($news){
 % for (my $n=0; $n<3; $n++){
 %	my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
