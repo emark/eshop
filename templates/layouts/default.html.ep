@@ -70,9 +70,11 @@
 			</div>
 			<div class="span6">
 				<h3>Обратите внимание</h3>
+% if($news){
 % for (my $n=0; $n<3; $n++){
 %	my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
 				<em><a href="<%= $news->{'posts'}[$n]->{'url'} %>" target=_blank><%= $date %></a> <%= $news->{'posts'}[$n]->{'title'} %></em><br/>	
+% }
 % }
 				<em><a href="http://club.nastartshop.ru/category/news/">Читать все новости&nbsp;&rarr;</a></em><br/>
 			</div>

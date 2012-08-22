@@ -1,4 +1,4 @@
-% layout 'nocartinfo';
+% layout 'unlink';
 % title 'Ошибка 404. Страница не существует';
 
 <div class="page-header">

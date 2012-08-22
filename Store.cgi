@@ -329,10 +329,10 @@ get '/about/:pageurl' => sub{
         where => {'url' => $pageurl},
     );
 	my $has_content = $result->one || undef;
+	$self->stash(news => $news);
 	return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
 		catalog => $has_content,
-		news => $news,
 	);
 	$self->render('page');
 };
@@ -384,7 +384,6 @@ get '/sitemap' => sub{
 	$self->stash(
 		pages => $pages->fetch_hash_all,
 		products => $products->fetch_hash_all,
-		news => $news,
 	);
 	$self->render('sitemap');
 };
