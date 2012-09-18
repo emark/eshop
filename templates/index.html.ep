@@ -90,4 +90,6 @@ window.onload = function () {
 % }   
         </div><!--.span10-->
       </div><!--.row-->
-
+<div class="row">
+	<div class="span12"><a href="/catalog/" class="btn btn-large btn-primary">Посмотреть другие товары</a></div><!--.span-->
+</div><!--.row-->
