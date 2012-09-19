@@ -345,6 +345,27 @@ get '/catalog/:caturl/:produrl' => sub {
 	$self->render('product');
 };
 
+get '/about' => sub{
+    my $self = shift;
+    my $catalog = {'url' => 'about'};
+    my $pages = $dbi->select(
+        table => 'pages',
+        column => [
+            'title',
+            'url',
+            'description',
+        ],
+        where => {'type' => 1},
+    );
+
+    $self->stash(
+		catalog => $catalog,
+        pages => $pages->fetch_hash_all,
+        news => $news,
+    );
+    $self->render('about');
+};
+
 get '/about/:pageurl' => sub{
 	my $self=shift;
 	my $pageurl = $self->param('pageurl');

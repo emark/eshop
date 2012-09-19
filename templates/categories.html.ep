@@ -1,6 +1,8 @@
 % layout 'default';
 % title 'Каталог товаров';
-%# dev
+
+<div class=breadcrumb><a href="/">Главная</a> / Каталог товаров</div>
+
 <div class="page-header">
 	<h1>Каталог товаров</h1>
 </div><!--.page-header-->
@@ -14,9 +16,7 @@
 % };
 
 % foreach my $category (@{$categories}){
-	<p>
 		<h3><a href="/catalog/<%= $category->{'url'} %>/"><%= $category->{'title'} %></a>, цена от <%= $min_price{$category->{'url'}} %> руб.</h3>
-		<em><%== $category->{'description'} %></em>
-	</p>
+		<p><em><%== $category->{'description'} %></em></p>
 % };
 

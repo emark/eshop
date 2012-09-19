@@ -1,10 +1,11 @@
 % layout 'default';
 % title $product->{'title'}.' - '.$catalog->{'title'};
 
+<div class=breadcrumb><a href="/">Главная</a> / <a href="/catalog/">Каталог товаров</a> / <a href="/catalog/<%= $catalog->{'url'} %>/"><%= $catalog->{'title'} %></a> / <%= $product->{'title'} %></div>
+
 <div class="page-header">
 <h1><%= $product->{'title'} %></h1>
 </div><!--.page-header-->
-
 <div class="row">
 	<div class="span3">
 		<ul class="thumbnails">
@@ -21,7 +22,7 @@
 				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
       			<img src="/media/products/middle/<%= $image_source %>.jpg" alt="">
     			</a>
-			</li>
+			</li>	
 		</ul>
 
 		<p>Наличие: <span class="label label-<%= $instore_class %>"><%= $instore_labels{$instore_class} %></span></p>
