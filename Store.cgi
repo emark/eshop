@@ -239,6 +239,36 @@ post '/cart' => sub{
     $self->render('cart');
 };
 
+get '/catalog' => sub{
+	my $self = shift;
+	my $catalog = {'url' => 'catalog'};
+	my $categories = $dbi->select(
+		table => 'pages',
+		column => [
+			'title',
+			'url',
+			'description',
+		],
+		where => {'type' => 0},
+	);
+	my $price = $dbi->select(
+		table => 'products',
+		column => [
+			'caturl',
+			'price',
+		],
+		where => 'instore >= 0',
+	);
+
+	$self->stash(
+		catalog => $catalog,
+		categories => $categories->fetch_hash_all,
+		price => $price->fetch_all,
+		news => $news,
+	);
+	$self->render('categories');
+};
+
 get '/catalog/:caturl' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');

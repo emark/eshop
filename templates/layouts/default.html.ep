@@ -106,6 +106,7 @@
 				<li class="nav-header">Информация для покупателей</li>
 					<li <%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия на товары</a></li>
 					<li <%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
+					<li <%== $active_link{'howtobuy'} %>><a href="/about/howtobuy/">Как купить?</a></li>
 					<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
 					<li><a href="http://club.nastartshop.ru"><strong>Клуб "Здоровая семья"</strong></a></li>
 			</ul>
