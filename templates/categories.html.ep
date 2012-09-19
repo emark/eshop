@@ -1,0 +1,22 @@
+% layout 'default';
+% title 'Каталог товаров';
+%# dev
+<div class="page-header">
+	<h1>Каталог товаров</h1>
+</div><!--.page-header-->
+
+% my %min_price = ();
+
+% foreach my $key (@{$price}){
+%	if($key->[1] < $min_price{$key->[0]} || $min_price{$key->[0]} == 0){
+%		$min_price{$key->[0]} = $key->[1];
+%	};
+% };
+
+% foreach my $category (@{$categories}){
+	<p>
+		<h3><a href="/catalog/<%= $category->{'url'} %>/"><%= $category->{'title'} %></a>, цена от <%= $min_price{$category->{'url'}} %> руб.</h3>
+		<em><%== $category->{'description'} %></em>
+	</p>
+% };
+
