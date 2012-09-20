@@ -49,7 +49,7 @@ window.onload = function () {
       </div><!--.row-->
 
       <div class="row">    
-	<div class="span9"><hr>
+	<div class="span10"><hr>
 		<p class="lead" align="left"><img src="/media/images/star.png">Популярные товары</p>
 		<p><a href="/catalog/">Посмотреть весь каталог</a></p>
 	</div><!--.span-->
