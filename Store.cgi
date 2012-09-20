@@ -256,6 +256,7 @@ get '/catalog' => sub{
 		column => [
 			'caturl',
 			'price',
+			'url',
 		],
 		where => 'instore >= 0',
 	);
