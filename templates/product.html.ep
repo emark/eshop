@@ -30,7 +30,7 @@
 % my $articul = sprintf ("%06s",$product->{'id'});
 
 		<p>Артикул: <%= $articul %></p>
-		<p><h2>Цена <%= $product->{'price'} %> р.</h2></p>
+		<p><h3>Цена: <%= $product->{'price'} %> р.</h3></p>
 		<form action="/cart/" method=post>
 		<input type=hidden value=<%= $product->{'id'} %> name=prodid>
 		<input type=hidden name="action" value="add">

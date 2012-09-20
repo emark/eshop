@@ -72,11 +72,8 @@ window.onload = function () {
     <a href="<%= url_for $product_link %>" title="">
         <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
     </a>
-    <h4><%= link_to $productid->{'title'} => $product_link %></h4>
-    
-    <p>
-      <h3>Цена:</strong> <%= $productid->{'price'} %> р.</h3>
-    </p>
+    <p><h4><%= link_to $productid->{'title'} => $product_link %></h4></p>
+    <p><strong>Цена:</strong> <%= $productid->{'price'} %> р.</p>
 
     <%= form_for '/cart/' => (method => 'post') => begin %>
     <%= hidden_field 'prodid' => $productid->{'id'} %>
