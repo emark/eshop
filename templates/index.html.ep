@@ -33,7 +33,7 @@
       <div class="row">
         <div class="span3">
            <p><em>Приветствуем вас в интернет-магазине "НаСтарт.рф". Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>"Ранний старт"</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь.</em></p>
-           <p align=right><em><strong>Коллектив и-м "НаСтарт.рф"</strong></em></p>
+           <p align=right><em>Коллектив и-м "НаСтарт.рф"</em></p>
         </div>
         <div class="span7">
 
@@ -47,7 +47,13 @@ window.onload = function () {
 
         </div><!--.span4-->
       </div><!--.row-->
-    
+
+      <div class="row">    
+	<div class="span10">
+		<p class="lead" align="left">Популярные товары</p>
+		<p><a href="/catalog/">Посмотреть весь каталог</a></p>
+	</div><!--.span-->
+      </div>
       <div class="row">
         <div class="span10">
 
