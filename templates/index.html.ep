@@ -50,7 +50,7 @@ window.onload = function () {
 
       <div class="row">    
 	<div class="span10"><hr>
-		<p class="lead" align="left"><img src="/media/images/star.png">Популярные товары</p>
+		<h1>Популярные товары <img src="/media/images/star.png"><img src="/media/images/star.png"><img src="/media/images/star.png"></h1>
 		<p><a href="/catalog/">Посмотреть весь каталог</a></p>
 	</div><!--.span-->
       </div>
