@@ -32,20 +32,26 @@
 
       <div class="row">
         <div class="span3">
-           <p><em>Приветствуем вас в интернет-магазине "НаСтарт.рф". Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>"Ранний старт"</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь.</em></p>
-           <p align=right><em>Коллектив и-м "НаСтарт.рф"</em></p>
+           <p><em>"Приветствуем вас в интернет-магазине "НаСтарт.рф". Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>"Ранний старт"</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь"</em></p>
+           <p align=right><em>Коллектив интернет-магазина <strong>"НаСтарт.рф"</strong></em></p>
         </div>
         <div class="span7">
 
-		<div id="vk_comments"></div>
+<!-- VK Widget -->
+<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 2, wide: 1, width: "auto"}, 40931878);
+</script>
+
+		<!--div id="vk_comments"></div>
 <script type="text/javascript">
 window.onload = function () {
  VK.init({apiId: 3012373, onlyWidgets: true});
  VK.Widgets.CommentsBrowse('vk_comments', {limit: 3});
 }
-</script>
+</script-->
 
-        </div><!--.span4-->
+        </div><!--.span7-->
       </div><!--.row-->
 
       <div class="row">    
