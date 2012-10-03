@@ -6,6 +6,15 @@
 <div id="myCarousel" class="carousel slide">
             <div class="carousel-inner">
               <div class="item active">
+                <a href="http://club.nastartshop.ru/2012/10/akciya-detki-na-setke/">
+		<img src="/media/slider/akciya/akciya-oktober.jpg" alt="Подарочная акция в октябре">
+		</a>
+                <div class="carousel-caption">
+                  <h4>Акция "Детки на сетке!"</h4>
+                  <p>Подарочная акция от "Раннего старта"</p>
+                </div>
+              </div>
+		<div class="item">
                 <a href="/catalog/dsk-rstart/">
 		<img src="/media/slider/rstart/rs-standard.jpg" alt="">
 		</a>
