@@ -1,17 +1,10 @@
 % layout 'default';
 % title 'Информация для покупателей';
 
-<div class=breadcrumb><a href="/">Главная</a> / Информация для покупателей</div>
-
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / Информация для покупателей</div>
 <div class="page-header">
 	<h1>Информация для покупателей</h1>
 </div><!--.page-header-->
-
-
-<p class="lead">
 % foreach my $page (@{$pages}){
-	<a href="/about/<%= $page->{'url'} %>/"><%= $page->{'title'} %></a><br/>
+	<p><a href="/about/<%= $page->{'url'} %>/"><%= $page->{'title'} %></a></p>
 % };
-<p>
-
-

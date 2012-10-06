@@ -3,110 +3,92 @@
 
 <div class="row">
   <div class="span10">
-<div id="myCarousel" class="carousel slide">
-            <div class="carousel-inner">
-              <div class="item active">
-                <a href="http://club.nastartshop.ru/2012/10/akciya-detki-na-setke/">
-		<img src="/media/slider/akciya/akciya-oktober.jpg" alt="Подарочная акция в октябре">
-		</a>
-                <div class="carousel-caption">
-                  <h4>Акция "Детки на сетке!"</h4>
-                  <p>Подарочная акция от "Раннего старта"</p>
-                </div>
-              </div>
-		<div class="item">
-                <a href="/catalog/dsk-rstart/">
-		<img src="/media/slider/rstart/rs-standard.jpg" alt="">
-		</a>
-                <div class="carousel-caption">
-                  <h4>"Ранний старт"</h4>
-                  <p>Уникальный спортивно-игровой комплекс "пять в одном" для детей от года до 6-7 лет.</p>
-                </div>
-              </div>
-              <div class="item">
-                <a href="http://club.nastartshop.ru/">
-                <img src="/media/slider/rstart/hf-banner.jpg" alt="">
-		</a>
-                <div class="carousel-caption">
-                  <h4>Клуб "Здоровая Семья"</h4>
-                  <p>Присоединяйтесь к нашему сообществу</p>
-                </div>
-              </div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <a href="http://club.nastartshop.ru/2012/10/akciya-detki-na-setke/">
+		        <img src="/media/slider/akciya/akciya-oktober.jpg" alt="Подарочная акция в октябре" title="Подарочная акция в октябре">
+		      </a>
+          <div class="carousel-caption">
+            <h2><h3><h4>Акция "Детки на сетке!"</h4></h3></h2>
+            <p>Подарочная акция от "Раннего старта"</p>
           </div>
+        </div>
+		    <div class="item">
+          <a href="/catalog/dsk-rstart/" title="Каталог развивающих комплексов Ранний старт">
+		        <img src="/media/slider/rstart/rs-standard.jpg" alt="Каталог развивающих комплексов Ранний старт" title="Каталог развивающих комплексов Ранний старт">
+		      </a>
+          <div class="carousel-caption">
+            <h2><h3><h4>"Ранний старт"</h4></h3></h2>
+            <p>Уникальный спортивно-игровой комплекс "пять в одном" для детей от года до 6-7 лет.</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="http://club.nastartshop.ru/" title="Клуб Здоровая Семья">
+            <img src="/media/slider/rstart/hf-banner.jpg" alt="Клуб Здоровая Семья" title="Клуб Здоровая Семья">
+		      </a>
+          <div class="carousel-caption">
+            <h2><h3><h4>Клуб "Здоровая Семья"</h4></h3></h2>
+            <p>Присоединяйтесь к нашему сообществу</p>
+          </div>
+        </div>
+      </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
   </div>
 </div>
+<div class="row">
+  <div class="span5">
+    <p><em>"Приветствуем вас в интернет-магазине "НаСтарт.рф". Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>"Ранний старт"</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь"</em></p>
+    <p align=right><em>Коллектив интернет-магазина <strong>"НаСтарт.рф"</strong></em></p>
+  </div>
+  <div class="span5">
 
-      <div class="row">
-        <div class="span3">
-           <p><em>"Приветствуем вас в интернет-магазине "НаСтарт.рф". Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>"Ранний старт"</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь"</em></p>
-           <p align=right><em>Коллектив интернет-магазина <strong>"НаСтарт.рф"</strong></em></p>
-        </div>
-        <div class="span7">
-
-<!-- VK Widget -->
-<div id="vk_groups"></div>
-<script type="text/javascript">
-VK.Widgets.Group("vk_groups", {mode: 2, wide: 1, width: "auto"}, 40931878);
-</script>
-
-		<!--div id="vk_comments"></div>
-<script type="text/javascript">
-window.onload = function () {
- VK.init({apiId: 3012373, onlyWidgets: true});
- VK.Widgets.CommentsBrowse('vk_comments', {limit: 3});
-}
-</script-->
-
-        </div><!--.span7-->
-      </div><!--.row-->
-
-      <div class="row">    
-	<div class="span10"><hr>
-		<h1>Популярные товары <img src="/media/images/star.png"><img src="/media/images/star.png"><img src="/media/images/star.png"></h1>
+  </div><!--.span7-->
+</div><!--.row-->
+<div class="row">    
+  <div class="span10"><hr>
+    <h1>Популярные товары <img src="/media/images/star.png"><img src="/media/images/star.png"><img src="/media/images/star.png"></h1>
 		<p><a href="/catalog/">Посмотреть весь каталог</a></p>
 	</div><!--.span-->
-      </div>
-      <div class="row">
-        <div class="span9">
+</div>
+<div class="row">
+  <div class="span9">
 
 % if (@{$products}){
-<ul class="thumbnails">
+    <ul class="thumbnails">
 
 % foreach my $productid (@{$products}){
 
-<li class="span3">
-  <div class="thumbnail">
+      <li class="span3">
+        <div class="thumbnail">
 
 % my $image_source = 'noimage';
 % $image_source = $productid->{'url'} if $productid->{'image'};
 % my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
 
-    <a href="<%= url_for $product_link %>" title="">
-        <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
-    </a>
-    <p><h4><%= link_to $productid->{'title'} => $product_link %></h4></p>
-    <p><strong>Цена:</strong> <%= $productid->{'price'} %> р.</p>
-
-    <%= form_for '/cart/' => (method => 'post') => begin %>
-    <%= hidden_field 'prodid' => $productid->{'id'} %>
-    <%= hidden_field 'action' => 'add' %>
-    <%= link_to "Подробнее" => $product_link => (class => 'btn') %>&nbsp;
-    <%= submit_button 'В корзину' => (class => 'btn btn-primary') %>
-    <% end %>
-
-    </div>
-  </li>
-
+          <a href="<%= url_for $product_link %>" title="<%= $productid->{'title'} %>">
+            <center>
+              <img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
+            </center>
+          </a>
+          <p><h2><h3><h4><%= link_to $productid->{'title'} => $product_link %></h4></h3></h3></p>
+          <p><strong>Цена:</strong> <%= $productid->{'price'} %> р.</p>
+          <form action="/cart/" method="post">
+            <input type=hidden id="prodid" name="prodid" value="<%= $productid->{'id'} %>">
+            <input type=hidden id="action" name="action" value="add">
+            <a href="/catalog/$page->{'url'}/$productid->{'url'}.html" class="btn" title="Подробнее о товаре">Подробнее</a>&nbsp;
+            <input type=submit value="Купить" class="btn btn-primary">
+          </form>
+        </div>
+      </li>
 % }
-
-</ul>
+    </ul>
 
 % }   
-        </div><!--.span10-->
-      </div><!--.row-->
+  </div><!--.span9-->
+</div><!--.row-->
 <div class="row">
 	<div class="span10">
 		<p class="lead" align="left"><a href="/catalog/">Посмотрите остальные товары</a> из нашего каталога или прочтите<br/> инструкцию <a href="/about/howtobuy/">"Как совершить покупку в интернет-магазине"</a></p>

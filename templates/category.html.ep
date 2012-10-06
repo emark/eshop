@@ -1,0 +1,47 @@
+% layout 'default';
+% title $page->{'title'};
+
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> / <%= $page->{'title'} %></div>
+<div class="page-header">
+	<h1><%= $page->{'title'} %></h1>
+</div><!--.page-header-->
+<div><!--category description-->
+	<p><em><%== $page->{'description'} %></em></p>
+</div>
+
+% if (@{$product}){
+
+<ul class="thumbnails">
+
+% foreach my $productid (@{$product}){
+	<li class="span3">
+		<div class="thumbnail">
+
+% my $image_source = 'noimage';
+% $image_source = $productid->{'url'} if $productid->{'image'};
+
+			<a href="<%= url_for "/catalog/$page->{'url'}/$productid->{'url'}.html" %>" title="">
+      			<center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
+			</a>
+      		<p><h2><h3><h4><%= link_to $productid->{'title'} => "/catalog/$page->{'url'}/$productid->{'url'}.html" %></h4></h3></h2></p>
+			<p><strong>Цена:</strong> <%=$productid->{'price'}%> р.</p>
+			<form action="/cart/" method="post">
+				<input type=hidden id="prodid" name="prodid" value="<%= $productid->{'id'} %>">
+				<input type=hidden id="action" name="action" value="add">
+				<a href="/catalog/$page->{'url'}/$productid->{'url'}.html" class="btn" title="Подробнее о товаре">Подробнее</a>&nbsp;
+				<input type=submit value="Купить" class="btn btn-primary">
+			</form>
+    </div>
+  </li>
+
+% }
+
+</ul>
+
+% }else{
+
+<div class="well">
+	<p>В этом разделе пока нет товаров. Может быть будут завтра?</a>
+</div>
+
+% }

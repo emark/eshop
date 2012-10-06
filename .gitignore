@@ -5,3 +5,4 @@ app.conf
 public
 .schema
 .dump
+log

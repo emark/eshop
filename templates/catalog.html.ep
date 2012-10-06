@@ -1,50 +1,39 @@
 % layout 'default';
-% title $catalog->{'title'};
+% title 'Каталог товаров';
 
-<div class=breadcrumb><a href="/">Главная</a> / <a href="/catalog/">Каталог товаров</a> / <%= $catalog->{'title'} %></div>
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / Каталог товаров</div>
 <div class="page-header">
-	<h1><%= $catalog->{'title'} %></h1>
+	<h1>Каталог товаров</h1>
 </div><!--.page-header-->
 
-<div><!--category description-->
-	<p><em><%== $catalog->{'description'} %></em></p>
-</div>
-% if (@{$product}){
-<ul class="thumbnails">
+% my %min_price = ();
+% my %category_thumb = ();
 
-% foreach my $productid (@{$product}){
-<li class="span3">
-	<div class="thumbnail">
+% foreach my $key (@{$price}){
+%	$min_price{$key->[0]} = 0 if(!$min_price{$key->[0]});
+%	if($key->[1] < $min_price{$key->[0]} || $min_price{$key->[0]} == 0){
+%		$min_price{$key->[0]} = $key->[1];
+%		$category_thumb{$key->[0]} = 'noimage';
+%		$category_thumb{$key->[0]} = $key->[2] if $key->[3];
+%	};
+% };
 
-% my $image_source = 'noimage';
-% $image_source = $productid->{'url'} if $productid->{'image'};
-
-	<a href="<%= url_for "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %>" title="">
-      	<center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
-		</a>
-      	<p><h4><%= link_to $productid->{'title'} => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" %></h4></p>
-		<p><strong>Цена:</strong> <%=$productid->{'price'}%> р.</p>
-
-		<%= form_for '/cart/' => (method => 'post') => begin %>
-		<%= hidden_field 'prodid' => $productid->{'id'} %>
-		<%= hidden_field 'action' => 'add' %>
-		<%= link_to "Подробнее" => "/catalog/$catalog->{'url'}/$productid->{'url'}.html" => (class => 'btn') %>&nbsp;
-		<%= submit_button 'В корзину' => (class => 'btn btn-primary') %>
-		<% end %>
-
-    </div>
-  </li>
-
+% foreach my $category (@{$categories}){
+<div class="row">
+	<div class="span2">
+		<ul class="thumbnails">
+			<li class="span2">
+				<a href="/catalog/<%= $category->{'url'} %>/" class="thumbnail" title="Переход в раздел каталога">
+					<img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" alt="Переход в раздел каталога" title="Переход в раздел каталога">
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="span8">
+		<h2><h3><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><%= $category->{'title'} %></a><br/>
+		Цена от <%= $min_price{$category->{'url'}} %> руб.</h3></h2>
+		<p><em><%== $category->{'description'} %></em></p>
+		<p><em><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога">Перейти в раздел каталога&nbsp;&rarr;</a></em></p>
+	</div>
+</div><!--.row-->
 % }
-
-</ul>
-
-% }else{
-
-<div class="well">
-	<p>В этом разделе пока нет товаров. Может быть будут завтра?</a>
-</div>
-
-% }
-
-

@@ -22,8 +22,21 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
-my $ua = Mojo::UserAgent->new();
-my $news = $ua->get("http://club.nastartshop.ru/api/get_recent_posts/")->res->json;
+#my $ua = Mojo::UserAgent->new();
+#my $news = $ua->get("http://club.nastartshop.ru/api/get_recent_posts/")->res->json;
+my $news = '';
+
+get '/news' => sub{
+	my $self = shift;
+	my $page = {'url' => 'news'};
+	my $ua = Mojo::UserAgent->new();
+	my $news = $ua->get("http://club.nastartshop.ru/api/get_recent_posts/")->res->json;
+	
+    $self->stash(
+		page => $page,
+        news => $news,
+    );
+};
 
 get '/checkout' => sub {
 	my $self=shift;
@@ -257,23 +270,24 @@ get '/catalog' => sub{
 			'caturl',
 			'price',
 			'url',
+			'image',
 		],
 		where => 'instore >= 0',
 	);
 
 	$self->stash(
-		catalog => $catalog,
+		page => $catalog,
 		categories => $categories->fetch_hash_all,
 		price => $price->fetch_all,
 		news => $news,
 	);
-	$self->render('categories');
+	$self->render('catalog');
 };
 
 get '/catalog/:caturl' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');
-	my $catalog = $dbi->select(
+	my $page = $dbi->select(
 						table => 'pages',
 						column => [
 							'title',
@@ -295,14 +309,14 @@ get '/catalog/:caturl' => sub {
 		],
 		where => {'caturl' => $caturl},
 	);
-	my $has_content = $catalog->one;
+	my $has_content = $page->one;
 	$self->stash(news => $news);
     return $self->render(status => 404, template =>'not_found') if !$has_content;
 	$self->stash(
 		product => $result->fetch_hash_all,
-		catalog => $has_content,
+		page => $has_content,
 	);
-	$self->render('catalog');
+	$self->render('category');
 };
 
 get '/catalog/:caturl/:produrl' => sub {
@@ -341,14 +355,14 @@ get '/catalog/:caturl/:produrl' => sub {
     return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
 		product => $has_content,
-		catalog => $catalog->one,
+		page => $catalog->one,
 	);
 	$self->render('product');
 };
 
 get '/about' => sub{
     my $self = shift;
-    my $catalog = {'url' => 'about'};
+    my $page = {'url' => 'about'};
     my $pages = $dbi->select(
         table => 'pages',
         column => [
@@ -360,7 +374,7 @@ get '/about' => sub{
     );
 
     $self->stash(
-		catalog => $catalog,
+		page => $page,
         pages => $pages->fetch_hash_all,
         news => $news,
     );
@@ -384,14 +398,14 @@ get '/about/:pageurl' => sub{
 	$self->stash(news => $news);
 	return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
-		catalog => $has_content,
+		page => $has_content,
 	);
 	$self->render('page');
 };
 
 get '/' => sub{
 	my $self = shift;
-	my $catalog = {'url' => 'index'};
+	my $page = {'url' => 'index'};
 	my $result = $dbi->select(
         table => 'products',
         column => [
@@ -408,7 +422,7 @@ get '/' => sub{
     );
 	$self->stash(
 		news => $news,
-		catalog => $catalog,
+		page => $page,
 		products => $result->fetch_hash_all,
 	);
 	$self->render('index');

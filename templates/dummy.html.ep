@@ -2,9 +2,8 @@
 % title $page_title;
 
 <div class="page-header">
-<h1><%= $page_caption %></h1>
+	<h1><%= $page_caption %></h1>
 </div><!--.page-header-->
-
 <div class="well">
-<%= $message %>
+	<%= $message %>
 </div>
