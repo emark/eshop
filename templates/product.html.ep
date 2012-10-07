@@ -1,5 +1,6 @@
 % layout 'default';
 % title $product->{'title'}.' / '.$page->{'title'};
+% stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 
 <div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> / <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a> / <%= $product->{'title'} %></div>
 <div class="page-header">
@@ -9,25 +10,19 @@
 	<div class="span3">
 		<ul class="thumbnails">
 			<li class="span3">
-
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
-
 % my $instore_class = 'success'; #Setting up instore
 % $instore_class = 'important' if $product->{'instore'} == -1;
 % $instore_class = 'warning' if $product->{'instore'} == 0;
 % my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Уточняйте');
-
 				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
       				<img src="/media/products/middle/<%= $image_source %>.jpg" alt="<%= $product->{'title'} %>" title="<%= $product->{'title'} %>">
     			</a>
 			</li>	
 		</ul>
-
 		<p>Наличие: <span class="label label-<%= $instore_class %>"><%= $instore_labels{$instore_class} %></span></p>
-
 % my $articul = sprintf ("%06s",$product->{'id'});
-
 		<p>Артикул: <%= $articul %></p>
 		<p><h2><h3>Цена: <%= $product->{'price'} %> р.</h3></h2></p>
 		<form action="/cart/" method=post>
@@ -40,24 +35,20 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
 			<li><a href="#comments" data-toggle="tab">Комментарии</a></li>
-
 % #Create vk_album tab-pane
 % my $vk_album = '<a href="#vk_album" data-toggle="tab">';
 % $vk_album = "<a href=\"http://vk.com/album-$product->{'vk_album'}\" target=_blank>" if $product->{'vk_album'};
-
 			<li><%== $vk_album %>Изображения товара</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
-
 % my @content = ();
 % @content=split('#',$product->{'description'});
 % if(@content){
-% foreach my $key(@content){
+% 	foreach my $key(@content){
 				<p><%= $key %></p>
+% 	}
 % }
-% }
-
 % @content=split('#',$product->{'settings'});
 % if(@content){
 				<dl>
@@ -65,32 +56,27 @@
 					<dd>
 						<ol>
 % @content=split('#',$product->{'settings'});
-% foreach my $key(@content){
+% 	foreach my $key(@content){
 							<li><%= $key %></li>
-% }
+% 	}
 						</ol>
 					</dd>
 % }
 				</dl>
-
 % @content=split('#',$product->{'features'});
 % if(@content){
-		
 				<dl>
 					<dt>Параметры</strong></dt>
 				</dl>
 				<table class="table">
 					<tbody>
-
-% foreach my $key(@content){
-%	my($param,$value)=split(':',$key);
+% 	foreach my $key(@content){
+%		my($param,$value)=split(':',$key);
 						<tr><td><%= $param %></td><td><%= $value %></td></tr>
-% }
+% 	}
 					</tbody>
 				</table>
-
 % }
-
 			</div>
 			<div id="comments" class="tab-pane">
 				<div id="vk_comments"></div>

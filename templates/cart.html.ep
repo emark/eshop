@@ -1,12 +1,11 @@
-% layout 'nocartinfo';
+% layout 'pure';
 % title 'Ваша корзина';
+% stash->{'metadescription'} = 'Страница корзины заказов. На странице можно редактировать и изменять список товаров';
 
 <div class="page-header">
 	<h1>Ваша корзина</h1>
 </div><!--.page-header-->
-
 %my $total_cart=0;
-
 <div class="row">
 	<div class="span10">
 		<table class="table" border=0>
@@ -21,14 +20,10 @@
 			</tr>
 		<thead>
 		<tbody>
-
-<%foreach my $product(@{$products}){%>
-
+% foreach my $product(@{$products}){
 			<tr>
 				<td><a href="/catalog/<%= $product->{'caturl'} %>/<%= $product->{'url'} %>.html" title="Посмотреть характеристики товара"><%= $product->{'title'} %></a></td>
-
-% my $articul = sprintf ("%06s",$product->{'id'});
-
+% 	my $articul = sprintf ("%06s",$product->{'id'});
 				<td><%= $articul %></td>
 				<td><%= $product->{'price'} %> руб.</td> 
 				<td><center>
@@ -44,7 +39,7 @@
 					<a href="#" title="Убрать товар из корзины" class="btn btn-danger" onClick="submitDetailsForm('drop',<%= $product->{'id'} %>)"><i class="icon-remove icon-white"></i></a>
 				</td>
 			</tr>
-% $total_cart = $total_cart+$cart->{$product->{'id'}}*$product->{'price'};
+% 	$total_cart = $total_cart+$cart->{$product->{'id'}}*$product->{'price'};
 % }
 		</tbody>
 		</table>
@@ -56,7 +51,6 @@
 		<a href="/checkout/" class="btn btn-large">Оформить заказ&nbsp;&rarr;</a>
 	</div>
 </div>
-
 <script language ="javascript" type = "text/javascript" >
     function submitDetailsForm($action,$id)
     {
@@ -65,7 +59,6 @@
        $("#updatecart").submit();
     }
 </script>
-
 <form action="/cart/" method="post" id="updatecart" name="updatecart">
 	<input type=hidden id=action value="" name=action>
 	<input type=hidden id=prodid value="" name=prodid>

@@ -7,25 +7,18 @@
     <meta name="description" content="<%= stash->{'metadescription'} %>">
     <meta name="author" content="www.nastartshop.ru">
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
-
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="/assets/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
-    
+        
     <script src="/assets/js/jquery.js"></script>
-    <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
-    <script type="text/javascript">
-		Shadowbox.init();
-    </script>
     <script type="text/javascript">
 	var _gaq = _gaq || [];
 	_gaq.push(['_setAccount', 'UA-10023555-5']);
@@ -38,16 +31,9 @@
 	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
     </script>
-    <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
-    <script type="text/javascript">
-		VK.init({apiId: 3012373, onlyWidgets: true});
-    </script>
   </head>
   <body>
   	<div class="container">
-% #Initialize active page class 
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'howtobuy' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
-% $active_link{$page->{'url'}} = 'class="active"';
 		<div class="row">
 			<div class="span2">
 				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
@@ -55,47 +41,34 @@
 			</div>
 			<div class="span6">
 				<ul class="nav nav-pills top-menu">
-					<li <%== $active_link{'index'} %>><a href="/" title="Переход на главную страницу">Главная</a></li>
-					<li <%== $active_link{'news'} %>><a href="/news/" title="Новости, текущие акции, скидки">Новости</a></li>
-					<li <%== $active_link{'catalog'} %>><a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог</a></li>
-					<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/" title="Условия доставки и оплаты">Доставка и оплата</a></li>
-					<li <%== $active_link{'stores'} %>><a href="/about/stores/" title="Контактная информация и адреса магазинов">Контакты</a></li>
+					<li><a href="/" title="Переход на главную страницу">Главная</a></li>
+					<li><a href="/news/" title="Новости, текущие акции, скидки">Новости</a></li>
+					<li><a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог</a></li>
+					<li><a href="/about/delivery-and-payment/" title="Условия доставки и оплаты">Доставка и оплата</a></li>
+					<li><a href="/about/stores/" title="Контактная информация и адреса магазинов">Контакты</a></li>
 				</ul>
 			</div>
 			<div class="span4">
  				 <div align="right">
 					<p><em>Пн.-Пт. с 10:00 до 19:00<br/>Сб.-Вс. с 11:00 до 16:00</em></p>
 					<h2><h3>+7 (391) 29-202-29<br/>+7 (391) 25-653-21</h3></h2>
-					<p><i class="icon-shopping-cart">&nbsp;</i>
-% #Cart information
-% my $cartinfo=0;
-% my @productid = keys %{session->{'cart'}} if session->{'cart'};
-% foreach my $key (@productid){
-%	$cartinfo=$cartinfo+session->{'cart'}{$key};
-% }
-% if($cartinfo==0){
-					Корзина пока пуста :(
-% }else{
-					<a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span>
-% }
-					</p>
 				 </div>
 			</div>
-		</div>
+		</div><!--.row-->
 		<div class="row">
     		<div class="span2">
 		    	<ul class="nav nav-list">
 					<li class="nav-header">Каталог товаров</li>
-					<li <%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
-					<li <%== $active_link{'dsk-wall'} %>><a href="/catalog/dsk-wall/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
-					<li <%== $active_link{'dsk-slide'} %>><a href="/catalog/dsk-slide/" title="Распорные спорткомплексы">Распорные спорткомплексы</a></li>
-					<li <%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
-					<li <%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к спорткомплексам</a></li>
+					<li><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
+					<li><a href="/catalog/dsk-wall/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
+					<li><a href="/catalog/dsk-slide/" title="Распорные спорткомплексы">Распорные спорткомплексы</a></li>
+					<li><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
+					<li><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к спорткомплексам</a></li>
 					<li class="nav-header">Информация для покупателей</li>
-					<li <%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия и возврат</a></li>
-					<li <%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
-					<li <%== $active_link{'howtobuy'} %>><a href="/about/howtobuy/">Как купить?</a></li>
-					<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
+					<li><a href="/about/warranty/">Гарантия и возврат</a></li>
+					<li><a href="/about/stores/">Где купить?</a></li>
+					<li><a href="/about/howtobuy/">Как купить?</a></li>
+					<li><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
 					<li><a href="http://club.nastartshop.ru"><strong>Клуб "Здоровая семья"</strong></a></li>
 				</ul>
 				<div>
@@ -136,7 +109,7 @@
 		</footer>
     </div>
     <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
-    <script src="/assets/js/bootstrap.js"></script>
+	<script src="/assets/js/bootstrap.js"></script>
 
 	<!-- Yandex.Metrika counter -->
 		<script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter14441680 = new Ya.Metrika({id:14441680, clickmap:true, trackLinks:true, webvisor:true}); } catch(e) {} }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/14441680" style="position:absolute; left:-9999px;" alt="" /></div></noscript>

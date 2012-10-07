@@ -1,5 +1,6 @@
-% layout 'nocartinfo';
+% layout 'pure';
 % title 'Оформление заказа';
+% stash->{'metadescription'} = 'Страница оформления заказа. Интернет-магазин НаСтарт. Домашние спортивные комплексы для детей.';
 % my $total_cart=0;
 % my $missing = stash->{missing};
 % my $messages = stash->{messages};
@@ -9,38 +10,26 @@
 </div><!--.page-header-->
 <div class="alert alert-info" id="checkorder">
 	<h2><h3><h4 class="alert-heading">Ваш заказ</h4></h3></h2>
-
 % my $n=0;
 % foreach my $product(@{$products}){
-% $n++;
-
+% 	$n++;
 	<em>
 	<%= $product->{'title'} %> * <%= $cart->{$product->{'id'}} %> = <%= $product->{'price'} * $cart->{$product->{'id'}} %> руб.
-
-% $total_cart = $total_cart+$cart->{$product->{'id'}} * $product->{'price'};
-
+% 	$total_cart = $total_cart+$cart->{$product->{'id'}} * $product->{'price'};
 	</em><br/>
 % };
-
 	<b>Общий итог: <%=$total_cart%> руб.</b> <a href="/cart/" class="btn btn-mini">Редактировать</a>
-
 </div><!--alert alert-info-->
-
 % if ($missing){
-
 <div class="alert">
 	<button class="close" data-dismiss="alert">×</button>
 	<span style="color:red">Заполните поля со знаком *</span>
 </div><!--.alert-->
-
 % }
-
 <form class="form-horizontal" action="/checkout/" method="post" id="CheckoutForm">
 	<fieldset>
-
 % my $error_class = '';
 % $error_class = $messages->{person};
-
 	<div class="control-group <%= $error_class %>">
 		<label class="control-label" for="person">Имя</label>
 		<div class="controls">	
@@ -50,10 +39,8 @@
 % }
 		</div>
 	</div>
-
 % $error_class = '';
 % $error_class = $messages->{tel};
-	
 	<div class="control-group <%= $error_class %>">
 		<label class="control-label" for="tel"><strong>Телефон*</strong></label>
 		<div class="controls">
@@ -61,22 +48,17 @@
 % if($error_class){
 			<span class="help-inline">Введите контактный номер телефона</span>
 % }
-
 		</div>
 	</div>
-
 % $error_class = '';
 % $error_class = $messages->{email};
 	<div class="control-group <%= $error_class %>">
 		<label class="control-label" for="email">Почта</label>
 		<div class="controls">
-
 			<%= text_field 'email' => (class => "span3", type => "text") %>
-
 % if($error_class){
 			<span class="help-inline">Укажите корректный адрес</span>
 % }
-
 		</div>	
 	</div>
 	<div class="control-group">
@@ -111,7 +93,6 @@
 	<input type=submit class="btn btn-primary btn-large" value="Подтвердить заказ">
 	</fieldset>
 </form>
-
 <script language ="javascript" type = "text/javascript" >
     function submitDetailsForm($action,$id)
     {

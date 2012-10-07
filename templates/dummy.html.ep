@@ -1,5 +1,6 @@
-% layout 'nocartinfo';
+% layout 'pure';
 % title $page_title;
+% stash->{'metadescription'} = 'Домашние спортивные комплексы для детей и взрослых. Интернет-магазин НаСтарт';
 
 <div class="page-header">
 	<h1><%= $page_caption %></h1>

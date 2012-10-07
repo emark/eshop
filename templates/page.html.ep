@@ -1,5 +1,6 @@
 % layout 'default';
 % title $page->{'title'};
+% stash->{'metadescription'} = $page->{'metadescription'};
 
 <div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/about/" title="Справочная информация для покупателей">Информация для покупателей</a> / <%= $page->{'title'} %></a></div>
 <div class="page-header">

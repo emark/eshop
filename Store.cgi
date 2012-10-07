@@ -22,10 +22,6 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
-#my $ua = Mojo::UserAgent->new();
-#my $news = $ua->get("http://club.nastartshop.ru/api/get_recent_posts/")->res->json;
-my $news = '';
-
 get '/news' => sub{
 	my $self = shift;
 	my $page = {'url' => 'news'};
@@ -47,7 +43,6 @@ get '/checkout' => sub {
 		page_title => 'Ваша корзина',
         page_caption => 'Ваша корзина',
 		message => 'К сожалению ваша корзина пока пуста. Оформлять нечего :(',
-		news => $news,
 	);
     return $self->render('dummy') if $countpid==0 ;
 	
@@ -65,7 +60,6 @@ get '/checkout' => sub {
     $self->stash(
         cart => $cart,
         products => $result->fetch_hash_all,
-		news => $news,
     );
 	$self->render('checkout');
 };
@@ -79,7 +73,6 @@ post '/checkout' => sub {
 		message => 'Сожалеем, но ваша корзина пока ещё пуста :(',
 		page_title => 'Ваша корзина',
         page_caption => 'Ваша корзина',
-		news => $news,
 	);
     return $self->render('dummy') if $countpid==0 ;
 
@@ -154,7 +147,6 @@ post '/checkout' => sub {
 		$self->stash(
         	cart => $cart,
 	        products => $result->fetch_hash_all,
-			news => $news,
 	    );
 		$self->stash(missing => 1) if $vresult->has_missing;
 		$self->stash(messages => $vresult->messages_to_hash) if $vresult->has_invalid;
@@ -169,7 +161,6 @@ get '/thankyou' => sub {
 		page_title => 'Спасибо за заказ',
 		page_caption => 'Заказ оформлен',
 		message=>'Поздравляем! Ваш заказ оформлен. Мы скоро перезвоним вам.',
-		news => $news,
 	);
 	$self->render('dummy');
 };
@@ -183,7 +174,6 @@ get '/cart' => sub {
 		page_title => 'Ваша корзина',
 		page_caption => 'Ваша корзина',
 		message => 'Нам очень жаль, но похоже, что ваша корзина пуста :(',
-		news => $news,
 	);
 	return $self->render('dummy') if $countpid == 0;
 
@@ -227,7 +217,6 @@ post '/cart' => sub{
         page_title => 'Пустая корзина',
         page_caption => 'Ваша корзина',
         message => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?',
-		news => $news,
     );
     return $self->render('dummy') if $countpid == 0;
 
@@ -247,7 +236,6 @@ post '/cart' => sub{
     $self->stash(
 		products => $result->fetch_hash_all,
 		cart => $cart,
-		news => $news,
 	);
     $self->render('cart');
 };
@@ -279,7 +267,6 @@ get '/catalog' => sub{
 		page => $catalog,
 		categories => $categories->fetch_hash_all,
 		price => $price->fetch_all,
-		news => $news,
 	);
 	$self->render('catalog');
 };
@@ -291,6 +278,7 @@ get '/catalog/:caturl' => sub {
 						table => 'pages',
 						column => [
 							'title',
+							'metadescription',
 							'url',
 							'description',
 						],
@@ -310,7 +298,6 @@ get '/catalog/:caturl' => sub {
 		where => {'caturl' => $caturl},
 	);
 	my $has_content = $page->one;
-	$self->stash(news => $news);
     return $self->render(status => 404, template =>'not_found') if !$has_content;
 	$self->stash(
 		product => $result->fetch_hash_all,
@@ -323,11 +310,12 @@ get '/catalog/:caturl/:produrl' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');
 	my $produrl = $self->param('produrl');
-    my $catalog = $dbi->select(
+    my $category = $dbi->select(
 		table => 'pages',
         column => [
 			'title',
-			'url'
+			'url',
+			'metadescription',
 		],
         where => {'url' => $caturl},
 	);
@@ -336,6 +324,7 @@ get '/catalog/:caturl/:produrl' => sub {
         column => [
 			'id',
 			'title',
+			'metadescription',
 			'price',
 			'description',
 			'settings',
@@ -351,11 +340,10 @@ get '/catalog/:caturl/:produrl' => sub {
 		},
 	);
 	my $has_content = $result->fetch_hash;
-	$self->stash(news => $news);
     return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
 		product => $has_content,
-		page => $catalog->one,
+		page => $category->one,
 	);
 	$self->render('product');
 };
@@ -376,7 +364,6 @@ get '/about' => sub{
     $self->stash(
 		page => $page,
         pages => $pages->fetch_hash_all,
-        news => $news,
     );
     $self->render('about');
 };
@@ -389,13 +376,13 @@ get '/about/:pageurl' => sub{
         column => [
 			'title',
 			'url',
+			'metadescription',
 			'description',
 			'content',
 		],
         where => {'url' => $pageurl},
     );
 	my $has_content = $result->one || undef;
-	$self->stash(news => $news);
 	return $self->render(status => 404, template => 'not_found') if !$has_content;
 	$self->stash(
 		page => $has_content,
@@ -405,13 +392,15 @@ get '/about/:pageurl' => sub{
 
 get '/' => sub{
 	my $self = shift;
-	my $page = {'url' => 'index'};
-	my $result = $dbi->select(
+	my $page = {
+		'url' => 'index',
+		'metadescription' => 'купить спортивные домашние комплексы'
+	};
+	my $products = $dbi->select(
         table => 'products',
         column => [
             'title',
             'url',
-            'anonse',
             'instore',
             'id',
             'price',
@@ -421,9 +410,8 @@ get '/' => sub{
 		where => {'popular' => 1},
     );
 	$self->stash(
-		news => $news,
 		page => $page,
-		products => $result->fetch_hash_all,
+		products => $products->fetch_hash_all,
 	);
 	$self->render('index');
 };
