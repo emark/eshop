@@ -1,3 +1,14 @@
+% #===Initialize active page class 
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'howtobuy' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
+% $active_link{$page->{'url'}} = ' class="active"';
+%#
+% #===Cart information
+% my $cartinfo=0;
+% my @productid = keys %{session->{'cart'}} if session->{'cart'};
+% foreach my $key (@productid){
+%	$cartinfo=$cartinfo+session->{'cart'}{$key};
+% };
+%#
 <!DOCTYPE html>
 <html lang="ru">
   <head>
@@ -7,6 +18,7 @@
     <meta name="description" content="<%= stash->{'metadescription'} %>">
     <meta name="author" content="www.nastartshop.ru">
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/application.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -31,80 +43,82 @@
 	_gaq.push(['_setAccount', 'UA-10023555-5']);
 	_gaq.push(['_setDomainName', 'nastartshop.ru']);
 	_gaq.push(['_trackPageview']);
-
 	(function() {
 	  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 	  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
     </script>
-% if ($page->{'url'} eq 'news'){
     <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
     <script type="text/javascript">
 		VK.init({apiId: 3012373, onlyWidgets: true});
     </script>
-% };
   </head>
   <body>
   	<div class="container">
-% #Initialize active page class 
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'howtobuy' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
-% $active_link{$page->{'url'}} = 'class="active"';
-		<div class="row">
-			<div class="span12">
-				<center>
-					<span class="toplevel-menu"><a href="/" title="Переход на главную страницу">Главная</a></span>
-					<span class="toplevel-menu"><a href="/news/" title="Новости, текущие акции, скидки">Новости</a></span>
-					<span class="toplevel-menu"><a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог</a></span>
-					<span class="toplevel-menu"><a href="/about/delivery-and-payment/" title="Условия доставки и оплаты">Доставка и оплата</a></span>
-					<span class="toplevel-menu"><a href="/about/stores/" title="Контактная информация и адреса магазинов">Контакты</a></span>
-				</center>
-			</div>
-		</div>
 		<div class="row">
 			<div class="span3">
 				<p><center><a href="/"><img src="/media/images/logo.png" width=90 height=100 border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
 				<em>интернет-магазин</em></p>
 			</div>
-			<div class="span6">
- 				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://dev.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': true, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
- 			</div>
-			<div class="span3">
-				 <div>
- 				 	<h2><h3><center>+7 (391) 29-202-29 / +7 (391) 25-653-21</center></h3></h2>
-					<p><center><em>Пн.-Пт. с 10:00 до 19:00 Сб.-Вс. с 11:00 до 16:00</em></center></p>
+			<div class="span7">
+				<div class="toplevel-menu">
+					% if ($page->{'url'} eq 'index'){
+					<strong>Главная</strong>
+					% }else{
+					<a href="/" title="Переход на главную страницу">Главная</a>
+					% };
+					% if ($page->{'url'} eq 'news'){
+					<strong>Новости</strong>
+					% }else{	
+					<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
+					% };
+					% if ($page->{'url'} eq 'catalog'){
+					<strong>Каталог</strong>
+					% }else{	
+					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог</a>
+					% };
+					% if ($page->{'url'} eq 'delivery-and-payment'){
+					<strong>Доставка и оплата</strong>
+					% }else{
+					<a href="/about/delivery-and-payment/" <%== $active_link{'delivery-and-payment'} %> title="Условия доставки и оплаты">Доставка и оплата</a>
+					% };
+					% if ($page->{'url'} eq 'stores'){
+					<strong>Контакты</strong>
+					% }else{
+					<a href="/about/stores/" <%== $active_link{'stores'} %> title="Контактная информация и адреса магазинов">Контакты</a>
+					% };
 				</div>
+ 				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://dev.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></em></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+ 			</div>
+			<div class="span2">
+				 <div class="align-right"><div class="toplevel-menu">Красноярск</div><strong>+7 (391) 29-202-29<br/>+7 (391) 25-653-21</strong>
 				<p><i class="icon-shopping-cart">&nbsp;</i>
-% #Cart information
-% my $cartinfo=0;
-% my @productid = keys %{session->{'cart'}} if session->{'cart'};
-% foreach my $key (@productid){
-%	$cartinfo=$cartinfo+session->{'cart'}{$key};
-% }
-% if($cartinfo==0){
-					Корзина пока пуста :(
-% }else{
-					<a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span>
-% }
-					</p>
+					<a href="/cart/" title="Переход в корзину">Корзина покупок</a>
+				</p>
+				</div>
 			</div>
 		</div>
 		<div class="row">
     		<div class="span3">
-		    	<ul class="nav nav-list">
-					<li class="nav-header">Каталог спортивных комплексов</li>
-					<li <%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
-					<li <%== $active_link{'dsk-wall'} %>><a href="/catalog/dsk-wall/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
-					<li <%== $active_link{'dsk-slide'} %>><a href="/catalog/dsk-slide/" title="Распорные спорткомплексы">Распорные спорткомплексы</a></li>
-					<li <%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
-					<li <%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к спорткомплексам</a></li>
-					<li class="nav-header">Информация для покупателей</li>
-					<li <%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия и возврат</a></li>
-					<li <%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
-					<li <%== $active_link{'howtobuy'} %>><a href="/about/howtobuy/">Как купить?</a></li>
-					<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
-					<li><a href="http://club.nastartshop.ru"><strong>Клуб "Здоровая семья"</strong></a></li>
-				</ul>
+    			<div class="leftbar-menu">
+    				<p>КАТАЛОГ СПОРТКОМПЛЕКСОВ</p>
+		    		<ul class="nav nav-list">
+						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
+						<li<%== $active_link{'dsk-wall'} %>><a href="/catalog/dsk-wall/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
+						<li<%== $active_link{'dsk-slide'} %>><a href="/catalog/dsk-slide/" title="Распорные спорткомплексы">Распорные спорткомплексы</a></li>
+						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
+						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к спорткомплексам</a></li>
+					</ul>
+					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
+					<ul class="nav nav-list">
+						<li<%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия и возврат</a></li>
+						<li<%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
+						<li<%== $active_link{'howtobuy'} %>><a href="/about/howtobuy/">Как купить?</a></li>
+						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
+						<li><a href="http://club.nastartshop.ru"><strong>Клуб "Здоровая семья"</strong></a></li>
+					</ul>
+				</div>
    			</div>
    			<div class="span9">
 <!-- Page content -->

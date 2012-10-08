@@ -2,9 +2,9 @@
 % title "Новости";
 % stash->{'metadescription'} = 'Новостной раздел интернет-магазина НаСтарт. Информация о подарочных акциях, новости о скидках.';
 
-<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / Новости</div>
-<div class="page-header">
-	<h1>Наши новости</h1>
+<div>
+	<p style="font-size:26px">Наши новости</p>
+	<hr>
 </div><!--.page-header-->
 <div>
 % if($news){
@@ -17,11 +17,4 @@
 		<a href="http://club.nastartshop.ru/category/news/" title="Читать все новости" target=_blank><strong>Читать все новости</strong></a> | 
 		<a href="http://club.nastartshop.ru/feed/" title="Подписка на новости" target=_blank><strong>Подписаться на новости (RSS)</strong></a>
 	</p>
-	<div>
-		<h2><h3>Новости группы ВКонтакте</h3></h2>
-		<div id="vk_groups"></div>
-		<script type="text/javascript">
-			VK.Widgets.Group("vk_groups", {mode: 2, wide: 1, width: "auto"}, 40931878);
-		</script>
-	</div>
 </div>

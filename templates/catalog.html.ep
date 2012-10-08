@@ -1,15 +1,8 @@
 % layout 'default';
 % title 'Каталог товаров';
 % stash->{'metadescription'} = 'Страница каталога товаров. Вы можете выбрать нужную категорию и купить спортивный комплекс. В интернет-магазине НаСтарт вы найдете детские спортивные комплексы';
-
-<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / Каталог товаров</div>
-<div class="page-header">
-	<h1>Каталог товаров</h1>
-</div><!--.page-header-->
-
 % my %min_price = ();
 % my %category_thumb = ();
-
 % foreach my $key (@{$price}){
 %	$min_price{$key->[0]} = 0 if(!$min_price{$key->[0]});
 %	if($key->[1] < $min_price{$key->[0]} || $min_price{$key->[0]} == 0){
@@ -18,7 +11,10 @@
 %		$category_thumb{$key->[0]} = $key->[2] if $key->[3];
 %	};
 % };
-
+<div>
+	<p style="font-size:26px">Каталог товаров</p>
+	<hr>
+</div>
 % foreach my $category (@{$categories}){
 <div class="row">
 	<div class="span2">
