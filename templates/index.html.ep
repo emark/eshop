@@ -3,7 +3,7 @@
 % stash->{'metadescription'} = 'Домашние спортивные комплексы для детей и взрослых. Интернет-магазин НаСтарт';
 
 <div class="row">
-  <div class="span10">
+  <div class="span9">
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
@@ -40,13 +40,13 @@
   </div>
 </div>
 <div class="row">
-  <div class="span10">
+  <div class="span9">
     <p><em>"Приветствуем вас в интернет-магазине "НаСтарт.рф". Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>"Ранний старт"</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь"</em></p>
     <p align=right><em>Коллектив интернет-магазина <strong>"НаСтарт.рф"</strong></em></p>
   </div>
 </div>
 <div class="row">    
-  <div class="span10"><hr>
+  <div class="span9"><hr>
     <h1>Популярные товары <img src="/media/images/star.png"><img src="/media/images/star.png"><img src="/media/images/star.png"></h1>
 		<p><a href="/catalog/">Посмотреть весь каталог</a></p>
 	</div>
@@ -55,35 +55,34 @@
   <div class="span9">
 % if (@{$products}){
     <ul class="thumbnails">
-% foreach my $productid (@{$products}){
+%   foreach my $productid (@{$products}){
       <li class="span3">
         <div class="thumbnail">
-% my $image_source = 'noimage';
-% $image_source = $productid->{'url'} if $productid->{'image'};
-% my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
-          <a href="<%= url_for $product_link %>" title="<%= $productid->{'title'} %>">
+%   my $image_source = 'noimage';
+%   $image_source = $productid->{'url'} if $productid->{'image'};
+%   my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
+          <a href="<%= $product_link %>" title="<%= $productid->{'title'} %>">
             <center>
               <img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
             </center>
           </a>
-          <p><h2><h3><h4><%= link_to $productid->{'title'} => $product_link %></h4></h3></h3></p>
+          <p><strong><a href="<%= $product_link %>" title="<%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></strong></p>
           <p><strong>Цена:</strong> <%= $productid->{'price'} %> р.</p>
           <form action="/cart/" method="post">
             <input type=hidden id="prodid" name="prodid" value="<%= $productid->{'id'} %>">
             <input type=hidden id="action" name="action" value="add">
-            <a href="/catalog/$page->{'url'}/$productid->{'url'}.html" class="btn" title="Подробнее о товаре">Подробнее</a>&nbsp;
+            <a href="/catalog/<%= $productid->{'caturl'} %>/<%= $productid->{'url'} %>.html" class="btn" title="Подробнее о товаре">Подробнее</a>&nbsp;
             <input type=submit value="Купить" class="btn btn-primary">
           </form>
         </div>
       </li>
-% }
+%   }
     </ul>
-
 % }   
-  </div><!--.span9-->
-</div><!--.row-->
+  </div>
+</div>
 <div class="row">
 	<div class="span10">
 		<p class="lead" align="left"><a href="/catalog/">Посмотрите остальные товары</a> из нашего каталога или прочтите<br/> инструкцию <a href="/about/howtobuy/">"Как совершить покупку в интернет-магазине"</a></p>
-	</div><!--.span-->
-</div><!--.row-->
+	</div>
+</div>

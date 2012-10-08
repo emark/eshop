@@ -38,10 +38,12 @@
 	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
     </script>
+% if ($page->{'url'} eq 'news'){
     <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
     <script type="text/javascript">
 		VK.init({apiId: 3012373, onlyWidgets: true});
     </script>
+% };
   </head>
   <body>
   	<div class="container">
@@ -50,28 +52,29 @@
 % $active_link{$page->{'url'}} = 'class="active"';
 		<div class="row">
 			<div class="span12">
-				<ul class="nav nav-pills top-menu">
-					<li <%== $active_link{'index'} %>><a href="/" title="Переход на главную страницу">Главная</a></li>
-					<li <%== $active_link{'news'} %>><a href="/news/" title="Новости, текущие акции, скидки">Новости</a></li>
-					<li <%== $active_link{'catalog'} %>><a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог</a></li>
-					<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/" title="Условия доставки и оплаты">Доставка и оплата</a></li>
-					<li <%== $active_link{'stores'} %>><a href="/about/stores/" title="Контактная информация и адреса магазинов">Контакты</a></li>
-				</ul>
+				<center>
+					<span class="toplevel-menu"><a href="/" title="Переход на главную страницу">Главная</a></span>
+					<span class="toplevel-menu"><a href="/news/" title="Новости, текущие акции, скидки">Новости</a></span>
+					<span class="toplevel-menu"><a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог</a></span>
+					<span class="toplevel-menu"><a href="/about/delivery-and-payment/" title="Условия доставки и оплаты">Доставка и оплата</a></span>
+					<span class="toplevel-menu"><a href="/about/stores/" title="Контактная информация и адреса магазинов">Контакты</a></span>
+				</center>
 			</div>
 		</div>
 		<div class="row">
-			<div class="span2">
-				<p align=center><a href="/"><img src="/media/images/logo.png" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
-				<em>интернет-магазин</em><br/>
+			<div class="span3">
+				<p><center><a href="/"><img src="/media/images/logo.png" width=90 height=100 border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><br/>
+				<em>интернет-магазин</em></p>
 			</div>
 			<div class="span6">
-				
-			</div>
-			<div class="span4">
- 				 <div align="right">
-					<p><em>Пн.-Пт. с 10:00 до 19:00<br/>Сб.-Вс. с 11:00 до 16:00</em></p>
-					<h2><h3>+7 (391) 29-202-29<br/>+7 (391) 25-653-21</h3></h2>
-					<p><i class="icon-shopping-cart">&nbsp;</i>
+ 				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://dev.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': true, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+ 			</div>
+			<div class="span3">
+				 <div>
+ 				 	<h2><h3><center>+7 (391) 29-202-29 / +7 (391) 25-653-21</center></h3></h2>
+					<p><center><em>Пн.-Пт. с 10:00 до 19:00 Сб.-Вс. с 11:00 до 16:00</em></center></p>
+				</div>
+				<p><i class="icon-shopping-cart">&nbsp;</i>
 % #Cart information
 % my $cartinfo=0;
 % my @productid = keys %{session->{'cart'}} if session->{'cart'};
@@ -84,13 +87,12 @@
 					<a href="/cart/">Товаров в корзине</a> <span class="badge badge-info"><%= $cartinfo %></span>
 % }
 					</p>
-				 </div>
 			</div>
 		</div>
 		<div class="row">
-    		<div class="span2">
+    		<div class="span3">
 		    	<ul class="nav nav-list">
-					<li class="nav-header">Каталог товаров</li>
+					<li class="nav-header">Каталог спортивных комплексов</li>
 					<li <%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
 					<li <%== $active_link{'dsk-wall'} %>><a href="/catalog/dsk-wall/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
 					<li <%== $active_link{'dsk-slide'} %>><a href="/catalog/dsk-slide/" title="Распорные спорткомплексы">Распорные спорткомплексы</a></li>
@@ -103,12 +105,8 @@
 					<li <%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
 					<li><a href="http://club.nastartshop.ru"><strong>Клуб "Здоровая семья"</strong></a></li>
 				</ul>
-				<div>
-					<p><a href="http://club.nastartshop.ru/" target=_blank><img src="/media/offers/club.jpg" alt="Клуб Здоровая семья" title="Клуб Здоровая семья"></a></p>
-					<p><a href="http://club.nastartshop.ru/2012/10/akciya-detki-na-setke/"><img src="/media/offers/detki-na-setke.jpg" title="Узнайте про акцию Детки на сетке от Раннего старта" alt="Акция Детки на сетке! Получить сетку-гнездо бесплатно!"></a></p>
-				</div>
    			</div>
-   			<div class="span10">
+   			<div class="span9">
 <!-- Page content -->
 	   			<%= content %>
 <!-- /Page content -->
