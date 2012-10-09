@@ -24,7 +24,10 @@ $dbi->do('SET NAMES utf8');
 
 get '/news' => sub{
 	my $self = shift;
-	my $page = {'url' => 'news'};
+	my $page = {
+		'url' => 'news',
+		'type' => 1,
+	};
 	my $ua = Mojo::UserAgent->new();
 	my $news = $ua->get("http://club.nastartshop.ru/api/get_recent_posts/")->res->json;
 	
@@ -43,6 +46,7 @@ get '/checkout' => sub {
 		'url' => 'checkout',
 		'title' => 'Корзина',
 		'content' => 'К сожалению ваша корзина пока пуста. Оформлять нечего :(',
+		'type' => 1,
 	};
     $self->stash(
 		page => $page,
@@ -76,6 +80,7 @@ post '/checkout' => sub {
 		'url' => 'checkout',
 		'title' => 'Оформление заказа',
 		'content' => 'Сожалеем, но ваша корзина пока ещё пуста :(',
+		'type' => 1,
 	};
 	$self->stash(
 		page => $page,
@@ -167,6 +172,7 @@ get '/thankyou' => sub {
 		'url' => 'thankyou',
 		'title' => 'Заказ оформлен',
 		'content' => 'Благодарим за заказ. Мы скоро свяжемся с вами.',
+		'type' => 1,
 	};
 	$self->stash(page => $page);
 	$self->render('dummy');
@@ -181,6 +187,7 @@ get '/cart' => sub {
 		'url' => 'cart',
 		'title' => 'Корзина',
 		'content' => 'Нам очень жаль, но похоже, что ваша корзина пуста :(',
+		'type' => 1,
 	};
 	$self->stash(
 		page => $page,
@@ -227,6 +234,7 @@ post '/cart' => sub{
         'url' => 'cart',
         'title' => 'Корзина',
         'content' => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?',
+		'type' => 1,
     };
     $self->stash(
         page => $page,
@@ -255,7 +263,10 @@ post '/cart' => sub{
 
 get '/catalog' => sub{
 	my $self = shift;
-	my $catalog = {'url' => 'catalog'};
+	my $page = {
+		'url' => 'catalog',
+		'type' => 1,
+	};
 	my $categories = $dbi->select(
 		table => 'pages',
 		column => [
@@ -277,7 +288,7 @@ get '/catalog' => sub{
 	);
 
 	$self->stash(
-		page => $catalog,
+		page => $page,
 		categories => $categories->fetch_hash_all,
 		price => $price->fetch_all,
 	);
@@ -294,6 +305,7 @@ get '/catalog/:caturl' => sub {
 							'metadescription',
 							'url',
 							'description',
+							'type',
 						],
 						where => {'url' => $caturl},
 					);
@@ -329,6 +341,7 @@ get '/catalog/:caturl/:produrl' => sub {
 			'title',
 			'url',
 			'metadescription',
+			'type',
 		],
         where => {'url' => $caturl},
 	);
@@ -370,6 +383,7 @@ get '/about' => sub{
             'title',
             'url',
             'description',
+			'type',
         ],
         where => {'type' => 1},
     );
@@ -392,6 +406,7 @@ get '/about/:pageurl' => sub{
 			'metadescription',
 			'description',
 			'content',
+			'type',
 		],
         where => {'url' => $pageurl},
     );
@@ -407,7 +422,8 @@ get '/' => sub{
 	my $self = shift;
 	my $page = {
 		'url' => 'index',
-		'metadescription' => 'купить спортивные домашние комплексы'
+		'metadescription' => 'купить спортивные домашние комплексы',
+		'type' => 1,
 	};
 	my $products = $dbi->select(
         table => 'products',

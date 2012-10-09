@@ -28,7 +28,7 @@
 	</div>
 	<div class="span7">
 		<h2><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><%= $category->{'title'} %></a><br/>
-		<h3><strong>Цена от <%= $min_price{$category->{'url'}} %> руб.</strong></h3></h2>
+		<h3>Цены от <%= $min_price{$category->{'url'}} %> руб.</strong></h3></h2>
 		<p><em><%== $category->{'description'} %></em></p>
 	</div>
 </div>
