@@ -13,16 +13,12 @@
 <div class="row">
 	<div class="span9">
 % if (@{$product}){
-
 		<ul class="thumbnails">
-
-% foreach my $productid (@{$product}){
+% 	foreach my $productid (@{$product}){
 			<li class="span3">
 				<div class="thumbnail">
-
-% my $image_source = 'noimage';
-% $image_source = $productid->{'url'} if $productid->{'image'};
-
+% 		my $image_source = 'noimage';
+% 		$image_source = $productid->{'url'} if $productid->{'image'};
 					<a href="<%= url_for "/catalog/$page->{'url'}/$productid->{'url'}.html" %>" title="">
       					<center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
 					</a>
@@ -36,15 +32,10 @@
 					</form>
     			</div>
   			</li>
-
-% }
-
+% 	}
 		</ul>
-
 % }else{
-
-	<p>В этом разделе пока нет товаров. Может быть будут завтра?</a>
-
+		<p>В этом разделе пока нет товаров. Может быть будут завтра?</a>
 % }
 	</div>
 </div>

@@ -39,10 +39,13 @@ get '/checkout' => sub {
 	my $cart=$self->session('cart') || undef;
     my @pid = keys %{$cart};
     my $countpid=@pid || 0;
+	my $page = {
+		'url' => 'checkout',
+		'title' => 'Корзина',
+		'content' => 'К сожалению ваша корзина пока пуста. Оформлять нечего :(',
+	};
     $self->stash(
-		page_title => 'Ваша корзина',
-        page_caption => 'Ваша корзина',
-		message => 'К сожалению ваша корзина пока пуста. Оформлять нечего :(',
+		page => $page,
 	);
     return $self->render('dummy') if $countpid==0 ;
 	
@@ -69,10 +72,13 @@ post '/checkout' => sub {
 	my $cart=$self->session('cart');
     my @pid= keys %{$cart};
     my $countpid=@pid || 0;
-    $self->stash(
-		message => 'Сожалеем, но ваша корзина пока ещё пуста :(',
-		page_title => 'Ваша корзина',
-        page_caption => 'Ваша корзина',
+    my $page = {
+		'url' => 'checkout',
+		'title' => 'Оформление заказа',
+		'content' => 'Сожалеем, но ваша корзина пока ещё пуста :(',
+	};
+	$self->stash(
+		page => $page,
 	);
     return $self->render('dummy') if $countpid==0 ;
 
@@ -157,11 +163,12 @@ post '/checkout' => sub {
 get '/thankyou' => sub {
 	my $self = shift;
 	$self->session(expires => 1);#Clearing cart
-	$self->stash(
-		page_title => 'Спасибо за заказ',
-		page_caption => 'Заказ оформлен',
-		message=>'Поздравляем! Ваш заказ оформлен. Мы скоро перезвоним вам.',
-	);
+	my $page = {
+		'url' => 'thankyou',
+		'title' => 'Заказ оформлен',
+		'content' => 'Благодарим за заказ. Мы скоро свяжемся с вами.',
+	};
+	$self->stash(page => $page);
 	$self->render('dummy');
 };
 
@@ -170,10 +177,13 @@ get '/cart' => sub {
     my $cart = $self->session('cart');
 	my @pid = keys %{$cart} if $cart;
 	my $countpid=@pid || 0;
+	my $page = {
+		'url' => 'cart',
+		'title' => 'Корзина',
+		'content' => 'Нам очень жаль, но похоже, что ваша корзина пуста :(',
+	};
 	$self->stash(
-		page_title => 'Ваша корзина',
-		page_caption => 'Ваша корзина',
-		message => 'Нам очень жаль, но похоже, что ваша корзина пуста :(',
+		page => $page,
 	);
 	return $self->render('dummy') if $countpid == 0;
 
@@ -213,10 +223,13 @@ post '/cart' => sub{
 	$self->session(cart => $cart);
 	my @pid= keys %{$cart};
 	my $countpid=@pid || 0;
-	$self->stash(
-        page_title => 'Пустая корзина',
-        page_caption => 'Ваша корзина',
-        message => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?',
+	my $page = {
+        'url' => 'cart',
+        'title' => 'Корзина',
+        'content' => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?',
+    };
+    $self->stash(
+        page => $page,
     );
     return $self->render('dummy') if $countpid == 0;
 

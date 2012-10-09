@@ -1,14 +1,15 @@
-% layout 'pure';
+% layout 'default';
 % title 'Оформление заказа';
 % stash->{'metadescription'} = 'Страница оформления заказа. Интернет-магазин НаСтарт. Домашние спортивные комплексы для детей.';
 % my $total_cart=0;
 % my $missing = stash->{missing};
 % my $messages = stash->{messages};
 
-<div class="page-header">
+<div>
 	<h1>Оформление заказа</h1>
-</div><!--.page-header-->
-<div class="alert alert-info" id="checkorder">
+	<hr/>
+</div>
+<div class="alert alert-info">
 	<h2><h3><h4 class="alert-heading">Ваш заказ</h4></h3></h2>
 % my $n=0;
 % foreach my $product(@{$products}){
@@ -19,12 +20,12 @@
 	</em><br/>
 % };
 	<b>Общий итог: <%=$total_cart%> руб.</b> <a href="/cart/" class="btn btn-mini">Редактировать</a>
-</div><!--alert alert-info-->
+</div>
 % if ($missing){
 <div class="alert">
 	<button class="close" data-dismiss="alert">×</button>
-	<span style="color:red">Заполните поля со знаком *</span>
-</div><!--.alert-->
+	Заполните поля со знаком *
+</div>
 % }
 <form class="form-horizontal" action="/checkout/" method="post" id="CheckoutForm">
 	<fieldset>

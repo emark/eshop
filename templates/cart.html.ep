@@ -1,13 +1,14 @@
-% layout 'pure';
-% title 'Ваша корзина';
+% layout 'default';
+% title $page->{'title'};
 % stash->{'metadescription'} = 'Страница корзины заказов. На странице можно редактировать и изменять список товаров';
-
-<div class="page-header">
-	<h1>Ваша корзина</h1>
-</div><!--.page-header-->
 %my $total_cart=0;
+
+<div>
+	<h1><%= $page->{'title'} %></h1>
+	<hr/>
+</div>
 <div class="row">
-	<div class="span10">
+	<div class="span9">
 		<table class="table" border=0>
 		<thead>
 			<tr>
@@ -43,7 +44,7 @@
 % }
 		</tbody>
 		</table>
-		<p align="left"><h3>Итого:&nbsp;<%=$total_cart%> руб.</h3></p>
+		<p align="left"><h2>Итого:&nbsp;<%=$total_cart%> руб.</h2></p>
 	</div>
 </div>
 <div class="row">
