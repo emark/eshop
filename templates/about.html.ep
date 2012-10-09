@@ -1,9 +1,10 @@
 % layout 'default';
 % title 'Информация для покупателей';
 
-<div class="page-header">
+<div>
 	<h1>Информация для покупателей</h1>
-</div><!--.page-header-->
+	<hr/>
+</div>
 % foreach my $page (@{$pages}){
 	<p><a href="/about/<%= $page->{'url'} %>/"><%= $page->{'title'} %></a></p>
 % };

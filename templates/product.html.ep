@@ -1,23 +1,23 @@
 % layout 'default';
 % title $product->{'title'}.' / '.$page->{'title'};
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
-
-<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/catalog/" title="Список всех разделов каталога">Каталог</a> / <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a> / <%= $product->{'title'} %></div>
-<div class="page-header">
-	<h1><%= $product->{'title'} %></h1>
-</div><!--.page-header-->
-<div class="row">
-	<div class="span3">
-		<ul class="thumbnails">
-			<li class="span3">
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
 % my $instore_class = 'success'; #Setting up instore
 % $instore_class = 'important' if $product->{'instore'} == -1;
 % $instore_class = 'warning' if $product->{'instore'} == 0;
-% my %instore_labels = ('important' => 'Отсутствует','success' => 'В наличии','warning' => 'Уточняйте');
+% my %instore_labels = ('important' => 'отсутствует','success' => 'да','warning' => 'уточняйте');
+
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/catalog/" title="Список всех разделов каталога">Каталог</a> / <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>  <%#= $product->{'title'} %></div>
+<div>
+	<h1><%= $product->{'title'} %></h1>
+</div>
+<div class="row">
+	<div class="span3">
+		<ul class="thumbnails">
+			<li class="span3">
 				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
-      				<img src="/media/products/middle/<%= $image_source %>.jpg" alt="<%= $product->{'title'} %>" title="<%= $product->{'title'} %>">
+      				<img src="/media/products/middle/<%= $image_source %>.jpg" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
     			</a>
 			</li>	
 		</ul>

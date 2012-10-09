@@ -1,8 +1,8 @@
-% #===Initialize active page class 
+% #Initialize active page class 
 % my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'howtobuy' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
-%#
-% #===Cart information
+% #
+% #Cart information
 % my $cartinfo=0;
 % my @productid = keys %{session->{'cart'}} if session->{'cart'};
 % foreach my $key (@productid){
@@ -102,7 +102,7 @@
 		<div class="row">
     		<div class="span3">
     			<div class="leftbar-menu">
-    				<p>КАТАЛОГ СПОРТКОМПЛЕКСОВ</p>
+    				<p>КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>
 		    		<ul class="nav nav-list">
 						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
 						<li<%== $active_link{'dsk-wall'} %>><a href="/catalog/dsk-wall/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
@@ -127,28 +127,20 @@
    			</div>
 		</div>
 		<footer>
-			<hr>
-			<div id="footer-links">
-				<center>
+			<div class="footer-links">
+				<p><strong>Домашние спортивные комплексы</strong><br/>
 					<a href="/catalog/dsk-rstart/" title="Развивающий комплекс \"Ранний старт\"">Развивающий комплекс "Ранний старт"</a> |
 					<a href="/catalog/dsk-slide/" title="Распорные спортивные комплексы">Распорные спортивные комплексы</a> |
-					<a href="/catalog/dsk-wall/" title="Пристенные спортивные компsексы">Пристенные спортивные комплексы</a> |
-					<a href="/catalog/accessories/" titile"Аксессуары">Аксессуары</a> |
-					<a href="/about/stores/"s title="Адреса магазинов">Адреса магазинов</a>
-				</center>
-			</div>
-			<hr>
-			<div class="row">
-				<div class="span4">
-					<address>
-						ООО "Электронный маркетинг"<br/>ИНН 2463213306<br/>Телефон: <strong>+7 (391) 29-202-29</strong><br/>Электронная почта: <strong><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи">hello@nastartshop.ru</a></strong><br/>2012, <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>Интернет-магазин "НаСтарт.рф"</a><br/>
-					</address>
-				</div>
-				<div class="span8">
-					<p>
-						В интернет-магазине <a href="http://настарт.рф" rel=nofollow>НаСтарт.рф</a> вы можете приобрести домашние <a href="/catalog/dsk-wall/">пристенные</a> и <a href="/catalog/dsk-slide/">распорные</a> детские спортивные комплексы для всей семьи, развивающие комплексы <a href="/catalog/dsk-rstart/">"Ранний старт"</a> и различные <a href="/catalog/accessories/">дополнительные аксессуары</a> для спорткомплексов. В нашем интернет-магазине возможны различные <a href="/about/delivery-and-payment/">способы оплаты</a> и <a href="/about/delivery-and-payment/">варианты доставки</a> по г. Красноярску, а так же по России.
-					</p>
-				</div>
+					<a href="/catalog/dsk-wall/" title="Пристенные спортивные компsексы">Пристенные спортивные комплексы</a>
+				</p>
+				<p><strong>Дополнения к спортивным комплексам</strong><br/>
+					<a href="/catalog/accessories/" titile"Аксессуары и навесное оборудование">Аксессуары и навесное оборудование</a> |
+					<a href="/catalog/gymnastic-mats/"s title="Гимнастические маты">Гимнастические маты</a>
+				</p>
+				<p><strong>Информация о продавце</strong><br/>
+						ООО "Электронный маркетинг", ИНН 2463213306, телефон: +7 (391) 29-202-29</strong>, электронная почта: <a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи">hello@nastartshop.ru</a></strong>
+				</p>
+				<p><center>2012, <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>Интернет-магазин "НаСтарт.рф"</a></center></p>
 			</div>
 		</footer>
     </div>
