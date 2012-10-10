@@ -1,5 +1,5 @@
 % layout 'default';
-% title $product->{'title'}.' / '.$page->{'title'};
+% title $product->{'title'};
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
