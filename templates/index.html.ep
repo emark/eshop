@@ -58,12 +58,10 @@
 %   my $image_source = 'noimage';
 %   $image_source = $productid->{'url'} if $productid->{'image'};
 %   my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
-          <a href="<%= $product_link %>" title="<%= $productid->{'title'} %>">
-            <center>
-              <img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
-            </center>
+          <a href="<%= $product_link %>" title="Подробнее о <%= $productid->{'title'} %>">
+            <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
           </a>
-          <p><strong><a href="<%= $product_link %>" title="<%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></strong></p>
+          <p><a href="<%= $product_link %>" title="Узнать харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></p>
           <p><strong>Цена:</strong> <%= $productid->{'price'} %> р.</p>
           <form action="/cart/" method="post">
             <input type=hidden id="prodid" name="prodid" value="<%= $productid->{'id'} %>">
@@ -80,6 +78,6 @@
 </div>
 <div class="row">
 	<div class="span9">
-		<h2><center><a href="/catalog/" title="Переход в каталог товаров">Посмотрите остальные товары</a></center></h2>
+		<h2><center><a href="/catalog/" title="Переход в каталог товаров">Посмотрите весь каталог</a></center></h2>
 	</div>
 </div>
