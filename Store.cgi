@@ -186,7 +186,7 @@ get '/cart' => sub {
 	my $page = {
 		'url' => 'cart',
 		'title' => 'Корзина',
-		'content' => 'Нам очень жаль, но похоже, что ваша корзина пуста :(',
+		'content' => 'В корзине пока ничего нет. Для добавления товаров в корзину, жмите кнопку "Купить" на нужном товаре.',
 		'type' => 1,
 	};
 	$self->stash(
@@ -314,8 +314,6 @@ get '/catalog/:caturl' => sub {
 		column => [
 			'title',
 			'url',
-			'anonse',
-			'instore',
 			'id',
 			'price',
 			'image',
@@ -430,7 +428,6 @@ get '/' => sub{
         column => [
             'title',
             'url',
-            'instore',
             'id',
             'price',
             'image',
