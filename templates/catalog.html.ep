@@ -12,7 +12,7 @@
 %	};
 % };
 <div>
-	<h1>Каталог спортивных комплексов</h1>
+	<h1>Каталог</h1>
 	<hr/>
 </div>
 % foreach my $category (@{$categories}){
