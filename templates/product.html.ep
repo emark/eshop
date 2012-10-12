@@ -8,7 +8,7 @@
 % $instore = 'отсутствует' if $product->{'instore'} == -1;
 % $instore = 'под заказ' if $product->{'instore'} == -2;
 
-<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/catalog/" title="Список всех разделов каталога">Каталог</a> / <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>  <%#= $product->{'title'} %></div>
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> / <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>  <%#= $product->{'title'} %></div>
 <div>
 	<h1><%= $product->{'title'} %></h1>
 </div>
