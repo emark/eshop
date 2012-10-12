@@ -69,9 +69,9 @@
 					<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
 					% };
 					% if ($page->{'url'} eq 'catalog'){
-					<strong>Каталог</strong>
+					<strong>Каталог товаров</strong>
 					% }else{	
-					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог</a>
+					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог товаров</a>
 					% };
 					% if ($page->{'url'} eq 'delivery-and-payment'){
 					<strong>Доставка и оплата</strong>
