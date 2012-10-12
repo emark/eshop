@@ -4,8 +4,9 @@
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
 % my $instore = 'на складе'; #Setting up instore
-% $instore = 'отсутствует' if $product->{'instore'} == -1;
 % $instore = 'уточняйте' if $product->{'instore'} == 0;
+% $instore = 'отсутствует' if $product->{'instore'} == -1;
+% $instore = 'под заказ' if $product->{'instore'} == -2;
 
 <div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/catalog/" title="Список всех разделов каталога">Каталог</a> / <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>  <%#= $product->{'title'} %></div>
 <div>
