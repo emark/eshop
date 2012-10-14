@@ -76,11 +76,11 @@
 					</ul>
 					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 					<ul class="nav nav-list">
-						<li><a href="/about/warranty/">Гарантия и возврат</a></li>
-						<li><a href="/about/stores/">Где купить?</a></li>
-						<li><a href="/about/howtobuy/">Как купить?</a></li>
-						<li><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
-						<li><a href="http://club.nastartshop.ru"><strong>Клуб "Здоровая семья"</strong></a></li>
+						<li><a href="/about/warranty.html" title="Условия обмена, возврата товаров">Гарантия и возврат</a></li>
+						<li><a href="/about/stores.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
+						<li><a href="/about/faq.html" title="Часто задаваемые вопросы и ответы на них">Вопросы и ответы</a></li>
+						<li><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
+						<li><a href="http://club.nastartshop.ru/" title="Официальный блог интернет-магазина НаСтарт.рф"><strong>Клуб "Здоровая семья"</strong></a></li>
 					</ul>
 				</div>
    			</div>

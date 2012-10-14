@@ -107,11 +107,11 @@
 					</ul>
 					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 					<ul class="nav nav-list">
-						<li<%== $active_link{'warranty'} %>><a href="/about/warranty/">Гарантия и возврат</a></li>
-						<li<%== $active_link{'stores'} %>><a href="/about/stores/">Где купить?</a></li>
-						<li<%== $active_link{'faq'} %>><a href="/about/faq/">Вопросы и ответы</a></li>
-						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment/">Доставка и оплата</a></li>
-						<li><a href="http://club.nastartshop.ru"><strong>Клуб "Здоровая семья"</strong></a></li>
+						<li<%== $active_link{'warranty'} %>><a href="/about/warranty.html" title="Условия обмена, возврата товаров">Гарантия и возврат</a></li>
+						<li<%== $active_link{'stores'} %>><a href="/about/stores.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
+						<li<%== $active_link{'faq'} %>><a href="/about/faq.html" title="Часто задаваемые вопросы и ответы на них">Вопросы и ответы</a></li>
+						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
+						<li><a href="http://club.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф"><strong>Клуб "Здоровая семья"</strong></a></li>
 					</ul>
 				</div>
 				<div class="leftbar-widget">
