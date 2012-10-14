@@ -1,5 +1,5 @@
 % #Initialize active page class 
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'howtobuy' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'faq' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 % #
 % #Cart information
