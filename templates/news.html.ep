@@ -8,13 +8,15 @@
 </div>
 <div>
 % if($news){
-% 	for (my $n=0; $n<5; $n++){
-%		my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
+	% for (my $n=0; $n<5; $n++){
+		% if ($news->{'posts'}[$n]->{'date'}){
+			% my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
 	<p><%= $date %><br/>- <a href="<%= $news->{'posts'}[$n]->{'url'} %>" target=_blank title="Прочесть эту новость"><%== $news->{'posts'}[$n]->{'title'} %></a></p>
-% 	}
+		% }
+	% }
 % }
 	<p>
-		<a href="http://club.nastartshop.ru/category/news/" title="Читать все новости" target=_blank><strong>Читать все новости</strong></a> | 
+		<a href="http://club.nastartshop.ru/" title="Читать все новости" target=_blank><strong>Читать все новости</strong></a> | 
 		<a href="http://club.nastartshop.ru/feed/" title="Подписка на новости" target=_blank><strong>Подписаться на новости (RSS)</strong></a>
 	</p>
 </div>
