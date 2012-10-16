@@ -7,14 +7,22 @@
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
+          <a href="http://club.nastartshop.ru/2012/10/ranniy-start-v-detskiy-sad/">
+		        <img src="/media/slider/akciya/ranniy-start-v-detskiy-sad.jpg" alt="Подарочная акция в октябре" title="Подарочная акция в октябре">
+		      </a>
+          <div class="carousel-caption">
+            <p>Тест-драйв акция "Ранний старт в детский сад"</p>
+          </div>
+        </div>
+        <div class="item">
           <a href="http://club.nastartshop.ru/2012/10/akciya-detki-na-setke/">
 		        <img src="/media/slider/akciya/akciya-oktober.jpg" alt="Подарочная акция в октябре" title="Подарочная акция в октябре">
 		      </a>
           <div class="carousel-caption">
-            <p>Подарочная акция "Детки на сетке!"</p>
+            <p>Весь октябрь при покупке комплекса "Ранний старт" - сетка в подарок!</p>
           </div>
         </div>
-		    <div class="item">
+	<div class="item">
           <a href="/catalog/dsk-rstart/" title="Каталог развивающих комплексов Ранний старт">
 		        <img src="/media/slider/rstart/rs-standard.jpg" alt="Каталог развивающих комплексов Ранний старт" title="Каталог развивающих комплексов Ранний старт">
 		      </a>
