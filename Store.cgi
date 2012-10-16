@@ -329,7 +329,7 @@ get '/catalog/:caturl' => sub {
 	$self->render('category');
 };
 
-get '/catalog/:caturl/:produrl' => sub {
+get '/catalog/:caturl/:produrl.html' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');
 	my $produrl = $self->param('produrl');
