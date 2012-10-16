@@ -393,7 +393,7 @@ get '/about' => sub{
     $self->render('about');
 };
 
-get '/about/:pageurl' => sub{
+get '/about/:pageurl.html' => sub{
 	my $self=shift;
 	my $pageurl = $self->param('pageurl');
 	my $result = $dbi->select(
