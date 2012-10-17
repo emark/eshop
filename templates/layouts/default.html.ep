@@ -1,5 +1,5 @@
 % #Initialize active page class 
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'stores' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'faq' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'faq' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 % #
 % #Cart information
@@ -78,10 +78,10 @@
 					% }else{
 					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
 					% };
-					% if ($page->{'url'} eq 'stores'){
+					% if ($page->{'url'} eq 'contacts'){
 					<strong>Контакты</strong>
 					% }else{
-					<a href="/about/stores.html" title="Контактная информация и адреса магазинов">Контакты</a>
+					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
 					% };
 				</div>
  				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
@@ -108,7 +108,7 @@
 					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 					<ul class="nav nav-list">
 						<li<%== $active_link{'warranty'} %>><a href="/about/warranty.html" title="Условия обмена, возврата товаров">Гарантия и возврат</a></li>
-						<li<%== $active_link{'stores'} %>><a href="/about/stores.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
+						<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
 						<li<%== $active_link{'faq'} %>><a href="/about/faq.html" title="Часто задаваемые вопросы и ответы на них">Вопросы и ответы</a></li>
 						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
 						<li><a href="http://club.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф"><strong>Клуб "Здоровая семья"</strong></a></li>
