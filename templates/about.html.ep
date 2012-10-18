@@ -7,5 +7,5 @@
 	<hr/>
 </div>
 % foreach my $page (@{$pages}){
-	<p><a href="/about/<%= $page->{'url'} %>.html" title="Подробности на странице ""<%= $page->{'title'} %>"""><%= $page->{'title'} %></a></p>
+	<p><a href="/about/<%= $page->{'url'} %>.html" title="Подробности на странице <%= $page->{'title'} %>"><%= $page->{'title'} %></a></p>
 % };
