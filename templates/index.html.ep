@@ -7,7 +7,7 @@
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
-          <a href="http://club.nastartshop.ru/2012/10/ranniy-start-v-detskiy-sad/" title="Акция Ранний старт бесплатно на 2 недели">
+          <a href="/news/" title="Акция Ранний старт бесплатно на 2 недели">
 		        <img src="/media/slider/akciya/ranniy-start-v-detskiy-sad.jpg" alt="Акция Ранний старт бесплатно на 2 недели" title="Акция Ранний старт бесплатно на 2 недели">
 		      </a>
           <div class="carousel-caption">
@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="item">
-          <a href="http://club.nastartshop.ru/2012/10/akciya-detki-na-setke/">
+          <a href="/news/">
 		        <img src="/media/slider/akciya/akciya-oktober.jpg" alt="Подарочная акция в октябре" title="Подарочная акция в октябре">
 		      </a>
           <div class="carousel-caption">
