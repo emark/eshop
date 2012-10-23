@@ -87,7 +87,7 @@
  				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
  			</div>
 			<div class="span2">
-				 <div class="align-right"><div class="toplevel-menu">Красноярск</div><strong>+7 (391) 29-202-29<br/>+7 (391) 25-653-21</strong>
+				 <div class="align-right"><div class="toplevel-menu">Красноярск</div><strong><nobr>+7 (391) 29-202-29</nobr><br/><nobr>+7 (391) 25-653-21</nobr></strong>
 				<p><i class="icon-shopping-cart">&nbsp;</i>
 					<a href="/cart/" title="Переход в корзину">Корзина покупок</a>
 				</p>
@@ -99,7 +99,7 @@
     			<div class="leftbar-menu">
     				<p>КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>
 		    		<ul class="nav nav-list">
-						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
+						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс &laquo;Ранний старт&raquo;</a></li>
 						<li<%== $active_link{'dsk-wall'} %>><a href="/catalog/dsk-wall/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
 						<li<%== $active_link{'dsk-slide'} %>><a href="/catalog/dsk-slide/" title="Распорные спорткомплексы">Распорные спорткомплексы</a></li>
 						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
@@ -111,7 +111,7 @@
 						<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
 						<li<%== $active_link{'faq'} %>><a href="/about/faq.html" title="Часто задаваемые вопросы и ответы на них">Вопросы и ответы</a></li>
 						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
-						<li><a href="http://club.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф"><strong>Клуб "Здоровая семья"</strong></a></li>
+						<li><a href="http://club.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф"><strong>Клуб &laquo;Здоровая семья&raquo;</strong></a></li>
 					</ul>
 				</div>
 				<div class="leftbar-widget">
@@ -149,7 +149,7 @@
 					<div class="span4">
 						<h3>Информация о продавце</h3>
 						<address>
-						ООО "Электронный маркетинг"<br/>ИНН 2463213306<br/>телефон: <strong>+7 (391) 29-202-29</strong><br/>почта: <a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи">hello@nastartshop.ru</a>
+						ООО "Электронный маркетинг"<br/>ИНН 2463213306<br/>телефон: <strong><nobr>+7 (391) 29-202-29</nobr></strong><br/>почта: <a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи">hello@nastartshop.ru</a>
 						</address>
 					</div>
 				</div>
