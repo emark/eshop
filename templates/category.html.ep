@@ -4,7 +4,7 @@
 
 <div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>  <%#= $page->{'title'} %></div>
 <div>
-	<h1><%= $page->{'title'} %></h1>
+	<h1><%== $page->{'title'} %></h1>
 	<hr/>
 </div>
 <div>
