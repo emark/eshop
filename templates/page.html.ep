@@ -2,13 +2,13 @@
 % title $page->{'title'};
 % stash->{'metadescription'} = $page->{'metadescription'};
 
-<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/about/" title="Справочная информация для покупателей">Информация для покупателей</a>  <%#= $page->{'title'} %></a></div>
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/about/" title="Справочная информация для покупателей">Информация для покупателей</a></div>
 <div>
 	<h1><%= $page->{'title'} %></h1>
 	<hr>
 </div>
 <div>
-	<p><em><%== $page->{'description'}	 %></em></p>
+	<p><em><%== $page->{'description'} %></em></p>
 </div>
 <div>
 	<%== $page->{'content'} %>

@@ -393,35 +393,10 @@ get '/about' => sub{
     $self->render('about');
 };
 
-get '/about/:pageurl.html' => sub{
-	my $self=shift;
-	my $pageurl = $self->param('pageurl');
-	my $result = $dbi->select(
-        table => 'pages',
-        column => [
-			'title',
-			'url',
-			'metadescription',
-			'description',
-			'content',
-			'type',
-		],
-        where => {'url' => $pageurl},
-    );
-	my $has_content = $result->one || undef;
-	return $self->render(status => 404, template => 'not_found') if !$has_content;
-	$self->stash(
-		page => $has_content,
-	);
-	$self->render('page');
-};
-
 get '/' => sub{
 	my $self = shift;
 	my $page = {
 		'url' => 'index',
-		'metadescription' => 'купить спортивные домашние комплексы',
-		'type' => 1,
 	};
 	my $products = $dbi->select(
         table => 'products',
