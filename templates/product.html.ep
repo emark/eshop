@@ -21,9 +21,10 @@
     			</a>
 			</li>	
 		</ul>
-		<p>Наличие: <%= $instore %></p>
 % my $articul = sprintf ("%06s",$product->{'id'});
 		<p>Артикул: <%= $articul %></p>
+		<p>Наличие: <%= $instore %></p>
+		<p>Акции, скидки: есть</p>
 		<p><h2>Цена: <%= $product->{'price'} %> р.</h2></p>
 		<form action="/cart/" method=post>
 		<input type=hidden value=<%= $product->{'id'} %> name=prodid>
@@ -34,11 +35,11 @@
 	<div class="span6">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
-			<li><a href="#comments" data-toggle="tab">Комментарии</a></li>
+			<li><a href="#media" data-toggle="tab">Фото и видео</a></li>
 % #Create vk_album tab-pane
-% my $vk_album = '<a href="#vk_album" data-toggle="tab">';
+% my $vk_album = '<a href="#promotions" data-toggle="tab">';
 % $vk_album = "<a href=\"http://vk.com/album-$product->{'vk_album'}\" target=_blank>" if $product->{'vk_album'};
-			<li><%== $vk_album %>Изображения товара</a></li>
+			<li><%== $vk_album %>Акции с этим товаром</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -77,14 +78,24 @@
 					</tbody>
 				</table>
 % }
+
+				<dl>
+					<dt><strong>Инструкции по сборке</strong></dt>
+				</dl>
 			</div>
-			<div id="comments" class="tab-pane">
+			<div id="media" class="tab-pane">
+				<div><p>Foto album</p><p>Video album</p><p>3D view</p>
+
+<iframe src="http://sketchup.google.com/3dwarehouse/mini?mid=75082a7662e0dc998af8a26196284adf&etyp=sw&width=400&height=300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="400" height="300"></iframe>
+
+				</div>
 				<div id="vk_comments"></div>
 					<script type="text/javascript">
 						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});
 					</script>
 			</div>
-			<div id="vk_album" class="tab-pane">
+			<div id="promotions" class="tab-pane">
+				<%= link_to 'Посмотреть все действующие акции'=>'http://club.nastartshop.ru/category/promotions/active/' %>
 				<p>Изображения пока не готовы.</p>
 				<p><strong>Если у вас возникли вопросы, мы вас проконсультируем:</strong><br/>
 					- по телефону +7 (391) 29-202-29<br/>
