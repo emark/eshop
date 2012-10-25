@@ -44,11 +44,20 @@
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
 % my @content = ();
-% @content=split('#',$product->{'description'});
+% @content = split('#',$product->{'description'});
+% my $pcount = 0;#paragraph count
 % if(@content){
 % 	foreach my $key(@content){
+%		$pcount++;
+%		if($pcount==4){
+				<p><a href="#" data-toggle="collapse" data-target="#demo">Полный текст описания</a></p>
+				<div id="demo" class="collapse out">	
+%		}
 				<p><%= $key %></p>
 % 	}
+%	if($pcount>3){
+				</div>
+%	}
 % }
 % @content=split('#',$product->{'settings'});
 % if(@content){
