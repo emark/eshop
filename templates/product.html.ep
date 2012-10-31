@@ -61,7 +61,7 @@
 % @content=split('#',$product->{'settings'});
 % if(@content){
 				<dl>
-					<dt>Комплектация</dt>
+					<dt><strong>Комплектация</strong></dt>
 					<dd>
 						<ol>
 % @content=split('#',$product->{'settings'});
@@ -75,7 +75,7 @@
 % @content=split('#',$product->{'features'});
 % if(@content){
 				<dl>
-					<dt>Параметры</strong></dt>
+					<dt><strong>Параметры</strong></dt>
 				</dl>
 				<table class="table">
 					<tbody>
@@ -85,6 +85,16 @@
 % 	}
 					</tbody>
 				</table>
+% }
+% if($product->{'instruction'}){
+				<dl>
+					<dt><strong>Инструкции и документы</strong></dt>
+					<dd>
+						<ul>
+						<li><a href="/download/doc/<%= $product->{'instruction'} %>">Скачать инструкцию по сборке и эксплуатации</a></li>
+						</ul>
+					</dd>
+				</dl>
 % }
 			</div>
 			<div id="comments" class="tab-pane">
