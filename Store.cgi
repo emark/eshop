@@ -357,6 +357,7 @@ get '/catalog/:caturl/:produrl.html' => sub {
 			'instore',
 			'url',
 			'vk_album',
+			'instruction',
 		],
 		where => {
 			'url' => $produrl,
