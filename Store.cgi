@@ -409,7 +409,7 @@ get '/' => sub{
             'image',
 			'caturl',
         ],
-		where => {'popular' => 1},
+		where => {'latest' => 1},
     );
 	$self->stash(
 		page => $page,
