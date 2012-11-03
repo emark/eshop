@@ -20,13 +20,13 @@
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
 					<a href="<%= url_for "/catalog/$page->{'url'}/$productid->{'url'}.html" %>" title="Подробнее о <%= $productid->{'title'} %>">
-      					<center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
+					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
 					</a>
       				<p><a href="<%= url_for "/catalog/$page->{'url'}/$productid->{'url'}.html" %>" title="Узнать харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></p>
 					<p><strong>Цена:</strong> <%=$productid->{'price'}%> р.</p>
 					<form action="/cart/" method="post">
-						<input type=hidden id="prodid" name="prodid" value="<%= $productid->{'id'} %>">
-						<input type=hidden id="action" name="action" value="add">
+						<input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
+						<input type=hidden name="action" value="add">
 						<a href="/catalog/<%= $page->{'url'} %>/<%= $productid->{'url'} %>.html" class="btn" title="Подробнее о товаре">Подробнее</a>&nbsp;
 						<input type=submit value="Купить" class="btn btn-primary">
 					</form>

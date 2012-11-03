@@ -46,13 +46,13 @@
 </div>
 <div class="row">
   <div class="span9">
-    <p><em>Приветствуем вас в интернет-магазине &laquo;НаСтарт.рф&raquo;. Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>&laquo;Ранний старт&raquo;</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь. Присоединяйтесь к нашей группе <a href="http://vk.com/nastartshop" target=_blank titile="Группа в социальной сети">ВКонтакте</a>, будем рады общению!"</em></p>
+    <p><em>Приветствуем вас в интернет-магазине &laquo;НаСтарт.рф&raquo;. Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>&laquo;Ранний старт&raquo;</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь. Присоединяйтесь к нашей группе <a href="http://vk.com/nastartshop" target=_blank title="Группа в социальной сети">ВКонтакте</a>, будем рады общению!"</em></p>
     <p class="align-right"><em>Коллектив интернет-магазина <strong>&laquo;НаСтарт.рф&raquo;</strong></em></p>
   </div>
 </div>
 <div class="row">    
   <div class="span9"><hr>
-    <h2>Новые поступления <img src="/media/images/star.png"><img src="/media/images/star.png"><img src="/media/images/star.png"></h2>
+    <h2>Новые поступления <img src="/media/images/star.png" alt="Star"><img src="/media/images/star.png" alt="Star"><img src="/media/images/star.png" alt="Star"></h2>
 		<p><a href="/catalog/">Посмотреть весь каталог</a></p>
 	</div>
 </div>
@@ -67,13 +67,13 @@
 %   $image_source = $productid->{'url'} if $productid->{'image'};
 %   my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
           <a href="<%= $product_link %>" title="Подробнее о <%= $productid->{'title'} %>">
-            <center><img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>"></center>
+		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>" class="image-center">
           </a>
           <p><a href="<%= $product_link %>" title="Узнать харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></p>
           <p><strong>Цена:</strong> <%= $productid->{'price'} %> р.</p>
           <form action="/cart/" method="post">
-            <input type=hidden id="prodid" name="prodid" value="<%= $productid->{'id'} %>">
-            <input type=hidden id="action" name="action" value="add">
+            <input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
+            <input type=hidden name="action" value="add">
             <a href="/catalog/<%= $productid->{'caturl'} %>/<%= $productid->{'url'} %>.html" class="btn" title="Подробнее о товаре">Подробнее</a>&nbsp;
             <input type=submit value="Купить" class="btn btn-primary">
           </form>
@@ -86,6 +86,6 @@
 </div>
 <div class="row">
 	<div class="span9">
-		<h2><center><a href="/catalog/" title="Переход в каталог товаров">Посмотрите весь каталог</a></center></h2>
+		<h2 class="align-center"><a href="/catalog/" title="Переход в каталог товаров">Посмотрите весь каталог</a></h2>
 	</div>
 </div>

@@ -17,7 +17,7 @@
 		<ul class="thumbnails">
 			<li class="span3">
 				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
-      				<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
+      				<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
     			</a>
 			</li>	
 		</ul>
