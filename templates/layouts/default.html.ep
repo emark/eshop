@@ -129,27 +129,47 @@
 		<footer>
 			<div class="footer-links">
 				<div class="row">
-					<div class="span4">
-						<h3>Домашние спортивные комплексы</h3>
+					<div class="span3">
+						<h3>Информация о продавце</h3>
+						<address>
 						<ul class="unstyled">
+							<li>ООО &laquo;Электронный маркетинг&raquo;</li>
+							<li>ИНН 2463213306</li>
+							<li>телефон: <nobr><strong>+7 (391) 29-202-29</strong></nobr></li>
+							<li>почта: <a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи">hello@nastartshop.ru</a></li>
+							<li>адрес: <a href="http://maps.yandex.ru/-/CVu6qGPg" title="Показать адрес магазина на Яндекс.Карты">Яндекс.Карты</a>, <a href="http://go.2gis.ru/f332" title="Показать адрес магазина в сервисе 2GIS">2GIS</a></li>
+						</ul>
+						</address>
+						<p><a href="http://www.facebook.com/nastartshop" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Страница на Facebook" title="Страница на Facebook"></a>
+						<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="Группа ВКонтакте" title="Группа ВКонтакте"></a>
+						<a href="https://plus.google.com/110471626333836075742/" target=_blank><img src="/media/images/socbuttons/googleplus.gif" alt="Страница на Google+" title="Страница на Google+"></a>
+						<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Группа в Одноклассниках" title="Группа в Одноклассниках"></a></p>
+					</div>
+					<div class="span3">
+						<h3>Справочная информация</h3>
+						<ul class="">
+							<li><a href="/news/">Новости магазина</a></li>
+							<li><a href="/about/warranty.html">Гарантия на товары</a></li>
+							<li><a href="/about/faq.html">Часто задаваемые вопросы</a></li>
+							<li><a href="/about/delivery-and-payment.html">Условия доставки и оплаты</a></li>
+							<li><a href="/about/contacts.html">Адреса и реквизиты</a></li>
+						</ul>
+					</div>
+					<div class="span3">
+						<h3>Домашние спортивные комплексы</h3>
+						<ul>
 							<li><a href="/catalog/dsk-rstart/" title="Развивающий комплекс Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
 							<li><a href="/catalog/dsk-slide/" title="Распорные спортивные комплексы">Распорные спортивные комплексы</a></li>
 							<li><a href="/catalog/dsk-wall/" title="Пристенные спортивные компsексы">Пристенные спортивные комплексы</a></li>
 						</ul>
 						
 					</div>
-					<div class="span4">
+					<div class="span3">
 						<h3>Дополнения к спортивным комплексам</h3>
-						<ul class="unstyled">
+						<ul>
 							<li><a href="/catalog/accessories/" title="Аксессуары и навесное оборудование">Аксессуары и навесное оборудование</a></li>
 							<li><a href="/catalog/gymnastic-mats/" title="Гимнастические маты">Гимнастические маты</a></li>
 						</ul>
-					</div>
-					<div class="span4">
-						<h3>Информация о продавце</h3>
-						<address>
-						ООО &laquo;Электронный маркетинг&raquo;<br/>ИНН 2463213306<br/>телефон: <nobr><strong>+7 (391) 29-202-29</strong></nobr><br/>почта: <a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи">hello@nastartshop.ru</a><br/>адрес: <a href="http://maps.yandex.ru/-/CVu6qGPg" title="Показать адрес магазина на Яндекс.Карты">Яндекс.Карты</a>, <a href="http://go.2gis.ru/f332" title="Показать адрес магазина в сервисе 2GIS">2GIS</a>
-						</address>
 					</div>
 				</div>
 				<p class="align-center"><img src="/media/images/logo/20-20.jpg" alt="Логотип магазина" title="Логотип магазина"> <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>&laquo;НаСтарт.рф&raquo;</a> интернет-магазин, 2012</p>
