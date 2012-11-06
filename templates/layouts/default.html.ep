@@ -53,7 +53,7 @@
   	<div class="container">
 		<div class="row">
 			<div class="span3">
-				<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.png" class="image-center" title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт"></a><p class="align-center">интернет-магазин</p>
+				<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.png" class="image-center" title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a><p class="align-center">интернет-магазин</p>
 			</div>
 			<div class="span7">
 				<div class="toplevel-menu">
