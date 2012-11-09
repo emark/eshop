@@ -90,7 +90,7 @@
 % }
 % if($product->{'instruction'}){
 				<dl>
-					<dt><strong>Инструкции и документы</strong></dt>
+					<dt><strong>Документы</strong></dt>
 					<dd>
 						<ul>
 						<li><a href="/download/doc/<%= $product->{'instruction'} %>">Скачать инструкцию по сборке и эксплуатации</a></li>
