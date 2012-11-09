@@ -34,11 +34,7 @@
 	<div class="span6">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
-			<li><a href="#comments" data-toggle="tab">Комментарии</a></li>
-% #Create vk_album tab-pane
-% my $vk_album = '<a href="#vk_album" data-toggle="tab">';
-% $vk_album = "<a href=\"http://vk.com/album-$product->{'vk_album'}\" target=_blank>" if $product->{'vk_album'};
-			<li><%== $vk_album %>Изображения товара</a></li>
+			<li><a href="#media" data-toggle="tab">Изображения</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -99,18 +95,23 @@
 				</dl>
 % }
 			</div>
-			<div id="comments" class="tab-pane">
-				<div id="vk_comments"></div>
-					<script type="text/javascript">
-						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});
-					</script>
-			</div>
-			<div id="vk_album" class="tab-pane">
+			<div id="media" class="tab-pane">
+% if ($product->{'vk_album'}){
+				<a href="http://vk.com/album-<%= $product->{'vk_album'} %>" target=_blank>Фотографии товара</a>
+% }else{
 				<p>Изображения пока не готовы.</p>
 				<p><strong>Если у вас возникли вопросы, мы вас проконсультируем:</strong><br/>
 					- по телефону +7 (391) 29-202-29<br/>
 					- по почте <a href="mailto:hello@nastartshop.ru">hello@nastartshop.ru</a>
 				</p>
+% }
+				<div id="vk_comments"></div>
+					<script type="text/javascript">
+						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});
+					</script>
+			</div>
+			<div id="promotions" class="tab-pane">
+				
 			</div>
 		</div>
 	</div>
