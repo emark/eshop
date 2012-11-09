@@ -29,7 +29,7 @@ get '/news' => sub{
 		'type' => 1,
 	};
 	my $ua = Mojo::UserAgent->new();
-	my $news = $ua->get("http://club.nastartshop.ru/api/get_recent_posts/")->res->json;
+	my $news = $ua->get("http://club.nastartshop.ru/category/news/?json=1")->res->json;
 	
     $self->stash(
 		page => $page,

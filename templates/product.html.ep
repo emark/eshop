@@ -76,16 +76,17 @@
 % if(@content){
 				<dl>
 					<dt><strong>Параметры</strong></dt>
-					<dd>&nbsp;</dd>
-				</dl>
-				<table class="table">
-					<tbody>
+					<dd>
+						<table class="table">
+						<tbody>
 % 	foreach my $key(@content){
 %		my($param,$value)=split(':',$key);
 						<tr><td><%= $param %></td><td><%= $value %></td></tr>
 % 	}
-					</tbody>
-				</table>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
 % }
 % if($product->{'instruction'}){
 				<dl>
