@@ -48,9 +48,9 @@
 % if(@content){
 % 	foreach my $key(@content){
 %		$pcount++;
-%		if($pcount==4){
-				<p><a href="#ext-description" data-toggle="collapse" data-target="#ext-description">Полный текст описания</a></p>
-				<div id="ext-description" class="collapse out">	
+%		if($pcount==4){		
+				<p id='ext-description-link'><a href="#">Полный текст описания</a></p>
+				<div id="ext-description" style="display:none">		
 %		}
 				<p><%= $key %></p>
 % 	}
