@@ -7,7 +7,7 @@
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
-          <a href="/news/209/" title="Акция Ранний старт бесплатно на 2 недели">
+          <a href="/news/209/" title="Акция Ранний старт бесплатно на 2 недели" rel="nofollow">
 		        <img src="/media/slider/akciya/ranniy-start-v-detskiy-sad.jpg" alt="Акция Ранний старт бесплатно на 2 недели" title="Акция Ранний старт бесплатно на 2 недели">
 		      </a>
           <div class="carousel-caption">
@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="item">
-          <a href="/news/181/">
+          <a href="/news/181/" title="Подарочная акция весь октябрь" rel="nofollow">
 		        <img src="/media/slider/akciya/akciya-oktober.jpg" alt="Подарочная акция в октябре" title="Подарочная акция в октябре">
 		      </a>
           <div class="carousel-caption">
@@ -25,7 +25,7 @@
 	<div class="item">
           <a href="/catalog/dsk-rstart/" title="Каталог развивающих комплексов Ранний старт">
 		        <img src="/media/slider/rstart/rs-standard.jpg" alt="Каталог развивающих комплексов Ранний старт" title="Каталог развивающих комплексов Ранний старт">
-		      </a>
+		  </a>
           <div class="carousel-caption">
             <p>&laquo;Ранний старт&raquo; - развивающие комплексы для малышей от двух месяцев</p>
           </div>
