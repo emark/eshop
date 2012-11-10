@@ -22,19 +22,30 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
-get '/news' => sub{
+get '/news/' => sub{
 	my $self = shift;
 	my $page = {
 		'url' => 'news',
-		'type' => 1,
-	};
+		'type' => 1};
 	my $ua = Mojo::UserAgent->new();
-	my $news = $ua->get("http://blog.nastartshop.ru/category/news/?json=1")->res->json;
-	
+	my $news = $ua->get('http://blog.nastartshop.ru/category/news/?json=1')->res->json;
     $self->stash(
 		page => $page,
-        news => $news,
-    );
+        news => $news);
+};
+
+get '/news/:id/' => sub{
+	my $self = shift;
+	my $post_id = $self->param('id') || undef;
+	my $page = {
+		'url' => 'news',
+		'type' => 1};
+	my $ua = Mojo::UserAgent->new();
+	my $url = "http://blog.nastartshop.ru/api/get_post/?id=$post_id" if $post_id;
+	my $news = $ua->get($url)->res->json;
+    $self->stash(
+		page => $page,
+        news => $news);
 };
 
 get '/checkout' => sub {

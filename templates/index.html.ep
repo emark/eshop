@@ -7,19 +7,19 @@
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
-          <a href="/news/" title="Акция Ранний старт бесплатно на 2 недели">
+          <a href="/news/209/" title="Акция Ранний старт бесплатно на 2 недели">
 		        <img src="/media/slider/akciya/ranniy-start-v-detskiy-sad.jpg" alt="Акция Ранний старт бесплатно на 2 недели" title="Акция Ранний старт бесплатно на 2 недели">
 		      </a>
           <div class="carousel-caption">
-            <p>Тест-драйв акция "Ранний старт в детский сад"</p>
+            <p>Тест-драйв акция &laquo;Ранний старт в детский сад&raquo;</p>
           </div>
         </div>
         <div class="item">
-          <a href="/news/">
+          <a href="/news/181/">
 		        <img src="/media/slider/akciya/akciya-oktober.jpg" alt="Подарочная акция в октябре" title="Подарочная акция в октябре">
 		      </a>
           <div class="carousel-caption">
-            <p>Весь октябрь при покупке комплекса "Ранний старт" - сетка в подарок!</p>
+            <p>Весь октябрь при покупке комплекса &laquo;Ранний старт&raquo; - сетка в подарок!</p>
           </div>
         </div>
 	<div class="item">
@@ -27,15 +27,15 @@
 		        <img src="/media/slider/rstart/rs-standard.jpg" alt="Каталог развивающих комплексов Ранний старт" title="Каталог развивающих комплексов Ранний старт">
 		      </a>
           <div class="carousel-caption">
-            <p>"Ранний старт" - развивающие комплексы для малышей от двух месяцев</p>
+            <p>&laquo;Ранний старт&raquo; - развивающие комплексы для малышей от двух месяцев</p>
           </div>
         </div>
         <div class="item">
-          <a href="http://club.nastartshop.ru/" title="Клуб Здоровая Семья">
+          <a href="http://blog.nastartshop.ru/" title="Клуб Здоровая Семья">
             <img src="/media/slider/rstart/hf-banner.jpg" alt="Клуб Здоровая Семья" title="Клуб Здоровая Семья">
 		      </a>
           <div class="carousel-caption">
-            <p>Клуб "Здоровая Семья"</p>
+            <p>Узнавайте все новости в нашем блоге &laquo;Клуб &laquo;Здоровая Семья&raquo;</p>
           </div>
         </div>
       </div>
