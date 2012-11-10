@@ -43,6 +43,7 @@ get '/news/:id/' => sub{
 	my $ua = Mojo::UserAgent->new();
 	my $url = "http://blog.nastartshop.ru/api/get_post/?id=$post_id" if $post_id;
 	my $news = $ua->get($url)->res->json;
+	return $self->render(status => 404, template => 'not_found') if $news->{'status'} eq 'error';
     $self->stash(
 		page => $page,
         news => $news);
@@ -402,7 +403,25 @@ get '/about' => sub{
 		page => $page,
         pages => $pages->fetch_hash_all,
     );
-    $self->render('about');
+};
+
+get '/about/:pageurl' => sub{
+	my $self = shift;
+	my $result = $dbi->select(
+		table => 'pages',
+		column => [
+			'title',
+			'url',
+			'metadescription',
+			'description',
+			'content',
+		],
+		where => {'url' => $self->param('pageurl')}
+	);
+	my $has_content = $result->fetch_hash;
+    return $self->render(status => 404, template => 'not_found') if !$has_content;
+	$self->stash(page => $has_content); 
+	$self->render('page');
 };
 
 get '/' => sub{

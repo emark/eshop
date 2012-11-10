@@ -1,14 +1,14 @@
 % layout 'default';
-% title $page->{'title'};
+% title $page->{'title'};#$dev
 % stash->{'metadescription'} = $page->{'metadescription'};
 
-<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a> / <a href="/about/" title="Справочная информация для покупателей">Информация для покупателей</a></div>
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/about/" title="Справочная информация для покупателей">Информация для покупателей</a>&nbsp;/</div>
 <div>
 	<h1><%= $page->{'title'} %></h1>
 	<hr>
 </div>
 <div>
-	<p><em><%== $page->{'description'} %></em></p>
+	<p><em><%= $page->{'description'} %></em></p>
 </div>
 <div>
 	<%== $page->{'content'} %>

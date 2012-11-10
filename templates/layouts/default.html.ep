@@ -1,5 +1,5 @@
 % #Initialize active page class 
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '');
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'faq' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 % #
 % #Cart information
@@ -61,19 +61,23 @@
 					<strong>Главная</strong>
 					% }else{
 					<a href="/" title="Переход на главную страницу">Главная</a>
-					% };
-					% if ($page->{'url'} eq 'news'){
+					% };if ($page->{'url'} eq 'news'){
 					<strong>Новости</strong>
 					% }else{	
 					<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
-					% };
-					% if ($page->{'url'} eq 'catalog'){
+					% };if ($page->{'url'} eq 'catalog'){
 					<strong>Каталог товаров</strong>
 					% }else{	
 					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог товаров</a>
-					% };
+					% };if ($page->{'url'} eq 'delivery-and-payment'){
+					<strong>Доставка и оплата</strong>
+					% }else{
 					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
+					% };if ($page->{'url'} eq 'contacts'){
+					<strong>Контакты</strong>
+					% }else{
 					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
+					% };
 				</div>
  				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
  			</div>
@@ -98,10 +102,10 @@
 					</ul>
 					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 					<ul class="nav nav-list">
-						<li><a href="/about/warranty.html" title="Условия обмена, возврата товаров">Гарантия и возврат</a></li>
-						<li><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
-						<li><a href="/about/faq.html" title="Часто задаваемые вопросы и ответы на них">Вопросы и ответы</a></li>
-						<li><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
+						<li<%== $active_link{'warranty'} %>><a href="/about/warranty.html" title="Условия обмена, возврата товаров">Гарантия и возврат</a></li>
+						<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
+						<li<%== $active_link{'faq'} %>><a href="/about/faq.html" title="Часто задаваемые вопросы и ответы на них">Вопросы и ответы</a></li>
+						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
 						<li><a href="http://blog.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф"><strong>Блог интернет-магазина</strong></a></li>
 					</ul>
 				</div>
@@ -137,7 +141,7 @@
 						<a href="https://plus.google.com/110471626333836075742/" target=_blank><img src="/media/images/socbuttons/googleplus.gif" alt="Страница на Google+" title="Страница на Google+"></a>
 						<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Группа в Одноклассниках" title="Группа в Одноклассниках"></a>
 						<a href="http://blog.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф" target=_blank><img src="/media/images/socbuttons/blog.gif" alt="Наш блог" title="Наш блог"></a>
-						<a href="http://blog.nastartshop.ru/feed/" title="Блог в формате RSS" target=_blank><img src="/media/images/socbuttons/rss.gif" alt="Наш блог" title="Наш блог в формате RSS"></a></p>
+						<a href="http://blog.nastartshop.ru/feed/" title="Блог в формате RSS" target=_blank><img src="/media/images/socbuttons/rss.gif" alt="RSS" title="Наш блог в формате RSS"></a></p>
 					</div>
 					<div class="span3">
 						<h3>Справочная информация</h3>
@@ -152,7 +156,7 @@
 					<div class="span3">
 						<h3>Домашние спортивные комплексы</h3>
 						<ul>
-							<li><a href="/catalog/dsk-rstart/" title="Развивающий комплекс Ранний старт">Развивающий комплекс "Ранний старт"</a></li>
+							<li><a href="/catalog/dsk-rstart/" title="Развивающий комплекс Ранний старт">Развивающий комплекс &laquo;Ранний старт&raquo;</a></li>
 							<li><a href="/catalog/dsk-slide/" title="Распорные спортивные комплексы">Распорные спортивные комплексы</a></li>
 							<li><a href="/catalog/dsk-wall/" title="Пристенные спортивные компsексы">Пристенные спортивные комплексы</a></li>
 						</ul>
