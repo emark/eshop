@@ -6,7 +6,6 @@
 % if($news){
 <div>
 	<h1><%== $news->{'post'}->{'title_plain'} %></h1>
-	<hr/>
 </div>
 <div>
 	% if ($news->{'post'}->{'date'}){
