@@ -1,5 +1,5 @@
 % #Initialize active page class 
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'warranty' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'faq' => '');
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'faq' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 % #
 % #Cart information
@@ -102,7 +102,7 @@
 					</ul>
 					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 					<ul class="nav nav-list">
-						<li<%== $active_link{'warranty'} %>><a href="/about/warranty.html" title="Условия обмена, возврата товаров">Гарантия и возврат</a></li>
+						<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
 						<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
 						<li<%== $active_link{'faq'} %>><a href="/about/faq.html" title="Часто задаваемые вопросы и ответы на них">Вопросы и ответы</a></li>
 						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
@@ -147,7 +147,7 @@
 						<h3>Справочная информация</h3>
 						<ul class="">
 							<li><a href="/news/">Новости магазина</a></li>
-							<li><a href="/about/warranty.html">Гарантия на товары</a></li>
+							<li><a href="/about/change.html">Обмен и возврат</a></li>
 							<li><a href="/about/faq.html">Часто задаваемые вопросы</a></li>
 							<li><a href="/about/delivery-and-payment.html">Условия доставки и оплаты</a></li>
 							<li><a href="/about/contacts.html">Адреса и реквизиты</a></li>
