@@ -3,12 +3,11 @@
 % $active_link{$page->{'url'}} = ' class="active"';
 % #
 % #Cart information
-% my $cartinfo=0;
-% my @productid = keys %{session->{'cart'}} if session->{'cart'};
-% foreach my $key (@productid){
-%	$cartinfo=$cartinfo+session->{'cart'}{$key};
-% };
-%#
+% #my $cartinfo=0;
+% #my @productid = keys %{session->{'cart'}} if session->{'cart'};
+% #foreach my $key (@productid){
+%	#$cartinfo=$cartinfo+session->{'cart'}{$key};
+% #};
 <!DOCTYPE html>
 <html lang="ru">
   <head>
