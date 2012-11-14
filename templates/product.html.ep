@@ -48,7 +48,7 @@
 				<p id='ext-description-link'><a href="#">Полный текст описания</a></p>
 				<div id="ext-description" style="display:none">		
 %		}
-				<p><%= $key %></p>
+				<p><%== $key %></p>
 % 	}
 %	if($pcount>3){
 				</div>
