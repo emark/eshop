@@ -122,7 +122,7 @@
 							<li><strong>почта:</strong> <a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи"><span itemprop="email">hello@nastartshop.ru</span></a></li>
 							<li><strong>адрес:</strong> <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">Россия, Красноярск</span></span></li>
 							<li>Телевизорная ул., д. 1, корп. 9</li>
-							<li><a href="http://maps.yandex.ru/-/CVu6qGPg" title="Показать адрес магазина на Яндекс.Карты">Яндекс.Карты</a>, <a href="http://go.2gis.ru/f332" title="Показать адрес магазина в сервисе 2GIS">2GIS</a></li>
+							<li><strong>карта:</strong> <a href="http://maps.yandex.ru/-/CVu6qGPg" title="Показать адрес магазина на Яндекс.Карты">Яндекс.Карты</a>, <a href="http://go.2gis.ru/f332" title="Показать адрес магазина в сервисе 2GIS">2GIS</a></li>
 						</ul>
 						</span>
 						<p><a href="http://www.facebook.com/nastartshop" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Страница на Facebook" title="Страница на Facebook"></a>
