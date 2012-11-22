@@ -1,5 +1,5 @@
 % #adding classes style for menu
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'faq' => '');
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -92,7 +92,7 @@
 					<ul class="nav nav-list">
 						<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
 						<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
-						<li<%== $active_link{'faq'} %>><a href="/about/faq.html" title="Часто задаваемые вопросы и ответы на них">Вопросы и ответы</a></li>
+						<li<%== $active_link{'feedback'} %>><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
 						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
 						<li><a href="http://blog.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф"><strong>Блог интернет-магазина</strong></a></li>
 					</ul>
@@ -126,7 +126,7 @@
 						</address>
 						<p><a href="http://www.facebook.com/nastartshop" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Страница на Facebook" title="Страница на Facebook"></a>
 						<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="Группа ВКонтакте" title="Группа ВКонтакте"></a>
-						<a href="https://plus.google.com/110471626333836075742/" target=_blank><img src="/media/images/socbuttons/googleplus.gif" alt="Страница на Google+" title="Страница на Google+"></a>
+						<a href="https://plus.google.com/110471626333836075742/" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="Страница на Google+" title="Страница на Google+"></a>
 						<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Группа в Одноклассниках" title="Группа в Одноклассниках"></a>
 						<a href="http://blog.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф" target=_blank><img src="/media/images/socbuttons/blog.gif" alt="Наш блог" title="Наш блог"></a>
 						<a href="http://blog.nastartshop.ru/feed/" title="Блог в формате RSS" target=_blank><img src="/media/images/socbuttons/rss.gif" alt="RSS" title="Наш блог в формате RSS"></a></p>
@@ -134,11 +134,11 @@
 					<div class="span3">
 						<h3>Справочная информация</h3>
 						<ul class="">
-							<li><a href="/news/">Новости магазина</a></li>
-							<li><a href="/about/change.html">Обмен и возврат</a></li>
-							<li><a href="/about/faq.html">Часто задаваемые вопросы</a></li>
-							<li><a href="/about/delivery-and-payment.html">Условия доставки и оплаты</a></li>
-							<li><a href="/about/contacts.html">Адреса и реквизиты</a></li>
+							<li><a href="/news/" title="Новости магазина">Новости магазина</a></li>
+							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
+							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
+							<li><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
+							<li><a href="/about/contacts.html" title="Реквизиты организации, адреса магазинов">Адреса и реквизиты</a></li>
 						</ul>
 					</div>
 					<div class="span3">
