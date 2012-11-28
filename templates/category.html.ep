@@ -22,7 +22,16 @@
 					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
 					</a>
       				<p><a href="<%= url_for "/catalog/$page->{'url'}/$productid->{'url'}.html" %>" title="Узнать харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></p>
-					<p><strong>Цена:</strong> <%=$productid->{'price'}%> р.</p>
+					<p>
+					<strong>Цена:</strong>
+% 		if($productid->{'discount'}){
+%			my $muted_price = $productid->{'cost'}*($productid->{'margin'}/100)+$productid->{'cost'};
+%			$muted_price = sprintf("%d", $muted_price);
+					<del class="muted"><%= $muted_price %></del>, <%= $productid->{'price'} %> руб.
+%		}else{
+					<%=$productid->{'price'}%> руб.
+%		}
+					</p>
 					<form action="/cart/" method="post">
 						<input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
 						<input type=hidden name="action" value="add">

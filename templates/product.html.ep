@@ -24,7 +24,10 @@
 		<p>Наличие: <%= $instore %></p>
 % my $articul = sprintf ("%06s",$product->{'id'});
 		<p>Артикул: <%= $articul %></p>
-		<h2>Цена: <%= $product->{'price'} %> р.</h2>
+		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
+% if ($product->{'discount'}){
+		<p class="muted">цена указана со скидкой <%= $product->{'discount'} %>%</p>
+% }
 		<form action="/cart/" method=post>
 		<input type=hidden value=<%= $product->{'id'} %> name=prodid>
 		<input type=hidden name="action" value="add">

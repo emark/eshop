@@ -117,7 +117,7 @@
 						<h3>Информация о продавце</h3>
 						<span itemscope itemtype="http://schema.org/Organization">
 						<ul class="unstyled">
-							<li><span itemprop="name">ООО &laquo;Электронный маркетинг&raquo;</span></li>
+							<li><span itemprop="name">НаСтарт.рф</span>, ООО &laquo;Эмарк&raquo;</li>
 							<li><strong>телефон:</strong> <span itemprop="telephone">+7 (391) 292-02-29</span></li>
 							<li><strong>почта:</strong> <a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи"><span itemprop="email">hello@nastartshop.ru</span></a></li>
 							<li><strong>адрес:</strong> <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">Россия, Красноярск</span></span></li>
