@@ -26,7 +26,7 @@
 		<p>Артикул: <%= $articul %></p>
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 % if ($product->{'discount'}){
-		<p class="alert alert-info">цена товара указана со скидкой <%= $product->{'discount'} %>%</p>
+		<div class="alert alert-info">цена со скидкой <%= $product->{'discount'} %>%</div>
 % }
 		<form action="/cart/" method=post>
 		<input type=hidden value=<%= $product->{'id'} %> name=prodid>
