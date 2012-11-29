@@ -13,17 +13,17 @@
 				<div class="thumbnail">
 % my $image_source = 'noimage';
 % $image_source = $product->[0]->{'url'} if $product->[0]->{'image'};
-					<a href="<%= "/catalog/$product->[0]->{'caturl'}/$product->[0]->{'url'}" %>.html" title="Подробнее о <%= $product->[0]->{'title'} %>">
+					<a href="/media/products/large/<%= $image_source %>.jpg" title="<%= $product->[0]->{'title'} %>" rel="shadowbox[Compare]">
 					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $product->[0]->{'title'} %>" title="<%= $product->[0]->{'title'} %>">
 					</a>
-	      				<p><a href="<%= "/catalog/$product->[0]->{'caturl'}/$product->[0]->{'url'}" %>.html" title="Узнать харакетиристики <%= $product->[0]->{'title'} %>"><%= $product->[0]->{'title'} %></a></p>
-					<p>
-						<strong>Цена:</strong>
-						<%= $product->[0]->{'price'} %> руб.
-					</p>
     				</div>
   			</li>
 		</ul>
+		<p><a href="<%= "/catalog/$product->[0]->{'caturl'}/$product->[0]->{'url'}" %>.html" title="Узнать харакетиристики <%= $product->[0]->{'title'} %>"><%= $product->[0]->{'title'} %></a></p>
+		<p>
+			<strong>Цена:</strong>
+			<%= $product->[0]->{'price'} %> руб.
+		</p>
 	</div>
 	<div class="span3">
 % if($product->[1]->{'id'}){
@@ -32,17 +32,17 @@
 				<div class="thumbnail">
 % 	$image_source = 'noimage';
 % 	$image_source = $product->[1]->{'url'} if $product->[1]->{'image'};
-					<a href="<%= "/catalog/$product->[1]->{'caturl'}/$product->[1]->{'url'}" %>.html" title="Подробнее о <%= $product->[1]->{'title'} %>">
+					<a href="/media/products/large/<%= $image_source %>.jpg" title="<%= $product->[0]->{'title'} %>" rel="shadowbox[Compare]">
 					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $product->[1]->{'title'} %>" title="<%= $product->[1]->{'title'} %>">
 					</a>
-	      				<p><a href="<%= "/catalog/$product->[1]->{'caturl'}/$product->[1]->{'url'}" %>.html" title="Узнать харакетиристики <%= $product->[1]->{'title'} %>"><%= $product->[1]->{'title'} %></a></p>
-					<p>
-						<strong>Цена:</strong>
-						<%= $product->[1]->{'price'} %> руб.
-					</p>
     				</div>
   			</li>
 		</ul>
+		<p><a href="<%= "/catalog/$product->[1]->{'caturl'}/$product->[1]->{'url'}" %>.html" title="Узнать харакетиристики <%= $product->[1]->{'title'} %>"><%= $product->[1]->{'title'} %></a></p>
+		<p>
+			<strong>Цена:</strong>
+			<%= $product->[1]->{'price'} %> руб.
+		</p>
 % }
 	</div>
 </div>
