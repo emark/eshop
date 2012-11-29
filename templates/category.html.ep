@@ -18,10 +18,10 @@
 				<div class="thumbnail">
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
-					<a href="<%= url_for "/catalog/$page->{'url'}/$productid->{'url'}.html" %>" title="Подробнее о <%= $productid->{'title'} %>">
+					<a href="/catalog/<%= "$page->{'url'}/$productid->{'url'}" %>.html" title="Подробнее о <%= $productid->{'title'} %>">
 					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
 					</a>
-      				<p><a href="<%= url_for "/catalog/$page->{'url'}/$productid->{'url'}.html" %>" title="Узнать харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></p>
+      				<p><a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Узнать харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></p>
 					<p>
 					<strong>Цена:</strong>
 % 		if($productid->{'discount'}){
@@ -29,13 +29,13 @@
 %			$muted_price = sprintf("%d", $muted_price);
 					<del class="muted"><%= $muted_price %></del>, <%= $productid->{'price'} %> руб.
 %		}else{
-					<%=$productid->{'price'}%> руб.
+					<%= $productid->{'price'} %> руб.
 %		}
 					</p>
 					<form action="/cart/" method="post">
 						<input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
 						<input type=hidden name="action" value="add">
-						<a href="/catalog/<%= $page->{'url'} %>/<%= $productid->{'url'} %>.html" class="btn" title="Подробнее о товаре">Подробнее</a>&nbsp;
+						<a href="/compare/<%= $productid->{'id'} %>/" class="btn" title="Добавить товар к сравнению" rel="nofollow">Сравнить</a>&nbsp;
 						<input type=submit value="Купить" class="btn btn-primary">
 					</form>
     			</div>

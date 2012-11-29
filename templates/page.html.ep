@@ -1,5 +1,5 @@
 % layout 'default';
-% title $page->{'title'};#$dev
+% title $page->{'title'};
 % stash->{'metadescription'} = $page->{'metadescription'};
 
 <div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/about/" title="Справочная информация для покупателей">Информация для покупателей</a>&nbsp;/ <span class="muted"><%= $page->{'title'} %></span></div>

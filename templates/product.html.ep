@@ -57,20 +57,18 @@
 				</div>
 %	}
 % }
-% @content=split('#',$product->{'settings'});
-% if(@content){
+% if($product->{'settings'}){
 				<dl>
 					<dt><strong>Комплектация</strong></dt>
 					<dd>
 						<ol>
-% @content=split('#',$product->{'settings'});
-% 	foreach my $key(@content){
+% 	foreach my $key(split('#',$product->{'settings'})){
 							<li><%= $key %></li>
 % 	}
 						</ol>
 					</dd>
-% }
 				</dl>
+% }
 % @content=split('#',$product->{'features'});
 % if(@content){
 				<dl>

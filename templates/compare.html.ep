@@ -1,0 +1,110 @@
+% layout 'default';
+% title 'Сравнение товаров';
+% stash->{'metadescription'} = 'Сравнить выбранные товары по харакетиристикам и параметрам.';
+
+<div>
+	<h1>Сравнение товаров</h1>
+</div>
+<div class="row">
+	<div class="span3"></div>
+	<div class="span3">
+		<ul class="thumbnails">
+			<li class="span3">
+				<div class="thumbnail">
+% my $image_source = 'noimage';
+% $image_source = $product->[0]->{'url'} if $product->[0]->{'image'};
+					<a href="<%= "/catalog/$product->[0]->{'caturl'}/$product->[0]->{'url'}" %>.html" title="Подробнее о <%= $product->[0]->{'title'} %>">
+					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $product->[0]->{'title'} %>" title="<%= $product->[0]->{'title'} %>">
+					</a>
+	      				<p><a href="<%= "/catalog/$product->[0]->{'caturl'}/$product->[0]->{'url'}" %>.html" title="Узнать харакетиристики <%= $product->[0]->{'title'} %>"><%= $product->[0]->{'title'} %></a></p>
+					<p>
+						<strong>Цена:</strong>
+						<%= $product->[0]->{'price'} %> руб.
+					</p>
+    				</div>
+  			</li>
+		</ul>
+	</div>
+	<div class="span3">
+% if($product->[1]->{'id'}){
+		<ul class="thumbnails">
+			<li class="span3">
+				<div class="thumbnail">
+% 	$image_source = 'noimage';
+% 	$image_source = $product->[1]->{'url'} if $product->[1]->{'image'};
+					<a href="<%= "/catalog/$product->[1]->{'caturl'}/$product->[1]->{'url'}" %>.html" title="Подробнее о <%= $product->[1]->{'title'} %>">
+					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $product->[1]->{'title'} %>" title="<%= $product->[1]->{'title'} %>">
+					</a>
+	      				<p><a href="<%= "/catalog/$product->[1]->{'caturl'}/$product->[1]->{'url'}" %>.html" title="Узнать харакетиристики <%= $product->[1]->{'title'} %>"><%= $product->[1]->{'title'} %></a></p>
+					<p>
+						<strong>Цена:</strong>
+						<%= $product->[1]->{'price'} %> руб.
+					</p>
+    				</div>
+  			</li>
+		</ul>
+% }
+	</div>
+</div>
+<div class="row">
+	<div class="span3"></div>
+	<div class="span3">
+		<form action="/cart/" method="post">
+			<input type=hidden name="prodid" value="<%= $product->[0]->{'id'} %>">
+			<input type=hidden name="action" value="add">
+			<input type=submit value="Купить" class="btn btn-primary">&nbsp;
+			<a href="/compare/<%= $product->[0]->{'id'} %>/" class="btn" title="Исключить товар из сравнения" rel="nofollow">- Исключить</a>
+		</form>
+	</div>
+	<div class="span3">
+% if($product->[1]->{'id'}){
+		<form action="/cart/" method="post">
+			<input type=hidden name="prodid" value="<%= $product->[1]->{'id'} %>">
+			<input type=hidden name="action" value="add">
+			<input type=submit value="Купить" class="btn btn-primary">&nbsp;
+			<a href="/compare/<%= $product->[1]->{'id'} %>/" class="btn" title="Исключить товар из сравнения" rel="nofollow">Исключить</a>
+		</form>
+% }else{
+	<p class="align-center"><a href="/catalog/<%= $product->[0]->{'caturl'} %>/" class="btn btn-middle">+ Добавить товар</a></p>
+% }
+	</div>
+</div>
+<div class="row">
+	<div class="span3"><strong>Комплектация</strong></div>
+	<div class="span3">
+% if($product->[0]->{'settings'}){
+		<ol>
+% 	foreach my $key(split('#',$product->[0]->{'settings'})){
+			<li><%= $key %></li>
+% 	}
+		</ol>
+% }
+	</div>
+	<div class="span3">
+% if($product->[1]->{'settings'}){
+		<ol>
+% 	foreach my $key(split('#',$product->[1]->{'settings'})){
+			<li><%= $key %></li>
+% 	}
+		</ol>
+% }
+	</div>
+</div>
+<div class="row">
+	<div class="span3"><p><strong>Параметры</strong></p></div>
+</div>
+% my @content = split('#',$product->[0]->{'features'});
+% if(@content){
+% 	foreach my $key(@content){
+%		my($param,$value)=split(':',$key);
+<div class="row">
+	<div class="span3"><%= $param %></div><div class="span3"><%= $value %></div><div class="span3"><%= $value %></div>
+</div>
+<div class="row">
+	<div class="span9"><hr /></div>
+</div>
+
+% 	}
+% }
+
+

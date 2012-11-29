@@ -22,11 +22,36 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
+get '/compare/:id/' => sub{
+	my $self = shift;
+	my $product_id = $self->param('id') || 0;
+	my $page = {
+		url => 'compare'};
+	my $result = $dbi->select(
+		table => 'products',
+		column => [
+			'id',
+			'url',
+			'caturl',
+			'title',
+			'price',
+			'settings',
+			'features',
+			'image'],
+		where => {id => $product_id});
+	my $has_content = $result->fetch_hash_all;
+    return $self->render(status => 404, template => 'not_found') if !$has_content;
+    $self->stash(
+        product => $has_content,
+		page => $page);
+	$self->render('compare');
+};
+
 get '/news/' => sub{
 	my $self = shift;
 	my $page = {
-		'url' => 'news',
-		'type' => 1};
+		'url' => 'news'
+	};
 	my $ua = Mojo::UserAgent->new();
 	my $news = $ua->get('http://blog.nastartshop.ru/category/news/?json=1')->res->json;
     $self->stash(
@@ -39,7 +64,7 @@ get '/news/:id/' => sub{
 	my $post_id = $self->param('id') || undef;
 	my $page = {
 		'url' => 'news',
-		'type' => 1};
+	};
 	my $ua = Mojo::UserAgent->new();
 	my $url = "http://blog.nastartshop.ru/api/get_post/?id=$post_id" if $post_id;
 	my $news = $ua->get($url)->res->json;
