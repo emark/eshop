@@ -8,7 +8,7 @@
 % $instore = 'отсутствует' if $product->{'instore'} == -1;
 % $instore = 'под заказ' if $product->{'instore'} == -2;
 
-<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>&nbsp;/ <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>&nbsp;/</div>
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>&nbsp;/ <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>&nbsp;/ <span class="muted"><%= $product->{'title'} %></span></div>
 <div>
 	<h1><%= $product->{'title'} %></h1>
 </div>
@@ -26,7 +26,7 @@
 		<p>Артикул: <%= $articul %></p>
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 % if ($product->{'discount'}){
-		<p class="muted">цена указана со скидкой <%= $product->{'discount'} %>%</p>
+		<p class="alert alert-info">цена товара указана со скидкой <%= $product->{'discount'} %>%</p>
 % }
 		<form action="/cart/" method=post>
 		<input type=hidden value=<%= $product->{'id'} %> name=prodid>

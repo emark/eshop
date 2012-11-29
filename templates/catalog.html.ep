@@ -16,12 +16,6 @@
 </div>
 % foreach my $category (@{$categories}){
 <div class="row">
-	<div class="span9">
-		<h2><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><%= $category->{'title'} %></a></h2>
-		<h3>Цены от <%= $min_price{$category->{'url'}} %> руб.</h3>
-	</div>
-</div>
-<div class="row">
 	<div class="span3">
 		<ul class="thumbnails">
 			<li class="span3">
@@ -32,8 +26,9 @@
 		</ul>
 	</div>
 	<div class="span6">
+<h2><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><%= $category->{'title'} %></a></h2>
+		<h3>Цены от <%= $min_price{$category->{'url'}} %> руб.</h3>
 		<p><%= $category->{'description'} %></p>
-		<a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога">Посмотреть товары</a>
 	</div>
 </div>
 % }

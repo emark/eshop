@@ -2,7 +2,7 @@
 % title $news->{'post'}->{'title_plain'};
 % stash->{'metadescription'} = 'Новостной раздел интернет-магазина НаСтарт. Информация о подарочных акциях, новости о скидках. Новые поступления спортивных комплексов и навесного оборудования.';
 
-<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/news/" title="Список новостей">Новости</a>&nbsp;/</div>
+<div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/news/" title="Список новостей">Новости</a>&nbsp;/ <span class="muted"><%== $news->{'post'}->{'title_plain'} %></span></div>
 % if($news){
 <div>
 	<h1><%== $news->{'post'}->{'title_plain'} %></h1>
