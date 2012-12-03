@@ -7,14 +7,6 @@
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
-          <a href="/news/318/" title="Новогодняя акция: чехол в подарок!" rel="nofollow">
-		        <img src="/media/slider/akciya/slider1.jpg" alt="Новогодняя акция: чехол в подарок! Узнайте подробности." title="Новогодняя акция: чехол в подарок! Узнайте подробности.">
-		      </a>
-          <div class="carousel-caption">
-            <p>Новогодняя акция: чехол в подарок!</p>
-          </div>
-        </div>
-	<div class="item">
           <a href="/news/209/" title="Акция Ранний старт бесплатно на 2 недели" rel="nofollow">
 		        <img src="/media/slider/akciya/ranniy-start-v-detskiy-sad.jpg" alt="Акция Ранний старт бесплатно на 2 недели" title="Акция Ранний старт бесплатно на 2 недели">
 		      </a>
