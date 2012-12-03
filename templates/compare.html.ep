@@ -10,11 +10,11 @@
 	<div class="span3">
 		<ul class="thumbnails">
 			<li class="span3">
-				<div class="thumbnail">
+				<div>
 % my $image_source = 'noimage';
 % $image_source = $product->[0]->{'url'} if $product->[0]->{'image'};
-					<a href="/media/products/large/<%= $image_source %>.jpg" title="<%= $product->[0]->{'title'} %>" rel="shadowbox[Compare]">
-					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $product->[0]->{'title'} %>" title="<%= $product->[0]->{'title'} %>">
+					<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" title="<%= $product->[0]->{'title'} %>" rel="shadowbox[Compare]">
+					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $product->[0]->{'title'} %>" title="Увеличить изображение <%= $product->[0]->{'title'} %>">
 					</a>
     				</div>
   			</li>

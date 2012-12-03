@@ -356,6 +356,7 @@ get '/catalog/:caturl' => sub {
 			'image',
 			'cost',
 			'margin',
+			'instore',
 			'discount',
 		],
 		where => {'caturl' => $caturl},

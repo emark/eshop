@@ -1,6 +1,7 @@
 % layout 'default';
 % title $page->{'title'};
 % stash->{'metadescription'} = $page->{'metadescription'};
+% my %store_info = (-2 => 'под заказ', -1 => 'уточняйте', 0 => 'отсутствует', 1 => 'мало', 2 => 'достаточно', 3 => 'много');
 
 <div class="breadcrumb"><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>&nbsp;/ <span class="muted"><%= $page->{'title'} %></span></div>
 <div>
@@ -19,18 +20,21 @@
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
 					<a href="/catalog/<%= "$page->{'url'}/$productid->{'url'}" %>.html" title="Подробнее о <%= $productid->{'title'} %>">
-					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>">
+					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Узнать харакетиристики <%= $productid->{'title'} %>" title="Узнать харакетиристики <%= $productid->{'title'} %>">
 					</a>
-      				<p><a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Узнать харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></p>
-					<p>
-					<strong>Цена:</strong>
+	      				<p><%= $productid->{'title'} %><br /><a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Узнать харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
+					<p><strong>Цена:</strong>
 % 		if($productid->{'discount'}){
 %			my $muted_price = $productid->{'cost'}*($productid->{'margin'}/100)+$productid->{'cost'};
 %			$muted_price = sprintf("%d", $muted_price);
 					<del class="muted"><%= $muted_price %></del>, <%= $productid->{'price'} %> руб.
 %		}else{
 					<%= $productid->{'price'} %> руб.
-%		}
+%		};
+%		my $instore = $productid->{'instore'};
+%		$instore = 2 if ($instore > 1 && $instore < 4);
+%		$instore = 3 if ($instore > 4);
+					<br /><strong>Наличие:</strong> <%= $store_info{$instore} %>
 					</p>
 					<form action="/cart/" method="post">
 						<input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
@@ -40,10 +44,10 @@
 					</form>
     			</div>
   			</li>
-% 	}
+% 	};
 		</ul>
 % }else{
 		<p>В этом разделе пока нет товаров. Может быть будут завтра?</a>
-% }
+% };
 	</div>
 </div>
