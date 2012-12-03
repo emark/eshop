@@ -47,8 +47,8 @@
 	</div>
 </div>
 <div class="row">
-	<div class="span4">
-		<a href="/checkout/" class="btn btn-large">Оформить заказ&nbsp;&rarr;</a>
+	<div class="span9">
+		<a href="/checkout/" class="btn btn-large">Оформить заказ</a> или <a href="/catalog/">продолжить покупки</a>
 	</div>
 </div>
 <script language ="javascript" type = "text/javascript" >

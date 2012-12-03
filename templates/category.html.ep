@@ -15,7 +15,7 @@
 		<ul class="thumbnails">
 % 	foreach my $productid (@{$product}){
 			<li class="span3">
-				<div class="thumbnail">
+				<div>
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
 					<a href="/catalog/<%= "$page->{'url'}/$productid->{'url'}" %>.html" title="Подробнее о <%= $productid->{'title'} %>">
