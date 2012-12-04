@@ -369,6 +369,7 @@ get '/catalog/:caturl' => sub {
 			'margin',
 			'instore',
 			'discount',
+			'itemupdate',
 		],
 		where => {'caturl' => $caturl},
 	);
@@ -409,8 +410,10 @@ get '/catalog/:caturl/:produrl.html' => sub {
 			'image',
 			'instore',
 			'url',
-			'vk_album',
+			'photo',
+			'video',
 			'instruction',
+			'itemupdate',
 		],
 		where => {
 			'url' => $produrl,

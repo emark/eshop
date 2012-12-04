@@ -28,6 +28,7 @@
 % if ($product->{'discount'}){
 		<div class="alert alert-info">цена со скидкой <%= $product->{'discount'} %>%</div>
 % }
+		<p><small>Обновлено: <%= $product->{'itemupdate'} %></small></p>
 		<form action="/cart/" method=post>
 		<input type=hidden value=<%= $product->{'id'} %> name=prodid>
 		<input type=hidden name="action" value="add">
@@ -37,7 +38,7 @@
 	<div class="span6">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
-			<li><a href="#media" data-toggle="tab">Изображения</a></li>
+			<li><a href="#more" data-toggle="tab">Дополнительно</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -96,16 +97,22 @@
 				</dl>
 % }
 			</div>
-			<div id="media" class="tab-pane">
-% if ($product->{'vk_album'}){
-				<a href="http://vk.com/album-<%= $product->{'vk_album'} %>" target=_blank>Фотографии товара</a>
+			<div id="more" class="tab-pane">
+				<p><strong>Видео и фотографии</strong>
+				<ul>
+% if ($product->{'photo'}){
+				<li><a href="http://vk.com/album-<%= $product->{'photo'} %>" target=_blank>Фотографии <%= $product->{'title'} %></a></li>
 % }else{
-				<p>Изображения пока не готовы.</p>
-				<p><strong>Если у вас возникли вопросы, мы вас проконсультируем:</strong><br/>
-					- по телефону +7 (391) 29-202-29<br/>
-					- по почте <a href="mailto:hello@nastartshop.ru">hello@nastartshop.ru</a>
+				<li>Фотографии для товара отсутствуют</li>
+% };
+% if ($product->{'video'}){
+				<li><a href="http://vk.com/video-<%= $product->{'video'} %>" target=_blank>Видеоролики <%= $product->{'title'} %></a></li>
+% }else{
+				<li>Видеоролики для товара отсутствуют</li>
+% };
+				</ul>
 				</p>
-% }
+				<p><strong>Консультация по товару <%= $product->{'title'} %></strong><br />Хотите спросить о харакетистиках, узнать о качестве материалов или возможных расцветках? Спрашивайте здесь в комментариях.</p>
 				<div id="vk_comments"></div>
 					<script type="text/javascript">
 						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});

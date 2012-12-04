@@ -20,7 +20,7 @@
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
 					<a href="/catalog/<%= "$page->{'url'}/$productid->{'url'}" %>.html" title="Подробнее о <%= $productid->{'title'} %>">
-					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Узнать харакетиристики <%= $productid->{'title'} %>" title="Узнать харакетиристики <%= $productid->{'title'} %>">
+					<img src="/media/products/thumb/<%= $image_source %>.jpg" cass="image-center" alt="Узнать харакетиристики <%= $productid->{'title'} %>" title="Узнать харакетиристики <%= $productid->{'title'} %>">
 					</a>
 	      				<p><%= $productid->{'title'} %><br /><a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Узнать харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
 					<p><strong>Цена:</strong>
@@ -35,6 +35,7 @@
 %		$instore = 2 if ($instore > 1 && $instore < 4);
 %		$instore = 3 if ($instore > 4);
 					<br /><strong>Наличие:</strong> <%= $store_info{$instore} %>
+					<br /><small>Обновлено: <%= $productid->{'itemupdate'} %></small>
 					</p>
 					<form action="/cart/" method="post">
 						<input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
