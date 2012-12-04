@@ -39,8 +39,7 @@
 					<form action="/cart/" method="post">
 						<input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
 						<input type=hidden name="action" value="add">
-						<a href="/compare/<%= $productid->{'id'} %>/" class="btn" title="Добавить товар к сравнению" rel="nofollow">Сравнить</a>&nbsp;
-						<input type=submit value="Купить" class="btn btn-primary">
+						<input type=submit value="Купить сейчас" class="btn btn-primary">
 					</form>
     			</div>
   			</li>

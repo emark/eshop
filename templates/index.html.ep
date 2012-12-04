@@ -46,14 +46,14 @@
     <ul class="thumbnails">
 %   foreach my $productid (@{$products}){
       <li class="span3">
-        <div class="thumbnail">
+        <div>
 %   my $image_source = 'noimage';
 %   $image_source = $productid->{'url'} if $productid->{'image'};
 %   my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
           <a href="<%= $product_link %>" title="Подробнее о <%= $productid->{'title'} %>">
 		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>" class="image-center">
           </a>
-          <p><a href="<%= $product_link %>" title="Узнать харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></p>
+          <p><%= $productid->{'title'} %><br /><a href="<%= $product_link %>" title="Узнать харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
 	<p>
 	<strong>Цена:</strong>
 % 	if($productid->{'discount'}){
@@ -62,13 +62,12 @@
 		<del class="muted"><%= $muted_price %></del>, <%= $productid->{'price'} %> руб.
 % 	}else{
 		<%=$productid->{'price'}%> руб.
-% 	}
+% 	};
 	</p>
           <form action="/cart/" method="post">
             <input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
             <input type=hidden name="action" value="add">
-            <a href="/catalog/<%= $productid->{'caturl'} %>/<%= $productid->{'url'} %>.html" class="btn" title="Подробнее о товаре">Подробнее</a>&nbsp;
-            <input type=submit value="Купить" class="btn btn-primary">
+            <input type=submit value="Купить сейчас" class="btn btn-primary">
           </form>
         </div>
       </li>

@@ -24,7 +24,15 @@ $dbi->do('SET NAMES utf8');
 
 get '/compare/:id/' => sub{
 	my $self = shift;
-	my $product_id = $self->param('id') || 0;
+	my $base_id = $self->session('compare') || 0;
+	my $compare_id = $self->param('id') || 0;
+	my $where_cond = '';
+	if($base_id){
+		$where_cond = "id=$base_id or id=$compare_id";
+	}else{
+		$self->session('compare' => $compare_id);
+		$where_cond = "id=$compare_id";
+	};
 	my $page = {
 		url => 'compare'};
 	my $result = $dbi->select(
@@ -37,8 +45,11 @@ get '/compare/:id/' => sub{
 			'price',
 			'settings',
 			'features',
-			'image'],
-		where => {id => $product_id});
+			'instore',
+			'image',
+		],
+		where => $where_cond,
+	);
 	my $has_content = $result->fetch_hash_all;
     return $self->render(status => 404, template => 'not_found') if !$has_content;
     $self->stash(
