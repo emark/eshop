@@ -485,6 +485,7 @@ get '/' => sub{
             'price',
             'image',
 			'caturl',
+			'itemupdate',
         ],
 		where => {'latest' => 1},
     );

@@ -22,12 +22,12 @@
 				<a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога">
 					<img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" class="image-center" alt="Переход в раздел каталога" title="Переход в раздел каталога">
 				</a>
+				<h3 class="align-center">Цены от <%= $min_price{$category->{'url'}} %> руб.</h3>
 			</li>
 		</ul>
 	</div>
 	<div class="span6">
 <h2><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><%= $category->{'title'} %></a></h2>
-		<h3>Цены от <%= $min_price{$category->{'url'}} %> руб.</h3>
 		<p><%= $category->{'description'} %></p>
 	</div>
 </div>

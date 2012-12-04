@@ -63,6 +63,7 @@
 % 	}else{
 		<%=$productid->{'price'}%> руб.
 % 	};
+	<br /><small>Обновлено: <%= $productid->{'itemupdate'} %></small>
 	</p>
           <form action="/cart/" method="post">
             <input type=hidden name="prodid" value="<%= $productid->{'id'} %>">

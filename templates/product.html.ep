@@ -101,12 +101,12 @@
 				<p><strong>Видео и фотографии</strong>
 				<ul>
 % if ($product->{'photo'}){
-				<li><a href="http://vk.com/album-<%= $product->{'photo'} %>" target=_blank>Фотографии <%= $product->{'title'} %></a></li>
+				<li><a href="http://vk.com/album-<%= $product->{'photo'} %>" target=_blank>Смотреть фотографии</a></li>
 % }else{
 				<li>Фотографии для товара отсутствуют</li>
 % };
 % if ($product->{'video'}){
-				<li><a href="http://vk.com/video-<%= $product->{'video'} %>" target=_blank>Видеоролики <%= $product->{'title'} %></a></li>
+				<li><a href="http://vk.com/video-<%= $product->{'video'} %>" target=_blank>Смотреть видеоролики о товаре <%= $product->{'title'} %></a></li>
 % }else{
 				<li>Видеоролики для товара отсутствуют</li>
 % };
