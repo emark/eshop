@@ -49,7 +49,7 @@
 % 	foreach my $key(@content){
 %		$pcount++;
 %		if($pcount==4){		
-				<p id='ext-description-link'><a href="#">Полный текст описания</a></p>
+				<p id='ext-description-link'><a href="#">Показать полный текст описания</a></p>
 				<div id="ext-description" style="display:none">		
 %		}
 				<p><%== $key %></p>
