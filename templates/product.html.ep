@@ -3,10 +3,7 @@
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
-% my $instore = 'на складе'; #Setting up instore
-% $instore = 'уточняйте' if $product->{'instore'} == 0;
-% $instore = 'отсутствует' if $product->{'instore'} == -1;
-% $instore = 'под заказ' if $product->{'instore'} == -2;
+% my %store_info = (-2 => 'под заказ', -1 => 'уточняйте', 0 => 'отсутствует', 1 => 'мало', 2 => 'достаточно', 3 => 'много');
 
 <div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>&nbsp;/ <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>&nbsp;/ <span class="muted"><%= $product->{'title'} %></span></div>
 <div>
@@ -21,9 +18,12 @@
     			</a>
 			</li>	
 		</ul>
-		<p>Наличие: <%= $instore %></p>
+% my $instore = $product->{'instore'};
+% $instore = 2 if ($instore > 1 && $instore < 4);
+% $instore = 3 if ($instore > 4);
+		<p><strong>Наличие:</strong> <%= $store_info{$instore} %></p>
 % my $articul = sprintf ("%06s",$product->{'id'});
-		<p>Артикул: <%= $articul %></p>
+		<p><strong>Артикул:</strong> <%= $articul %></p>
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 % if ($product->{'discount'}){
 		<div class="alert alert-info">цена со скидкой <%= $product->{'discount'} %>%</div>
