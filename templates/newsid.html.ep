@@ -15,18 +15,16 @@
 	% }
 % }
 <hr />
-<!-- Begin MailChimp Signup Form -->
 <div id="mc_embed_signup">
 	<h2>Свежие новости одним письмом</h2>
 	<p>Укажите свой email адрес для оформления подписки на бесплатные материалы и новости.</p>
-	<form action="http://nastartshop.us5.list-manage.com/subscribe/post?u=3d039c21c20227843fcb6a5ae&amp;id=1dc4038620" method="post" target="_blank" class="form-inline">
-	<input type="text" value="" name="EMAIL" class="input-middle"> <input type="submit" value="Оформить подписку" name="subscribe" class="btn">
+	<form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" class="form-inline">
+	<input type="text" value="" name="email" class="input-middle"> <input type="submit" value="Оформить подписку" name="subscribe" class="btn">
+	<input type="hidden" value="nastartshop" name="uri"/><input type="hidden" name="loc" value="ru_RU"/>
 	</form>
 </div>
-<!--End mc_embed_signup-->
-
-	<p><a href="http://blog.nastartshop.ru/feed/" title="Подписка на новости" target=_blank><img src="/media/images/socbuttons/rss.gif" alt="Подписка на новости" title="Подписка на новости"></a>
-	<a href="http://blog.nastartshop.ru/feed/" title="Подписка на новости" target=_blank>RSS формат</a></p>
+	<p><a href="http://feeds.feedburner.com/nastartshop" title="Подписка на новости" target=_blank><img src="/media/images/socbuttons/rss.gif" alt="Подписка на новости" title="Подписка на новости"></a>
+	<a href="http://feeds.feedburner.com/nastartshop" title="Подписка на новости" target=_blank>RSS формат</a></p>
 	<p><a href="http://blog.nastartshop.ru/" title="Читать все новости" target=_blank><img src="/media/images/socbuttons/blog.gif" alt="Читать все новости" title="Читать все новости"></a>
 	<a href="http://blog.nastartshop.ru/category/news/" title="Читать все новости" target=_blank>Архив новостей</a></p>
 </div>
