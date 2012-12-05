@@ -1,10 +1,10 @@
 % layout 'default';
-% title $page->{'title'};
+% title "Корзина";
 % stash->{'metadescription'} = 'Страница корзины заказов. На странице можно редактировать и изменять список товаров';
-%my $total_cart=0;
+% my $total_cart = 0;
 
 <div>
-	<h1><%= $page->{'title'} %></h1>
+	<h1>Корзина</h1>
 </div>
 <div class="row">
 	<div class="span9">
@@ -27,20 +27,20 @@
 				<td><%= $articul %></td>
 				<td><%= $product->{'price'} %> руб.</td> 
 				<td><center>
-					<a href="#" onClick="submitDetailsForm('remove',<%= $product->{'id'} %>)" class="btn" title="Уменьшить количество товара"><i class="icon-minus"></i></a>&nbsp;
+					<a href="#" onClick="submitDetailsForm('remove',<%= $product->{'id'} %>)" title="Уменьшить количество товара"><i class="icon-minus"></i></a>&nbsp;
 					<%= $cart->{$product->{'id'}} %>
-					&nbsp;<a href="#" onClick="submitDetailsForm('add',<%= $product->{'id'} %>)" class="btn" title="Увеличить количество товара"><i class="icon-plus"></i></a>
+					&nbsp;<a href="#" onClick="submitDetailsForm('add',<%= $product->{'id'} %>)" title="Увеличить количество товара"><i class="icon-plus"></i></a>
 					</center>
 				</td>
 				<td>
 					<%= $product->{'price'}*$cart->{$product->{'id'}} %> руб. 
 				</td>
 				<td align=center>
-					<a href="#" title="Убрать товар из корзины" class="btn btn-danger" onClick="submitDetailsForm('drop',<%= $product->{'id'} %>)"><i class="icon-remove icon-white"></i></a>
+					<a href="#" title="Убрать товар из корзины" onClick="submitDetailsForm('drop',<%= $product->{'id'} %>)"><i class="icon-remove"></i></a>
 				</td>
 			</tr>
 % 	$total_cart = $total_cart+$cart->{$product->{'id'}}*$product->{'price'};
-% }
+% };
 		</tbody>
 		</table>
 		<p align="left"><h2>Итого:&nbsp;<%=$total_cart%> руб.</h2></p>

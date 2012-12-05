@@ -22,42 +22,6 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
-get '/compare/:id/' => sub{
-	my $self = shift;
-	my $base_id = $self->session('compare') || 0;
-	my $compare_id = $self->param('id') || 0;
-	my $where_cond = '';
-	if($base_id){
-		$where_cond = "id=$base_id or id=$compare_id";
-	}else{
-		$self->session('compare' => $compare_id);
-		$where_cond = "id=$compare_id";
-	};
-	my $page = {
-		url => 'compare'};
-	my $result = $dbi->select(
-		table => 'products',
-		column => [
-			'id',
-			'url',
-			'caturl',
-			'title',
-			'price',
-			'settings',
-			'features',
-			'instore',
-			'image',
-		],
-		where => $where_cond,
-	);
-	my $has_content = $result->fetch_hash_all;
-    return $self->render(status => 404, template => 'not_found') if !$has_content;
-    $self->stash(
-        product => $has_content,
-		page => $page);
-	$self->render('compare');
-};
-
 get '/news/' => sub{
 	my $self = shift;
 	my $page = {
@@ -79,7 +43,9 @@ get '/news/:id/' => sub{
 	my $ua = Mojo::UserAgent->new();
 	my $url = "http://blog.nastartshop.ru/api/get_post/?id=$post_id" if $post_id;
 	my $news = $ua->get($url)->res->json;
+
 	return $self->render(status => 404, template => 'not_found') if $news->{'status'} eq 'error';
+
     $self->stash(
 		page => $page,
         news => $news);
@@ -222,28 +188,22 @@ get '/thankyou' => sub {
 		'content' => 'Благодарим за заказ. Мы скоро свяжемся с вами.',
 		'type' => 1,
 	};
+
 	$self->stash(page => $page);
 	$self->render('dummy');
 };
 
 get '/cart' => sub {
     my $self = shift;
-    my $cart = $self->session('cart');
-	my @pid = keys %{$cart} if $cart;
-	my $countpid=@pid || 0;
+    my $cartid = $self->session('cartid');
 	my $page = {
-		'url' => 'cart',
-		'title' => 'Корзина',
-		'content' => 'В корзине пока ничего нет. Для добавления товаров в корзину, жмите кнопку "Купить" на нужном товаре.',
-		'type' => 1,
+		url => 'cart',
 	};
 	$self->stash(
 		page => $page,
 	);
-	return $self->render('dummy') if $countpid == 0;
+	return $self->render('static/emptycart') unless $cartid;
 
-	my $pid=' id=';
-	$pid=$pid.join(' or id=',@pid);	
 	my $result=$dbi->select(
 		table => 'products',
 		column => [
@@ -253,10 +213,10 @@ get '/cart' => sub {
 			'url',
 			'caturl',
 		],
-		where => $pid,
+		where => $cartid,
 	);
+
     $self->stash(
-		cart => $cart,
 		products => $result->fetch_hash_all,
 	);
     $self->render('cart');
@@ -264,33 +224,30 @@ get '/cart' => sub {
 
 post '/cart' => sub{
     my $self=shift;
+    my $cartid=$self->session('cartid') || 0;
     my $productid=$self->param('prodid') || 0;
 	my $action=$self->param('action');
-    my $cart=$self->session('cart');
-	if($action eq 'add'){
-	    $cart->{$productid}++;
-	}elsif($action eq 'remove'){
-		$cart->{$productid}-- if $cart->{$productid}>0;
-	}
-	if($cart->{$productid}==0 || $action eq 'drop'){
-		delete $cart->{$productid};
-	}
-	$self->session(cart => $cart);
-	my @pid= keys %{$cart};
-	my $countpid=@pid || 0;
 	my $page = {
         'url' => 'cart',
-        'title' => 'Корзина',
-        'content' => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?',
-		'type' => 1,
     };
+
+	if($action eq 'add'){
+#	    $cart->{$productid}++;
+	}elsif($action eq 'remove'){
+#		$cart->{$productid}-- if $cart->{$productid}>0;
+	};
+#	if($cart->{$productid}==0 || $action eq 'drop'){
+#		delete $cart->{$productid};
+#	};
+
+	$self->session(cartid => $cartid);
+
     $self->stash(
         page => $page,
     );
-    return $self->render('dummy') if $countpid == 0;
 
-	my $pid=' id=';
-    $pid=$pid.join(' or id=',@pid);
+    return $self->render('static/emptycart') unless $cartid;
+
     my $result=$dbi->select(
         table => 'products',
         column => [
@@ -300,11 +257,11 @@ post '/cart' => sub{
 			'caturl',
 			'url',
 		],
-        where => $pid
+        where => $cartid,
     );
+
     $self->stash(
 		products => $result->fetch_hash_all,
-		cart => $cart,
 	);
     $self->render('cart');
 };
@@ -374,7 +331,9 @@ get '/catalog/:caturl' => sub {
 		where => {'caturl' => $caturl},
 	);
 	my $has_content = $page->one;
+
     return $self->render(status => 404, template =>'not_found') if !$has_content;
+
 	$self->stash(
 		product => $result->fetch_hash_all,
 		page => $has_content,
@@ -423,7 +382,9 @@ get '/catalog/:caturl/:produrl.html' => sub {
 		},
 	);
 	my $has_content = $result->fetch_hash;
+
     return $self->render(status => 404, template => 'not_found') if !$has_content;
+
 	$self->stash(
 		product => $has_content,
 		page => $category->one,
@@ -465,7 +426,9 @@ get '/about/:pageurl' => sub{
 		where => {'url' => $self->param('pageurl')}
 	);
 	my $has_content = $result->fetch_hash;
+
     return $self->render(status => 404, template => 'not_found') if !$has_content;
+
 	$self->stash(page => $has_content); 
 	$self->render('page');
 };
