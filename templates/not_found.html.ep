@@ -21,23 +21,29 @@
   	<div class="container">
 		<div class="row">
 			<div class="span3">
-				<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.gif" border=0 title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт"></a>
-				<p class="align-center">интернет-магазин</p>
+				<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.gif" class="image-center" title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a>
 			</div>
 			<div class="span7">
 				<div class="toplevel-menu">
 					<a href="/" title="Переход на главную страницу">Главная</a>
 					<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
-					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог</a>
+					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог товаров</a>
 					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
 					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
 				</div>
  				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
  			</div>
 			<div class="span2">
-				 <div class="align-right"><div class="toplevel-menu">Красноярск</div><strong>+7 (391) 29-202-29<br/>+7 (391) 25-653-21</strong>
+				<div class="align-right">
+					<div class="toplevel-menu">Красноярск</div>
+					<nobr>+7 (391) <strong>292-02-29</strong></nobr><br/><nobr>+7 (391) <strong>256-53-21</strong></nobr>
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			<div class="span3"><p class="align-center"><a href="/" rel="nofollow" title="Переход на главную страницу">интернет-магазин</a></p></div>
+			<div class="span7"></div>
+			<div class="span2"><p class="align-right"><i class="icon-shopping-cart">&nbsp;</i> <a href="/cart/" title="Переход в корзину">Корзина покупок</a></p></div>
 		</div>
 		<div class="row">
    			<div class="span12">
