@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%= stash->{'metadescription'} %>">
     <meta name="author" content="www.nastartshop.ru">
+    <link type="text/plain" rel="author" href="http://www.nastartshop.ru/humans.txt" />
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/css/application.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -134,7 +135,7 @@
 						<a href="https://plus.google.com/110471626333836075742/" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="Страница на Google+" title="Страница на Google+"></a>
 						<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Группа в Одноклассниках" title="Группа в Одноклассниках"></a>
 						<a href="http://blog.nastartshop.ru" title="Официальный блог интернет-магазина НаСтарт.рф" target=_blank><img src="/media/images/socbuttons/blog.gif" alt="Наш блог" title="Наш блог"></a>
-						<a href="http://blog.nastartshop.ru/feed/" title="Блог в формате RSS" target=_blank><img src="/media/images/socbuttons/rss.gif" alt="RSS" title="Наш блог в формате RSS"></a></p>
+						<a href="http://blog.nastartshop.ru/feed/" title="Блог в формате RSS" target=_blank><img src="/media/images/socbuttons/rss.gif" alt="RSS" title="Наш блог в формате RSS"></a></p>						
 					</div>
 					<div class="span3">
 						<h3>Справочная информация</h3>
@@ -163,6 +164,8 @@
 						</ul>
 					</div>
 				</div>
+				<hr />
+				<p class="pull-right"><a href="/humans.txt" title="Команда разработки сайта"><img src="http://humanstxt.org/img/oficial-logos/humanstxt-isolated-blank.gif"></a></p>
 				<p class="align-center"><img src="/media/images/logo/20-20.jpg" alt="Логотип магазина" title="Логотип магазина"> <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>&laquo;НаСтарт.рф&raquo;</a>, интернет-магазин</p>
 			</div>
 		</footer>
