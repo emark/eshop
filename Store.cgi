@@ -233,6 +233,11 @@ post '/cart' => sub{
 
 	if($action eq 'add'){
 #	    $cart->{$productid}++;
+		if($cartid){
+			$dbi->update(
+				table => 'items',
+			);
+		}
 	}elsif($action eq 'remove'){
 #		$cart->{$productid}-- if $cart->{$productid}>0;
 	};
