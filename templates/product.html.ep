@@ -26,7 +26,10 @@
 		<p><strong>Артикул:</strong> <%= $articul %></p>
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 % if ($product->{'discount'}){
-		<div class="alert alert-info">цена со скидкой <%= $product->{'discount'} %>%</div>
+%	my $muted_price = $product->{'cost'}*($product->{'margin'}/100)+$product->{'cost'};
+%	$muted_price = sprintf("%d", $muted_price);
+%	my $saving_sum = $muted_price-$product->{'price'};
+		<div class="alert alert-info">цена со скидкой <%= $product->{'discount'} %>%<br />вы экономите <%= $saving_sum %> руб.</div>
 % }
 		<p><small>Обновлено: <%= $product->{'itemupdate'} %></small></p>
 		<form action="/cart/" method=post>

@@ -402,6 +402,8 @@ get '/catalog/:caturl/:produrl.html' => sub {
 			'id',
 			'title',
 			'metadescription',
+			'cost',
+			'margin',
 			'discount',
 			'price',
 			'description',
