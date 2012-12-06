@@ -199,25 +199,30 @@ get '/cart' => sub {
 	my $page = {
 		url => 'cart',
 	};
+
 	$self->stash(
 		page => $page,
 	);
 	return $self->render('static/emptycart') unless $cartid;
 
 	my $result=$dbi->select(
-		table => 'products',
+		table => 'items',
 		column => [
 			'id',
+			'productid',
 			'title',
 			'price',
-			'url',
-			'caturl',
+			'count',
 		],
-		where => $cartid,
+		where => {'cartid' => $cartid},
 	);
+	my $items = ();
+	while(my $hash = $result->fetch_hash){
+		$items->{$hash->{id}} = $hash;
+	};
 
     $self->stash(
-		products => $result->fetch_hash_all,
+		items => $items,
 	);
     $self->render('cart');
 };
@@ -230,43 +235,81 @@ post '/cart' => sub{
 	my $page = {
         'url' => 'cart',
     };
-
-	if($action eq 'add'){
-#	    $cart->{$productid}++;
-		if($cartid){
-			$dbi->update(
-				table => 'items',
-			);
-		}
-	}elsif($action eq 'remove'){
-#		$cart->{$productid}-- if $cart->{$productid}>0;
+	my $result = $dbi->select(
+		table => 'products',
+	);
+	my $products = ();
+	while(my $hash = $result->fetch_hash){
+		$products->{$hash->{id}} = $hash;
 	};
-#	if($cart->{$productid}==0 || $action eq 'drop'){
-#		delete $cart->{$productid};
-#	};
+	my $items = ();
+	
+	if($cartid){
+		$result = $dbi->select(
+			table => 'items',
+			where => {'cartid' => $cartid},
+		);
+		while(my $hash = $result->fetch_hash){
+			$items->{$hash->{productid}} = $hash;
+		};
+	}else{
+		$cartid = time;
+		$self->session(cartid => $cartid);
+	};
 
-	$self->session(cartid => $cartid);
+	for ($action){
+		if(/add/){
+			unless($items->{$productid}->{'id'}){
+				$dbi->insert(
+					{
+						productid => $products->{$productid}->{'id'},
+						title => $products->{$productid}->{'title'},
+						count => 1,
+						price => $products->{$productid}->{'price'},
+						cartid => $cartid,
+					},
+					table => 'items',
+				);
+				$items->{$productid} = $products->{$productid};
+				$items->{$productid}->{productid} = $productid;
+				$items->{$productid}->{count} = 1;
+			};
+		}elsif(/delete/){
+			$dbi->delete(
+				table => 'items',
+				where => {cartid => $cartid, productid => $productid},
+			);
+			delete $items->{$productid};
+		}elsif(/more/){
+			$items->{$productid}->{count}++;
+			$dbi->update(
+				{
+					count => $items->{$productid}->{count},
+				},
+				table => 'items',
+				where => {cartid => $cartid, productid => $productid},
+			);
+		}elsif(/less/){
+			if($items->{$productid}->{count} > 1){
+	            $items->{$productid}->{count}--;
+    	        $dbi->update(
+        	        {
+            	        count => $items->{$productid}->{count},
+                	},
+	                table => 'items',
+    	            where => {cartid => $cartid, productid => $productid},
+        	    );
+			};
+        };
+	};
 
     $self->stash(
         page => $page,
     );
-
     return $self->render('static/emptycart') unless $cartid;
 
-    my $result=$dbi->select(
-        table => 'products',
-        column => [
-			'id',
-			'title',
-			'price',
-			'caturl',
-			'url',
-		],
-        where => $cartid,
-    );
-
     $self->stash(
-		products => $result->fetch_hash_all,
+		items => $items,
 	);
     $self->render('cart');
 };
