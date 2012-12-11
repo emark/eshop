@@ -205,24 +205,33 @@ get '/cart' => sub {
 	);
 	return $self->render('static/emptycart') unless $cartid;
 
-	my $result=$dbi->select(
-		table => 'items',
+	my $result = $dbi->select(
+		table => 'products',
+	);
+	my $products = {};
+	while(my $hash = $result->fetch_hash){
+		$products->{$hash->{id}} = $hash;
+	};
+	$result=$dbi->select(
+		table => 'cart',
 		column => [
 			'id',
 			'productid',
-			'title',
-			'price',
 			'count',
 		],
 		where => {'cartid' => $cartid},
 	);
-	my $items = {};
+	my $cartitems = {};
 	while(my $hash = $result->fetch_hash){
-		$items->{$hash->{productid}} = $hash;
+		$cartitems->{$hash->{productid}} = $hash;
+		$cartitems->{$hash->{productid}}->{url} = $products->{$hash->{productid}}->{url};
+		$cartitems->{$hash->{productid}}->{caturl} = $products->{$hash->{productid}}->{caturl};
+		$cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
+		$cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
 	};
 
     $self->stash(
-		items => $items,
+		cartitems => $cartitems,
 	);
     $self->render('cart');
 };
@@ -242,16 +251,19 @@ post '/cart' => sub{
 	while(my $hash = $result->fetch_hash){
 		$products->{$hash->{id}} = $hash;
 	};
-	my $items = {};
+	my $cartitems = {};
 	
 	if($cartid){
 		$result = $dbi->select(
-			table => 'items',
+			table => 'cart',
 			where => {'cartid' => $cartid},
 		);
 		while(my $hash = $result->fetch_hash){
-			$items->{$hash->{productid}} = $hash;
-			$items->{$products->{$productid}} =
+			$cartitems->{$hash->{productid}} = $hash;
+			$cartitems->{$hash->{productid}}->{url} = $products->{$hash->{productid}}->{url};
+			$cartitems->{$hash->{productid}}->{caturl} = $products->{$hash->{productid}}->{caturl};
+			$cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
+			$cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
 		};
 	}else{
 		$cartid = time;
@@ -260,44 +272,42 @@ post '/cart' => sub{
 
 	for ($action){
 		if(/add/){
-			unless($items->{$productid}->{'id'}){
+			unless($cartitems->{$productid}->{'id'}){
 				$dbi->insert(
 					{
 						productid => $products->{$productid}->{'id'},
-						title => $products->{$productid}->{'title'},
 						count => 1,
-						price => $products->{$productid}->{'price'},
 						cartid => $cartid,
 					},
-					table => 'items',
+					table => 'cart',
 				);
-				$items->{$productid} = $products->{$productid};
-				$items->{$productid}->{productid} = $productid;
-				$items->{$productid}->{count} = 1;
+				$cartitems->{$productid} = $products->{$productid};
+				$cartitems->{$productid}->{productid} = $productid;
+				$cartitems->{$productid}->{count} = 1;
 			};
 		}elsif(/delete/){
 			$dbi->delete(
-				table => 'items',
+				table => 'cart',
 				where => {cartid => $cartid, productid => $productid},
 			);
-			delete $items->{$productid};
+			delete $cartitems->{$productid};
 		}elsif(/more/){
-			$items->{$productid}->{count}++;
+			$cartitems->{$productid}->{count}++;
 			$dbi->update(
 				{
-					count => $items->{$productid}->{count},
+					count => $cartitems->{$productid}->{count},
 				},
-				table => 'items',
+				table => 'cart',
 				where => {cartid => $cartid, productid => $productid},
 			);
 		}elsif(/less/){
-			if($items->{$productid}->{count} > 1){
-	            $items->{$productid}->{count}--;
+			if($cartitems->{$productid}->{count} > 1){
+	            $cartitems->{$productid}->{count}--;
     	        $dbi->update(
         	        {
-            	        count => $items->{$productid}->{count},
+            	        count => $cartitems->{$productid}->{count},
                 	},
-	                table => 'items',
+	                table => 'cart',
     	            where => {cartid => $cartid, productid => $productid},
         	    );
 			};
@@ -306,7 +316,7 @@ post '/cart' => sub{
 
     $self->stash(
         page => $page,
-		items => $items,
+		cartitems => $cartitems,
 	);
     $self->render('cart');
 };

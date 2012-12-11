@@ -7,7 +7,7 @@
 	<h1>Корзина</h1>
 </div>
 <p>Номер корзины: <abbr title="CartID number"><%= session->{'cartid'} %></abbr></p>
-% if(%{$items}){
+% if(%{$cartitems}){
 <div class="row">
 	<div class="span9">
 		<table class="table" border=0>
@@ -18,30 +18,26 @@
 				<th>Цена</th>
 				<th><center>Количество</center></th>
 				<th>Стоимость</th>
-				<th>Удалить</th>
 			</tr>
 		<thead>
 		<tbody>
-% 	foreach my $itemid(keys $items){
+% 	foreach my $itemid(keys $cartitems){
 			<tr>
-				<td><a href="/catalog/<%= $items->{$itemid}->{'caturl'} %>/<%= $items->{$itemid}->{'url'} %>.html" title="Посмотреть характеристики товара"><%= $items->{$itemid}->{'title'} %></a></td>
-%		my $articul = sprintf("%06s",$items->{$itemid}->{'productid'});
+				<td><a href="#" title="Убрать товар из корзины" onClick="submitDetailsForm('delete',<%= $cartitems->{$itemid}->{'productid'} %>)"><i class="icon-remove"></i></a>&nbsp;<a href="/catalog/<%= $cartitems->{$itemid}->{'caturl'} %>/<%= $cartitems->{$itemid}->{'url'} %>.html" title="Посмотреть характеристики товара"><%= $cartitems->{$itemid}->{'title'} %></a></td>
+%		my $articul = sprintf("%06s",$cartitems->{$itemid}->{'productid'});
 				<td><%= $articul %></td>
-				<td><%= $items->{$itemid}->{'price'} %> руб.</td> 
+				<td><%= $cartitems->{$itemid}->{'price'} %> руб.</td> 
 				<td><center>
-					<a href="#" onClick="submitDetailsForm('less',<%= $items->{$itemid}->{'productid'} %>)" title="Уменьшить количество товара"><i class="icon-minus"></i></a>&nbsp;
-					<%= $items->{$itemid}->{'count'} %>
-					&nbsp;<a href="#" onClick="submitDetailsForm('more',<%= $items->{$itemid}->{'productid'} %>)" title="Увеличить количество товара"><i class="icon-plus"></i></a>
+					<a href="#" onClick="submitDetailsForm('less',<%= $cartitems->{$itemid}->{'productid'} %>)" title="Уменьшить количество товара"><i class="icon-minus"></i></a>&nbsp;
+					<%= $cartitems->{$itemid}->{'count'} %>
+					&nbsp;<a href="#" onClick="submitDetailsForm('more',<%= $cartitems->{$itemid}->{'productid'} %>)" title="Увеличить количество товара"><i class="icon-plus"></i></a>
 					</center>
 				</td>
 				<td>
-					<%= $items->{$itemid}->{'price'}*$items->{$itemid}->{'count'} %> руб. 
-				</td>
-				<td>
-					<a href="#" title="Убрать товар из корзины" onClick="submitDetailsForm('delete',<%= $items->{$itemid}->{'productid'} %>)"><i class="icon-remove"></i></a>
+					<%= $cartitems->{$itemid}->{'price'}*$cartitems->{$itemid}->{'count'} %> руб. 
 				</td>
 			</tr>
-% 		$total_cart = $total_cart+$items->{$itemid}->{'count'}*$items->{$itemid}->{'price'};
+% 		$total_cart = $total_cart+$cartitems->{$itemid}->{'count'}*$cartitems->{$itemid}->{'price'};
 % 	};
 		</tbody>
 		</table>
