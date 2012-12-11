@@ -46,7 +46,9 @@
 </div>
 <div class="row">
 	<div class="span9">
-		<p class="align-center"><a href="/checkout/" class="btn btn-large">Оформить заказ</a></p>
+		<form action="http://127.0.0.1:3001/checkout/" method="post">
+		<p class="align-center"><input type="submit" class="btn btn-large" value="Оформить заказ"></p>
+		</form>
 	</div>
 </div>
 % }else{
