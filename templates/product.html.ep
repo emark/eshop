@@ -20,7 +20,7 @@
 		</ul>
 % my $instore = $product->{'instore'};
 % $instore = 2 if ($instore > 1 && $instore < 4);
-% $instore = 3 if ($instore > 4);
+% $instore = 3 if ($instore >= 4);
 		<p><strong>Наличие:</strong> <%= $store_info{$instore} %></p>
 % my $articul = sprintf ("%06s",$product->{'id'});
 		<p><strong>Артикул:</strong> <%= $articul %></p>
