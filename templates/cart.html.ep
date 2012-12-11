@@ -7,7 +7,7 @@
 	<h1>Корзина</h1>
 </div>
 <p>Номер корзины: <abbr title="CartID number"><%= session->{'cartid'} %></abbr></p>
-% if($items){
+% if(%{$items}){
 <div class="row">
 	<div class="span9">
 		<table class="table" border=0>
@@ -53,7 +53,10 @@
 		<p class="align-center"><a href="/checkout/" class="btn btn-large">Оформить заказ</a></p>
 	</div>
 </div>
+% }else{
+<p>В корзину пока ничего не добавлено.</p>
 % };
+
 <script language ="javascript" type = "text/javascript" >
     function submitDetailsForm($action,$id)
     {

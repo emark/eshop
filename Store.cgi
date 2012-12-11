@@ -216,9 +216,9 @@ get '/cart' => sub {
 		],
 		where => {'cartid' => $cartid},
 	);
-	my $items = ();
+	my $items = {};
 	while(my $hash = $result->fetch_hash){
-		$items->{$hash->{id}} = $hash;
+		$items->{$hash->{productid}} = $hash;
 	};
 
     $self->stash(
@@ -238,11 +238,11 @@ post '/cart' => sub{
 	my $result = $dbi->select(
 		table => 'products',
 	);
-	my $products = ();
+	my $products = {};
 	while(my $hash = $result->fetch_hash){
 		$products->{$hash->{id}} = $hash;
 	};
-	my $items = ();
+	my $items = {};
 	
 	if($cartid){
 		$result = $dbi->select(
@@ -251,6 +251,7 @@ post '/cart' => sub{
 		);
 		while(my $hash = $result->fetch_hash){
 			$items->{$hash->{productid}} = $hash;
+			$items->{$products->{$productid}} =
 		};
 	}else{
 		$cartid = time;
@@ -305,10 +306,6 @@ post '/cart' => sub{
 
     $self->stash(
         page => $page,
-    );
-    return $self->render('static/emptycart') unless $cartid;
-
-    $self->stash(
 		items => $items,
 	);
     $self->render('cart');
