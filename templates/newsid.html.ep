@@ -8,10 +8,11 @@
 	<h1><%== $news->{'post'}->{'title_plain'} %></h1>
 </div>
 <div>
-	% if ($news->{'post'}->{'date'}){
-		% my ($date, $time) = split(' ', $news->{'post'}->{'date'});
+	% if ($news->{post}->{date}){
+		% my ($date, $time) = split(' ', $news->{post}->{date});
 	<p><strong><%= $date %></strong></p>
-	<p><%== $news->{'post'}->{'excerpt'} %></p>
+	<p><%== $news->{post}->{excerpt} %></p>
+	<p><a href="<%= $news->{post}->{url} %>">Читать полный текст новости</a></p>
 	% }
 % }
 <hr />
