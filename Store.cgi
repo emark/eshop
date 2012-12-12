@@ -51,20 +51,6 @@ get '/news/:id/' => sub{
         news => $news);
 };
 
-get '/thankyou' => sub {
-	my $self = shift;
-	$self->session(expires => 1);#Clearing cart
-	my $page = {
-		'url' => 'thankyou',
-		'title' => 'Заказ оформлен',
-		'content' => 'Благодарим за заказ. Мы скоро свяжемся с вами.',
-		'type' => 1,
-	};
-
-	$self->stash(page => $page);
-	$self->render('dummy');
-};
-
 get '/cart' => sub {
     my $self = shift;
     my $cartid = $self->session('cartid');
@@ -192,6 +178,73 @@ post '/cart' => sub{
 	);
     $self->render('cart');
 };
+
+post '/checkout' => sub {
+	my $self = shift;
+	my $cartid = $self->session('cartid');
+	my $param = $self->req->params->to_hash;
+    my $page = {
+		'url' => 'checkout',
+	};
+	$self->stash(
+		page => $page,
+	);
+
+	my $vc = Validator::Custom->new;
+	my $rule = [
+		tel => {message => 'error'} => ['not_blank'],
+		delivery_type => ['defined'],
+		payment_type => ['defined'],
+	];
+	my $vresult = $vc->validate($param,$rule);
+	if($vresult->is_ok){
+		$dbi->insert(
+			{
+				person => $param->{'person'},
+				tel => $param->{'tel'},
+				email => $param->{'email'},
+				address => $param->{'address'},
+				delivery => $param->{'delivery_type'},
+				payment => $param->{'payment_type'},
+				status => 0,
+				sysdate => \"NOW()",
+				cartid => $cartid,
+			},
+			table => 'orders',
+		);
+		
+		my $result = $dbi->select(
+			table => 'products',
+		);
+		my $products = {};
+		while (my $hash = $result->fetch_hash){
+			$products->{$hash->{id}} = $hash;
+		};
+		my $cartitems = {};
+		$result = $dbi->select(
+            table => 'cart',
+            where => {'cartid' => $cartid},
+        );
+        while(my $hash = $result->fetch_hash){
+            $cartitems = $hash;
+            $cartitems->{title} = $products->{$hash->{productid}}->{title};
+            $cartitems->{price} = $products->{$hash->{productid}}->{price};
+            $cartitems->{id} = '';
+        };
+		$dbi->insert(
+			$cartitems,
+			table => 'items',
+		);
+
+		$self->session('cartid' => '');
+
+		return $self->redirect_to('/thankyou');
+	}else{
+		$self->stash(missing => 1) if $vresult->has_missing;
+	};
+};
+
+get '/thankyou' => sub{};
 
 get '/catalog' => sub{
 	my $self = shift;
@@ -417,7 +470,7 @@ get '/sitemap' => sub{
 app->secret('ReginaSpector');
 app->hook(before_dispatch => sub {
 				my $self = shift;
-				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
+				#$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
 			}
 		);
 app->start;

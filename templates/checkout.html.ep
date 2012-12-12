@@ -7,18 +7,7 @@
 
 <div>
 	<h1>Оформление заказа</h1>
-</div>
-<div class="alert alert-info">
-	<h2><h3><h4 class="alert-heading">Ваш заказ</h4></h3></h2>
-% my $n=0;
-% foreach my $product(@{$products}){
-% 	$n++;
-	<em>
-	<%= $product->{'title'} %> * <%= $cart->{$product->{'id'}} %> = <%= $product->{'price'} * $cart->{$product->{'id'}} %> руб.
-% 	$total_cart = $total_cart+$cart->{$product->{'id'}} * $product->{'price'};
-	</em><br/>
-% };
-	<b>Общий итог: <%=$total_cart%> руб.</b> <a href="/cart/" class="btn btn-mini">Редактировать</a>
+	<p>* - обязательные поля</p>
 </div>
 % if ($missing){
 <div class="alert">
