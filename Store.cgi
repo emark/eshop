@@ -179,6 +179,16 @@ post '/cart' => sub{
     $self->render('cart');
 };
 
+get '/checkout' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'checkout',
+	};
+	$self->stash(
+		page => $page
+	);
+};
+
 post '/checkout' => sub {
 	my $self = shift;
 	my $cartid = $self->session('cartid');
