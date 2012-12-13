@@ -2,11 +2,12 @@
 % title "Корзина";
 % stash->{'metadescription'} = 'Страница корзины заказов. На странице можно редактировать и изменять список товаров';
 % my $total_cart = 0;
+% my $cartid = session->{cartid};
 
 <div>
 	<h1>Корзина</h1>
 </div>
-<p>Номер корзины: <abbr title="CartID number"><%= session->{'cartid'} %></abbr></p>
+<p>Номер корзины: <abbr title="Индивидуальный номер заказа"><%= $cartid %></abbr></p>
 % if(%{$cartitems}){
 <div class="row">
 	<div class="span9">

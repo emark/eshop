@@ -191,8 +191,8 @@ get '/checkout' => sub{
 
 post '/checkout' => sub {
 	my $self = shift;
-	my $cartid = $self->session('cartid');
-	my $param = $self->req->params->to_hash;
+	my $cartid = $self->session('cartid') || 0;
+	my $orderinfo = $self->req->params->to_hash;
     my $page = {
 		'url' => 'checkout',
 	};
@@ -203,23 +203,16 @@ post '/checkout' => sub {
 	my $vc = Validator::Custom->new;
 	my $rule = [
 		tel => {message => 'error'} => ['not_blank'],
-		delivery_type => ['defined'],
-		payment_type => ['defined'],
+		delivery => ['defined'],
+		payment => ['defined'],
 	];
-	my $vresult = $vc->validate($param,$rule);
-	if($vresult->is_ok){
+	my $vresult = $vc->validate($orderinfo,$rule);
+	if($vresult->is_ok && $cartid){
+		$orderinfo->{cartid} = $cartid;
+		$orderinfo->{sysdate} = \"NOW()";
+		$orderinfo->{status} = 0;
 		$dbi->insert(
-			{
-				person => $param->{'person'},
-				tel => $param->{'tel'},
-				email => $param->{'email'},
-				address => $param->{'address'},
-				delivery => $param->{'delivery_type'},
-				payment => $param->{'payment_type'},
-				status => 0,
-				sysdate => \"NOW()",
-				cartid => $cartid,
-			},
+			$orderinfo,
 			table => 'orders',
 		);
 		
@@ -240,11 +233,12 @@ post '/checkout' => sub {
             $cartitems->{title} = $products->{$hash->{productid}}->{title};
             $cartitems->{price} = $products->{$hash->{productid}}->{price};
             $cartitems->{id} = '';
+
+			$dbi->insert(
+				$cartitems,
+				table => 'items',
+			);
         };
-		$dbi->insert(
-			$cartitems,
-			table => 'items',
-		);
 
 		$self->session('cartid' => '');
 
