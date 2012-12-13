@@ -33,8 +33,7 @@
 % }
 		<p><small>Обновлено: <%= $product->{'itemupdate'} %></small></p>
 		<form action="/cart/" method=post>
-		<input type=hidden value="<%= $product->{'id'} %>" name="prodid">
-		<input type=hidden name="action" value="add">
+		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary"></form>
 		<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,odnoklassniki"></div> 
 	</div>

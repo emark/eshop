@@ -51,18 +51,11 @@ get '/news/:id/' => sub{
         news => $news);
 };
 
-get '/cart' => sub {
+get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
     my $self = shift;
-    my $cartid = $self->session('cartid');
-	my $page = {
-		url => 'cart',
-	};
-
-	$self->stash(
-		page => $page,
-	);
-	return $self->render('static/emptycart') unless $cartid;
-
+    my $cartid = $self->session('cartid') || 0;
+    my $productid = $self->stash('id');
+	my $action = $self->stash('action');
 	my $result = $dbi->select(
 		table => 'products',
 	);
@@ -70,47 +63,12 @@ get '/cart' => sub {
 	while(my $hash = $result->fetch_hash){
 		$products->{$hash->{id}} = $hash;
 	};
-	$result=$dbi->select(
-		table => 'cart',
-		column => [
-			'id',
-			'productid',
-			'count',
-		],
-		where => {'cartid' => $cartid},
-	);
 	my $cartitems = {};
-	while(my $hash = $result->fetch_hash){
-		$cartitems->{$hash->{productid}} = $hash;
-		$cartitems->{$hash->{productid}}->{url} = $products->{$hash->{productid}}->{url};
-		$cartitems->{$hash->{productid}}->{caturl} = $products->{$hash->{productid}}->{caturl};
-		$cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
-		$cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
-	};
-
-    $self->stash(
-		cartitems => $cartitems,
-	);
-    $self->render('cart');
-};
-
-post '/cart' => sub{
-    my $self=shift;
-    my $cartid=$self->session('cartid') || 0;
-    my $productid=$self->param('prodid') || 0;
-	my $action=$self->param('action');
 	my $page = {
         'url' => 'cart',
     };
-	my $result = $dbi->select(
-		table => 'products',
-	);
-	my $products = {};
-	while(my $hash = $result->fetch_hash){
-		$products->{$hash->{id}} = $hash;
-	};
-	my $cartitems = {};
-	
+	$self->stash(page => $page);
+
 	if($cartid){
 		$result = $dbi->select(
 			table => 'cart',
@@ -124,26 +82,11 @@ post '/cart' => sub{
 			$cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
 		};
 	}else{
-		$cartid = time;
-		$self->session(cartid => $cartid);
+		return $self->render('static/emptycart');
 	};
 
 	for ($action){
-		if(/add/){
-			unless($cartitems->{$productid}->{'id'}){
-				$dbi->insert(
-					{
-						productid => $products->{$productid}->{'id'},
-						count => 1,
-						cartid => $cartid,
-					},
-					table => 'cart',
-				);
-				$cartitems->{$productid} = $products->{$productid};
-				$cartitems->{$productid}->{productid} = $productid;
-				$cartitems->{$productid}->{count} = 1;
-			};
-		}elsif(/delete/){
+		if(/delete/){
 			$dbi->delete(
 				table => 'cart',
 				where => {cartid => $cartid, productid => $productid},
@@ -169,7 +112,7 @@ post '/cart' => sub{
     	            where => {cartid => $cartid, productid => $productid},
         	    );
 			};
-        };
+		};
 	};
 
     $self->stash(
@@ -179,7 +122,60 @@ post '/cart' => sub{
     $self->render('cart');
 };
 
-get '/checkout' => sub{
+post '/cart/' => sub{
+	my $self = shift;
+	my $cartid = $self->session('cartid') || undef;
+	my $productid = $self->param('productid') || 0;
+	my $page = {
+        'url' => 'cart',
+    };
+    my $result = $dbi->select(
+        table => 'products',
+    );
+    my $products = {};
+    while(my $hash = $result->fetch_hash){
+        $products->{$hash->{id}} = $hash;
+    };
+    my $cartitems = {};
+
+    if($cartid){
+        $result = $dbi->select(
+            table => 'cart',
+            where => {'cartid' => $cartid},
+        );
+        while(my $hash = $result->fetch_hash){
+            $cartitems->{$hash->{productid}} = $hash;
+            $cartitems->{$hash->{productid}}->{url} = $products->{$hash->{productid}}->{url};
+            $cartitems->{$hash->{productid}}->{caturl} = $products->{$hash->{productid}}->{caturl};
+            $cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
+            $cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
+        };
+    }else{
+        $cartid = time;
+        $self->session(cartid => $cartid);
+    };
+
+    unless($cartitems->{$productid}->{'id'}){#Defined from duplicates
+		$dbi->insert(
+			{
+				productid => $products->{$productid}->{'id'},
+                count => 1,
+                cartid => $cartid,
+            },
+            table => 'cart',
+		);
+        $cartitems->{$productid} = $products->{$productid};
+        $cartitems->{$productid}->{productid} = $productid;
+        $cartitems->{$productid}->{count} = 1;
+	};
+    
+	$self->stash(
+    	page => $page,
+        cartitems => $cartitems,
+    );
+};
+
+get '/checkout/' => sub{
 	my $self = shift;
 	my $page = {
 		url => 'checkout',
@@ -189,9 +185,9 @@ get '/checkout' => sub{
 	);
 };
 
-post '/checkout' => sub {
+post '/checkout/' => sub {
 	my $self = shift;
-	my $cartid = $self->session('cartid') || 0;
+	my $cartid = $self->session('cartid');
 	my $orderinfo = $self->req->params->to_hash;
     my $page = {
 		'url' => 'checkout',
@@ -206,7 +202,7 @@ post '/checkout' => sub {
 		delivery => ['defined'],
 		payment => ['defined'],
 	];
-	my $vresult = $vc->validate($orderinfo,$rule);
+	my $vresult = $vc->validate($orderinfo, $rule);
 	if($vresult->is_ok && $cartid){
 		$orderinfo->{cartid} = $cartid;
 		$orderinfo->{sysdate} = \"NOW()";
@@ -240,7 +236,7 @@ post '/checkout' => sub {
 			);
         };
 
-		$self->session('cartid' => '');
+		$self->session('cartid' => 0);
 
 		return $self->redirect_to('/thankyou');
 	}else{
@@ -248,9 +244,15 @@ post '/checkout' => sub {
 	};
 };
 
-get '/thankyou' => sub{};
+get '/thankyou/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'thankyou',
+	};
+	$self->stash(page => $page);
+};
 
-get '/catalog' => sub{
+get '/catalog/' => sub{
 	my $self = shift;
 	my $page = {
 		'url' => 'catalog',
