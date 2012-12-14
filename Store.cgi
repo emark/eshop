@@ -119,7 +119,10 @@ get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
         page => $page,
 		cartitems => $cartitems,
 	);
-    $self->render('cart');
+
+	return $self->render('static/emptycart') unless (%{$cartitems});
+	
+	$self->render('cart');
 };
 
 post '/cart/' => sub{
