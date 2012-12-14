@@ -22,42 +22,6 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
-get '/compare/:id/' => sub{
-	my $self = shift;
-	my $base_id = $self->session('compare') || 0;
-	my $compare_id = $self->param('id') || 0;
-	my $where_cond = '';
-	if($base_id){
-		$where_cond = "id=$base_id or id=$compare_id";
-	}else{
-		$self->session('compare' => $compare_id);
-		$where_cond = "id=$compare_id";
-	};
-	my $page = {
-		url => 'compare'};
-	my $result = $dbi->select(
-		table => 'products',
-		column => [
-			'id',
-			'url',
-			'caturl',
-			'title',
-			'price',
-			'settings',
-			'features',
-			'instore',
-			'image',
-		],
-		where => $where_cond,
-	);
-	my $has_content = $result->fetch_hash_all;
-    return $self->render(status => 404, template => 'not_found') if !$has_content;
-    $self->stash(
-        product => $has_content,
-		page => $page);
-	$self->render('compare');
-};
-
 get '/news/' => sub{
 	my $self = shift;
 	my $page = {
@@ -79,237 +43,219 @@ get '/news/:id/' => sub{
 	my $ua = Mojo::UserAgent->new();
 	my $url = "http://blog.nastartshop.ru/api/get_post/?id=$post_id" if $post_id;
 	my $news = $ua->get($url)->res->json;
+
 	return $self->render(status => 404, template => 'not_found') if $news->{'status'} eq 'error';
+
     $self->stash(
 		page => $page,
         news => $news);
 };
 
-get '/checkout' => sub {
-	my $self=shift;
-	my $cart=$self->session('cart') || undef;
-    my @pid = keys %{$cart};
-    my $countpid=@pid || 0;
-	my $page = {
-		'url' => 'checkout',
-		'title' => 'Корзина',
-		'content' => 'К сожалению ваша корзина пока пуста. Оформлять нечего :(',
-		'type' => 1,
-	};
-    $self->stash(
-		page => $page,
-	);
-    return $self->render('dummy') if $countpid==0 ;
-	
-	my $pid=' id=';
-    $pid=$pid.join(' or id=',@pid); 
-    my $result=$dbi->select(
-        table => 'products',
-        column => [
-			'id',
-			'title',
-			'price',
-		],
-        where => $pid
-    );
-    $self->stash(
-        cart => $cart,
-        products => $result->fetch_hash_all,
-    );
-	$self->render('checkout');
-};
-
-post '/checkout' => sub {
-	my $self = shift;
-	my $cart=$self->session('cart');
-    my @pid= keys %{$cart};
-    my $countpid=@pid || 0;
-    my $page = {
-		'url' => 'checkout',
-		'title' => 'Оформление заказа',
-		'content' => 'Сожалеем, но ваша корзина пока ещё пуста :(',
-		'type' => 1,
-	};
-	$self->stash(
-		page => $page,
-	);
-    return $self->render('dummy') if $countpid==0 ;
-
-    my $pid=' id=';
-    $pid=$pid.join(' or id=',@pid);
-    my $result=$dbi->select(
-        table => 'products',
-        column => [
-			'id',
-			'title',
-			'price',
-		],
-        where => $pid
-    );
-
-	my $vc = Validator::Custom->new;
-	my $param = $self->req->params->to_hash;
-	my $rule = [
-		#person => {message => 'error'} => [
-		#	'not_blank'
-		#],
-		tel => {message => 'error'} => ['not_blank'],
-		#email => {message => 'error'} => [
-		#	'not_blank',{
-		#		'regex' => qr/^.*\@.*\...+/
-		#	}
-		#],
-		delivery_type => ['defined'],
-		payment_type => ['defined'],
-	];
-	my $vresult = $vc->validate($param,$rule);
-	if($vresult->is_ok){
-		#Generating sign for order
-		my $sign = '';
-		my $len = 11 + int(rand(10));
-		$sign .= chr(48 + rand(74)) for (1..$len);
-		$sign =~ s/\W//g;
-		#Create order
-		$dbi->insert(
-			{
-				person => $param->{'person'},
-				tel => $param->{'tel'},
-				email => $param->{'email'},
-				address => $param->{'address'},
-				delivery => $param->{'delivery_type'},
-				payment => $param->{'payment_type'},
-				status => 0,
-				sysdate => \"NOW()",
-				sign => $sign,
-			},
-			table => 'orders',
-		);
-		my $order_id = $dbi->select(
-							column => 'id',
-							table => 'orders',
-							where => {sign => $sign},
-						)->fetch;
-		while(my $ref=$result->fetch_hash){
-			$dbi->insert(
-				{
-					productid => $ref->{'id'},
-					title => $ref->{'title'},
-					price => $ref->{'price'},
-					count => $cart->{$ref->{'id'}},
-					orderid => $order_id,
-				},
-				table => 'items',
-			);
-		};
-		return $self->redirect_to('/thankyou');
-	}else{
-		$self->stash(
-        	cart => $cart,
-	        products => $result->fetch_hash_all,
-	    );
-		$self->stash(missing => 1) if $vresult->has_missing;
-		$self->stash(messages => $vresult->messages_to_hash) if $vresult->has_invalid;
-	}
-	$self->render('checkout');
-};
-
-get '/thankyou' => sub {
-	my $self = shift;
-	$self->session(expires => 1);#Clearing cart
-	my $page = {
-		'url' => 'thankyou',
-		'title' => 'Заказ оформлен',
-		'content' => 'Благодарим за заказ. Мы скоро свяжемся с вами.',
-		'type' => 1,
-	};
-	$self->stash(page => $page);
-	$self->render('dummy');
-};
-
-get '/cart' => sub {
+get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
     my $self = shift;
-    my $cart = $self->session('cart');
-	my @pid = keys %{$cart} if $cart;
-	my $countpid=@pid || 0;
-	my $page = {
-		'url' => 'cart',
-		'title' => 'Корзина',
-		'content' => 'В корзине пока ничего нет. Для добавления товаров в корзину, жмите кнопку "Купить" на нужном товаре.',
-		'type' => 1,
-	};
-	$self->stash(
-		page => $page,
-	);
-	return $self->render('dummy') if $countpid == 0;
-
-	my $pid=' id=';
-	$pid=$pid.join(' or id=',@pid);	
-	my $result=$dbi->select(
+    my $cartid = $self->session('cartid') || 0;
+    my $productid = $self->stash('id');
+	my $action = $self->stash('action');
+	my $result = $dbi->select(
 		table => 'products',
-		column => [
-			'id',
-			'title',
-			'price',
-			'url',
-			'caturl',
-		],
-		where => $pid,
 	);
-    $self->stash(
-		cart => $cart,
-		products => $result->fetch_hash_all,
-	);
-    $self->render('cart');
-};
-
-post '/cart' => sub{
-    my $self=shift;
-    my $productid=$self->param('prodid') || 0;
-	my $action=$self->param('action');
-    my $cart=$self->session('cart');
-	if($action eq 'add'){
-	    $cart->{$productid}++;
-	}elsif($action eq 'remove'){
-		$cart->{$productid}-- if $cart->{$productid}>0;
-	}
-	if($cart->{$productid}==0 || $action eq 'drop'){
-		delete $cart->{$productid};
-	}
-	$self->session(cart => $cart);
-	my @pid= keys %{$cart};
-	my $countpid=@pid || 0;
+	my $products = {};
+	while(my $hash = $result->fetch_hash){
+		$products->{$hash->{id}} = $hash;
+	};
+	my $cartitems = {};
 	my $page = {
         'url' => 'cart',
-        'title' => 'Корзина',
-        'content' => 'Мы сожалеем, что вам ничего не понравилось, может пройдётесь по другим разделам нашего магазина?',
-		'type' => 1,
     };
+	$self->stash(page => $page);
+
+	if($cartid){
+		$result = $dbi->select(
+			table => 'cart',
+			where => {'cartid' => $cartid},
+		);
+		while(my $hash = $result->fetch_hash){
+			$cartitems->{$hash->{productid}} = $hash;
+			$cartitems->{$hash->{productid}}->{url} = $products->{$hash->{productid}}->{url};
+			$cartitems->{$hash->{productid}}->{caturl} = $products->{$hash->{productid}}->{caturl};
+			$cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
+			$cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
+		};
+	}else{
+		return $self->render('static/emptycart');
+	};
+
+	for ($action){
+		if(/delete/){
+			$dbi->delete(
+				table => 'cart',
+				where => {cartid => $cartid, productid => $productid},
+			);
+			delete $cartitems->{$productid};
+		}elsif(/more/){
+			$cartitems->{$productid}->{count}++;
+			$dbi->update(
+				{
+					count => $cartitems->{$productid}->{count},
+				},
+				table => 'cart',
+				where => {cartid => $cartid, productid => $productid},
+			);
+		}elsif(/less/){
+			if($cartitems->{$productid}->{count} > 1){
+	            $cartitems->{$productid}->{count}--;
+    	        $dbi->update(
+        	        {
+            	        count => $cartitems->{$productid}->{count},
+                	},
+	                table => 'cart',
+    	            where => {cartid => $cartid, productid => $productid},
+        	    );
+			};
+		};
+	};
+
     $self->stash(
         page => $page,
-    );
-    return $self->render('dummy') if $countpid == 0;
-
-	my $pid=' id=';
-    $pid=$pid.join(' or id=',@pid);
-    my $result=$dbi->select(
-        table => 'products',
-        column => [
-			'id',
-			'title',
-			'price',
-			'caturl',
-			'url',
-		],
-        where => $pid
-    );
-    $self->stash(
-		products => $result->fetch_hash_all,
-		cart => $cart,
+		cartitems => $cartitems,
 	);
-    $self->render('cart');
+
+	return $self->render('static/emptycart') unless (%{$cartitems});
+	
+	$self->render('cart');
 };
 
-get '/catalog' => sub{
+post '/cart/' => sub{
+	my $self = shift;
+	my $cartid = $self->session('cartid') || undef;
+	my $productid = $self->param('productid') || 0;
+	my $page = {
+        'url' => 'cart',
+    };
+    my $result = $dbi->select(
+        table => 'products',
+    );
+    my $products = {};
+    while(my $hash = $result->fetch_hash){
+        $products->{$hash->{id}} = $hash;
+    };
+    my $cartitems = {};
+
+    if($cartid){
+        $result = $dbi->select(
+            table => 'cart',
+            where => {'cartid' => $cartid},
+        );
+        while(my $hash = $result->fetch_hash){
+            $cartitems->{$hash->{productid}} = $hash;
+            $cartitems->{$hash->{productid}}->{url} = $products->{$hash->{productid}}->{url};
+            $cartitems->{$hash->{productid}}->{caturl} = $products->{$hash->{productid}}->{caturl};
+            $cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
+            $cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
+        };
+    }else{
+        $cartid = time;
+        $self->session(cartid => $cartid);
+    };
+
+    unless($cartitems->{$productid}->{'id'}){#Defined from duplicates
+		$dbi->insert(
+			{
+				productid => $products->{$productid}->{'id'},
+                count => 1,
+                cartid => $cartid,
+            },
+            table => 'cart',
+		);
+        $cartitems->{$productid} = $products->{$productid};
+        $cartitems->{$productid}->{productid} = $productid;
+        $cartitems->{$productid}->{count} = 1;
+	};
+    
+	$self->stash(
+    	page => $page,
+        cartitems => $cartitems,
+    );
+};
+
+get '/checkout/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'checkout',
+	};
+	$self->stash(
+		page => $page
+	);
+};
+
+post '/checkout/' => sub {
+	my $self = shift;
+	my $cartid = $self->session('cartid');
+	my $orderinfo = $self->req->params->to_hash;
+    my $page = {
+		'url' => 'checkout',
+	};
+	$self->stash(
+		page => $page,
+	);
+
+	my $vc = Validator::Custom->new;
+	my $rule = [
+		tel => ['not_blank'],
+		delivery => ['defined'],
+		payment => ['defined'],
+	];
+	my $vresult = $vc->validate($orderinfo, $rule);
+	if($vresult->is_ok && $cartid){
+		$orderinfo->{cartid} = $cartid;
+		$orderinfo->{sysdate} = \"NOW()";
+		$orderinfo->{status} = 0;
+		$dbi->insert(
+			$orderinfo,
+			table => 'orders',
+		);
+		
+		my $result = $dbi->select(
+			table => 'products',
+		);
+		my $products = {};
+		while (my $hash = $result->fetch_hash){
+			$products->{$hash->{id}} = $hash;
+		};
+		my $cartitems = {};
+		$result = $dbi->select(
+            table => 'cart',
+            where => {'cartid' => $cartid},
+        );
+        while(my $hash = $result->fetch_hash){
+            $cartitems = $hash;
+            $cartitems->{title} = $products->{$hash->{productid}}->{title};
+            $cartitems->{price} = $products->{$hash->{productid}}->{price};
+            $cartitems->{id} = '';
+
+			$dbi->insert(
+				$cartitems,
+				table => 'items',
+			);
+        };
+
+		$self->session('cartid' => 0);
+
+		return $self->redirect_to('/thankyou');
+	}else{
+		$self->stash(missing => 1);
+	};
+};
+
+get '/thankyou/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'thankyou',
+	};
+	$self->stash(page => $page);
+};
+
+get '/catalog/' => sub{
 	my $self = shift;
 	my $page = {
 		'url' => 'catalog',
@@ -374,7 +320,9 @@ get '/catalog/:caturl' => sub {
 		where => {'caturl' => $caturl},
 	);
 	my $has_content = $page->one;
+
     return $self->render(status => 404, template =>'not_found') if !$has_content;
+
 	$self->stash(
 		product => $result->fetch_hash_all,
 		page => $has_content,
@@ -423,7 +371,9 @@ get '/catalog/:caturl/:produrl.html' => sub {
 		},
 	);
 	my $has_content = $result->fetch_hash;
+
     return $self->render(status => 404, template => 'not_found') if !$has_content;
+
 	$self->stash(
 		product => $has_content,
 		page => $category->one,
@@ -465,7 +415,9 @@ get '/about/:pageurl' => sub{
 		where => {'url' => $self->param('pageurl')}
 	);
 	my $has_content = $result->fetch_hash;
+
     return $self->render(status => 404, template => 'not_found') if !$has_content;
+
 	$self->stash(page => $has_content); 
 	$self->render('page');
 };
@@ -527,7 +479,7 @@ get '/sitemap' => sub{
 app->secret('ReginaSpector');
 app->hook(before_dispatch => sub {
 				my $self = shift;
-				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
+				#$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
 			}
 		);
 app->start;

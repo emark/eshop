@@ -3,24 +3,14 @@
 % stash->{'metadescription'} = 'Страница оформления заказа. Интернет-магазин НаСтарт. Домашние спортивные комплексы для детей.';
 % my $total_cart=0;
 % my $missing = stash->{missing};
-% my $messages = stash->{messages};
+% my $class_muted = '';
 
 <div>
 	<h1>Оформление заказа</h1>
-</div>
-<div class="alert alert-info">
-	<h2><h3><h4 class="alert-heading">Ваш заказ</h4></h3></h2>
-% my $n=0;
-% foreach my $product(@{$products}){
-% 	$n++;
-	<em>
-	<%= $product->{'title'} %> * <%= $cart->{$product->{'id'}} %> = <%= $product->{'price'} * $cart->{$product->{'id'}} %> руб.
-% 	$total_cart = $total_cart+$cart->{$product->{'id'}} * $product->{'price'};
-	</em><br/>
-% };
-	<b>Общий итог: <%=$total_cart%> руб.</b> <a href="/cart/" class="btn btn-mini">Редактировать</a>
+	<p>* - обязательные поля</p>
 </div>
 % if ($missing){
+% $class_muted = 'muted';
 <div class="alert">
 	<button class="close" data-dismiss="alert">×</button>
 	Заполните поля со знаком *
@@ -28,73 +18,69 @@
 % }
 <form class="form-horizontal" action="/checkout/" method="post" id="CheckoutForm">
 	<fieldset>
-% my $error_class = '';
-% $error_class = $messages->{person};
-	<div class="control-group <%= $error_class %>">
-		<label class="control-label" for="person">Имя</label>
+	<div class="control-group">
+		<label class="control-label <%= $class_muted %>" for="person">Имя</label>
 		<div class="controls">	
-			<%= text_field 'person' => (class => "span2", type => "text") %>
-% if($error_class){
-			<span class="help-inline">Представьтесь, пожалуйста</span>
-% }
+			<%= text_field 'person', class => 'span2' %>
 		</div>
 	</div>
-% $error_class = '';
-% $error_class = $messages->{tel};
-	<div class="control-group <%= $error_class %>">
+	<div class="control-group">
 		<label class="control-label" for="tel"><strong>Телефон*</strong></label>
 		<div class="controls">
-			<%= text_field 'tel' => (class => "span2", type => "text") %>
-% if($error_class){
-			<span class="help-inline">Введите контактный номер телефона</span>
-% }
+			<%= text_field 'tel', class => 'span2' %>
 		</div>
 	</div>
-% $error_class = '';
-% $error_class = $messages->{email};
-	<div class="control-group <%= $error_class %>">
-		<label class="control-label" for="email">Почта</label>
+	<div class="control-group">
+		<label class="control-label <%= $class_muted %>" for="email">Почта</label>
 		<div class="controls">
-			<%= text_field 'email' => (class => "span3", type => "text") %>
-% if($error_class){
-			<span class="help-inline">Укажите корректный адрес</span>
-% }
+			<%= text_field 'email' %>
 		</div>	
 	</div>
 	<div class="control-group">
 		<label class="control-label"><strong>Варианты доставки*</strong></label>
 		<div class="controls">
 			<label class="radio">
-				<%= radio_button delivery_type=>'store', id=>1%>
+				<%= radio_button 'delivery' => 'store' %>
+				<!--input type="radio" name="delivery" value="store"-->
 				Самостоятельно из <a href="/about/contacts.html" target=_blank>пунктов самовывоза</a>
             </label>
             <label class="radio">
-				<%= radio_button delivery_type=>'courier', id=>2%>
+				<%= radio_button 'delivery' => 'courier' %>
+				<!--input type="radio" name="delivery" value="courier"-->
 				Курьерская доставка. <a href="/about/delivery-and-payment.html" target=_blank>Условия курьерской доставки</a>.
             </label>
         </div>
+		<label class="control-label <%= $class_muted %>">Адрес доставки</label>
 		<div class="controls">
-			<label>Адрес доставки</label> 
-			<%=text_area 'address' => (class => "span3") %>
+			<%= text_area 'address' => (rows => 2) %>
+			<!--textarea rows="2" name="address"></textarea-->
 		</div>
 	</div>
 	<div class="control-group">
-        <label class="control-label"><strong>Способ оплаты*</strong></label>
-        <div class="controls">
-        	<label class="radio">
-				<%= radio_button payment_type=>'cash', id=>1%>Платёж наличными курьеру или в пункте самовывоза
-            </label>
-            <label class="radio">
-				<%= radio_button payment_type=>'check', id=>2%>Безналичная оплата (квитанция Сбербанка)
-            </label>
-        </div>
+	        <label class="control-label"><strong>Способ оплаты*</strong></label>
+        	<div class="controls">
+        		<label class="radio">
+				<%= radio_button 'payment' => 'cash' %>
+				<!--input type="radio" name="payment" value="cash"-->
+				Платёж наличными
+			</label>
+			<label class="radio">
+				<%= radio_button 'payment' => 'check' %>
+				<!--input type="radio" name="payment" value="check"-->
+				Банковский перевод
+			</label>
+	        </div>
 	</div>
-	<input type=submit class="btn btn-primary btn-large" value="Подтвердить заказ">
+	<div class="control-group">
+        	<label class="control-label <%= $class_muted %>">Комментарий к заказу</label>
+		<div class="controls">
+			<%= text_area 'comments' => (rows => 3) %>
+			<!--textarea rows="3" name="comments"></textarea-->
+		</div>
+	</div>
+	<div class="controls">
+		<a href="/cart/" class="btn" title="Вернуться к редактированию заказа">Назад</a>
+		<input type=submit class="btn btn-primary" value="Подтвердить заказ">
+	</div>
 	</fieldset>
 </form>
-<script language ="javascript" type = "text/javascript" >
-    function submitDetailsForm($action,$id)
-    {
-       $("#CheckoutForm").submit();
-    }
-</script>

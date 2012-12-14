@@ -38,8 +38,7 @@
 					<br /><small>Обновлено: <%= $productid->{'itemupdate'} %></small>
 					</p>
 					<form action="/cart/" method="post">
-						<input type=hidden name="prodid" value="<%= $productid->{'id'} %>">
-						<input type=hidden name="action" value="add">
+						<input type=hidden name="productid" value="<%= $productid->{'id'} %>">
 						<input type=submit value="Купить сейчас" class="btn btn-primary">
 					</form>
     			</div>

@@ -1,11 +1,14 @@
-% layout 'default';
-% title $page->{'title'};
+% layout 'default';#$dev
+% title "Корзина";
 % stash->{'metadescription'} = 'Страница корзины заказов. На странице можно редактировать и изменять список товаров';
-%my $total_cart=0;
+% my $total_cart = 0;
+% my $cartid = session->{cartid};
 
 <div>
-	<h1><%= $page->{'title'} %></h1>
+	<h1>Корзина</h1>
 </div>
+<p>Номер корзины: <abbr title="Индивидуальный номер заказа"><%= $cartid %></abbr></p>
+% if(%{$cartitems}){
 <div class="row">
 	<div class="span9">
 		<table class="table" border=0>
@@ -16,50 +19,41 @@
 				<th>Цена</th>
 				<th><center>Количество</center></th>
 				<th>Стоимость</th>
-				<th>&nbsp;</th>
 			</tr>
 		<thead>
 		<tbody>
-% foreach my $product(@{$products}){
+% 	foreach my $itemid(keys %{$cartitems}){
 			<tr>
-				<td><a href="/catalog/<%= $product->{'caturl'} %>/<%= $product->{'url'} %>.html" title="Посмотреть характеристики товара"><%= $product->{'title'} %></a></td>
-% 	my $articul = sprintf ("%06s",$product->{'id'});
+				<td><a href="/cart/delete/<%= $cartitems->{$itemid}->{productid} %>/" title="Убрать товар из корзины")"><i class="icon-remove"></i></a>&nbsp;<a href="/catalog/<%= $cartitems->{$itemid}->{'caturl'} %>/<%= $cartitems->{$itemid}->{'url'} %>.html" title="Посмотреть характеристики товара"><%= $cartitems->{$itemid}->{'title'} %></a></td>
+%		my $articul = sprintf("%06s",$cartitems->{$itemid}->{'productid'});
 				<td><%= $articul %></td>
-				<td><%= $product->{'price'} %> руб.</td> 
+				<td><%= $cartitems->{$itemid}->{'price'} %> руб.</td> 
 				<td><center>
-					<a href="#" onClick="submitDetailsForm('remove',<%= $product->{'id'} %>)" class="btn" title="Уменьшить количество товара"><i class="icon-minus"></i></a>&nbsp;
-					<%= $cart->{$product->{'id'}} %>
-					&nbsp;<a href="#" onClick="submitDetailsForm('add',<%= $product->{'id'} %>)" class="btn" title="Увеличить количество товара"><i class="icon-plus"></i></a>
+					<a href="/cart/less/<%= $cartitems->{$itemid}->{productid} %>/" title="Уменьшить количество товара"><i class="icon-minus"></i></a>&nbsp;
+					<%= $cartitems->{$itemid}->{'count'} %>
+					&nbsp;<a href="/cart/more/<%= $cartitems->{$itemid}->{productid} %>/" title="Увеличить количество товара"><i class="icon-plus"></i></a>
 					</center>
 				</td>
 				<td>
-					<%= $product->{'price'}*$cart->{$product->{'id'}} %> руб. 
-				</td>
-				<td align=center>
-					<a href="#" title="Убрать товар из корзины" class="btn btn-danger" onClick="submitDetailsForm('drop',<%= $product->{'id'} %>)"><i class="icon-remove icon-white"></i></a>
+					<%= $cartitems->{$itemid}->{'price'}*$cartitems->{$itemid}->{'count'} %> руб. 
 				</td>
 			</tr>
-% 	$total_cart = $total_cart+$cart->{$product->{'id'}}*$product->{'price'};
-% }
+% 		$total_cart = $total_cart+$cartitems->{$itemid}->{'count'}*$cartitems->{$itemid}->{'price'};
+% 	};
 		</tbody>
 		</table>
-		<p align="left"><h2>Итого:&nbsp;<%=$total_cart%> руб.</h2></p>
+		<h2>Итого:&nbsp;<%=$total_cart%> руб.</h2><p align="left"><a href="/catalog/">продолжить покупки</a></p>
 	</div>
 </div>
 <div class="row">
 	<div class="span9">
-		<a href="/checkout/" class="btn btn-large">Оформить заказ</a> или <a href="/catalog/">продолжить покупки</a>
+		<p class="align-center"><a href="/checkout/" class="btn btn-large">Оформить заказ</a></p>
 	</div>
 </div>
-<script language ="javascript" type = "text/javascript" >
-    function submitDetailsForm($action,$id)
-    {
-	document.getElementById('action').value=$action;
-	document.getElementById('prodid').value=$id;
-       $("#updatecart").submit();
-    }
-</script>
-<form action="/cart/" method="post" id="updatecart" name="updatecart">
-	<input type=hidden id=action value="" name=action>
-	<input type=hidden id=prodid value="" name=prodid>
-</form>
+% }else{
+<div class="row">
+	<div class="span9">
+	<p>В корзину пока ничего не добавлено.</p>
+	</div>
+</div>
+% };
