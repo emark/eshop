@@ -158,7 +158,7 @@ post '/cart/' => sub{
         $self->session(cartid => $cartid);
     };
 
-    unless($cartitems->{$productid}->{'id'}){#Defined from duplicates
+    unless($productid && $cartitems->{$productid}->{'id'}){#Defined from duplicates
 		$dbi->insert(
 			{
 				productid => $products->{$productid}->{'id'},
