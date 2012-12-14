@@ -22,7 +22,7 @@
 			</tr>
 		<thead>
 		<tbody>
-% 	foreach my $itemid(keys $cartitems){
+% 	foreach my $itemid(keys %{$cartitems}){
 			<tr>
 				<td><a href="/cart/delete/<%= $cartitems->{$itemid}->{productid} %>/" title="Убрать товар из корзины")"><i class="icon-remove"></i></a>&nbsp;<a href="/catalog/<%= $cartitems->{$itemid}->{'caturl'} %>/<%= $cartitems->{$itemid}->{'url'} %>.html" title="Посмотреть характеристики товара"><%= $cartitems->{$itemid}->{'title'} %></a></td>
 %		my $articul = sprintf("%06s",$cartitems->{$itemid}->{'productid'});
