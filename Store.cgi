@@ -198,7 +198,7 @@ post '/checkout/' => sub {
 
 	my $vc = Validator::Custom->new;
 	my $rule = [
-		tel => {message => 'error'} => ['not_blank'],
+		tel => ['not_blank'],
 		delivery => ['defined'],
 		payment => ['defined'],
 	];
@@ -240,7 +240,7 @@ post '/checkout/' => sub {
 
 		return $self->redirect_to('/thankyou');
 	}else{
-		$self->stash(missing => 1) if $vresult->has_missing;
+		$self->stash(missing => 1);
 	};
 };
 
