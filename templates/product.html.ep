@@ -88,18 +88,15 @@
 					</dd>
 				</dl>
 % }
-% if($product->{'instruction'}){
-				<dl>
-					<dt><strong>Документы</strong></dt>
-					<dd>
-						<ul>
-						<li><a href="/download/doc/<%= $product->{'instruction'} %>">Скачать инструкцию по сборке и эксплуатации</a></li>
-						</ul>
-					</dd>
-				</dl>
-% }
 			</div>
 			<div id="more" class="tab-pane">
+% if($product->{'instruction'}){
+				<p><strong>Документация</strong>
+				<ul>
+					<li><a href="/download/doc/<%= $product->{'instruction'} %>">Скачать инструкцию по сборке и эксплуатации</a></li>
+				</ul>
+				</p>
+% }
 				<p><strong>Видео и фотографии</strong>
 				<ul>
 % if ($product->{'photo'}){
