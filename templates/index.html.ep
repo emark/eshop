@@ -3,31 +3,17 @@
 % stash->{'metadescription'} = 'Интернет-магазин НаСтарт предлагает широкий ассортимент домашних детских спортивных комплексов, гимнастические маты и навесное оборудование. Пристенные и распорные спортивные уголки для малышей.';
 
 <div class="row">
-  <div class="span9">
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <a href="/news/209/" title="Акция Ранний старт бесплатно на 2 недели" rel="nofollow">
-		        <img src="/media/slider/akciya/ranniy-start-v-detskiy-sad.jpg" alt="Акция Ранний старт бесплатно на 2 недели" title="Акция Ранний старт бесплатно на 2 недели">
-		      </a>
-          <div class="carousel-caption">
-            <p>Тест-драйв акция &laquo;Ранний старт в детский сад&raquo;</p>
-          </div>
-        </div>
-	<div class="item">
-          <a href="/catalog/dsk-rstart/" title="Каталог развивающих комплексов Ранний старт">
-		        <img src="/media/slider/rstart/rs-standard.jpg" alt="Каталог развивающих комплексов Ранний старт" title="Каталог развивающих комплексов Ранний старт">
-		  </a>
-          <div class="carousel-caption">
-            <p>&laquo;Ранний старт&raquo; - развивающие комплексы для малышей от двух месяцев</p>
-          </div>
-        </div>
-      </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>
-  </div>
+	<div class="span3">
+		<a href="/news/428/" title="Новогодние подарки"><img src="/media/images/offers/newyear.jpg" title="Новогодние подарки" alt="Новогодние подарки" class="image-center"></a>
+	</div>
+	<div class="span3">
+		<a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт"><img src="/media/images/offers/rstart.jpg" title="Развивающие комплексы Ранний старт" alt="Развивающие комплексы Ранний старт" class="image-center"></a>
+	</div>
+	<div class="span3">
+		<a href="/about/contacts.html" title="Адреса магазинов"><img src="/media/images/offers/address.jpg" title="Адреса магазинов" alt="Адреса магазинов" class="image-center"></a>
+	</div>
 </div>
+&nbsp;
 <div class="row">
   <div class="span9">
     <p>Приветствуем вас в интернет-магазине &laquo;НаСтарт.рф&raquo;. Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>&laquo;Ранний старт&raquo;</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь. Присоединяйтесь к нашей группе <a href="http://vk.com/nastartshop" target=_blank title="Группа в социальной сети">ВКонтакте</a>, будем рады общению!</p>
@@ -35,7 +21,7 @@
   </div>
 </div>
 <div class="row">    
-  <div class="span9"><hr>
+  <div class="span9"><hr />
     <h2>Новые поступления <img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></h2>
 		<p><a href="/catalog/">Посмотреть весь каталог</a></p>
 	</div>
