@@ -479,7 +479,7 @@ get '/sitemap' => sub{
 app->secret('ReginaSpector');
 app->hook(before_dispatch => sub {
 				my $self = shift;
-				#$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
+				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
 			}
 		);
 app->start;
