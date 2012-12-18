@@ -20,7 +20,7 @@
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
 					<a href="/catalog/<%= "$page->{'url'}/$productid->{'url'}" %>.html" title="Подробнее о <%= $productid->{'title'} %>">
-					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Узнать харакетиристики <%= $productid->{'title'} %>" title="Узнать харакетиристики <%= $productid->{'title'} %>">
+					<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Узнать харакетиристики товара" title="Узнать харакетиристики товара">
 					</a>
 	      				<p><%= $productid->{'title'} %><br /><a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Узнать харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
 					<p><strong>Цена:</strong>
