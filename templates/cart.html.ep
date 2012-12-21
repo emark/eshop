@@ -47,7 +47,7 @@
 </div>
 <div class="row">
 	<div class="span9">
-		<p class="align-center"><a href="/checkout/" class="btn btn-large">Оформить заказ</a></p>
+		<p class="align-center"><a href="/cart/checkout/" class="btn btn-large">Оформить заказ</a></p>
 	</div>
 </div>
 % }else{

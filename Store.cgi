@@ -51,6 +51,86 @@ get '/news/:id/' => sub{
         news => $news);
 };
 
+get '/cart/checkout/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'checkout',
+	};
+	$self->stash(
+		page => $page
+	);
+	$self->render('checkout');
+};
+
+post '/cart/checkout/' => sub {
+	my $self = shift;
+	my $cartid = $self->session('cartid');
+	my $orderinfo = $self->req->params->to_hash;
+    my $page = {
+		'url' => 'checkout',
+	};
+	$self->stash(
+		page => $page,
+	);
+
+	my $vc = Validator::Custom->new;
+	my $rule = [
+		tel => ['not_blank'],
+		delivery => ['defined'],
+		payment => ['defined'],
+	];
+	my $vresult = $vc->validate($orderinfo, $rule);
+	if($vresult->is_ok && $cartid){
+		$orderinfo->{cartid} = $cartid;
+		$orderinfo->{sysdate} = \"NOW()";
+		$orderinfo->{status} = 0;
+		$dbi->insert(
+			$orderinfo,
+			table => 'orders',
+		);
+		
+		my $result = $dbi->select(
+			table => 'products',
+		);
+		my $products = {};
+		while (my $hash = $result->fetch_hash){
+			$products->{$hash->{id}} = $hash;
+		};
+		my $cartitems = {};
+		$result = $dbi->select(
+            table => 'cart',
+            where => {'cartid' => $cartid},
+        );
+        while(my $hash = $result->fetch_hash){
+            $cartitems = $hash;
+            $cartitems->{title} = $products->{$hash->{productid}}->{title};
+            $cartitems->{price} = $products->{$hash->{productid}}->{price};
+            $cartitems->{id} = '';
+
+			$dbi->insert(
+				$cartitems,
+				table => 'items',
+			);
+        };
+
+		$self->session('cartid' => 0);
+
+		return $self->redirect_to('/cart/thankyou/');
+	}else{
+		$self->stash(missing => 1);
+	};
+	$self->render('checkout');
+};
+
+get '/cart/thankyou/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'thankyou',
+	};
+	$self->stash(page => $page);
+	$self->render('thankyou');
+};
+
 get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
     my $self = shift;
     my $cartid = $self->session('cartid') || 0;
@@ -176,83 +256,6 @@ post '/cart/' => sub{
     	page => $page,
         cartitems => $cartitems,
     );
-};
-
-get '/checkout/' => sub{
-	my $self = shift;
-	my $page = {
-		url => 'checkout',
-	};
-	$self->stash(
-		page => $page
-	);
-};
-
-post '/checkout/' => sub {
-	my $self = shift;
-	my $cartid = $self->session('cartid');
-	my $orderinfo = $self->req->params->to_hash;
-    my $page = {
-		'url' => 'checkout',
-	};
-	$self->stash(
-		page => $page,
-	);
-
-	my $vc = Validator::Custom->new;
-	my $rule = [
-		tel => ['not_blank'],
-		delivery => ['defined'],
-		payment => ['defined'],
-	];
-	my $vresult = $vc->validate($orderinfo, $rule);
-	if($vresult->is_ok && $cartid){
-		$orderinfo->{cartid} = $cartid;
-		$orderinfo->{sysdate} = \"NOW()";
-		$orderinfo->{status} = 0;
-		$dbi->insert(
-			$orderinfo,
-			table => 'orders',
-		);
-		
-		my $result = $dbi->select(
-			table => 'products',
-		);
-		my $products = {};
-		while (my $hash = $result->fetch_hash){
-			$products->{$hash->{id}} = $hash;
-		};
-		my $cartitems = {};
-		$result = $dbi->select(
-            table => 'cart',
-            where => {'cartid' => $cartid},
-        );
-        while(my $hash = $result->fetch_hash){
-            $cartitems = $hash;
-            $cartitems->{title} = $products->{$hash->{productid}}->{title};
-            $cartitems->{price} = $products->{$hash->{productid}}->{price};
-            $cartitems->{id} = '';
-
-			$dbi->insert(
-				$cartitems,
-				table => 'items',
-			);
-        };
-
-		$self->session('cartid' => 0);
-
-		return $self->redirect_to('/thankyou');
-	}else{
-		$self->stash(missing => 1);
-	};
-};
-
-get '/thankyou/' => sub{
-	my $self = shift;
-	my $page = {
-		url => 'thankyou',
-	};
-	$self->stash(page => $page);
 };
 
 get '/catalog/' => sub{

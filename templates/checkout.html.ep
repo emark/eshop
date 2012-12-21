@@ -16,7 +16,7 @@
 	Заполните поля со знаком *
 </div>
 % }
-<form class="form-horizontal" action="/checkout/" method="post" id="CheckoutForm">
+<form class="form-horizontal" action="/cart/checkout/" method="post" id="CheckoutForm">
 	<fieldset>
 	<div class="control-group">
 		<label class="control-label <%= $class_muted %>" for="person">Имя</label>
