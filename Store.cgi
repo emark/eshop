@@ -315,7 +315,7 @@ get '/catalog/:caturl' => sub {
 			'margin',
 			'instore',
 			'discount',
-			'itemupdate',
+			'lastmod',
 		],
 		where => {'caturl' => $caturl},
 	);
@@ -363,7 +363,7 @@ get '/catalog/:caturl/:produrl.html' => sub {
 			'photo',
 			'video',
 			'instruction',
-			'itemupdate',
+			'lastmod',
 		],
 		where => {
 			'url' => $produrl,
@@ -439,7 +439,7 @@ get '/' => sub{
             'price',
             'image',
 			'caturl',
-			'itemupdate',
+			'lastmod',
         ],
 		where => {'latest' => 1},
     );
@@ -467,6 +467,7 @@ get '/sitemap' => sub{
 		column => [
 			'url',
 			'caturl',
+			'lastmod',
 		],
 	);
 	$self->stash(

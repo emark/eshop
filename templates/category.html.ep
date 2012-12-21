@@ -35,7 +35,7 @@
 %		$instore = 2 if ($instore > 1 && $instore < 4);
 %		$instore = 3 if ($instore >= 4);
 					<br /><strong>Наличие:</strong> <%= $store_info{$instore} %>
-					<br /><small>Обновлено: <%= $productid->{'itemupdate'} %></small>
+					<br /><small>Обновлено: <%= $productid->{'lastmod'} %></small>
 					</p>
 					<form action="/cart/" method="post">
 						<input type=hidden name="productid" value="<%= $productid->{'id'} %>">

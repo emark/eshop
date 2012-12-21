@@ -31,7 +31,7 @@
 %	my $saving_sum = $muted_price-$product->{'price'};
 		<div class="alert alert-info">цена снижена на <%= $product->{'discount'} %>%<br />экономия <%= $saving_sum %> рублей</div>
 % }
-		<p><small>Обновлено: <%= $product->{'itemupdate'} %></small></p>
+		<p><small>Обновлено: <%= $product->{'lastmod'} %></small></p>
 		<form action="/cart/" method=post>
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary"></form>
