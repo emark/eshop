@@ -41,19 +41,20 @@
 		<div class="controls">
 			<label class="radio">
 				<%= radio_button 'delivery' => 'store' %>
-				<!--input type="radio" name="delivery" value="store"-->
 				Самостоятельно из <a href="/about/contacts.html" target=_blank>пунктов самовывоза</a>
-            </label>
-            <label class="radio">
+            		</label>
+			<label class="radio">
 				<%= radio_button 'delivery' => 'courier' %>
-				<!--input type="radio" name="delivery" value="courier"-->
-				Курьерская доставка. <a href="/about/delivery-and-payment.html" target=_blank>Условия курьерской доставки</a>.
-            </label>
-        </div>
+				Курьерская доставка (Красноярск) <a href="/about/delivery-and-payment.html" target=_blank>Условия доставки</a>.
+			</label>
+			<label class="radio">
+				<%= radio_button 'delivery' => 'shipping' %>
+				Транспортная компания (Россия)
+			</label>
+	        </div>
 		<label class="control-label <%= $class_muted %>">Адрес доставки</label>
 		<div class="controls">
 			<%= text_area 'address' => (rows => 2) %>
-			<!--textarea rows="2" name="address"></textarea-->
 		</div>
 	</div>
 	<div class="control-group">
@@ -61,12 +62,14 @@
         	<div class="controls">
         		<label class="radio">
 				<%= radio_button 'payment' => 'cash' %>
-				<!--input type="radio" name="payment" value="cash"-->
 				Платёж наличными
 			</label>
 			<label class="radio">
+				<%= radio_button 'payment' => 'yamoney' %>
+				ПС "Яндекс.Деньги"
+			</label>
+			<label class="radio">
 				<%= radio_button 'payment' => 'check' %>
-				<!--input type="radio" name="payment" value="check"-->
 				Банковский перевод
 			</label>
 	        </div>
@@ -75,7 +78,6 @@
         	<label class="control-label <%= $class_muted %>">Комментарий к заказу</label>
 		<div class="controls">
 			<%= text_area 'comments' => (rows => 3) %>
-			<!--textarea rows="3" name="comments"></textarea-->
 		</div>
 	</div>
 	<div class="controls">
