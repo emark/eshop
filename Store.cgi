@@ -53,6 +53,7 @@ get '/news/:id/' => sub{
 
 get '/cart/checkout/' => sub{
 	my $self = shift;
+	return $self->redirect_to('cart') unless $self->session('cartid');
 	my $page = {
 		url => 'checkout',
 	};
