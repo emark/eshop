@@ -132,6 +132,15 @@ get '/cart/thankyou/' => sub{
 	$self->render('thankyou');
 };
 
+get '/cart/payment/:cartid' => sub{
+	my $self = shift;
+	my $page => {
+		url => 'payment-yamoney',
+	};
+	$self->stash(page => $page);
+	$self->render('static/payment');
+};
+
 get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
     my $self = shift;
     my $cartid = $self->session('cartid') || 0;
