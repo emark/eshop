@@ -50,10 +50,6 @@
 		<%=$productid->{'price'}%> руб.
 % 	};
 	</p>
-          <form action="/cart/" method="post">
-            <input type=hidden name="productid" value="<%= $productid->{'id'} %>">
-            <input type=submit value="Купить сейчас" class="btn btn-primary">
-          </form>
         </div>
       </li>
 %   }
