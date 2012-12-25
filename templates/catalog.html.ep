@@ -19,9 +19,7 @@
 	<div class="span3">
 		<ul class="thumbnails">
 			<li class="span3">
-				<a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога">
-					<img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" class="image-center" alt="Переход в раздел каталога" title="Переход в раздел каталога">
-				</a>
+					<img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" class="image-center" alt="<%= $category->{'title'} %>" title="<%= $category->{'title'} %>">
 				<h3 class="align-center">Цены от <%= $min_price{$category->{'url'}} %> руб.</h3>
 			</li>
 		</ul>

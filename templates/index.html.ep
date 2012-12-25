@@ -36,9 +36,7 @@
 %   my $image_source = 'noimage';
 %   $image_source = $productid->{'url'} if $productid->{'image'};
 %   my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
-          <a href="<%= $product_link %>" title="Подробнее о <%= $productid->{'title'} %>">
 		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>" class="image-center">
-          </a>
           <p><%= $productid->{'title'} %><br />
 	Цена:
 % 	if($productid->{'discount'}){
@@ -48,7 +46,7 @@
 % 	}else{
 		<%=$productid->{'price'}%> руб.
 % 	};
-	<br /><a href="<%= $product_link %>" title="Узнать харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
+	<br /><a href="<%= $product_link %>" title="Описание и харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
         </div>
       </li>
 %   }
