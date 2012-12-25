@@ -39,9 +39,8 @@
           <a href="<%= $product_link %>" title="Подробнее о <%= $productid->{'title'} %>">
 		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>" class="image-center">
           </a>
-          <p><%= $productid->{'title'} %><br /><a href="<%= $product_link %>" title="Узнать харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
-	<p>
-	<strong>Цена:</strong>
+          <p><%= $productid->{'title'} %><br />
+	Цена:
 % 	if($productid->{'discount'}){
 % 		my $muted_price = $productid->{'cost'}*($productid->{'margin'}/100)+$productid->{'cost'};
 %		$muted_price = sprintf("%d", $muted_price);
@@ -49,7 +48,7 @@
 % 	}else{
 		<%=$productid->{'price'}%> руб.
 % 	};
-	</p>
+	<br /><a href="<%= $product_link %>" title="Узнать харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
         </div>
       </li>
 %   }
