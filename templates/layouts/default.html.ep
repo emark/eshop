@@ -139,8 +139,9 @@
 					</div>
 					<div class="span3">
 						<h3>Справочная информация</h3>
-						<ul class="">
+						<ul>
 							<li><a href="/news/" title="Новости магазина">Новости магазина</a></li>
+							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
 							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
 							<li><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
