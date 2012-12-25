@@ -21,10 +21,10 @@
 % my $instore = $product->{'instore'};
 % $instore = 2 if ($instore > 1 && $instore < 4);
 % $instore = 3 if ($instore >= 4);
-		<p><strong>Наличие:</strong> <%= $store_info{$instore} %></p>
 % my $articul = sprintf ("%06s",$product->{'id'});
 		<p><strong>Артикул:</strong> <%= $articul %></p>
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
+		<p>Наличие: <%= $store_info{$instore} %></p>
 % if ($product->{'discount'}){
 %	my $muted_price = $product->{'cost'}*($product->{'margin'}/100)+$product->{'cost'};
 %	$muted_price = sprintf("%d", $muted_price);
