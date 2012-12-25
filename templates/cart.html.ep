@@ -7,7 +7,7 @@
 <div>
 	<h1>Корзина</h1>
 </div>
-<p>Номер заказа: <%= $cartid %></p>
+<p>Номер корзины: <%= $cartid %></p>
 % if(%{$cartitems}){
 <div class="row">
 	<div class="span9">

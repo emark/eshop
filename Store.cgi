@@ -60,7 +60,7 @@ get '/cart/checkout/' => sub{
 	$self->stash(
 		page => $page
 	);
-	$self->render('checkout');
+	$self->render('cart/checkout');
 };
 
 post '/cart/checkout/' => sub {
@@ -120,7 +120,7 @@ post '/cart/checkout/' => sub {
 	}else{
 		$self->stash(missing => 1);
 	};
-	$self->render('checkout');
+	$self->render('cart/checkout');
 };
 
 get '/cart/thankyou/' => sub{
@@ -129,16 +129,41 @@ get '/cart/thankyou/' => sub{
 		url => 'thankyou',
 	};
 	$self->stash(page => $page);
-	$self->render('thankyou');
+	$self->render('cart/thankyou');
 };
 
 get '/cart/payment/:cartid' => sub{
 	my $self = shift;
-	my $page => {
-		url => 'payment-yamoney',
+	my $cartid = $self->param('cartid') || 0;
+	my $page = {
+		url => 'payment',
 	};
+	my $result = $dbi->select(
+		table => 'orders',
+		column => [
+			'id',
+			'cartid',
+			'payment',
+			'delivery',
+		],
+		where => {cartid => $cartid, status => 1},
+	);
+	my $orderinfo = $result->one;
+	
 	$self->stash(page => $page);
-	$self->render('static/payment');
+	return $self->render('cart/emptycart') if !$orderinfo;
+	
+	$result = $dbi->select(
+		table => 'items',
+		column => ['price'],
+		where => {cartid => $cartid},
+	);
+	my $itemprice = $result->fetch_all;
+	$self->stash(
+		orderinfo => $orderinfo,
+		itemprice => $itemprice,
+	);
+	$self->render('cart/payment');
 };
 
 get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
@@ -172,7 +197,7 @@ get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
 			$cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
 		};
 	}else{
-		return $self->render('static/emptycart');
+		return $self->render('cart/emptycart');
 	};
 
 	for ($action){
@@ -210,7 +235,7 @@ get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
 		cartitems => $cartitems,
 	);
 
-	return $self->render('static/emptycart') unless (%{$cartitems});
+	return $self->render('cart/emptycart') unless (%{$cartitems});
 	
 	$self->render('cart');
 };
