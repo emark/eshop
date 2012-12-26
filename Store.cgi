@@ -465,6 +465,11 @@ get '/' => sub{
 	my $page = {
 		'url' => 'index',
 	};
+	my @curdate = localtime(time);
+	$curdate[5] = $curdate[5]+1900;
+	$curdate[4] = $curdate[4]+1;
+	$curdate[4] = '0'.$curdate[4] if $curdate[4]<10;
+	$curdate[3] = '0'.$curdate[3] if $curdate[3]<10;
 	my $products = $dbi->select(
         table => 'products',
         column => [
@@ -477,11 +482,15 @@ get '/' => sub{
             'price',
             'image',
 			'caturl',
-			'lastmod',
         ],
-		where => {'latest' => 1},
+		where => [
+			['and',':instore{>}',':lastmod{=}'],
+			{instore => 0, lastmod => $curdate[5].'-'.$curdate[4].'-'.$curdate[3]}	
+		],
+		append => 'limit 6',
     );
 	$self->stash(
+		test => $curdate[5].$curdate[4].$curdate[3],
 		page => $page,
 		products => $products->fetch_hash_all,
 	);
