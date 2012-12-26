@@ -490,7 +490,6 @@ get '/' => sub{
 		append => 'limit 6',
     );
 	$self->stash(
-		test => $curdate[5].$curdate[4].$curdate[3],
 		page => $page,
 		products => $products->fetch_hash_all,
 	);
