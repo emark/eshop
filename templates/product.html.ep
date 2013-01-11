@@ -22,9 +22,9 @@
 % $instore = 2 if ($instore > 1 && $instore < 4);
 % $instore = 3 if ($instore >= 4);
 % my $articul = sprintf ("%06s",$product->{'id'});
-		<p><strong>Артикул:</strong> <%= $articul %></p>
-		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
+		<p>Артикул: <%= $articul %></p>
 		<p>Наличие: <%= $store_info{$instore} %></p>
+		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 % if ($product->{'discount'}){
 %	my $muted_price = $product->{'cost'}*($product->{'margin'}/100)+$product->{'cost'};
 %	$muted_price = sprintf("%d", $muted_price);
@@ -39,7 +39,8 @@
 	</div>
 	<div class="span6">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#description" data-toggle="tab">Характеристики</a></li>
+			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
+			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
 			<li><a href="#more" data-toggle="tab">Дополнительно</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
@@ -60,17 +61,15 @@
 				</div>
 %	}
 % }
+			</div>
+			<div id="features" class="tab-pane">
+				<p><strong>Комплектация</strong></p>
 % if($product->{'settings'}){
-				<dl>
-					<dt><strong>Комплектация</strong></dt>
-					<dd>
-						<ol>
+					<ol>
 % 	foreach my $key(split('#',$product->{'settings'})){
-							<li><%= $key %></li>
+						<li><%= $key %></li>
 % 	}
-						</ol>
-					</dd>
-				</dl>
+					</ol>
 % }
 % @content=split('#',$product->{'features'});
 % if(@content){
