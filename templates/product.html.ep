@@ -3,7 +3,7 @@
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
-% my %store_info = (-2 => 'под заказ', -1 => 'уточняйте', 0 => 'отсутствует', 1 => 'мало', 2 => 'достаточно', 3 => 'много');
+% my %store_info = (-2 => 'под заказ', -1 => 'уточняйте', 0 => 'нет', 1 => 'мало', 2 => 'да', 3 => 'много');
 
 <div class=breadcrumb><a href="/" title="Переход на главную страницу">Главная</a>&nbsp;/ <a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>&nbsp;/ <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>&nbsp;/ <span class="muted"><%= $product->{'title'} %></span></div>
 <div>
@@ -47,6 +47,7 @@
 			<div id="description" class="tab-pane active">
 % my @content = ();
 % @content = split('#',$product->{'description'});
+
 % my $pcount = 0;#paragraph count
 % if(@content){
 % 	foreach my $key(@content){
@@ -63,8 +64,14 @@
 % }
 			</div>
 			<div id="features" class="tab-pane">
-				<p><strong>Комплектация</strong></p>
+% my $age_group = 'без ограничений';
+% $age_group = "от $product->{age} лет" if $product->{age};
+				<p><strong>Возрастная группа</strong></p>
+					<ul class="unstyled">
+						<li><%= $age_group %></li>
+					</ul>
 % if($product->{'settings'}){
+				<p><strong>Комплектация</strong></p>
 					<ol>
 % 	foreach my $key(split('#',$product->{'settings'})){
 						<li><%= $key %></li>
@@ -73,26 +80,26 @@
 % }
 % @content=split('#',$product->{'features'});
 % if(@content){
-				<dl>
-					<dt><strong>Параметры</strong></dt>
-					<dd>
-						<table class="table">
-						<tbody>
+				<p><strong>Параметры</strong></p>
+					<table class="table">
+					<tbody>
 % 	foreach my $key(@content){
 %		my($param,$value)=split(':',$key);
 						<tr><td><%= $param %></td><td><%= $value %></td></tr>
 % 	}
-						</tbody>
-						</table>
-					</dd>
-				</dl>
+					</tbody>
+					</table>
 % }
 			</div>
 			<div id="more" class="tab-pane">
-% if($product->{'instruction'}){
-				<p><strong>Документация</strong>
+% if($product->{'doc'}){
+				<p><strong>Документы</strong>
 				<ul>
-					<li><a href="/download/doc/<%= $product->{'instruction'} %>">Скачать инструкцию по сборке и эксплуатации</a></li>
+%	@content=split('#',$product->{'doc'});
+% 	foreach my $key(@content){
+%		my($name,$link)=split(':',$key);
+					<li><a href="http://vk.com/doc-40931878<%= $link %>" target=_blank><%= $name %></a></li>
+%	}
 				</ul>
 				</p>
 % }
@@ -110,7 +117,7 @@
 % };
 				</ul>
 				</p>
-				<p><strong>Консультация по товару <%= $product->{'title'} %></strong><br />Хотите спросить о харакетистиках, узнать о качестве материалов или возможных расцветках? Задавайте вопросы в комментариях.</p>
+				<p><strong>Отзывы о товаре</strong><br />Хотите спросить о харакетистиках, узнать о качестве материалов или возможных расцветках? Задавайте вопросы в комментариях.</p>
 				<div id="vk_comments"></div>
 					<script type="text/javascript">
 						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});

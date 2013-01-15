@@ -400,8 +400,9 @@ get '/catalog/:caturl/:produrl.html' => sub {
 			'url',
 			'photo',
 			'video',
-			'instruction',
+			'doc',
 			'lastmod',
+			'age',
 		],
 		where => {
 			'url' => $produrl,
