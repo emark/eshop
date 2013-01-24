@@ -11,8 +11,8 @@
 	% for (my $n=0; $n<10; $n++){
 		% if ($news->{'posts'}[$n]->{'date'}){
 			% my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
-	<p><%= $date %><br/><a href="<%= $news->{'posts'}[$n]->{'url'} %>"><strong><%== $news->{'posts'}[$n]->{'title'} %></strong></a><br/>
-<%== $news->{'posts'}[$n]->{'excerpt'} %></p>
+	<h2><a href="<%= $news->{'posts'}[$n]->{'url'} %>" title="Читать далее"><%== $news->{'posts'}[$n]->{'title'} %></a></h2><i><%= $date %></i>
+<p><%== $news->{'posts'}[$n]->{'excerpt'} %></p>
 		% }
 	% }
 % }

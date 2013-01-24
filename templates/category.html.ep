@@ -20,7 +20,7 @@
 % 		my $articul = sprintf ("%06s",$productid->{'id'});
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
-					<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Category]" title="<%= $productid->{'title'} %>">
+					<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $productid->{'title'} %>">
 <img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="Нажмите для большого  изображения <%= $productid->{'title'} %>"></a>
 	      				<p><h3><%= $productid->{'title'} %></h3><a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>">подробнее о товаре</a></p>
 					<p><strong>Артикул:</strong>
