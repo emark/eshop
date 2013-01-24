@@ -11,9 +11,9 @@
 </div>
 % if ($missing){
 % $class_muted = 'muted';
-<div class="alert">
-	<button class="close" data-dismiss="alert">×</button>
-	Заполните поля со знаком *
+<div class="alert alert-block">
+	<button class="close" data-dismiss="alert">&times;</button>
+	<strong>Внимание!</strong> Заполните поля со знаком (*)
 </div>
 % }
 <form class="form-horizontal" action="/cart/checkout/" method="post" id="CheckoutForm">
@@ -28,6 +28,7 @@
 		<label class="control-label" for="tel"><strong>Телефон*</strong></label>
 		<div class="controls">
 			<%= text_field 'tel', class => 'span2' %>
+			<span class="help-block">Как вводить номер: +73912920229</span>
 		</div>
 	</div>
 	<div class="control-group">
