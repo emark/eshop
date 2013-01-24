@@ -483,6 +483,8 @@ get '/' => sub{
             'price',
             'image',
 			'caturl',
+			'lastmod',
+			'instore',
         ],
 		where => [
 			['and',':instore{>}',':lastmod{=}'],
@@ -492,7 +494,7 @@ get '/' => sub{
     );
 	$self->stash(
 		page => $page,
-		products => $products->fetch_hash_all,
+		lastmod => $products->fetch_hash_all,
 	);
 	$self->render('index');
 };

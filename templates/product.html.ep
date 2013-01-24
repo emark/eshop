@@ -117,15 +117,19 @@
 % };
 				</ul>
 				</p>
-				<p><strong>Отзывы о товаре</strong><br />Хотите спросить о харакетистиках, узнать о качестве материалов или возможных расцветках? Задавайте вопросы в комментариях.</p>
-				<div id="vk_comments"></div>
-					<script type="text/javascript">
-						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});
-					</script>
 			</div>
 			<div id="promotions" class="tab-pane">
 				
 			</div>
 		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="span9">
+		<p><strong>Отзывы о товаре</strong><br />Хотите спросить о харакетистиках, узнать о качестве материалов или возможных расцветках? Задавайте вопросы в комментариях.</p>
+				<div id="vk_comments"></div>
+					<script type="text/javascript">
+						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});
+					</script>
 	</div>
 </div>

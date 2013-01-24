@@ -1,6 +1,7 @@
 % layout 'default';
 % title 'Детские спортивные комплексы';
 % stash->{'metadescription'} = 'Интернет-магазин НаСтарт предлагает широкий ассортимент домашних детских спортивных комплексов, гимнастические маты и навесное оборудование. Пристенные и распорные спортивные уголки для малышей.';
+% my %store_info = (-2 => 'под заказ', -1 => 'уточняйте', 0 => 'нет', 1 => 'мало', 2 => 'есть', 3 => 'много');
 
 <div class="row">
 	<div class="span3">
@@ -32,25 +33,37 @@
 </div>
 <div class="row">
   <div class="span9">
-% if (@{$products}){
+% if (@{$lastmod}){
     <ul class="thumbnails">
-%   foreach my $productid (@{$products}){
+%   foreach my $lastmodid (@{$lastmod}){
       <li class="span3">
         <div>
-%   my $image_source = 'noimage';
-%   $image_source = $productid->{'url'} if $productid->{'image'};
-%   my $product_link = "/catalog/$productid->{'caturl'}/$productid->{'url'}.html" || '/lostproduct.html';
-		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>" class="image-center">
-          <p><%= $productid->{'title'} %><br />
-	Цена:
-% 	if($productid->{'discount'}){
-% 		my $muted_price = $productid->{'cost'}*($productid->{'margin'}/100)+$productid->{'cost'};
+%	my $articul = sprintf ("%06s",$lastmodid->{'id'});
+%	my $image_source = 'noimage';
+%	$image_source = $lastmodid->{'url'} if $lastmodid->{'image'};
+%	my $product_link = "/catalog/$lastmodid->{'caturl'}/$lastmodid->{'url'}.html" || '/lostproduct.html';
+		<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Category]" title="<%= $lastmodid->{'title'} %>">
+		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $lastmodid->{'title'} %>" title="<%= $lastmodid->{'title'} %>" class="image-center"></a>
+        <p><h3><%= $lastmodid->{'title'} %></h3><a href="<%= $product_link %>" title="Описание и харакетиристики <%= $lastmodid->{'title'} %>">подробнее о товаре</a></p>
+	<p><strong>Артикул:</strong><%= $articul %><br /><strong>Цена:</strong>
+% 	if($lastmodid->{'discount'}){
+% 		my $muted_price = $lastmodid->{'cost'}*($lastmodid->{'margin'}/100)+$lastmodid->{'cost'};
 %		$muted_price = sprintf("%d", $muted_price);
-		<del class="muted"><%= $muted_price %></del>, <%= $productid->{'price'} %> руб.
+		<del class="muted"><%= $muted_price %></del>, <%= $lastmodid->{'price'} %> руб.
 % 	}else{
-		<%=$productid->{'price'}%> руб.
+		<%=$lastmodid->{'price'}%> руб.
 % 	};
-	<br /><a href="<%= $product_link %>" title="Описание и харакетиристики <%= $productid->{'title'} %>">подробнее</a></p>
+%	my $instore = $lastmodid->{'instore'};
+%	$instore = 2 if ($instore > 1 && $instore < 4);
+%	$instore = 3 if ($instore >= 4);
+
+	<br /><strong>Наличие:</strong> <%= $store_info{$instore} %>
+	<br /><small>Обновлено: <%= $lastmodid->{'lastmod'} %></small>
+	</p>
+	<form action="/cart/" method="post">
+	<input type=hidden name="lastmodid" value="<%= $lastmodid->{'id'} %>">
+	<input type=submit value="Купить сейчас" class="btn btn-primary">
+	</form>
         </div>
       </li>
 %   }
