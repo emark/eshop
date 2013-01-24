@@ -13,11 +13,11 @@
 	<div class="span3">
 		<ul class="thumbnails">
 			<li class="span3">
+				<div>
 				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $product->{'title'} %>">
       				<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
-    			</a>
-			</li>	
-		</ul>
+	    			</a>
+				<div class="yashare-auto-init clearfix" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus"></div><br />
 % my $instore = $product->{'instore'};
 % $instore = 2 if ($instore > 1 && $instore < 4);
 % $instore = 3 if ($instore >= 4);
@@ -35,7 +35,9 @@
 		<form action="/cart/" method=post>
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary"></form>
-		<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,odnoklassniki"></div> 
+			</div>
+			</li>	
+		</ul>
 	</div>
 	<div class="span6">
 		<ul class="nav nav-tabs">
@@ -126,7 +128,7 @@
 </div>
 <div class="row">
 	<div class="span9">
-		<p><strong>Отзывы о товаре</strong><br />Хотите спросить о харакетистиках, узнать о качестве материалов или возможных расцветках? Задавайте вопросы в комментариях.</p>
+		<div class="well well-small">Хотите спросить о харакетистиках, узнать о качестве материалов или возможных расцветках? Задавайте вопросы в комментариях.</div>
 				<div id="vk_comments"></div>
 					<script type="text/javascript">
 						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});
