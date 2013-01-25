@@ -45,7 +45,7 @@
 		<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Category]" title="<%= $lastmodid->{'title'} %>">
 		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $lastmodid->{'title'} %>" title="<%= $lastmodid->{'title'} %>" class="image-center"></a>
         <p><h3><%= $lastmodid->{'title'} %></h3><a href="<%= $product_link %>" title="Описание и харакетиристики <%= $lastmodid->{'title'} %>">подробнее о товаре</a></p>
-	<p><strong>Артикул:</strong><%= $articul %><br /><strong>Цена:</strong>
+	<p><strong>Артикул:</strong> <%= $articul %><br /><strong>Цена:</strong>
 % 	if($lastmodid->{'discount'}){
 % 		my $muted_price = $lastmodid->{'cost'}*($lastmodid->{'margin'}/100)+$lastmodid->{'cost'};
 %		$muted_price = sprintf("%d", $muted_price);
