@@ -497,7 +497,7 @@ get '/' => sub{
     );
 	$self->stash(
 		page => $page,
-		lastmod => $products->fetch_hash_all,
+		products => $products->fetch_hash_all,
 	);
 	$self->render('index');
 };
