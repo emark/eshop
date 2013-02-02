@@ -354,6 +354,7 @@ get '/catalog/:caturl' => sub {
 			'instore',
 			'discount',
 			'lastmod',
+			'age',
 		],
 		where => {'caturl' => $caturl},
 	);

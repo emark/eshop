@@ -23,8 +23,8 @@
 					<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $productid->{'title'} %>">
 <img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="Нажмите для большого  изображения <%= $productid->{'title'} %>"></a>
 	      				<p><h3><%= $productid->{'title'} %></h3><a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>">подробнее о товаре</a></p>
-					<p><strong>Артикул:</strong>
-					<%= $articul %><br /><strong>Цена:</strong>
+					<p><strong>Артикул:</strong>&nbsp;<%= $articul %><br />
+					<strong>Цена:</strong>
 % 		if($productid->{'discount'}){
 %			my $muted_price = $productid->{'cost'}*($productid->{'margin'}/100)+$productid->{'cost'};
 %			$muted_price = sprintf("%d", $muted_price);

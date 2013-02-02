@@ -1,4 +1,4 @@
-% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '');
+% my %active_link = ('dsk-slide' => '', 'dsk-wall' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -89,8 +89,12 @@
 						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс &laquo;Ранний старт&raquo;</a></li>
 						<li<%== $active_link{'dsk-wall'} %>><a href="/catalog/dsk-wall/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
 						<li<%== $active_link{'dsk-slide'} %>><a href="/catalog/dsk-slide/" title="Распорные спорткомплексы">Распорные спорткомплексы</a></li>
+				</ul>
+				<p>ОБОРУДОВАНИЕ И АКСЕССУАРЫ</p>
+		    		<ul class="nav nav-list">
 						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
-						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к спорткомплексам</a></li>
+						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Аксессуары &laquo;Ранний старт&raquo;</a></li>
+						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к любым спорткомплексам</a></li>
 					</ul>
 					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 					<ul class="nav nav-list">
