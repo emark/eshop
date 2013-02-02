@@ -126,12 +126,7 @@
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="span9">
-		<div class="well well-small">Хотите спросить о харакетистиках, узнать о качестве материалов или возможных расцветках? Задавайте вопросы в комментариях.</div>
-				<div id="vk_comments"></div>
-					<script type="text/javascript">
-						VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});
-					</script>
-	</div>
-</div>
+			<div id="vk_comments"></div>
+				<script type="text/javascript">
+					VK.Widgets.Comments("vk_comments", {limit: 5, attach: false});
+				</script>
