@@ -412,7 +412,7 @@ get '/catalog/:caturl/:produrl.html' => sub {
 	);
 	my $has_content = $result->fetch_hash;
 
-    return $self->render(status => 404, template => 'not_found') if !$has_content;
+    return $self->render(status => 404, template => 'not_found') if !$has_content;	
 
 	$self->stash(
 		product => $has_content,
