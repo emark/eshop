@@ -404,15 +404,17 @@ get '/catalog/:caturl/:produrl.html' => sub {
 			'doc',
 			'lastmod',
 			'age',
+			'caturl',
 		],
 		where => {
 			'url' => $produrl,
-			'caturl' => $caturl,
 		},
 	);
 	my $has_content = $result->fetch_hash;
 
     return $self->render(status => 404, template => 'not_found') if !$has_content;	
+
+	return $self->redirect_to("/catalog/$has_content->{caturl}/$produrl.html") if ($caturl ne $has_content->{caturl});
 
 	$self->stash(
 		product => $has_content,
