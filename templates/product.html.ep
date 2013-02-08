@@ -43,7 +43,8 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
 			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
-			<li><a href="#more" data-toggle="tab">Ещё</a></li>
+			<li><a href="#media" data-toggle="tab">Фото-Видео</a></li>
+			<li><a href="#doc" data-toggle="tab">Инструкции</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -93,9 +94,8 @@
 					</table>
 % }
 			</div>
-			<div id="more" class="tab-pane">
+			<div id="doc" class="tab-pane">
 % if($product->{'doc'}){
-				<p><strong>Документы</strong>
 				<ul>
 %	@content=split('#',$product->{'doc'});
 % 	foreach my $key(@content){
@@ -104,8 +104,11 @@
 %	}
 				</ul>
 				</p>
+% }else{
+			<p>Инструкции для данного товара отсутствуют.</p>
 % }
-				<p><strong>Видео и фотографии</strong>
+			</div>
+			<div id="media" class="tab-pane">
 				<ul>
 % if ($product->{'photo'}){
 				<li><a href="http://vk.com/album-<%= $product->{'photo'} %>" target=_blank>Смотреть фотографии</a></li>
@@ -118,7 +121,6 @@
 				<li>Видеоролики для товара отсутствуют</li>
 % };
 				</ul>
-				</p>
 			</div>
 			<div id="promotions" class="tab-pane">
 				

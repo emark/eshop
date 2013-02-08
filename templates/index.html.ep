@@ -3,17 +3,11 @@
 % stash->{'metadescription'} = 'Интернет-магазин НаСтарт предлагает широкий ассортимент домашних детских спортивных комплексов, гимнастические маты и навесное оборудование. Пристенные и распорные спортивные уголки для малышей.';
 % my %store_info = (-2 => 'под заказ', -1 => 'уточняйте', 0 => 'нет', 1 => 'мало', 2 => 'есть', 3 => 'много');
 
-<div class="row">
-	<div class="span3">
-		<a href="/news/428/" title="Новогодние подарки"><img src="/media/images/offers/newyear.jpg" title="Новогодние подарки" alt="Новогодние подарки" class="image-center"></a>
-	</div>
-	<div class="span3">
-		<a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт"><img src="/media/images/offers/rstart.jpg" title="Развивающие комплексы Ранний старт" alt="Развивающие комплексы Ранний старт" class="image-center"></a>
-	</div>
-	<div class="span3">
-		<a href="/about/contacts.html" title="Адреса магазинов"><img src="/media/images/offers/address.jpg" title="Адреса магазинов" alt="Адреса магазинов" class="image-center"></a>
-	</div>
+<div class="row" id="offers">
 </div>
+<script>
+  $("#offers").load("/misc/offers");
+</script>
 &nbsp;
 <div class="row">
   <div class="span9">
