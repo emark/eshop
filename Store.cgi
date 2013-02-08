@@ -469,11 +469,11 @@ get '/' => sub{
 	my $page = {
 		'url' => 'index',
 	};
-	my @curdate = localtime(time);
-	$curdate[5] = $curdate[5]+1900;
-	$curdate[4] = $curdate[4]+1;
-	$curdate[4] = '0'.$curdate[4] if $curdate[4]<10;
-	$curdate[3] = '0'.$curdate[3] if $curdate[3]<10;
+	#my @curdate = localtime(time);
+	#$curdate[5] = $curdate[5]+1900;
+	#$curdate[4] = $curdate[4]+1;
+	#$curdate[4] = '0'.$curdate[4] if $curdate[4]<10;
+	#$curdate[3] = '0'.$curdate[3] if $curdate[3]<10;
 	my $products = $dbi->select(
         table => 'products',
         column => [
@@ -490,10 +490,10 @@ get '/' => sub{
 			'instore',
         ],
 		where => [
-			['and',':instore{>}',':lastmod{=}'],
-			{instore => 0, lastmod => $curdate[5].'-'.$curdate[4].'-'.$curdate[3]}	
+			':instore{>}',
+			{instore => 0}	
 		],
-		append => 'limit 6',
+		append => 'order by lastmod desc limit 6',
     );
 	$self->stash(
 		page => $page,
