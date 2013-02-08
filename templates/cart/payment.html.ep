@@ -3,7 +3,7 @@
 % stash->{'metadescription'} = 'Оплата заказа';
 % my $total = 0; #Total order sum
 % foreach my $item (@{$itemprice}){
-%	$total=$total+$item->[0];
+%	$total=$total+$item->[0]*$item->[1];
 % }
 % my %delivery_type = (store => 'самовывоз', courier => 'курьером', shipping => 'транспортная компания');
 <div>

@@ -155,7 +155,7 @@ get '/cart/payment/:cartid' => sub{
 	
 	$result = $dbi->select(
 		table => 'items',
-		column => ['price'],
+		column => ['price','count'],
 		where => {cartid => $cartid},
 	);
 	my $itemprice = $result->fetch_all;
