@@ -3,7 +3,7 @@
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
-% my %store_info = (-2 => 'под заказ', -1 => 'уточняйте', 0 => 'нет', 1 => 'мало', 2 => 'есть', 3 => 'много');
+% my %store_info = (0 => 'нет', 1 => 'мало', 2 => 'есть', 3 => 'много');
 
 <div class=breadcrumb><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>&nbsp;/ <a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'title'} %></a>&nbsp;/ <span class="muted"><%= $product->{'title'} %></span></div>
 <div>
@@ -17,19 +17,19 @@
 				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Slider]" title="<%= $product->{'title'} %>">
       				<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
 	    			</a><br />
+% if ($product->{image} && $product->{image} > 1){
 <ul class="thumbnails">
+%	for (my $i=1; $i<$product->{image}; $i++){
+%	$image_source = $product->{'url'}."-$i";
   <li class="span1">
     <a href="/media/products/thumb/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Slider]">
       <img src="/media/products/thumb/<%= $image_source %>.jpg" alt="">
     </a>
   </li>
-  <li class="span1">
-    <a href="/media/products/thumb/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Slider]">
-      <img src="/media/products/thumb/<%= $image_source %>.jpg" alt="">
-    </a>
-  </li>
+%	}
 </ul>
-		
+% }
+
 % my $instore = $product->{'instore'};
 % $instore = 2 if ($instore > 1 && $instore < 4);
 % $instore = 3 if ($instore >= 4);
@@ -56,7 +56,7 @@
 			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
 			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
 			<li><a href="#media" data-toggle="tab">Фото-Видео</a></li>
-			<li><a href="#doc" data-toggle="tab">Инструкции</a></li>
+			<li><a href="#doc" data-toggle="tab">Документы</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -119,7 +119,7 @@
 				</ul>
 				</p>
 % }else{
-			<p>Инструкции для данного товара отсутствуют.</p>
+			<p>Документы связанные с товаром отсутствуют.</p>
 % }
 			</div>
 			<div id="media" class="tab-pane">
