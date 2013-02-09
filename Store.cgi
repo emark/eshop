@@ -145,13 +145,11 @@ get '/cart/payment/:cartid' => sub{
 			'cartid',
 			'payment',
 			'delivery',
+			'status',
 		],
-		where => {cartid => $cartid, status => 1},
+		where => {cartid => $cartid},
 	);
-	my $orderinfo = $result->one;
-	
-	$self->stash(page => $page);
-	return $self->render('cart/emptycart') if !$orderinfo;
+	my $orderinfo = $result->one || undef;
 	
 	$result = $dbi->select(
 		table => 'items',
@@ -160,6 +158,7 @@ get '/cart/payment/:cartid' => sub{
 	);
 	my $itemprice = $result->fetch_all;
 	$self->stash(
+		page => $page,
 		orderinfo => $orderinfo,
 		itemprice => $itemprice,
 	);
