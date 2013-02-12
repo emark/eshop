@@ -11,12 +11,35 @@
 &nbsp;
 <div class="row">
   <div class="span9">
-    <p style="text-align: justify">Приветствуем вас в интернет-магазине &laquo;НаСтарт.РФ&raquo;. Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей. А так же уникальный развивающий комплекс <strong>&laquo;Ранний старт&raquo;</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь. Присоединяйтесь к нам в социальных сетях, будем рады общению с вами!</p><p class="align-right">
-<a href="http://www.facebook.com/nastartshop" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Facebook" title="Страница на Facebook"></a>
-						<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="ВКонтакте" title="Группа ВКонтакте"></a>
-						<a href="https://twitter.com/nastartshop" target=_blank><img src="/media/images/socbuttons/twitter.gif" alt="@nastartshop" title="Наш твиттер"></a>
-						<a href="https://plus.google.com/110471626333836075742/" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="G+" title="Страница на Google+"></a>
-						<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Одноклассники" title="Группа в Одноклассниках"></a></p>
+	<div class="accordion" id="accordion">
+	  <div class="accordion-group">
+	    <div class="accordion-heading">
+	      <h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#welcome">Приветственное слово</a></h3>
+	    </div>
+	    <div id="welcome" class="accordion-body collapse in">
+	      <div class="accordion-inner">
+		<p style="text-align: justify">Добро пожаловть в интернет-магазин &laquo;НаСтарт.РФ&raquo;. Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей, большое количество <strong>навесного оборудования и аксессуаров</strong>. А так же уникальный развивающий комплекс <strong>&laquo;Ранний старт&raquo;</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь.</p>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="accordion-group">
+	    <div class="accordion-heading">
+	      <h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#benefits">Почему стоит выбрать покупку именно у нас?</a></h3>
+	    </div>
+	    <div id="benefits" class="accordion-body collapse">
+	      <div class="accordion-inner">
+		<ul class="unstyled">
+			<li><img src="/media/images/misc/num1.gif">&nbsp;Большой ассортимент и постоянное пополнение склада</li>
+			<li><img src="/media/images/misc/num2.gif">&nbsp;Разнообразные способы оплаты</li>
+			<li><img src="/media/images/misc/num3.gif">&nbsp;Доставка по России</li>
+			<li><img src="/media/images/misc/num4.gif">&nbsp;Гарантия возврата в течении 14 дней</li>
+			<li><img src="/media/images/misc/num5.gif">&nbsp;Возможность самовывоза (Красноярск)</li>
+		</ul>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
   </div>
 </div>
 <div class="row">    
