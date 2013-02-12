@@ -1,7 +1,7 @@
 % layout 'default';
 % title $page->{'title'};
 % stash->{'metadescription'} = $page->{'metadescription'};
-% my %store_info = (-2 => 'под заказ', -1 => 'уточняйте', 0 => 'нет', 1 => 'мало', 2 => 'есть', 3 => 'много');
+% my %store_info = (0 => 'нет', 1 => 'мало', 2 => 'есть', 3 => 'много');
 
 <div class="breadcrumb"><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>&nbsp;/ <span class="muted"><%= $page->{'title'} %></span></div>
 <div>

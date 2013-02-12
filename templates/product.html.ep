@@ -14,7 +14,7 @@
 		<ul class="thumbnails">
 			<li class="span3">
 				<div>
-				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Slider]" title="<%= $product->{'title'} %>">
+				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Slideshow]" title="<%= $product->{'title'} %>">
       				<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
 	    			</a><br />
 % if ($product->{image} && $product->{image} > 1){
@@ -22,8 +22,8 @@
 %	for (my $i=1; $i<$product->{image}; $i++){
 %	$image_source = $product->{'url'}."-$i";
   <li class="span1">
-    <a href="/media/products/thumb/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Slider]">
-      <img src="/media/products/thumb/<%= $image_source %>.jpg" alt="">
+    <a href="/media/products/large/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" class="thumbnail" rel="shadowbox[Slideshow]">
+      <img src="/media/products/small/<%= $image_source %>.jpg" title="">
     </a>
   </li>
 %	}
@@ -34,8 +34,8 @@
 % $instore = 2 if ($instore > 1 && $instore < 4);
 % $instore = 3 if ($instore >= 4);
 % my $articul = sprintf ("%06s",$product->{'id'});
-		<p>Артикул: <%= $articul %></p>
-		<p>Наличие: <%= $store_info{$instore} %></p>
+		<p>Артикул: <%= $articul %><br />
+		Наличие: <%= $store_info{$instore} %></p>
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 % if ($product->{'discount'}){
 %	my $muted_price = $product->{'cost'}*($product->{'margin'}/100)+$product->{'cost'};
@@ -43,10 +43,10 @@
 %	my $saving_sum = $muted_price-$product->{'price'};
 		<div class="alert alert-info">цена снижена на <%= $product->{'discount'} %>%<br />экономия <%= $saving_sum %> рублей</div>
 % }
-		<p><small>Обновлено: <%= $product->{'lastmod'} %></small></p>
-		<form action="/cart/" method=post>
+		<form action="/cart/" method="post">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary"></form>
+		<p>Информация о цене и наличии товара обновлена <%= $product->{'lastmod'} %></p>
 			</div>
 			</li>	
 		</ul>
@@ -55,8 +55,7 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
 			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
-			<li><a href="#media" data-toggle="tab">Фото-Видео</a></li>
-			<li><a href="#doc" data-toggle="tab">Документы</a></li>
+			<li><a href="#delivery" data-toggle="tab">Оплата и доставка</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -77,8 +76,10 @@
 				</div>
 %	}
 % }
-				<div class="yashare-auto-init clearfix" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus"></div>
-
+%
+% if($product->{video}){
+			<%== $product->{video} %>
+% }
 			</div>
 			<div id="features" class="tab-pane">
 % my $age_group = 'без ограничений';
@@ -108,42 +109,45 @@
 					</table>
 % }
 			</div>
-			<div id="doc" class="tab-pane">
-% if($product->{'doc'}){
-				<ul>
-%	@content=split('#',$product->{'doc'});
-% 	foreach my $key(@content){
-%		my($name,$link)=split(':',$key);
-					<li><a href="http://vk.com/doc-40931878<%= $link %>" target=_blank><%= $name %></a></li>
-%	}
-				</ul>
-				</p>
-% }else{
-			<p>Документы связанные с товаром отсутствуют.</p>
-% }
+			<div id="delivery" class="tab-pane">
+			<h3>Варианты оплаты</h3>
+<ul>
+<li>Наличными курьеру или в&nbsp;<a href="/about/contacts.html">пунктах самовывоза</a></li>
+<li>Банковским переводом</li>
+<li>Электронными деньгами</li>
+</ul>
+<h3>Доставка</h3>
+<ul>
+<li>Курьерская доставка по&nbsp;г.&nbsp;Красноярску</li>
+<ul>
+<li>Спортивные комплексы 450&nbsp;рублей</li>
+<li>Маты и&nbsp;дополнения общей стоимостью до&nbsp;1000&nbsp;рублей&nbsp;&mdash; 50&nbsp;рублей</li>
+<li>Маты и&nbsp;дополнения общей стоимостью свыше 1001&nbsp;рубля&nbsp;&mdash; бесплатно</li>	
+</ul>	
+<li>Транспортными компаниями по&nbsp;России</li>	
+<ul>	
+<li><a href="http://www.pecom.ru/ru/services/pricelist/rates/" rel="nofollow">Компания &laquo;ПЭК&raquo;</a></li>	
+<li><a href="http://www.dellin.ru/" rel="nofollow">Деловые Линии</a></li>	
+<li><a href="http://www.nrg-tk.ru/ru/tariff.html" rel="nofollow">ТК&nbsp;Энергия</a></li>	
+</ul>	
+</ul>
+<p>Подробнее об условиях оплаты и доставки <a href="/about/delivery-and-payment.html" rel="nofollow">читайте здесь</a>.</p>
 			</div>
-			<div id="media" class="tab-pane">
-				<ul>
-% if ($product->{'photo'}){
-				<li><a href="http://vk.com/album-<%= $product->{'photo'} %>" target=_blank>Смотреть фотографии</a></li>
-% }else{
-				<li>Фотографии для товара отсутствуют</li>
-% };
-% if ($product->{'video'}){
-				<li><a href="http://vk.com/video-<%= $product->{'video'} %>" target=_blank>Смотреть видеоролики о товаре <%= $product->{'title'} %></a></li>
-% }else{
-				<li>Видеоролики для товара отсутствуют</li>
-% };
-				</ul>
-			</div>
-			<div id="promotions" class="tab-pane">
-				
-			</div>
+			<div class="yashare-auto-init clearfix" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus"></div>
 		</div>
 	</div>
 </div>
 <div class="row">
-<div class="span3">
-
-</div>
+	<div class="span9">
+% if($product->{'links'}){
+		<h3>Дополнительные ссылки</h3>
+		<ul>
+%	@content=split('#',$product->{'links'});
+% 	foreach my $key(@content){
+%		my($name,$link)=split(':',$key);
+			<li><a href="http://<%= $link %>" target=_blank rel=nofollow><%= $name %></a></li>
+%	}
+		</ul>
+% }
+	</div>
 </div>

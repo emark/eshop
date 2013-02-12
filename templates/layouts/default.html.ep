@@ -16,7 +16,7 @@
     <![endif]-->
     <link rel="shortcut icon" href="/assets/ico/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
-    <script src="/assets/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-10023555-5']);
@@ -28,6 +28,7 @@
 	  	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
     </script>
+
     <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
     <script type="text/javascript">
 		Shadowbox.init();
@@ -133,7 +134,7 @@
 						</ul>
 						</span>
 						<h3>Социальные сети</h3>
-						<p><a href="http://www.facebook.com/nastartshop" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Facebook" title="Страница на Facebook"></a>
+						<p><a href="https://www.facebook.com/neskuchnoe.razvitie" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Facebook" title="Страница на Facebook"></a>
 						<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="ВКонтакте" title="Группа ВКонтакте"></a>
 						<a href="https://twitter.com/nastartshop" target=_blank><img src="/media/images/socbuttons/twitter.gif" alt="@nastartshop" title="Наш твиттер"></a>
 						<a href="https://plus.google.com/110471626333836075742/" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="G+" title="Страница на Google+"></a>
@@ -147,7 +148,7 @@
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
 							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
 							<li><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
-							<li><a href="/about/company.html" title="Реквизиты организации">Реквизиты компании</a></li>
+							<li><a href="/about/company.html" title="Реквизиты организации">О компании</a></li>
 							<li><a href="/about/contacts.html" title="Адреса магазинов, контактная информация">Контакты</a></li>
 						</ul>
 					</div>
@@ -164,12 +165,7 @@
 						
 					</div>
 					<div class="span3">
-						<h3>Мы доставляем</h3>
-						<ul>
-							<li><a href="/about/contacts.html">в пункты самовывоза</a></li>
-							<li><a href="/about/delivery-and-payment.html">курьером на дом</a></li>
-							<li><a href="/about/delivery-and-payment.html">транспортными компаниями</a></li>
-						</ul>
+						
 						<h3>Мы принимаем</h3>
 						<ul>
 							<li><a href="/about/delivery-and-payment.html">Наличные средства</a></li>
@@ -178,6 +174,15 @@
 						</ul>
 						<ul class="unstyled">
 							<li><img src="/media/images/footer/payments.gif"></li>
+						</ul>
+<h3>Мы доставляем</h3>
+						<ul>
+							<li><a href="/about/contacts.html">в пункты самовывоза</a></li>
+							<li><a href="/about/delivery-and-payment.html">курьером на дом</a></li>
+							<li><a href="/about/delivery-and-payment.html">транспортными компаниями</a></li>
+						</ul>
+						<ul class="unstyled">
+							<li><img src="/media/images/footer/delivery.gif"></li>
 						</ul>
 					</div>
 				</div>

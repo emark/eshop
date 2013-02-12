@@ -384,27 +384,6 @@ get '/catalog/:caturl/:produrl.html' => sub {
 	);
 	my $result=$dbi->select(
 		table => 'products',
-        column => [
-			'id',
-			'title',
-			'metadescription',
-			'cost',
-			'margin',
-			'discount',
-			'price',
-			'description',
-			'settings',
-			'features',
-			'image',
-			'instore',
-			'url',
-			'photo',
-			'video',
-			'doc',
-			'lastmod',
-			'age',
-			'caturl',
-		],
 		where => {
 			'url' => $produrl,
 		},
