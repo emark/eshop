@@ -22,7 +22,7 @@
 %	for (my $i=1; $i<$product->{image}; $i++){
 %	$image_source = $product->{'url'}."-$i";
   <li class="span1">
-    <a href="/media/products/large/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" class="thumbnail" rel="shadowbox[Slideshow]">
+    <a href="/media/products/more/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" class="thumbnail" rel="shadowbox[Slideshow]">
       <img src="/media/products/small/<%= $image_source %>.jpg" title="">
     </a>
   </li>
