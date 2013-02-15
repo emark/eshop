@@ -4,19 +4,18 @@
 
 <div>
 	<h1>Новости</h1>
-	<p><a href="http://feedburner.google.com/fb/a/mailverify?uri=nastartshop&amp;loc=ru_RU" title="Подписка на новости" target=_blank>Подпишитесь на рассылку новостей</a></p>
 </div>
 <div>
 % if($news){
 	% for (my $n=0; $n<10; $n++){
 		% if ($news->{'posts'}[$n]->{'date'}){
 			% my ($date, $time) = split(' ', $news->{'posts'}[$n]->{'date'});
-	<h2><a href="<%= $news->{'posts'}[$n]->{'url'} %>" title="Читать далее"><%== $news->{'posts'}[$n]->{'title'} %></a></h2><i><%= $date %></i>
+	<%= $date %> / <a href="<%= $news->{'posts'}[$n]->{'url'} %>" title="Читать далее"><%== $news->{'posts'}[$n]->{'title'} %></a>
 <p><%== $news->{'posts'}[$n]->{'excerpt'} %></p>
 		% }
 	% }
 % }
-<hr />
+<!--hr />
 <div id="mc_embed_signup">
 	<h2>Свежие новости одним письмом</h2>
 	<p>Укажите свой email адрес для оформления подписки на бесплатные материалы и новости.</p>
@@ -28,5 +27,5 @@
 	<p><a href="http://feeds.feedburner.com/nastartshop" title="Подписка на новости" target=_blank><img src="/media/images/socbuttons/rss.gif" alt="Подписка на новости" title="Подписка на новости"></a>
 	<a href="http://feeds.feedburner.com/nastartshop" title="Подписка на новости" target=_blank>RSS формат</a></p>
 	<p><a href="http://blog.nastartshop.ru/" title="Читать все новости" target=_blank><img src="/media/images/socbuttons/blog.gif" alt="Читать все новости" title="Читать все новости"></a>
-	<a href="http://blog.nastartshop.ru/category/news/" title="Читать все новости" target=_blank>Архив новостей</a></p>
+	<a href="http://blog.nastartshop.ru/category/news/" title="Читать все новости" target=_blank>Архив новостей</a></p-->
 </div>
