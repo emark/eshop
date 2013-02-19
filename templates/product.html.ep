@@ -66,13 +66,13 @@
 % if(@content){
 % 	foreach my $key(@content){
 %		$pcount++;
-%		if($pcount==4){		
-				<p id='ext-description-link'><a href="#">Показать полный текст описания</a></p>
+%		if($pcount == 4){		
+				<p><a href="#" id='ext-description-link'>Показать весь текст описания</a></p>
 				<div id="ext-description" style="display:none">		
 %		}
 				<p><%== $key %></p>
 % 	}
-%	if($pcount>3){
+%	if($pcount > 3){
 				</div>
 %	}
 % }
