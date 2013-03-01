@@ -70,6 +70,10 @@
 				ПС &laquo;Яндекс.Деньги&raquo;
 			</label>
 			<label class="radio">
+				<%= radio_button 'payment' => 'credit' %>
+				Оплата в кредит.  <a href="/about/buy-on-credit.html" target=_blank>Условия покупки в кредит</a>.
+			</label>
+			<label class="radio">
 				<%= radio_button 'payment' => 'check' %>
 				Банковский перевод
 			</label>
