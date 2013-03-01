@@ -1,4 +1,4 @@
-% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '');
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -50,18 +50,22 @@
 					<strong>Главная</strong>
 					% }else{
 					<a href="/" title="Переход на главную страницу">Главная</a>
-					% };if ($page->{'url'} eq 'news'){
-					<strong>Новости</strong>
-					% }else{	
-					<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
+					%# };if ($page->{'url'} eq 'news'){
+					<!--strong>Новости</strong-->
+					%# }else{	
+					<!--a href="/news/" title="Новости, текущие акции, скидки">Новости</a-->
 					% };if ($page->{'url'} eq 'catalog'){
 					<strong>Каталог товаров</strong>
 					% }else{	
-					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог товаров</a>
+					<a href="/catalog/" title="Каталог товаров">Каталог товаров</a>
 					% };if ($page->{'url'} eq 'delivery-and-payment'){
 					<strong>Доставка и оплата</strong>
 					% }else{
 					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
+					% };if ($page->{'url'} eq 'buy-on-credit'){
+					<strong>Купить в кредит</strong>
+					% }else{
+					<a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a>
 					% };if ($page->{'url'} eq 'contacts'){
 					<strong>Контакты</strong>
 					% }else{
@@ -101,6 +105,7 @@
 					</ul>
 					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 					<ul class="nav nav-list">
+						<li<%== $active_link{'buy-on-credit'} %>><a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a></li>
 						<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
 						<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
 						<li<%== $active_link{'feedback'} %>><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
@@ -149,6 +154,7 @@
 							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
 							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
+							<li><a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a></li>
 							<li><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
 							<li><a href="/about/company.html" title="Реквизиты организации">О компании</a></li>
 							<li><a href="/about/contacts.html" title="Адреса магазинов, контактная информация">Контакты</a></li>
@@ -175,9 +181,10 @@
 							<li><a href="/about/delivery-and-payment.html">Наличные средства</a></li>
 							<li><a href="/about/delivery-and-payment.html">Банковские переводы</a></li>
 							<li><a href="/about/delivery-and-payment.html">Электронные деньги</a></li>
+							<li><a href="/about/buy-on-credit.html">Оплату в кредит</a></li>
 						</ul>
 						<ul class="unstyled">
-							<li><img src="/media/images/footer/payments.gif"></li>
+							<li><img src="/media/images/footer/payments.jpg"></li>
 						</ul>
 <h3>Мы доставляем</h3>
 						<ul>
@@ -204,10 +211,11 @@
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/application.js"></script>
 <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter14441680 = new Ya.Metrika({id:14441680, webvisor:true, clickmap:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/14441680" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
-<!-- RedHelper -->
-<script id="rhlpscrtg" type="text/javascript" charset="utf-8" async="async" 
-	src="https://web.redhelper.ru/service/main.js?c=emrk">
-</script> 
-<!--/Redhelper -->
+<!-- BEGIN cloudim code {literal} -->
+<script type="text/javascript" charset="utf-8">document.write(unescape("%3Cdiv id='cloudim_widget'%3E%3Cscript src='http://static.cloudim.ru/js/chat.js' type='text/javascript'%3E%3C/script%3E%3C/div%3E"));</script> <div id="cloudim_cr" style="display: none">Cloudim - <a target="_blank" href="http://cloudim.ru/">онлайн консультант для сайта</a> бесплатно.</div>
+<script type="text/javascript" charset="utf-8">
+Cloudim.Chat.init({uid:2677});
+</script>
+<!-- {/literal} END cloudim code -->
 </body>
 </html>

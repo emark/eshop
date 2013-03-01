@@ -447,35 +447,22 @@ get '/' => sub{
 	my $page = {
 		'url' => 'index',
 	};
-	#my @curdate = localtime(time);
-	#$curdate[5] = $curdate[5]+1900;
-	#$curdate[4] = $curdate[4]+1;
-	#$curdate[4] = '0'.$curdate[4] if $curdate[4]<10;
-	#$curdate[3] = '0'.$curdate[3] if $curdate[3]<10;
+	my $result = $dbi->select(
+		table => 'cart',
+		column => 'productid',
+		append => 'group by productid order by count(productid) desc limit 6'
+	);
+	$result = $result->values;
 	my $products = $dbi->select(
         table => 'products',
-        column => [
-            'title',
-            'url',
-            'id',
-			'cost',
-			'margin',
-			'discount',
-            'price',
-            'image',
-			'caturl',
-			'lastmod',
-			'instore',
-        ],
-		where => [
-			':instore{>}',
-			{instore => 0}	
-		],
-		append => 'order by lastmod desc limit 6',
+		where => {id => $result},
     );
+
+	$self->stash(r => $dbi->last_sql);
 	$self->stash(
 		page => $page,
 		products => $products->fetch_hash_all,
+		res => $result,
 	);
 	$self->render('index');
 };

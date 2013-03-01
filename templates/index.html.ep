@@ -14,11 +14,11 @@
 	<div class="accordion" id="accordion">
 	  <div class="accordion-group">
 	    <div class="accordion-heading">
-	      <h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#welcome">Приветственное слово</a></h3>
+	      <h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#welcome">Добро пожаловать в интернет-магазин &laquo;НаСтарт.РФ&raquo;</a></h3>
 	    </div>
 	    <div id="welcome" class="accordion-body collapse in">
 	      <div class="accordion-inner">
-		<p style="text-align: justify">Добро пожаловать в интернет-магазин &laquo;НаСтарт.РФ&raquo;. Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей, большое количество <strong>навесного оборудования и аксессуаров</strong>. А так же уникальный развивающий комплекс <strong>&laquo;Ранний старт&raquo;</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь.</p>
+		<p style="text-align: justify">Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей, большое количество <strong>навесного оборудования и аксессуаров</strong>. А так же уникальный развивающий комплекс <strong>&laquo;Ранний старт&raquo;</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь.</p>
 	      </div>
 	    </div>
 	  </div>
@@ -44,7 +44,7 @@
 </div>
 <div class="row">    
   <div class="span9"><hr />
-    <h2>Новые поступления <img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></h2>
+    <h2>Популярные товары <img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></h2>
 		<p><a href="/catalog/">Посмотреть весь каталог</a></p>
 	</div>
 </div>
