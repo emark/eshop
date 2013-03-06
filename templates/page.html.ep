@@ -2,9 +2,12 @@
 % title $page->{'title'};
 % stash->{'metadescription'} = $page->{'metadescription'};
 
-<div class=breadcrumb><a href="/about/" title="Справочная информация для покупателей">Информация для покупателей</a>&nbsp;/ <span class="muted"><%= $page->{'title'} %></span></div>
+<ul class=breadcrumb>
+	<li><a href="/about/" title="Справочная информация для покупателей">Информация для покупателей</a> <span class="divider">/</span></li>
+	<li><span class="muted"><%= $page->{'title'} %></span></li>
+</ul>
 <div>
-	<h1><%= $page->{'title'} %></h1>
+	<h1><%= $page->{'caption'} %></h1>
 </div>
 <div>
 	<p><%= $page->{'description'} %></p>

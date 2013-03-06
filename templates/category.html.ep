@@ -3,9 +3,12 @@
 % stash->{'metadescription'} = $page->{'metadescription'};
 % my %store_info = (0 => 'нет', 1 => 'мало', 2 => 'есть', 3 => 'много');
 
-<div class="breadcrumb"><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a>&nbsp;/ <span class="muted"><%= $page->{'title'} %></span></div>
+<ul class="breadcrumb">
+	<li><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> <span class="divider">/</span></li>
+	<li><span class="muted"><%= $page->{'caption'} %></span></li>
+</ul>
 <div>
-	<h1><%= $page->{'title'} %></h1>
+	<h1><%= $page->{'caption'} %></h1>
 </div>
 <div>
 	<p><%= $page->{'description'} %></p>
@@ -20,9 +23,9 @@
 % 		my $articul = sprintf ("%06s",$productid->{'id'});
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
-					<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $productid->{'title'} %>">
-<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="Нажмите для большого  изображения <%= $productid->{'title'} %>"></a>
-	      				<p><h3><%= $productid->{'title'} %></h3><a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>">подробнее о товаре</a></p>
+					<p><a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox" title="<%= $productid->{'title'} %>">
+<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="Нажмите для большого  изображения <%= $productid->{'title'} %>"></a></p>
+	      				<h3><%= $productid->{'title'} %></h3>
 					<p><strong>Артикул:</strong>&nbsp;<%= $articul %><br />
 					<strong>Цена:</strong>
 % 		if($productid->{'discount'}){
@@ -40,7 +43,8 @@
 					</p>
 					<form action="/cart/" method="post">
 						<input type=hidden name="productid" value="<%= $productid->{'id'} %>">
-						<input type=submit value="Купить сейчас" class="btn btn-primary">
+						<input type=submit value="Купить" class="btn btn-primary">
+						<a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"  class="btn">Подробнее</a>
 					</form>
     			</div>
   			</li>

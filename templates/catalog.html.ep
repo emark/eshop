@@ -1,6 +1,6 @@
 % layout 'default';
-% title 'Каталог товаров';
-% stash->{'metadescription'} = 'Выбирайте нужную категорию в нашем каталоге спортивных комплексов. В интернет-магазине НаСтарт вы можете купить домашние детские спортивные комплексы, гимнастические маты и навесное обрудование';
+% title 'Каталог детских спортивных товаров - купить спортивный уголок в Красноярске';
+% stash->{'metadescription'} = 'В каталоге товаров интернет-магазина НаСтарт.РФ всё, что нужно для детского спортивного уголка. Выгодные цены, гарантия качества. Наличие в Красноярске. Доставка в Иркутск, Кемерово, Новосибирск';
 % my %min_price = ();
 % my %category_thumb = ();
 % foreach my $key (@{$price}){
@@ -20,14 +20,14 @@
 		<ul class="thumbnails">
 			<li class="span3">
 % $category_thumb{$category->{'url'}} = 'noimage' if !$category_thumb{$category->{'url'}};
-					<img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" class="image-center" alt="<%= $category->{'title'} %>" title="<%= $category->{'title'} %>">
+					<img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" class="image-center" alt="<%= $category->{'caption'} %>" title="<%= $category->{'title'} %>">
 % $min_price{$category->{'url'}} = 0 if !$min_price{$category->{'url'}};
 				<h3 class="align-center">Цены от <%= $min_price{$category->{'url'}} %> руб.</h3>
 			</li>
 		</ul>
 	</div>
 	<div class="span6">
-<h2><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><%= $category->{'title'} %></a></h2>
+<h2><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><%= $category->{'caption'} %></a></h2>
 		<p><%= $category->{'description'} %></p>
 	</div>
 </div>

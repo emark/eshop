@@ -22,6 +22,8 @@ our $dbi = DBIx::Custom->connect(
 
 $dbi->do('SET NAMES utf8');
 
+our $order = DBIx::Custom::Order->new;
+
 get '/news/' => sub{
 	my $self = shift;
 	my $page = {
@@ -301,7 +303,7 @@ get '/catalog/' => sub{
 	my $categories = $dbi->select(
 		table => 'pages',
 		column => [
-			'title',
+			'caption',
 			'url',
 			'description',
 		],
@@ -335,11 +337,13 @@ get '/catalog/:caturl' => sub {
 							'title',
 							'metadescription',
 							'url',
+							'caption',
 							'description',
 							'type',
 						],
 						where => {'url' => $caturl},
 					);
+
 	my $result = $dbi->select(
 		table => 'products',
 		column => [
@@ -356,11 +360,12 @@ get '/catalog/:caturl' => sub {
 			'age',
 		],
 		where => {'caturl' => $caturl},
+		append => 'order by instore desc'
 	);
+	
 	my $has_content = $page->one;
-
     return $self->render(status => 404, template =>'not_found') if !$has_content;
-
+	
 	$self->stash(
 		product => $result->fetch_hash_all,
 		page => $has_content,
@@ -375,7 +380,7 @@ get '/catalog/:caturl/:produrl.html' => sub {
     my $category = $dbi->select(
 		table => 'pages',
         column => [
-			'title',
+			'caption',
 			'url',
 			'metadescription',
 			'type',
@@ -407,7 +412,7 @@ get '/about' => sub{
     my $pages = $dbi->select(
         table => 'pages',
         column => [
-            'title',
+            'caption',
             'url',
             'description',
 			'type',
@@ -427,6 +432,7 @@ get '/about/:pageurl' => sub{
 		table => 'pages',
 		column => [
 			'title',
+			'caption',
 			'url',
 			'metadescription',
 			'description',
