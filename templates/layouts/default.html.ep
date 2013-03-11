@@ -1,4 +1,4 @@
-% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '');
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -28,7 +28,6 @@
 	  	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
     </script>
-
     <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
     <script type="text/javascript">
 		Shadowbox.init();
@@ -76,7 +75,7 @@
  			</div>
 			<div class="span2">
 				<div class="align-right">
-					<div class="toplevel-menu">Красноярск</div>
+					<span class="align-right"><i class="icon-headphones">&nbsp;</i>&nbsp;<a href="skype:emrk.call?call">Звонок по skype</a></span>
 					<nobr>+7 (391) 292-02-29</nobr><br/><nobr>+7 (391) 256-53-21</nobr>
 				</div>
 			</div>
@@ -84,46 +83,41 @@
 		<div class="row">
 			<div class="span3"><p class="align-center"><a href="/" rel="nofollow" title="Переход на главную страницу">интернет-магазин</a></p></div>
 			<div class="span7"></div>
-			<div class="span2"><p class="align-right"><i class="icon-shopping-cart">&nbsp;</i> <a href="/cart/" title="Переход в корзину">Корзина покупок</a></p></div>
+			<div class="span2"><p class="align-right"><i class="icon-shopping-cart">&nbsp;</i>&nbsp;<a href="/cart/" title="Переход в корзину">Корзина покупок</a></p></div>
 		</div>
 		<div class="row">
     		<div class="span3">
     			<div class="leftbar-menu">
-    				<p>КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>
+    				<p class="leftbar-block-p">КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>
 		    		<ul class="nav nav-list">
-						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Развивающий комплекс &laquo;Ранний старт&raquo;</a></li>
-						<li<%== $active_link{'pristennye-dsk'} %>><a href="/catalog/pristennye-dsk/" title="Пристенные спорткомплексы">Пристенные спорткомплексы</a></li>
-						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные спорткомплексы">Распорные спорткомплексы</a></li>
-						<li<%== $active_link{'turniki'} %>><a href="/catalog/turniki/" title="Турники">Турники</a></li>
+						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Для малышей от 0 до 6 лет</a></li>
+						<li<%== $active_link{'pristennye-dsk'} %>><a href="/catalog/pristennye-dsk/" title="Пристенные спорткомплексы">Пристенные спортивные комплексы</a></li>
+						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные спорткомплексы">Распорные спортивные комплексы</a></li>
+						<li<%== $active_link{'turniki'} %>><a href="/catalog/turniki/" title="Турники">Турники настенные</a></li>
 				</ul>
-				<p>ОБОРУДОВАНИЕ И АКСЕССУАРЫ</p>
+				<p class="leftbar-block-p">ОБОРУДОВАНИЕ И АКСЕССУАРЫ</p>
 		    		<ul class="nav nav-list">
 						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
 						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Аксессуары &laquo;Ранний старт&raquo;</a></li>
 						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к любым спорткомплексам</a></li>
 						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты</a></li>
 					</ul>
-					<p>ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
-					<ul class="nav nav-list">
-						<li<%== $active_link{'buy-on-credit'} %>><a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a></li>
-						<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
-						<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
-						<li<%== $active_link{'feedback'} %>><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
-						<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
-					</ul>
-				</div>
-				<div class="leftbar-widget">
-					<div id="vk_groups"></div>
-					<script type="text/javascript">
-						VK.Widgets.Group("vk_groups", {mode: 2, width: "220", height: "380"}, 40931878);
-					</script>
-				</div>
-   			</div>
-   			<div class="span9">
+			</div>
+			<p class="leftbar-block-p">ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
+			<ul class="nav nav-pills nav-stacked">
+				<li<%== $active_link{'buy-on-credit'} %>><a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a></li>
+				<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
+				<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
+				<li<%== $active_link{'feedback'} %>><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
+				<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
+				<li<%== $active_link{'company'} %>><a href="/about/company.html" title="О компании, юридические реквизиты">О компании</a></li>
+			</ul>
+   		</div>
+   		<div class="span9">
 <!-- Page content -->
-	   			<%= content %>
+	   		<%= content %>
 <!-- /Page content -->
-   			</div>
+   		</div>
 		</div>
 		<footer>
 			<div class="footer-links">
@@ -134,6 +128,7 @@
 						<ul class="unstyled">
 							<li><a href="http://www.nastartshop.ru" itemprop="url" rel=nofollow><span itemprop="name">&laquo;НаСтарт.РФ&raquo;</span></a>, <span itemprop="legalName">ООО &laquo;Эмарк&raquo;</span></li>
 							<li><span itemprop="telephone">+7 (391) 292-02-29</span></li>
+							<li>skype: <a href="skype:emrk.call?call">emrk.call</a></li>
 							<li><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи" itemprop="email">hello@nastartshop.ru</a></li>
 							<li><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск</span></span></li>
 							<li>ул. Телевизорная, 1 ст9</li>
