@@ -88,9 +88,4 @@
 % }   
   </div>
 </div>
-<div class="row">
-	<div class="span9">
-		<h2 class="align-center"><a href="/catalog/" title="Переход в каталог товаров">Посмотрите весь каталог</a></h2>
-	</div>
-</div>
 <!--Index page generated at <%= localtime %>-->
