@@ -44,7 +44,7 @@
 					<form action="/cart/" method="post">
 						<input type=hidden name="productid" value="<%= $productid->{'id'} %>">
 						<input type=submit value="Купить" class="btn btn-primary">
-						<a href="<%= "/catalog/$page->{'url'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"  class="btn">Подробнее</a>
+						<a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"  class="btn">Подробнее</a>
 					</form>
     			</div>
   			</li>

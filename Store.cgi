@@ -349,6 +349,7 @@ get '/catalog/:caturl' => sub {
 		column => [
 			'title',
 			'url',
+			'caturl',
 			'id',
 			'price',
 			'image',
@@ -454,21 +455,30 @@ get '/' => sub{
 		'url' => 'index',
 	};
 	my $result = $dbi->select(
-		table => 'cart',
-		column => 'productid',
+		table => 'products',
+		column => ['cart.productid'],
+		where => [
+			':instore{>}',
+			{instore => 0}
+		],
+		join => [
+			'left outer join cart on products.id = cart.productid',
+		],
 		append => 'group by productid order by count(productid) desc limit 6'
 	);
 	$result = $result->values;
+
+
+	$self->stash(r => $dbi->last_sql);
+
 	my $products = $dbi->select(
         table => 'products',
 		where => {id => $result},
     );
 
-	$self->stash(r => $dbi->last_sql);
 	$self->stash(
 		page => $page,
 		products => $products->fetch_hash_all,
-		res => $result,
 	);
 	$self->render('index');
 };
