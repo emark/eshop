@@ -117,6 +117,7 @@ post '/cart/checkout/' => sub {
         };
 
 		$self->session('cartid' => 0);
+		$self->flash('cartid' => $cartid);
 
 		return $self->redirect_to('/cart/thankyou/');
 	}else{

@@ -1,11 +1,58 @@
 % layout 'default';
 % title 'Заказ оформлен';
 % stash->{'metadescription'} = 'Корзина заказов';
+% my $link = undef;
+% if(my $cartid = flash 'cartid'){$link = "http://www.nastartshop.ru/cart/payment/$cartid/"};
 
 <div>
 	<h1>Заказ оформлен</h1>
 </div>
 <div>
-	<p>Поздравляем! В ближайшее время мы свяжемся с Вами.</p>
-	<p>Благодарим за доверие.</p>
+	<p>Благодарим за доверие. В ближайшее время мы свяжемся с Вами.<br />
+	Наш режим работы: <ul><li><nobr>понедельник-пятница</nobr> с&nbsp;11 до&nbsp;19</li><li>суббота с 12 до 18</li></ul>Контактный телефон: <nobr>+7 (391) 292-02-29</nobr></p>
+% if($link){
+	<p>Узнать состояние заказа Вы можете по ссылке <br /><%= link_to $link => $link %></p>
+% };
+</div>
+
+<div id="socialnetworks">
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?82"></script>
+
+<div>
+<br />
+<h3>Присоединяйтесь к нам в социальных сетях!</h3>
+</div>
+<div class="row">
+<div class="span4">
+
+<!-- VK Widget -->
+<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 0, width: "230", height: "330"}, 40931878);
+</script>
+
+</div>
+<div class="span5">
+<div id="ok_group_widget"></div>
+ 
+<script>
+!function(d,id,did,st){
+  var js=d.createElement('script');
+  js.src="http://connect.ok.ru/connect.js";
+  js.onload = js.onreadystatechange = function (){
+    if(!this.readyState || this.readyState=="loaded" || this.readyState=="complete"){
+       if(!this.executed){
+         this.executed = true;
+         setTimeout(function(){OK.CONNECT.insertGroupWidget(id,did,st);},0);
+       }
+    }
+  }
+  d.documentElement.appendChild(js);
+}
+(document, "ok_group_widget", 56114214600757, '{width: "250",height: "350"}');
+</script>
+
+</div>
+</div>
+
 </div>
