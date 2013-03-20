@@ -51,7 +51,12 @@
 		<form action="/cart/" method="post">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary"></form>
-		<p>Информация о цене и наличии товара обновлена <%= $product->{'lastmod'} %></p>
+<div class="well">
+		<p><img src="/media/images/misc/share.gif"> Информация о цене<br /> и наличии товара обновлена<br /><%= $product->{'lastmod'} %></p>
+		<img src="/media/images/misc/share.gif">
+		Вам понравился этот товар? Поделитесь этим с друзьями!
+		<div class="yashare-auto-init clearfix" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus"></div>
+</div>
 			</div>
 			</li>	
 		</ul>
@@ -89,12 +94,12 @@
 			<div id="features" class="tab-pane">
 % my $age_group = 'без ограничений';
 % $age_group = "от $product->{age} лет" if $product->{age};
-				<p><strong>Возрастная группа</strong></p>
+				<h3>Возрастная группа</h3>
 					<ul class="unstyled">
 						<li><%= $age_group %></li>
 					</ul>
 % if($product->{'settings'}){
-				<p><strong>Комплектация</strong></p>
+				<h3>Комплектация</h3>
 					<ol>
 % 	foreach my $key(split('#',$product->{'settings'})){
 						<li><%= $key %></li>
@@ -103,7 +108,7 @@
 % }
 % @content=split('#',$product->{'features'});
 % if(@content){
-				<p><strong>Параметры</strong></p>
+				<h3>Параметры</h3>
 					<table class="table">
 					<tbody>
 % 	foreach my $key(@content){
@@ -116,34 +121,29 @@
 			</div>
 			<div id="delivery" class="tab-pane">
 			<h3>Варианты оплаты</h3>
-<ul>
-<li>Наличными курьеру или в&nbsp;<a href="/about/contacts.html">пунктах самовывоза</a></li>
-<li>Банковским переводом</li>
-<li>Электронными деньгами</li>
-</ul>
-<h3>Доставка</h3>
-<ul>
-<li>Курьерская доставка по&nbsp;г.&nbsp;Красноярску</li>
-<ul>
-<li>Спортивные комплексы 450&nbsp;рублей</li>
-<li>Маты и&nbsp;дополнения общей стоимостью до&nbsp;1000&nbsp;рублей&nbsp;&mdash; 50&nbsp;рублей</li>
-<li>Маты и&nbsp;дополнения общей стоимостью свыше 1001&nbsp;рубля&nbsp;&mdash; бесплатно</li>	
-</ul>	
-<li>Транспортными компаниями по&nbsp;России</li>	
-<ul>	
-<li><a href="http://www.pecom.ru/ru/services/pricelist/rates/" rel="nofollow" target=_blank>Компания &laquo;ПЭК&raquo;</a></li>	
-<li><a href="http://www.dellin.ru/" rel="nofollow" target=_blank>Деловые Линии</a></li>	
-<li><a href="http://www.nrg-tk.ru/ru/tariff.html" rel="nofollow" target=_blank>ТК&nbsp;Энергия</a></li>	
-</ul>	
-</ul>
-<p>Подробнее об условиях оплаты и доставки <a href="/about/delivery-and-payment.html" rel="nofollow">читайте здесь</a>.</p>
+				<ul>
+					<li>Наличными курьеру или в&nbsp;<a href="/about/contacts.html">пунктах самовывоза</a></li>
+					<li>Банковским переводом</li>
+					<li>Электронными деньгами</li>
+				</ul>
+			<h3>Доставка</h3>
+				<ul>
+					<li>Курьерская доставка по&nbsp;г.&nbsp;Красноярску</li>
+					<ul>
+					<li>Спортивные комплексы 450&nbsp;рублей</li>
+					<li>Маты и&nbsp;дополнения общей стоимостью до&nbsp;1000&nbsp;рублей&nbsp;&mdash; 50&nbsp;рублей</li>
+					<li>Маты и&nbsp;дополнения общей стоимостью свыше 1001&nbsp;рубля&nbsp;&mdash; бесплатно</li>	
+					</ul>	
+					<li>Транспортными компаниями по&nbsp;России</li>	
+					<ul>	
+					<li><a href="http://www.pecom.ru/ru/services/pricelist/rates/" rel="nofollow" target=_blank>Компания &laquo;ПЭК&raquo;</a></li>	
+					<li><a href="http://www.dellin.ru/" rel="nofollow" target=_blank>Деловые Линии</a></li>	
+					<li><a href="http://www.nrg-tk.ru/ru/tariff.html" rel="nofollow" target=_blank>ТК&nbsp;Энергия</a></li>	
+					</ul>	
+				</ul>
+				<p>Подробнее об условиях оплаты и доставки <a href="/about/delivery-and-payment.html" rel="nofollow">читайте здесь</a>.</p>
 			</div>
-			<div class="yashare-auto-init clearfix" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus"></div>
 		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="span9">
 % if($product->{'links'}){
 		<h3>Дополнительные ссылки</h3>
 		<ul>
@@ -154,5 +154,10 @@
 %	}
 		</ul>
 % }
+	</div>
+</div>
+<div class="row">
+	<div class="span9">
+
 	</div>
 </div>
