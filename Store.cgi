@@ -458,10 +458,6 @@ get '/' => sub{
 	my $result = $dbi->select(
 		table => 'products',
 		column => ['cart.productid'],
-		where => [
-			':instore{>}',
-			{instore => 0}
-		],
 		join => [
 			'left outer join cart on products.id = cart.productid',
 		],
