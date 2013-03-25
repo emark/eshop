@@ -41,10 +41,17 @@
   	<div class="container">
 		<div class="row">
 			<div class="span3">
+			</div>
+			<div class="span9">
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="span3">
 				<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.gif" class="image-center" title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a>
 			</div>
-			<div class="span7">
-				<div class="toplevel-menu">
+			<div class="span9">
+				<p class="toplevel-menu">
 					% if ($page->{'url'} eq 'index'){
 					<strong>Главная</strong>
 					% }else{
@@ -70,23 +77,20 @@
 					% }else{
 					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
 					% };
-				</div>
- 				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
- 			</div>
-			<div class="span2">
-				<div class="align-right">
-					<span class="align-right"><i class="icon-headphones">&nbsp;</i>&nbsp;<a href="skype:emrk.call?call">Звонок по skype</a></span>
-					<nobr>+7 (391) 292-02-29</nobr><br/><nobr>+7 (391) 256-53-21</nobr>
-				</div>
+					<i class="icon-shopping-cart"></i>&nbsp;<a href="/cart/" title="Переход в корзину">Корзина покупок</a>
+				</p>
+<span style="font-size:24px;fnt-weight:bold;">8 (391) <nobr>292-02-29</nobr>, <nobr>256-53-21</nobr></span>&nbsp;
+<a href="skype:echo123?call" class="btn"><img src="/media/icons/Skypeicon_16px.png">&nbsp;Позвоните нам</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="span3"><p class="align-center"><a href="/" rel="nofollow" title="Переход на главную страницу">интернет-магазин</a></p></div>
-			<div class="span7"></div>
-			<div class="span2"><p class="align-right"><i class="icon-shopping-cart">&nbsp;</i>&nbsp;<a href="/cart/" title="Переход в корзину">Корзина покупок</a></p></div>
+			<div class="span7">Заказ товаров: пн.-пт. с 11:00 до 19:00, сб. с 12:00 до 18:00</div>
+			<div class="span2"></div>
 		</div>
 		<div class="row">
     		<div class="span3">
+<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>	
     			<div class="leftbar-menu">
     				<p class="leftbar-block-p">КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>
 		    		<ul class="nav nav-list">
