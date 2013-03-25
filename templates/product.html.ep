@@ -3,7 +3,14 @@
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
-% my %store_info = (0 => 'нет', 1 => 'мало', 2 => 'есть', 3 => 'много');
+% my %store_info = (0 => 'Временно нет', 1 => 'В наличии', 2 => 'В наличии', 3 => 'В наличии');
+% my %instore_class = (0 => 'color-red',1 => 'color-green');
+% my $instore = $product->{'instore'};
+% $instore = 1 if ($instore > 1 && $instore < 4);
+% $instore = 1 if ($instore >= 4);
+% my $articul = sprintf ("%06s",$product->{'id'});
+% my $saving_sum = 0;
+% my $muted_price = 0;
 
 <ul class="breadcrumb">
 	<li><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> <span class="divider">/</span></li>
@@ -13,6 +20,7 @@
 
 <div>
 	<h1><%= $product->{'title'} %></h1>
+	<p>Артикул: <%= $articul %></p>
 </div>
 <div class="row">
 	<div class="span3">
@@ -35,28 +43,20 @@
 </ul>
 % }
 
-% my $instore = $product->{'instore'};
-% $instore = 2 if ($instore > 1 && $instore < 4);
-% $instore = 3 if ($instore >= 4);
-% my $articul = sprintf ("%06s",$product->{'id'});
-		<p>Артикул: <%= $articul %><br />
-		Наличие: <%= $store_info{$instore} %></p>
-		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 % if ($product->{'discount'}){
-%	my $muted_price = $product->{'cost'}*($product->{'margin'}/100)+$product->{'cost'};
+%	$muted_price = $product->{'cost'}*($product->{'margin'}/100)+$product->{'cost'};
 %	$muted_price = sprintf("%d", $muted_price);
-%	my $saving_sum = $muted_price-$product->{'price'};
-		<div class="alert alert-info">цена снижена на <%= $product->{'discount'} %>%<br />экономия <%= $saving_sum %> рублей</div>
+%	$saving_sum = $muted_price-$product->{'price'};
+		<p>Старая цена: <span class="color-red"><%= $muted_price %> руб.</span></p>
 % }
+		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
+		<p><span class="<%= $instore_class{$instore} %>"><%= $store_info{$instore} %></span>
+		<br /><small>Информация о цене и наличии товара обновлена: <%= $product->{'lastmod'} %></small></p>
 		<form action="/cart/" method="post">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary"></form>
-<div class="well">
-		<p><img src="/media/images/misc/share.gif"> Информация о цене<br /> и наличии товара обновлена<br /><%= $product->{'lastmod'} %></p>
-		<img src="/media/images/misc/share.gif">
-		Вам понравился этот товар? Поделитесь этим с друзьями!
-		<div class="yashare-auto-init clearfix" data-yashareL10n="ru" data-yashareType="link" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus"></div>
-</div>
+		<p><a href="/about/buy-on-credit.html" class="btn btn-large">Купить товар в кредит</a></p>
+
 			</div>
 			</li>	
 		</ul>
@@ -95,7 +95,7 @@
 % my $age_group = 'без ограничений';
 % $age_group = "от $product->{age} лет" if $product->{age};
 				<h3>Возрастная группа</h3>
-					<ul class="unstyled">
+					<ul>
 						<li><%= $age_group %></li>
 					</ul>
 % if($product->{'settings'}){

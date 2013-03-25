@@ -10,7 +10,7 @@
     <meta name="author" content="www.nastartshop.ru">
     <link type="text/plain" rel="author" href="http://www.nastartshop.ru/humans.txt" />
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="/assets/css/application.min.css" rel="stylesheet">
+    <link href="/assets/css/application.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -100,7 +100,7 @@
 						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
 						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Аксессуары &laquo;Ранний старт&raquo;</a></li>
 						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к любым спорткомплексам</a></li>
-						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты</a></li>
+						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
 					</ul>
 			</div>
 			<p class="leftbar-block-p">ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
@@ -166,7 +166,7 @@
 							<li><a href="/catalog/gymnastic-mats/" title="Гимнастические маты">Гимнастические маты</a></li>
 							<li><a href="/catalog/rstart-accessories/" title="Аксессуары и навесное оборудование &laquo;Ранний старт&raquo;">Аксессуары &laquo;Ранний старт&raquo;</a></li>
 							<li><a href="/catalog/accessories/" title="Аксессуары и навесное оборудование">Дополнения к любым спорткомплексам</a></li>
-							<li><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты</a></li>
+							<li><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
 						</ul>
 						
 					</div>
