@@ -50,8 +50,8 @@
 		<p>Старая цена: <span class="color-red"><%= $muted_price %> руб.</span></p>
 % }
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
-		<p><span class="<%= $instore_class{$instore} %>"><%= $store_info{$instore} %></span>
-		<br /><small>Информация о цене и наличии товара обновлена: <%= $product->{'lastmod'} %></small></p>
+		<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
+		<p><small>Информация о цене и наличии товара обновлена: <%= $product->{'lastmod'} %></small></p>
 		<form action="/cart/" method="post">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary"></form>
