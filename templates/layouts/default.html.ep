@@ -1,4 +1,4 @@
-% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '');
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -95,8 +95,9 @@
     				<p class="leftbar-block-p">КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>
 		    		<ul class="nav nav-list">
 						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Для малышей от 0 до 6 лет</a></li>
-						<li<%== $active_link{'pristennye-dsk'} %>><a href="/catalog/pristennye-dsk/" title="Пристенные спорткомплексы">Пристенные спортивные комплексы</a></li>
-						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные спорткомплексы">Распорные спортивные комплексы</a></li>
+						<li<%== $active_link{'pristennye-dsk'} %>><a href="/catalog/pristennye-dsk/" title="Пристенные домашние спортивные комплексы">Пристенные спортивные комплексы</a></li>
+						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные домашние спортивные комплексы">Распорные спортивные комплексы</a></li>
+						<li<%== $active_link{'uglovye-dsk'} %>><a href="/catalog/uglovye-dsk/" title="Угловые домашние спортивные комплексы">Угловые спортивные комплексы</a></li>
 						<li<%== $active_link{'turniki'} %>><a href="/catalog/turniki/" title="Турники">Турники настенные</a></li>
 				</ul>
 				<p class="leftbar-block-p">ОБОРУДОВАНИЕ И АКСЕССУАРЫ</p>
