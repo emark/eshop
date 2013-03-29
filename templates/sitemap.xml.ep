@@ -3,15 +3,22 @@
 % my $domain = 'http://www.nastartshop.ru';
 % foreach my $key (@{$pages}){
 <url>
-% my @directory = ('catalog','about');
-% my @pagetype = ('/','.html');
-% my $location = "$domain/$directory[$key->{'type'}]/$key->{'url'}$pagetype[$key->{'type'}]";
+% my $location = "$domain/about/$key->{'url'}.html";
 	<loc><%= $location %></loc>
 	<lastmod><%= $key->{'lastmod'} %></lastmod>
 	<changefreq><%= $key->{'changefreq'} %></changefreq>
 	<priority><%= $key->{'priority'} %></priority>
 </url>
-%}
+% }
+% foreach my $key (@{$category}){
+<url>
+% my $location = "$domain/catalog/$key->{'url'}/";
+	<loc><%= $location %></loc>
+	<lastmod><%= $key->{'lastmod'} %></lastmod>
+	<changefreq><%= $key->{'changefreq'} %></changefreq>
+	<priority><%= $key->{'priority'} %></priority>
+</url>
+% }
 % foreach my $key (@{$products}){
 <url>
 	<loc><%= $domain %>/catalog/<%= $key->{'caturl'} %>/<%= $key->{'url'} %>.html</loc>

@@ -13,11 +13,14 @@ open (DBCONF,"< app.conf") || die "Error open dbconfig file";
 my @appconf=<DBCONF>;
 close DBCONF;
 chomp @appconf;
+
+my $cattable = $appconf[0];
+
 our $dbi = DBIx::Custom->connect(
-			dsn => $appconf[0],
-			user => $appconf[1],
-			password => $appconf[2],
-			option => {mysql_enable_utf8=>1}
+			dsn => $appconf[1],
+			user => $appconf[2],
+			password => $appconf[3],
+			option => {mysql_enable_utf8 => 1}
 );
 
 $dbi->do('SET NAMES utf8');
@@ -302,7 +305,7 @@ get '/catalog/' => sub{
 		'type' => 1,
 	};
 	my $categories = $dbi->select(
-		table => 'pages',
+		table => $cattable,
 		column => [
 			'caption',
 			'url',
@@ -333,17 +336,17 @@ get '/catalog/:caturl' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');
 	my $page = $dbi->select(
-						table => 'pages',
-						column => [
-							'title',
-							'metadescription',
-							'url',
-							'caption',
-							'description',
-							'type',
-						],
-						where => {'url' => $caturl},
-					);
+		table => $cattable,
+		column => [
+					'title',
+					'metadescription',
+					'url',
+					'caption',
+					'description',
+					'type',
+				],
+		where => {'url' => $caturl},
+	);
 
 	my $result = $dbi->select(
 		table => 'products',
@@ -380,7 +383,7 @@ get '/catalog/:caturl/:produrl.html' => sub {
 	my $caturl = $self->param('caturl');
 	my $produrl = $self->param('produrl');
     my $category = $dbi->select(
-		table => 'pages',
+		table => $cattable,
         column => [
 			'caption',
 			'url',
@@ -465,7 +468,6 @@ get '/' => sub{
 	);
 	$result = $result->values;
 
-
 	$self->stash(r => $dbi->last_sql);
 
 	my $products = $dbi->select(
@@ -492,6 +494,18 @@ get '/sitemap' => sub{
 			'lastmod',
 		],
 	);
+
+	my $category = $dbi->select(
+    	table => $cattable,
+        column => [
+            'url',
+            'type',
+            'priority',
+            'changefreq',
+            'lastmod',
+        ],
+    );
+
 	my $products = $dbi->select(
 		table => 'products',
 		column => [
@@ -502,6 +516,7 @@ get '/sitemap' => sub{
 	);
 	$self->stash(
 		pages => $pages->fetch_hash_all,
+		category => $category->fetch_hash_all,
 		products => $products->fetch_hash_all,
 	);
 	$self->render('sitemap');
