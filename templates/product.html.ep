@@ -36,7 +36,7 @@
 %	$image_source = $product->{'url'}."-$i";
   <li class="span1">
     <a href="/media/products/more/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" class="thumbnail" rel="shadowbox[Slideshow]">
-      <img src="/media/products/small/<%= $image_source %>.jpg" title="">
+      <img src="/media/products/small/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" alt="Дополнительное изображение #<%= $i %>">
     </a>
   </li>
 %	}
@@ -54,9 +54,8 @@
 		<p><small>Информация о цене и наличии товара обновлена: <%= $product->{'lastmod'} %></small></p>
 		<form action="/cart/" method="post">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
-		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary"></form>
-		<p><a href="/about/buy-on-credit.html" class="btn btn-large">Купить товар в кредит</a></p>
-
+		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary">
+		</form>
 			</div>
 			</li>	
 		</ul>
@@ -64,8 +63,9 @@
 	<div class="span6">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
-			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
-			<li><a href="#delivery" data-toggle="tab">Оплата и доставка</a></li>
+			<li><a href="#features" data-toggle="tab">Параметры</a></li>
+			<li><a href="#delivery" data-toggle="tab">Доставка</a></li>
+			<li><a href="#credit" data-toggle="tab">Расчет кредита</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -142,6 +142,38 @@
 					</ul>	
 				</ul>
 				<p>Подробнее об условиях оплаты и доставки <a href="/about/delivery-and-payment.html" rel="nofollow">читайте здесь</a>.</p>
+			</div>
+			<div id="credit" class="tab-pane">
+% if($product->{price} > 3000){
+<h3>Расчет ежемесячных платежей по кредиту*</h3>
+<table class="table table-condensed">
+	<thead>
+	<tr>
+	<th>Месяц</th><th>Сумма платежа</th><th>Остаток кредита</th></tr>
+	</thead>
+	<tbody>
+
+%	my $tota_credit_sum = sprintf("%d",$product->{'price'}*1.1);
+%	my $credit_sum = sprintf("%d",$tota_credit_sum/11);
+%	my $credit_balance = sprintf("%d",$tota_credit_sum-$credit_sum);
+%	for (my $i = 1; $i < 11; $i++){
+%		$credit_balance = sprintf("%d",$credit_balance-$credit_sum);
+%		if ($i == 10){
+%			$credit_sum = $credit_sum + $credit_balance;
+%			$credit_balance = 0;
+%		};
+		<tr><td><%= $i %></td><td><%= $credit_sum %> руб.</td><td><%= $credit_balance %> руб.</td></tr>
+%	}
+		</table>
+		<form action="/cart/" method="post" class="align-center">
+		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
+		<input type="submit" value="Купить товар в кредит" class="btn btn-large">
+		</form>
+		<small>* указанный расчет является предварительным и не является офертой определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации</small>
+% }else{
+			<p>Отдельная продажа этого товара в кредит невозможна.</p>
+% }
+			<p>Подробнее об условиях предоставления кредита  <a href="/about/buy-on-credit.html">читайте здесь</a>. Телефоны для справок: <nobr>8 (391) 29-202-29</nobr> <nobr>или 8-800-200-6-200</nobr> (звонок по России бесплатный).</p>
 			</div>
 		</div>
 % if($product->{'links'}){
