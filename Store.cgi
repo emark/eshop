@@ -14,7 +14,7 @@ my @appconf=<DBCONF>;
 close DBCONF;
 chomp @appconf;
 
-my $cattable = $appconf[0];
+my $storename = $appconf[0];
 
 our $dbi = DBIx::Custom->connect(
 			dsn => $appconf[1],
@@ -305,13 +305,13 @@ get '/catalog/' => sub{
 		'type' => 1,
 	};
 	my $categories = $dbi->select(
-		table => $cattable,
+		table => 'catalog',
 		column => [
 			'caption',
 			'url',
 			'description',
 		],
-		where => {'type' => 0},
+		where => {'storename' => $storename},
 	);
 	my $price = $dbi->select(
 		table => 'products',
@@ -336,7 +336,7 @@ get '/catalog/:caturl' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');
 	my $page = $dbi->select(
-		table => $cattable,
+		table => 'catalog',
 		column => [
 					'title',
 					'metadescription',
@@ -345,7 +345,7 @@ get '/catalog/:caturl' => sub {
 					'description',
 					'type',
 				],
-		where => {'url' => $caturl},
+		where => {url => $caturl, storename => $storename},
 	);
 
 	my $result = $dbi->select(
@@ -383,14 +383,14 @@ get '/catalog/:caturl/:produrl.html' => sub {
 	my $caturl = $self->param('caturl');
 	my $produrl = $self->param('produrl');
     my $category = $dbi->select(
-		table => $cattable,
+		table => 'catalog',
         column => [
 			'caption',
 			'url',
 			'metadescription',
 			'type',
 		],
-        where => {'url' => $caturl},
+        where => {url => $caturl, storename => $storename},
 	);
 	my $result=$dbi->select(
 		table => 'products',
@@ -496,7 +496,7 @@ get '/sitemap' => sub{
 	);
 
 	my $category = $dbi->select(
-    	table => $cattable,
+    	table => 'catalog',
         column => [
             'url',
             'type',
@@ -504,6 +504,7 @@ get '/sitemap' => sub{
             'changefreq',
             'lastmod',
         ],
+		where => {storename => $storename},
     );
 
 	my $products = $dbi->select(
