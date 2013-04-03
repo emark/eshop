@@ -12,6 +12,11 @@
 % my $saving_sum = 0;
 % my $muted_price = 0;
 
+% my $tota_credit_sum = sprintf("%d",$product->{'price'}*1.1);
+% my $credit_sum = 0;
+% ($product->{price} > 3000) ? $credit_sum = sprintf("%d",$tota_credit_sum/11) : 0;
+% my $credit_balance = sprintf("%d",$tota_credit_sum-$credit_sum);
+
 <ul class="breadcrumb">
 	<li><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> <span class="divider">/</span></li>
 	<li><a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'caption'} %></a> <span class="divider">/</span></li>
@@ -51,7 +56,10 @@
 % }
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 		<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
-		<p><small>Информация о цене и наличии товара обновлена: <%= $product->{'lastmod'} %></small></p>
+% if ($credit_sum){
+		<p class="color-blue">В кредит за <%= $credit_sum %> руб./мес.</p>
+% }
+		<p><small>Информация о цене и наличии обновлена: <%= $product->{'lastmod'} %></small></p>
 		<form action="/cart/" method="post">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary">
@@ -144,7 +152,7 @@
 				<p>Подробнее об условиях оплаты и доставки <a href="/about/delivery-and-payment.html" rel="nofollow">читайте здесь</a>.</p>
 			</div>
 			<div id="credit" class="tab-pane">
-% if($product->{price} > 3000){
+% if($credit_sum){
 <h3>Расчет ежемесячных платежей по кредиту*</h3>
 <table class="table table-condensed">
 	<thead>
@@ -153,9 +161,6 @@
 	</thead>
 	<tbody>
 
-%	my $tota_credit_sum = sprintf("%d",$product->{'price'}*1.1);
-%	my $credit_sum = sprintf("%d",$tota_credit_sum/11);
-%	my $credit_balance = sprintf("%d",$tota_credit_sum-$credit_sum);
 %	for (my $i = 1; $i < 11; $i++){
 %		$credit_balance = sprintf("%d",$credit_balance-$credit_sum);
 %		if ($i == 10){
