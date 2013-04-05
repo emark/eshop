@@ -98,7 +98,7 @@
 						<li<%== $active_link{'pristennye-dsk'} %>><a href="/catalog/pristennye-dsk/" title="Пристенные домашние спортивные комплексы">Пристенные спортивные комплексы</a></li>
 						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные домашние спортивные комплексы">Распорные спортивные комплексы</a></li>
 						<li<%== $active_link{'uglovye-dsk'} %>><a href="/catalog/uglovye-dsk/" title="Угловые домашние спортивные комплексы">Угловые спортивные комплексы</a></li>
-						<li<%== $active_link{'turniki'} %>><a href="/catalog/turniki/" title="Турники">Турники настенные</a></li>
+						<li<%== $active_link{'turniki'} %>><a href="/catalog/turniki/" title="Турники">Турники, брусья</a></li>
 				</ul>
 				<p class="leftbar-block-p">ОБОРУДОВАНИЕ И АКСЕССУАРЫ</p>
 		    		<ul class="nav nav-list">
@@ -167,7 +167,7 @@
 							<li><a href="/catalog/dsk-rstart/" title="Развивающий комплекс Ранний старт">Развивающий комплекс &laquo;Ранний старт&raquo;</a></li>
 							<li><a href="/catalog/raspornye-dsk/" title="Распорные спортивные комплексы">Распорные спортивные комплексы</a></li>
 							<li><a href="/catalog/pristennye-dsk/" title="Пристенные спортивные компsексы">Пристенные спортивные комплексы</a></li>
-							<li><a href="/catalog/turniki/" title="Турники">Турники настенные</a></li>
+							<li><a href="/catalog/turniki/" title="Турники">Турники, брусья</a></li>
 							<li><a href="/catalog/gymnastic-mats/" title="Гимнастические маты">Гимнастические маты</a></li>
 							<li><a href="/catalog/rstart-accessories/" title="Аксессуары и навесное оборудование &laquo;Ранний старт&raquo;">Аксессуары &laquo;Ранний старт&raquo;</a></li>
 							<li><a href="/catalog/accessories/" title="Аксессуары и навесное оборудование">Дополнения к любым спорткомплексам</a></li>
