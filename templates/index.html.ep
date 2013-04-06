@@ -46,7 +46,7 @@
 </div>
 <div class="row">    
   <div class="span9">
-    <h2>Популярные товары <img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></h2>
+    <h2>Лидеры продаж 	<img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></h2>
 </div>
 </div>
 <div class="row">
@@ -75,10 +75,11 @@
 %	$instore = $productid->{'instore'};
 %	$instore = 1 if ($instore > 1 && $instore < 4);
 %	$instore = 1 if ($instore >= 4);
-				<br /><span class="<%= $instore_class{$instore} %>"><%= $store_info{$instore} %></p>	<form action="/cart/" method="post" class="align-center">
+				<!--br /><span class="<%= $instore_class{$instore} %>"><%= $store_info{$instore} %></p>	
+	<form action="/cart/" method="post" class="align-center">
 	<input type=hidden name="productid" value="<%= $productid->{'id'} %>">
 	<input type=submit value="Купить" class="btn btn-primary">
-	</form>
+	</form-->
         </div>
       </li>
 %   }

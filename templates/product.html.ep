@@ -71,7 +71,7 @@
 	<div class="span6">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
-			<li><a href="#features" data-toggle="tab">Параметры</a></li>
+			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
 			<li><a href="#delivery" data-toggle="tab">Доставка</a></li>
 			<li><a href="#credit" data-toggle="tab">Расчет кредита</a></li>
 		</ul>
