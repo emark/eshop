@@ -33,7 +33,7 @@ get '/news/' => sub{
 		'url' => 'news'
 	};
 	my $ua = Mojo::UserAgent->new();
-	my $news = $ua->get('http://blog.nastartshop.ru/category/news/?json=1')->res->json;
+	my $news = $ua->get('http://www.nastartshop.ru/blog/category/news/?json=1')->res->json;
     $self->stash(
 		page => $page,
         news => $news);
