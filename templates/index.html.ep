@@ -63,7 +63,7 @@
 		<p><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="<%= $productid->{'title'} %>">
 		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>" class="image-center"></a></p>
         <h3 class="align-center"><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a>
-% if (length($productid->{title})<23){
+% if (length($productid->{title})<=24){
 	<br />&nbsp;
 % }
 </h3>
