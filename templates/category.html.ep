@@ -20,13 +20,17 @@
 		<ul class="thumbnails">
 % 	foreach my $productid (@{$product}){
 			<li class="span3">
-				<div>
+				<div class="thumbnail">
 % 		my $articul = sprintf ("%06s",$productid->{'id'});
 % 		my $image_source = 'noimage';
 % 		$image_source = $productid->{'url'} if $productid->{'image'};
-					<p><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>" class="thumbnail">
+					<p><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>">
 <img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="Подробнее о <%= $productid->{'title'} %>"></a></p>
-	      				<h3 class="align-center"><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a></h3>
+	      				<h3 class="align-center"><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a>
+% if (length($productid->{title})<23){
+	<br />&nbsp;
+% }
+</h3>
 					<p class="align-center">
 					Цена:
 % 		if($productid->{'discount'}){
