@@ -321,7 +321,7 @@ get '/catalog/' => sub{
 			'url',
 			'image',
 		],
-		where => 'instore >= 0',
+		where => {storename => $storename},
 	);
 
 	$self->stash(
