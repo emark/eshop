@@ -56,9 +56,9 @@
 % }
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 		<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
-% if ($credit_sum){
-		<p class="color-blue">В кредит за <%= $credit_sum %> руб./мес.</p>
-% }
+%# if ($credit_sum){
+%#		<p class="color-blue">В кредит за <%= $credit_sum %> руб./мес.</p>
+%# }
 		<p><small>Информация о цене и наличии обновлена: <%= $product->{'lastmod'} %></small></p>
 		<form action="/cart/" method="post">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
@@ -72,8 +72,8 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
 			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
-			<li><a href="#delivery" data-toggle="tab">Доставка</a></li>
-			<li><a href="#credit" data-toggle="tab">Расчет кредита</a></li>
+			<li><a href="#delivery" data-toggle="tab">Оплата и доставка</a></li>
+			<!--li><a href="#credit" data-toggle="tab">Расчет кредита</a></li-->
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -161,14 +161,14 @@
 	</thead>
 	<tbody>
 
-%	for (my $i = 1; $i < 11; $i++){
-%		$credit_balance = sprintf("%d",$credit_balance-$credit_sum);
-%		if ($i == 10){
-%			$credit_sum = $credit_sum + $credit_balance;
-%			$credit_balance = 0;
-%		};
-		<tr><td><%= $i %></td><td><%= $credit_sum %> руб.</td><td><%= $credit_balance %> руб.</td></tr>
-%	}
+%#	for (my $i = 1; $i < 11; $i++){
+%#		$credit_balance = sprintf("%d",$credit_balance-$credit_sum);
+%#		if ($i == 10){
+%#			$credit_sum = $credit_sum + $credit_balance;
+%#			$credit_balance = 0;
+%#		};
+%#		<tr><td><%= $i %></td><td><%= $credit_sum %> руб.</td><td><%= $credit_balance %> руб.</td></tr>
+%#	}
 		</table>
 		<form action="/cart/" method="post" class="align-center">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
