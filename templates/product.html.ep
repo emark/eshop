@@ -167,7 +167,7 @@
 %#			$credit_sum = $credit_sum + $credit_balance;
 %#			$credit_balance = 0;
 %#		};
-%#		<tr><td><%#= $i %></td><td><%#= $credit_sum %> руб.</td><td><%#= $credit_balance %> руб.</td></tr>
+
 %#	}
 		</table>
 		<form action="/cart/" method="post" class="align-center">
