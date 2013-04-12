@@ -1,6 +1,6 @@
 %layout 'xmltemplate';
 
-% my $domain = 'http://www.nastartshop.ru';
+% my $domain = "http://www.$storename.ru";
 % foreach my $key (@{$pages}){
 <url>
 % my $location = "$domain/about/$key->{'url'}.html";

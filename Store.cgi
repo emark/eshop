@@ -519,6 +519,7 @@ get '/sitemap' => sub{
 		pages => $pages->fetch_hash_all,
 		category => $category->fetch_hash_all,
 		products => $products->fetch_hash_all,
+		storename => $storename,
 	);
 	$self->render('sitemap');
 };
