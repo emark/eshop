@@ -57,7 +57,7 @@
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 		<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
 %# if ($credit_sum){
-%#		<p class="color-blue">В кредит за <%= $credit_sum %> руб./мес.</p>
+
 %# }
 		<p><small>Информация о цене и наличии обновлена: <%= $product->{'lastmod'} %></small></p>
 		<form action="/cart/" method="post">
