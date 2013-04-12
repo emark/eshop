@@ -10,7 +10,7 @@
     <meta name="author" content="www.nastartshop.ru">
     <link type="text/plain" rel="author" href="http://www.nastartshop.ru/humans.txt" />
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="/assets/css/application.min.css" rel="stylesheet">
+    <link href="/assets/css/application.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -40,26 +40,24 @@
   <body>
   	<div class="container">
 		<div class="row">
-			<div class="span3">
-			</div>
-			<div class="span9">
-				
-			</div>
-		</div>
+			<div class="span12">
+
 		<div class="row">
 			<div class="span3">
 				<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.gif" class="image-center" title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a>
 			</div>
 			<div class="span9">
-				<p class="toplevel-menu">
+			<div class="row">
+			<div class="span9">
+			<p class="toplevel-menu">
 					% if ($page->{'url'} eq 'index'){
 					<strong>Главная</strong>
 					% }else{
 					<a href="/" title="Переход на главную страницу">Главная</a>
-					%# };if ($page->{'url'} eq 'news'){
-					<!--strong>Новости</strong-->
-					%# }else{	
-					<!--a href="/news/" title="Новости, текущие акции, скидки">Новости</a-->
+					% };if ($page->{'url'} eq 'news'){
+					<strong>Новости</strong>
+					% }else{	
+					<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
 					% };if ($page->{'url'} eq 'catalog'){
 					<strong>Каталог товаров</strong>
 					% }else{	
@@ -68,25 +66,37 @@
 					<strong>Доставка и оплата</strong>
 					% }else{
 					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
-					% };if ($page->{'url'} eq 'buy-on-credit'){
-					<strong>Купить в кредит</strong>
+					% };if ($page->{'url'} eq 'change'){
+					<strong>Обмен и возврат</strong>
 					% }else{
-					<a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a>
+					<a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a>
 					% };if ($page->{'url'} eq 'contacts'){
 					<strong>Контакты</strong>
 					% }else{
 					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
 					% };
-					<i class="icon-shopping-cart"></i>&nbsp;<a href="/cart/" title="Переход в корзину">Корзина покупок</a>
 				</p>
-<span style="font-size:24px;fnt-weight:bold;">8 (391) <nobr>292-02-29</nobr>, <nobr>256-53-21</nobr></span>&nbsp;
-<a href="skype:emrk.call?call" class="btn"><img src="/media/icons/Skypeicon_16px.png">&nbsp;Позвоните нам</a>
+			</div>
+			</div>
+			<div class="row">
+			<div class="span5">		
+<span style="font-size:24px;">8 (391) <nobr>29-202-29</nobr>, <nobr>256-53-21</nobr></span>&nbsp;
+
+			</div>
+			<div class="span4"><p class="align-right">
+<img src="/media/icons/Skypeicon_24px.png">&nbsp;<a href="skype:emrk.call?call">Позвоните нам</a>&nbsp;&nbsp;
+<img src="/media/icons/cart.gif">&nbsp;<a href="/cart/" title="Переход в корзину">Моя корзина</a></p>
+			</div>
+			</div>
 			</div>
 		</div>
+
+			</div>
+		</div>
+		
 		<div class="row">
 			<div class="span3"><p class="align-center"><a href="/" rel="nofollow" title="Переход на главную страницу">интернет-магазин</a></p></div>
-			<div class="span7">Заказ товаров: пн.-пт. с 11:00 до 19:00, сб. с 12:00 до 18:00</div>
-			<div class="span2"></div>
+			<div class="span9">Заказ товаров: понедельник-пятница с 11:00 до 19:00, суббота с 12:00 до 18:00</div>
 		</div>
 		<div class="row">
     		<div class="span3">
@@ -106,17 +116,17 @@
 						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Аксессуары &laquo;Ранний старт&raquo;</a></li>
 						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к любым спорткомплексам</a></li>
 						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
-					</ul>
-			</div>
-			<p class="leftbar-block-p">ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
-			<ul class="nav nav-pills nav-stacked">
-				<li<%== $active_link{'buy-on-credit'} %>><a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a></li>
-				<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
-				<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
-				<li<%== $active_link{'feedback'} %>><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
-				<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия оплаты">Доставка и оплата</a></li>
-				<li<%== $active_link{'company'} %>><a href="/about/company.html" title="О компании, юридические реквизиты">О компании</a></li>
-			</ul>
+				</ul>
+				<p class="leftbar-block-p">ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
+				<ul class="nav nav-list">
+					<li<%== $active_link{'buy-on-credit'} %>><a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a></li>
+					<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
+					<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
+					<li<%== $active_link{'feedback'} %>><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
+					<li<%== $active_link{'delivery-and-payment'} %>><a href="/about/delivery-and-payment.html" title="Информация о доставке, условия 	оплаты">Доставка и оплата</a></li>
+					<li<%== $active_link{'company'} %>><a href="/about/company.html" title="О компании, юридические реквизиты">О компании</a></li>
+				</ul>
+			</div>	
    		</div>
    		<div class="span9">
 <!-- Page content -->
@@ -131,7 +141,7 @@
 						<h3>Информация о продавце</h3>
 						<span itemscope itemtype="http://schema.org/Organization">
 						<ul class="unstyled">
-							<li><a href="http://www.nastartshop.ru" itemprop="url" rel=nofollow><span itemprop="name">&laquo;НаСтарт.РФ&raquo;</span></a>, <span itemprop="legalName">ООО &laquo;Эмарк&raquo;</span></li>
+							<li><a href="http://www.nastartshop.ru" itemprop="url" rel=nofollow><span itemprop="name">НаСтарт.РФ</span></a>, <span itemprop="legalName">ООО &laquo;Эмарк&raquo;</span></li>
 							<li><span itemprop="telephone">+7 (391) 292-02-29</span></li>
 							<li>skype: <a href="skype:emrk.call?call">emrk.call</a></li>
 							<li><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи" itemprop="email">hello@nastartshop.ru</a></li>
@@ -141,7 +151,7 @@
 						</ul>
 						</span>
 						<h3>Социальные сети</h3>
-						<p><a href="https://www.facebook.com/neskuchnoe.razvitie" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Facebook" title="Страница на Facebook"></a>
+						<p>
 						<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="ВКонтакте" title="Группа ВКонтакте"></a>
 						<!--a href="https://twitter.com/nastartshop" target=_blank><img src="/media/images/socbuttons/twitter.gif" alt="@nastartshop" title="Наш твиттер"></a>
 						<a href="https://plus.google.com/110471626333836075742/" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="G+" title="Страница на Google+"></a-->
@@ -154,7 +164,6 @@
 							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
 							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
-							<li><a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a></li>
 							<li><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
 							<li><a href="/about/partnership.html" title="Информация для партнеров">Детским садам и развивающим центрам</a></li>
 							<li><a href="/about/company.html" title="Реквизиты организации">О компании</a></li>
@@ -182,7 +191,6 @@
 							<li><a href="/about/delivery-and-payment.html">Наличные средства</a></li>
 							<li><a href="/about/delivery-and-payment.html">Банковские переводы</a></li>
 							<li><a href="/about/delivery-and-payment.html">Электронные деньги</a></li>
-							<li><a href="/about/buy-on-credit.html">Оплату в кредит</a></li>
 						</ul>
 						<ul class="unstyled">
 							<li><img src="/media/images/footer/payments.jpg"></li>
@@ -202,7 +210,7 @@
 					<div class="span12">
 					<hr />
 					<p><small>Обращаем ваше внимание на&nbsp;то, что данный <nobr>интернет-сайт</nobr> носит исключительно информационный характер и&nbsp;ни&nbsp;при каких условиях не&nbsp;является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о&nbsp;наличии и&nbsp;стоимости указанных товаров и&nbsp;(или) услуг, пожалуйста, обращайтесь к&nbsp;менеджеру сайта с&nbsp;помощью <a href="/about/feedback.html" rel="nofollow">специальной формы связи</a> или по&nbsp;телефону: <nobr>+7 (391) 292-02-29</nobr>.</small></p>
-					<p class="align-center">2012-2013, <img src="/media/images/logo/20-20.jpg" alt="Логотип магазина" title="Логотип магазина"> <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>&laquo;НаСтарт.РФ&raquo;</a>, интернет-магазин</p>
+					<p class="align-center">2012-2013, <img src="/media/images/logo/20-20.jpg" alt="Логотип магазина" title="Логотип магазина"> <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>НаСтарт.РФ</a>, интернет-магазин</p>
 					</div>
 				</div>				
 			</div>
