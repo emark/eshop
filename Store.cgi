@@ -515,7 +515,9 @@ get '/sitemap' => sub{
 			'caturl',
 			'lastmod',
 		],
+		where => {storename => $storename},
 	);
+
 	$self->stash(
 		pages => $pages->fetch_hash_all,
 		category => $category->fetch_hash_all,
