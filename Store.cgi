@@ -395,7 +395,8 @@ get '/catalog/:caturl/:produrl.html' => sub {
 	my $result=$dbi->select(
 		table => 'products',
 		where => {
-			'url' => $produrl,
+			url => $produrl,
+			storename => $storename,
 		},
 	);
 	my $has_content = $result->fetch_hash;
