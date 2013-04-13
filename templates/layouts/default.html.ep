@@ -119,7 +119,6 @@
 				</ul>
 				<p class="leftbar-block-p">ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 				<ul class="nav nav-list">
-					<li<%== $active_link{'buy-on-credit'} %>><a href="/about/buy-on-credit.html" title="Оплата товаров в кредит">Купить в кредит</a></li>
 					<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
 					<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
 					<li<%== $active_link{'feedback'} %>><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
