@@ -1,4 +1,4 @@
-% layout 'default';
+% layout 'empty';
 % title 'Оплата заказа';
 % stash->{'metadescription'} = 'Оплата заказа';
 % my $total = 0; #Total order sum

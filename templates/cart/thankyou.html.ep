@@ -1,4 +1,4 @@
-% layout 'default';
+% layout 'empty';
 % title 'Заказ оформлен';
 % stash->{'metadescription'} = 'Корзина заказов';
 % my $link = undef;
@@ -23,6 +23,7 @@
 <h3>Присоединяйтесь к нам в социальных сетях!</h3>
 </div>
 <div class="row">
+<div class="span3"></div>
 <div class="span4">
 
 <!-- VK Widget -->

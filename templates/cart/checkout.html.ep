@@ -1,4 +1,4 @@
-% layout 'default';
+% layout 'empty';
 % title 'Оформление заказа';
 % stash->{'metadescription'} = 'Страница оформления заказа. Интернет-магазин НаСтарт. Домашние спортивные комплексы для детей.';
 % my $total_cart=0;
@@ -9,6 +9,7 @@
 	<h1>Оформление заказа</h1>
 	<p>* - обязательные поля</p>
 </div>
+
 % if ($missing){
 % $class_muted = 'muted';
 <div class="alert alert-block">
@@ -16,6 +17,11 @@
 	<strong>Внимание!</strong> Заполните поля со знаком (*)
 </div>
 % }
+
+<div class="row">
+	<div class="span3">
+	</div>
+	<div class="span9">
 <form class="form-horizontal" action="/cart/checkout/" method="post" id="CheckoutForm">
 	<fieldset>
 	<div class="control-group">
@@ -70,10 +76,6 @@
 				ПС &laquo;Яндекс.Деньги&raquo;
 			</label>
 			<label class="radio">
-				<%= radio_button 'payment' => 'credit' %>
-				Оплата в кредит.  <a href="/about/buy-on-credit.html" target=_blank>Условия покупки в кредит</a>.
-			</label>
-			<label class="radio">
 				<%= radio_button 'payment' => 'check' %>
 				Банковский перевод
 			</label>
@@ -91,3 +93,5 @@
 	</div>
 	</fieldset>
 </form>
+	</div>
+</div>
