@@ -80,8 +80,7 @@
 			</div>
 			<div class="row">
 			<div class="span5">		
-<span style="font-size:24px;">8 (391) <nobr>29-202-29</nobr>, <nobr>256-53-21</nobr></span>&nbsp;
-
+<span style="font-size:24px;">8 (391) <nobr>29-202-29</nobr>&nbsp;Красноярск</span>
 			</div>
 			<div class="span4"><p class="align-right">
 <img src="/media/icons/Skypeicon_24px.png">&nbsp;<a href="skype:emrk.call?call">Позвоните нам</a>&nbsp;&nbsp;
@@ -208,7 +207,7 @@
 				<div class="row">
 					<div class="span12">
 					<hr />
-					<p><small>Обращаем ваше внимание на&nbsp;то, что данный <nobr>интернет-сайт</nobr> носит исключительно информационный характер и&nbsp;ни&nbsp;при каких условиях не&nbsp;является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о&nbsp;наличии и&nbsp;стоимости указанных товаров и&nbsp;(или) услуг, пожалуйста, обращайтесь к&nbsp;менеджеру сайта с&nbsp;помощью <a href="/about/feedback.html" rel="nofollow">специальной формы связи</a> или по&nbsp;телефону: <nobr>+7 (391) 292-02-29</nobr>.</small></p>
+					<p class="align-justify"><small>Обращаем ваше внимание на&nbsp;то, что данный <nobr>интернет-сайт</nobr> носит исключительно информационный характер и&nbsp;ни&nbsp;при каких условиях не&nbsp;является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о&nbsp;наличии и&nbsp;стоимости указанных товаров и&nbsp;(или) услуг, пожалуйста, обращайтесь к&nbsp;менеджеру сайта с&nbsp;помощью <a href="/about/feedback.html" rel="nofollow">специальной формы связи</a> или по&nbsp;телефону: <nobr>+7 (391) 292-02-29</nobr>.</small></p>
 					<p class="align-center">2012-2013, <img src="/media/images/logo/20-20.jpg" alt="Логотип магазина" title="Логотип магазина"> <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>НаСтарт.РФ</a>, интернет-магазин</p>
 					</div>
 				</div>				
@@ -219,11 +218,5 @@
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/application.js"></script>
 <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter14441680 = new Ya.Metrika({id:14441680, webvisor:true, clickmap:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/14441680" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
-<!-- BEGIN cloudim code {literal} -->
-<script type="text/javascript" charset="utf-8">document.write(unescape("%3Cdiv id='cloudim_widget'%3E%3Cscript src='http://static.cloudim.ru/js/chat.js' type='text/javascript'%3E%3C/script%3E%3C/div%3E"));</script> <div id="cloudim_cr" style="display: none">Cloudim - <a target="_blank" href="http://cloudim.ru/">онлайн консультант для сайта</a> бесплатно.</div>
-<script type="text/javascript" charset="utf-8">
-Cloudim.Chat.init({uid:2677});
-</script>
-<!-- {/literal} END cloudim code -->
 </body>
 </html>
