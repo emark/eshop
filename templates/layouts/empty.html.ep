@@ -1,0 +1,192 @@
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '');
+% $active_link{$page->{'url'}} = ' class="active"';
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %> - НаСтарт.РФ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= stash->{'metadescription'} %>">
+    <meta name="author" content="www.nastartshop.ru">
+    <link type="text/plain" rel="author" href="http://www.nastartshop.ru/humans.txt" />
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/application.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-10023555-5']);
+		_gaq.push(['_setDomainName', 'nastartshop.ru']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+	  	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+    </script>
+    <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
+    <script type="text/javascript">
+		Shadowbox.init();
+    </script>
+    <script type="text/javascript" src="http://userapi.com/js/api/openapi.js"></script>
+    <script type="text/javascript">
+		VK.init({apiId: 3012373, onlyWidgets: true});
+    </script>
+  </head>
+  <body>
+  	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div class="row">
+					<div class="span3">
+						<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.gif" class="image-center" title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a>
+					</div>
+					<div class="span9">
+						<div class="row">
+							<div class="span9">
+								<p class="toplevel-menu">
+% if ($page->{'url'} eq 'index'){
+									<strong>Главная</strong>
+% }else{
+									<a href="/" title="Переход на главную страницу">Главная</a>
+% };if ($page->{'url'} eq 'news'){
+									<strong>Новости</strong>
+% }else{	
+									<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
+% };if ($page->{'url'} eq 'catalog'){
+									<strong>Каталог товаров</strong>
+% }else{	
+									<a href="/catalog/" title="Каталог товаров">Каталог товаров</a>
+% };if ($page->{'url'} eq 'delivery-and-payment'){
+									<strong>Доставка и оплата</strong>
+% }else{
+									<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
+% };if ($page->{'url'} eq 'change'){
+									<strong>Обмен и возврат</strong>
+% }else{
+									<a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a>
+% };if ($page->{'url'} eq 'contacts'){
+									<strong>Контакты</strong>
+% }else{
+									<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
+% };
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span5">		
+								<span class="large-text">8 (391) <nobr>29-202-29</nobr>&nbsp;&nbsp;<nobr>8-908-21-202-29</nobr></span>
+							</div>
+							<div class="span4"><p class="align-right">
+								<img src="/media/icons/Skypeicon_24px.png">&nbsp;<a href="skype:emrk.call?call">Позвоните нам</a>&nbsp;&nbsp;
+								<img src="/media/icons/cart.gif">&nbsp;<a href="/cart/" title="Переход в корзину">Моя корзина</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span3"><p class="align-center"><a href="/" rel="nofollow" title="Переход на главную страницу">интернет-магазин</a></p></div>
+			<div class="span9">Заказ товаров: понедельник-пятница с 11:00 до 19:00, суббота с 12:00 до 18:00</div>
+		</div>
+	
+		<div class="row">
+	  		<div class="span12">
+			<!-- Page content -->
+	   		<%= content %>
+			<!-- /Page content -->
+   		</div>
+	</div>
+	<footer>
+		<div class="footer-links">
+			<div class="row">
+				<div class="span3">
+					<h3>Информация о продавце</h3>
+					<span itemscope itemtype="http://schema.org/Organization">
+					<ul class="unstyled">
+						<li><a href="http://www.nastartshop.ru" itemprop="url" rel=nofollow><span itemprop="name">НаСтарт.РФ</span></a>, <span itemprop="legalName">ООО &laquo;Эмарк&raquo;</span></li>
+						<li><span itemprop="telephone">+7 (391) 292-02-29</span></li>
+						<li>skype: <a href="skype:emrk.call?call">emrk.call</a></li>
+						<li><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи" itemprop="email">hello@nastartshop.ru</a></li>
+						<li><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск</span></span></li>
+						<li>ул. Телевизорная, 1 ст9</li>
+						<li><a href="http://maps.yandex.ru/-/CVu6qGPg" title="Показать адрес магазина на Яндекс.Карты">Яндекс.Карты</a>, <a href="http://go.2gis.ru/f332" title="Показать адрес магазина в сервисе 2GIS">2GIS</a></li>
+					</ul>
+					</span>
+					<h3>Социальные сети</h3>
+					<p>
+					<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="ВКонтакте" title="Группа ВКонтакте"></a>
+					<!--a href="https://plus.google.com/110471626333836075742/" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="G+" title="Страница на Google+"></a-->
+					<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Одноклассники" title="Группа в Одноклассниках"></a></p>						
+					</div>
+					<div class="span3">
+						<h3>Справочная информация</h3>
+						<ul>
+							<li><a href="/news/" title="Новости магазина">Новости магазина</a></li>
+							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
+							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
+							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
+							<li><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
+							<li><a href="/about/partnership.html" title="Информация для партнеров">Детским садам и развивающим центрам</a></li>
+							<li><a href="/about/company.html" title="Реквизиты организации">О компании</a></li>
+							<li><a href="/about/contacts.html" title="Адреса магазинов, контактная информация">Контакты</a></li>
+						</ul>
+					</div>
+					<div class="span3">
+						<h3>Вы можете купить</h3>
+						<ul>
+							<li><a href="/catalog/dsk-rstart/" title="Развивающий комплекс Ранний старт">Развивающий комплекс &laquo;Ранний старт&raquo;</a></li>
+							<li><a href="/catalog/raspornye-dsk/" title="Распорные спортивные комплексы">Распорные спортивные комплексы</a></li>
+							<li><a href="/catalog/pristennye-dsk/" title="Пристенные спортивные компsексы">Пристенные спортивные комплексы</a></li>
+							<li><a href="/catalog/turniki/" title="Турники">Турники, брусья</a></li>
+							<li><a href="/catalog/gymnastic-mats/" title="Гимнастические маты">Гимнастические маты</a></li>
+							<li><a href="/catalog/rstart-accessories/" title="Аксессуары и навесное оборудование &laquo;Ранний старт&raquo;">Аксессуары &laquo;Ранний старт&raquo;</a></li>
+							<li><a href="/catalog/accessories/" title="Аксессуары и навесное оборудование">Дополнения к любым спорткомплексам</a></li>
+							<li><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
+						</ul>
+						
+					</div>
+					<div class="span3">
+						
+						<h3>Мы принимаем</h3>
+						<ul>
+							<li><a href="/about/delivery-and-payment.html">Наличные средства</a></li>
+							<li><a href="/about/delivery-and-payment.html">Банковские переводы</a></li>
+							<li><a href="/about/delivery-and-payment.html">Электронные деньги</a></li>
+						</ul>
+						<ul class="unstyled">
+							<li><img src="/media/images/footer/payments.jpg"></li>
+						</ul>
+<h3>Мы доставляем</h3>
+						<ul>
+							<li><a href="/about/contacts.html">в пункты самовывоза</a></li>
+							<li><a href="/about/delivery-and-payment.html">курьером на дом</a></li>
+							<li><a href="/about/delivery-and-payment.html">транспортными компаниями</a></li>
+						</ul>
+						<ul class="unstyled">
+							<li><img src="/media/images/footer/delivery.gif"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span12">
+					<hr />
+					<p class="align-justify"><small>Обращаем ваше внимание на&nbsp;то, что данный <nobr>интернет-сайт</nobr> носит исключительно информационный характер и&nbsp;ни&nbsp;при каких условиях не&nbsp;является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о&nbsp;наличии и&nbsp;стоимости указанных товаров и&nbsp;(или) услуг, пожалуйста, обращайтесь к&nbsp;менеджеру сайта с&nbsp;помощью <a href="/about/feedback.html" rel="nofollow">специальной формы связи</a> или по&nbsp;телефону: <nobr>+7 (391) 292-02-29</nobr>.</small></p>
+					<p class="align-center">2012-2013, <img src="/media/images/logo/20-20.jpg" alt="Логотип магазина" title="Логотип магазина"> <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>НаСтарт.РФ</a>, интернет-магазин</p>
+					</div>
+				</div>				
+			</div>
+		</footer>
+    </div>
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+    <script src="/assets/js/bootstrap.js"></script>
+    <script src="/assets/js/application.js"></script>
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter14441680 = new Ya.Metrika({id:14441680, webvisor:true, clickmap:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/14441680" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+</body>
+</html>

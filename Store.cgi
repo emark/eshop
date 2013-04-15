@@ -15,6 +15,7 @@ close DBCONF;
 chomp @appconf;
 
 my $storename = $appconf[0];
+my $secret = $appconf[4];
 
 our $dbi = DBIx::Custom->connect(
 			dsn => $appconf[1],
@@ -528,7 +529,7 @@ get '/sitemap' => sub{
 	$self->render('sitemap');
 };
 
-app->secret('ReginaSpector');
+app->secret($secret);
 app->hook(before_dispatch => sub {
 				my $self = shift;
 				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
