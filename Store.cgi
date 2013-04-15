@@ -91,6 +91,7 @@ post '/cart/checkout/' => sub {
 		$orderinfo->{cartid} = $cartid;
 		$orderinfo->{sysdate} = \"NOW()";
 		$orderinfo->{status} = 0;
+		$orderinfo->{storename} = $storename;
 		$dbi->insert(
 			$orderinfo,
 			table => 'orders',
