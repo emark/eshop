@@ -23,9 +23,11 @@
 		<thead>
 		<tbody>
 % 	foreach my $itemid(keys %{$cartitems}){
+%	my $image_source = 'noimage';
+%	$image_source = $cartitems->{$itemid}->{'url'} if $cartitems->{$itemid}->{'image'};
 			<tr>
-				<td><img src="/media/products/64x/<%= $cartitems->{$itemid}->{'url'} %>.jpg">&nbsp;</td><td><a href="/cart/delete/<%= $cartitems->{$itemid}->{productid} %>/" title="Убрать товар из корзины")"><img src="/media/images/cart/delete.gif" title="Убрать товар из корзины" alt="x"></a>&nbsp;<a href="/catalog/<%= $cartitems->{$itemid}->{'caturl'} %>/<%= $cartitems->{$itemid}->{'url'} %>.html" title="Посмотреть характеристики товара"><%= $cartitems->{$itemid}->{'title'} %></a></td>
-%		my $articul = sprintf("%06s",$cartitems->{$itemid}->{'productid'});
+				<td><img src="/media/products/64x/<%= $image_source %>.jpg">&nbsp;</td><td><a href="/cart/delete/<%= $cartitems->{$itemid}->{productid} %>/" title="Убрать товар из корзины")"><img src="/media/images/cart/delete.gif" title="Убрать товар из корзины" alt="x"></a>&nbsp;<a href="/catalog/<%= $cartitems->{$itemid}->{'caturl'} %>/<%= $cartitems->{$itemid}->{'url'} %>.html" title="Посмотреть характеристики товара"><%= $cartitems->{$itemid}->{'title'} %></a></td>
+%	my $articul = sprintf("%06s",$cartitems->{$itemid}->{'productid'});
 				<td><%= $articul %></td>
 				<td><%= $cartitems->{$itemid}->{'price'} %> руб.</td> 
 				<td><center>

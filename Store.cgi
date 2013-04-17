@@ -202,6 +202,7 @@ get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
 			$cartitems->{$hash->{productid}}->{caturl} = $products->{$hash->{productid}}->{caturl};
 			$cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
 			$cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
+			$cartitems->{$hash->{productid}}->{image} = $products->{$hash->{productid}}->{image};
 		};
 	}else{
 		return $self->render('cart/emptycart');
@@ -272,8 +273,9 @@ post '/cart/' => sub{
             $cartitems->{$hash->{productid}} = $hash;
             $cartitems->{$hash->{productid}}->{url} = $products->{$hash->{productid}}->{url};
             $cartitems->{$hash->{productid}}->{caturl} = $products->{$hash->{productid}}->{caturl};
-            $cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
+            $cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};	
             $cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
+            $cartitems->{$hash->{productid}}->{image} = $products->{$hash->{productid}}->{image};
         };
     }else{
         $cartid = time;
