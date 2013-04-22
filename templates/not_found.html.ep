@@ -27,7 +27,7 @@
 			<div class="span7">
 				<div class="toplevel-menu">
 					<a href="/" title="Переход на главную страницу">Главная</a>
-					<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
+					<a href="/blog/" title="Новости, текущие акции, скидки">Новости</a>
 					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог товаров</a>
 					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
 					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
