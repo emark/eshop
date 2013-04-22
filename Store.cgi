@@ -28,16 +28,15 @@ $dbi->do('SET NAMES utf8');
 
 our $order = DBIx::Custom::Order->new;
 
-get '/news/' => sub{
+get '/search/' => sub{
 	my $self = shift;
 	my $page = {
-		'url' => 'news'
+		'url' => 'search'
 	};
-	my $ua = Mojo::UserAgent->new();
-	my $news = $ua->get('http://www.nastartshop.ru/blog/category/news/?json=1')->res->json;
+
     $self->stash(
 		page => $page,
-        news => $news);
+    );
 };
 
 get '/news/:id/' => sub{
