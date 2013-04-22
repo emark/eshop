@@ -14,7 +14,7 @@ my @appconf=<DBCONF>;
 close DBCONF;
 chomp @appconf;
 
-my $storename = $appconf[0];
+my ($storeid,$storename) = split(':',$appconf[0]);
 my $secret = $appconf[4];
 
 our $dbi = DBIx::Custom->connect(
@@ -37,23 +37,6 @@ get '/search/' => sub{
     $self->stash(
 		page => $page,
     );
-};
-
-get '/news/:id/' => sub{
-	my $self = shift;
-	my $post_id = $self->param('id') || undef;
-	my $page = {
-		'url' => 'news',
-	};
-	my $ua = Mojo::UserAgent->new();
-	my $url = "http://blog.nastartshop.ru/api/get_post/?id=$post_id" if $post_id;
-	my $news = $ua->get($url)->res->json;
-
-	return $self->render(status => 404, template => 'not_found') if $news->{'status'} eq 'error';
-
-    $self->stash(
-		page => $page,
-        news => $news);
 };
 
 get '/cart/checkout/' => sub{
@@ -277,7 +260,7 @@ post '/cart/' => sub{
             $cartitems->{$hash->{productid}}->{image} = $products->{$hash->{productid}}->{image};
         };
     }else{
-        $cartid = time;
+        $cartid = $storeid.time;
         $self->session(cartid => $cartid);
     };
 
