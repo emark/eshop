@@ -57,7 +57,7 @@
 					% };if ($page->{'url'} eq 'news'){
 					<strong>Новости</strong>
 					% }else{	
-					<a href="/blog/" title="Новости, текущие акции, скидки">Новости</a>
+					<a href="/blog/" title="Новости, текущие акции, скидки">Блог</a>
 					% };if ($page->{'url'} eq 'catalog'){
 					<strong>Каталог товаров</strong>
 					% }else{	
@@ -156,7 +156,7 @@
 					<div class="span3">
 						<h3>Справочная информация</h3>
 						<ul>
-							<li><a href="/blog/" title="Новости магазина">Новости магазина</a></li>
+							<li><a href="/blog/" title="Блог магазина">Наш блог</a></li>
 							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
 							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>

@@ -22,7 +22,7 @@
 % $category_thumb{$category->{'url'}} = 'noimage' if !$category_thumb{$category->{'url'}};
 					<img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" class="image-center" alt="<%= $category->{'caption'} %>" title="<%= $category->{'title'} %>">
 % $min_price{$category->{'url'}} = 0 if !$min_price{$category->{'url'}};
-				<h3 class="align-center">Всего за <span class="middle-size"><%= $min_price{$category->{'url'}} %></span> руб.</h3>
+				<h3 class="align-center">Цены от <span class="middle-size"><%= $min_price{$category->{'url'}} %></span> руб.</h3>
 			</li>
 		</ul>
 	</div>
