@@ -10,7 +10,7 @@
     <meta name="author" content="www.nastartshop.ru">
     <link type="text/plain" rel="author" href="http://www.nastartshop.ru/humans.txt" />
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="/assets/css/application.css" rel="stylesheet">
+    <link href="/assets/css/application.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -57,7 +57,7 @@
 					% };if ($page->{'url'} eq 'news'){
 					<strong>Новости</strong>
 					% }else{	
-					<a href="/news/" title="Новости, текущие акции, скидки">Новости</a>
+					<a href="/blog/" title="Новости, текущие акции, скидки">Новости</a>
 					% };if ($page->{'url'} eq 'catalog'){
 					<strong>Каталог товаров</strong>
 					% }else{	
@@ -136,16 +136,14 @@
 			<div class="footer-links">
 				<div class="row">
 					<div class="span3">
-						<h3>Информация о продавце</h3>
+						<h3>Контактная информация</h3>
 						<span itemscope itemtype="http://schema.org/Organization">
 						<ul class="unstyled">
-							<li><a href="http://www.nastartshop.ru" itemprop="url" rel=nofollow><span itemprop="name">НаСтарт.РФ</span></a>, <span itemprop="legalName">ООО &laquo;Эмарк&raquo;</span></li>
-							<li><span itemprop="telephone">+7 (391) 292-02-29</span></li>
-							<li>skype: <a href="skype:emrk.call?call">emrk.call</a></li>
+							<li><span itemprop="telephone" class=large-text>(391) 292-02-29</span></li>
 							<li><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи" itemprop="email">hello@nastartshop.ru</a></li>
 							<li><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск</span></span></li>
 							<li>ул. Телевизорная, 1 ст9</li>
-							<li><a href="http://maps.yandex.ru/-/CVu6qGPg" title="Показать адрес магазина на Яндекс.Карты">Яндекс.Карты</a>, <a href="http://go.2gis.ru/f332" title="Показать адрес магазина в сервисе 2GIS">2GIS</a></li>
+							<li><a href="http://maps.yandex.ru/-/CVVyn6pr" title="Показать адрес магазина на Яндекс.Карты" target=_blank>Яндекс.Карты</a>, <a href="http://go.2gis.com/uycx" title="Показать адрес магазина в сервисе 2GIS" target=_blank>2GIS</a></li>
 						</ul>
 						</span>
 						<h3>Социальные сети</h3>
@@ -158,7 +156,7 @@
 					<div class="span3">
 						<h3>Справочная информация</h3>
 						<ul>
-							<li><a href="/news/" title="Новости магазина">Новости магазина</a></li>
+							<li><a href="/blog/" title="Новости магазина">Новости магазина</a></li>
 							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
 							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
