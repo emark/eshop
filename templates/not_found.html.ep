@@ -3,7 +3,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
-    <title>Страница не найдена - НаСтарт.рф</title>
+    <title>Страница не найдена - НаСтарт.РФ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Интернет-магазин НаСтарт.рф предлагает широкий ассортимент домашних детских спортивных комплексов, гимнастические маты и навесное оборудование. Пристенные и распорные спортивные уголки для малышей.">
     <meta name="author" content="www.nastartshop.ru">
@@ -27,12 +27,12 @@
 			<div class="span7">
 				<div class="toplevel-menu">
 					<a href="/" title="Переход на главную страницу">Главная</a>
-					<a href="/blog/" title="Новости, текущие акции, скидки">Новости</a>
+					<a href="/blog/" title="Узнайте больше о наших товарах">Статьи</a>
 					<a href="/catalog/" title="Каталог спортивных комплексов и дополнений">Каталог товаров</a>
 					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
 					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
 				</div>
- 				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/results.html', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+ 				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff8000', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="utf-8" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
  			</div>
 			<div class="span2">
 				<div class="align-right">

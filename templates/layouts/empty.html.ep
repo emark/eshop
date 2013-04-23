@@ -53,11 +53,9 @@
 									<strong>Главная</strong>
 % }else{
 									<a href="/" title="Переход на главную страницу">Главная</a>
-% };if ($page->{'url'} eq 'news'){
-									<strong>Новости</strong>
-% }else{	
-									<a href="/blog/" title="Новости, текущие акции, скидки">Блог</a>
-% };if ($page->{'url'} eq 'catalog'){
+% };
+									<a href="/blog/" title="Узнайте больше о наших товарах">Статьи</a>
+% if ($page->{'url'} eq 'catalog'){
 									<strong>Каталог товаров</strong>
 % }else{	
 									<a href="/catalog/" title="Каталог товаров">Каталог товаров</a>
@@ -101,8 +99,8 @@
 			<!-- Page content -->
 	   		<%= content %>
 			<!-- /Page content -->
-   		</div>
-	</div>
+   			</div>
+		</div>
 	<footer>
 			<div class="footer-links">
 				<div class="row">
@@ -110,7 +108,7 @@
 						<h3>Контактная информация</h3>
 						<span itemscope itemtype="http://schema.org/Organization">
 						<ul class="unstyled">
-							<li><span itemprop="telephone" class="middle-size">(391) 292-02-29</span></li>
+							<li><span itemprop="telephone" class="middle-size">(391) 29-202-29</span></li>
 							<li><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи" itemprop="email">hello@nastartshop.ru</a></li>
 							<li><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск</span></span></li>
 							<li>ул. Телевизорная, 1 ст9</li>
@@ -128,7 +126,7 @@
 					<div class="span3">
 						<h3>Справочная информация</h3>
 						<ul>
-							<li><a href="/blog/" title="Новости магазина">Наш блог</a></li>
+							<li><a href="/blog/" title="Узнайте больше о наших товарах">Статьи о товарах</a></li>
 							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
 							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
