@@ -1,8 +1,8 @@
 % layout 'default';
 % title 'Детские спортивные комплексы для дома - пристенные, распорные и развивающие спорткомплексы купить в магазине  спортивных товаров для детей в Красноярске';
 % stash->{'metadescription'} = 'Мы предлагаем широкий ассортимент домашних детских спортивных комплексов разной формы и комплектации. Выгодные цены, гарантия качества. Наличие в Красноярске. Доставка в Иркутск, Кемерово, Новосибирск';
-% my %store_info = (0 => 'Временно нет', 1 => 'В наличии', 2 => 'В наличии', 3 => 'В наличии');
-% my %instore_class = (0 => 'color-red',1 => 'color-green');
+% my %store_info = (0 => 'Временно нет', 1 => 'В наличии');
+% my %instore_class = (0 => 'color-red', 1 => 'color-green');
 % my $instore = 0;
 
 <div class="row" id="offers">
@@ -43,7 +43,7 @@
 		<p><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="<%= $productid->{'title'} %>">
 		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>" class="image-center"></a></p>
         <h3 class="align-center"><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a>
-% if (length($productid->{title})<=25){
+% if (length($productid->{title}) <= 24){
 	<br />&nbsp;
 % }
 </h3>
@@ -57,13 +57,8 @@
 				<span class="middle-size"><%= $productid->{'price'} %></span> руб.
 %	};
 %	$instore = $productid->{'instore'};
-%	$instore = 1 if ($instore > 1 && $instore < 4);
-%	$instore = 1 if ($instore >= 4);
-				<!--br /><span class="<%= $instore_class{$instore} %>"><%= $store_info{$instore} %></p>	
-	<form action="/cart/" method="post" class="align-center">
-	<input type=hidden name="productid" value="<%= $productid->{'id'} %>">
-	<input type=submit value="Купить" class="btn btn-primary">
-	</form-->
+%	$instore = 1 if ($instore > 0);
+
         </div>
       </li>
 %   }

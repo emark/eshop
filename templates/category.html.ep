@@ -1,8 +1,8 @@
 % layout 'default';
 % title $page->{'title'};
 % stash->{'metadescription'} = $page->{'metadescription'};
-% my %store_info = (0 => 'Временно нет', 1 => 'В наличии', 2 => 'В наличии', 3 => 'В наличии');
-% my %instore_class = (0 => 'color-red',1 => 'color-green');
+% my %store_info = (0 => 'Временно нет', 1 => 'В наличии');
+% my %instore_class = (0 => 'color-red', 1 => 'color-green');
 % my $instore = 0;
 <ul class="breadcrumb">
 	<li><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> <span class="divider">/</span></li>
@@ -27,7 +27,8 @@
 					<p><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>">
 <img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="<%= $productid->{'title'} %>" title="Подробнее о <%= $productid->{'title'} %>"></a></p>
 	      				<h3 class="align-center"><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a>
-% if (length($productid->{title})<=25){
+% my $length = length($productid->{title});
+% if (length($productid->{title}) <= 24){
 	<br />&nbsp;
 % }
 </h3>
@@ -41,8 +42,7 @@
 					<span class="middle-size"><%= $productid->{'price'} %></span> руб.
 %		};
 %		$instore = $productid->{'instore'};
-%		$instore = 1 if ($instore > 1 && $instore < 4);
-%		$instore = 1 if ($instore >= 4);
+%		$instore = 1 if ($instore > 0);
 					<br /><span class="<%= $instore_class{$instore} %>"><%= $store_info{$instore} %></p>
 					<form action="/cart/" method="post" class="align-center">
 						<input type=hidden name="productid" value="<%= $productid->{'id'} %>">
