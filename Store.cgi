@@ -14,7 +14,7 @@ my @appconf=<DBCONF>;
 close DBCONF;
 chomp @appconf;
 
-my ($storeid,$storename) = split(':',$appconf[0]);
+my $storename = $appconf[0];
 my $secret = $appconf[4];
 
 our $dbi = DBIx::Custom->connect(
@@ -260,7 +260,7 @@ post '/cart/' => sub{
             $cartitems->{$hash->{productid}}->{image} = $products->{$hash->{productid}}->{image};
         };
     }else{
-        $cartid = $storeid.time;
+        $cartid = time;
         $self->session(cartid => $cartid);
     };
 
