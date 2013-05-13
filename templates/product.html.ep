@@ -32,21 +32,16 @@
 		<ul class="thumbnails">
 			<li class="span3">
 				<div>
-				<a href="/media/products/large/<%= $image_source %>.jpg" class="thumbnail" rel="shadowbox[Slideshow]" title="<%= $product->{'title'} %>">
+				<a href="/media/products/large/<%= $image_source %>.jpg" class="fancybox" rel="group" title="<%= $product->{'title'} %>">
       				<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
-	    			</a><br />
-% if ($product->{image} && $product->{image} > 1){
-<ul class="thumbnails">
-%	for (my $i=1; $i<$product->{image}; $i++){
-%	$image_source = $product->{'url'}."-$i";
-  <li class="span1">
-    <a href="/media/products/more/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" class="thumbnail" rel="shadowbox[Slideshow]">
-      <img src="/media/products/small/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" alt="Дополнительное изображение #<%= $i %>">
-    </a>
-  </li>
-%	}
-</ul>
-% }
+	    			</a>
+			</div>
+			</li>	
+		</ul>
+	</div>
+	<div class="span6">
+
+		<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
 
 % if ($product->{'discount'}){
 %	$muted_price = $product->{'cost'}*($product->{'margin'}/100)+$product->{'cost'};
@@ -55,7 +50,7 @@
 		<p>Старая цена: <span class="color-red"><%= $muted_price %> руб.</span></p>
 % }
 		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
-		<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
+
 %# if ($credit_sum){
 
 %# }
@@ -64,12 +59,58 @@
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary">
 		</form>
-			</div>
-			</li>	
+		<p>Сомневаетесь? <a href="/webim/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/webim/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задайте вопрос</a> консультанту.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="span3">
+% if ($product->{image} && $product->{image} > 1){
+
+		<ul class="thumbnails">
+
+%	for (my $i=1; $i<$product->{image}; $i++){
+%	$image_source = $product->{'url'}."-$i";
+
+		<li class="span1">
+		<a href="/media/products/more/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" class="thumbnail fancybox" rel="group">
+		<img src="/media/products/small/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" alt="Дополнительное изображение #<%= $i %>">
+		</a>
+		</li>
+
+%	}
+
 		</ul>
+
+% }
+
 	</div>
 	<div class="span6">
-		<ul class="nav nav-tabs">
+
+% if($product->{'links'}){
+
+		<ul class="unstyled">
+
+%	my @links=split('#',$product->{'links'});
+% 	foreach my $key(@links){
+%		my($name,$link)=split(':',$key);
+
+		<li><img src="/media/icons/arrow.gif">&nbsp;<a href="http://<%= $link %>" target=_blank rel=nofollow><%= $name %></a></li>
+
+%	}
+
+		</ul>
+
+% }
+% if($product->{video}){
+	
+		<p><a href="<%= $product->{video} %>" class="various fancybox.iframe"><img src="/media/icons/videoreview_64px.gif"></a></p>
+% }
+	</div>
+</div>
+<div class="row">
+	<div class="span9">
+
+<ul class="nav nav-tabs">
 			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
 			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
 			<li><a href="#delivery" data-toggle="tab">Оплата и доставка</a></li>
@@ -95,9 +136,7 @@
 %	}
 % }
 %
-% if($product->{video}){
-			<%== $product->{video} %>
-% }
+
 			</div>
 			<div id="features" class="tab-pane">
 % my $age_group = 'без ограничений';
@@ -181,20 +220,5 @@
 			<p>Подробнее об условиях предоставления кредита  <a href="/about/buy-on-credit.html">читайте здесь</a>. Телефоны для справок: <nobr>8 (391) 29-202-29</nobr> <nobr>или 8-800-200-6-200</nobr> (звонок по России бесплатный).</p>
 			</div>
 		</div>
-% if($product->{'links'}){
-		<h3>Дополнительные ссылки</h3>
-		<ul>
-%	@content=split('#',$product->{'links'});
-% 	foreach my $key(@content){
-%		my($name,$link)=split(':',$key);
-			<li><a href="http://<%= $link %>" target=_blank rel=nofollow><%= $name %></a></li>
-%	}
-		</ul>
-% }
-	</div>
-</div>
-<div class="row">
-	<div class="span9">
-
 	</div>
 </div>
