@@ -76,11 +76,8 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="span5">		
-								<span class="large-text">8 (391) <nobr>29-202-29</nobr>&nbsp;&nbsp;<nobr>8-908-21-202-29</nobr></span>
-							</div>
-							<div class="span4"><p class="align-right">
-								<img src="/webim/b.php?i=support&amp;lang=ru" border="0" width="24" height="24" alt=""/>&nbsp;<a href="/webim/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/webim/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задать вопрос</a>
+							<div class="span3"><span class="large-text">8 (391) <nobr>203-03-10</nobr></span></div>
+							<div class="span6"><p class="align-right"><!--img src="/media/icons/phone.gif">&nbsp;<a href="#">Бесплатный звонок</a-->&nbsp;&nbsp;<img src="/media/icons/chat.gif">&nbsp;<a href="/webim/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/webim/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задать вопрос</a>
 &nbsp;&nbsp;<img src="/media/icons/cart.gif">&nbsp;<a href="/cart/" title="Переход в корзину">Моя корзина</a></p>
 							</div>
 						</div>
@@ -108,7 +105,7 @@
 						<h3>Контактная информация</h3>
 						<span itemscope itemtype="http://schema.org/Organization">
 						<ul class="unstyled">
-							<li><span itemprop="telephone" class="middle-size">(391) 29-202-29</span></li>
+							<li><span itemprop="telephone" class="middle-size">(391) 203-03-10</span></li>
 							<li><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи" itemprop="email">hello@nastartshop.ru</a></li>
 							<li><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск</span></span></li>
 							<li>ул. Телевизорная, 1 ст9</li>
@@ -176,7 +173,7 @@
 				<div class="row">
 					<div class="span12">
 					<hr />
-					<p class="align-justify"><small>Обращаем ваше внимание на&nbsp;то, что данный <nobr>интернет-сайт</nobr> носит исключительно информационный характер и&nbsp;ни&nbsp;при каких условиях не&nbsp;является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о&nbsp;наличии и&nbsp;стоимости указанных товаров и&nbsp;(или) услуг, пожалуйста, обращайтесь к&nbsp;менеджеру сайта с&nbsp;помощью <a href="/about/feedback.html" rel="nofollow">специальной формы связи</a> или по&nbsp;телефону: <nobr>+7 (391) 292-02-29</nobr>.</small></p>
+					<p class="align-justify"><small>Обращаем ваше внимание на&nbsp;то, что данный <nobr>интернет-сайт</nobr> носит исключительно информационный характер и&nbsp;ни&nbsp;при каких условиях не&nbsp;является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о&nbsp;наличии и&nbsp;стоимости указанных товаров и&nbsp;(или) услуг, пожалуйста, обращайтесь к&nbsp;менеджеру сайта с&nbsp;помощью <a href="/about/feedback.html" rel="nofollow">специальной формы связи</a> или по&nbsp;телефону: <nobr>8 (391) 203-03-10</nobr>.</small></p>
 					<p class="align-center">2012-2013, <img src="/media/images/logo/20-20.jpg" alt="Логотип магазина" title="Логотип магазина"> <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>НаСтарт.РФ</a>, интернет-магазин</p>
 					</div>
 				</div>				

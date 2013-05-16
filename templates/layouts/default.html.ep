@@ -42,39 +42,37 @@
 			<div class="row">
 			<div class="span9">
 			<p class="toplevel-menu">
-					% if ($page->{'url'} eq 'index'){
+% if ($page->{'url'} eq 'index'){
 					<strong>Главная</strong>
-					% }else{
+% }else{
 					<a href="/" title="Переход на главную страницу">Главная</a>
-					% };
+% };
 					<a href="/blog/" title="Статьи">Статьи</a>
-					% if ($page->{'url'} eq 'catalog'){
+% if ($page->{'url'} eq 'catalog'){
 					<strong>Каталог товаров</strong>
-					% }else{	
+% }else{	
 					<a href="/catalog/" title="Каталог товаров">Каталог товаров</a>
-					% };if ($page->{'url'} eq 'delivery-and-payment'){
+% };if ($page->{'url'} eq 'delivery-and-payment'){
 					<strong>Доставка и оплата</strong>
-					% }else{
+% }else{
 					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
-					% };if ($page->{'url'} eq 'change'){
+% };if ($page->{'url'} eq 'change'){
 					<strong>Обмен и возврат</strong>
-					% }else{
+% }else{
 					<a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a>
-					% };if ($page->{'url'} eq 'contacts'){
+% };if ($page->{'url'} eq 'contacts'){
 					<strong>Контакты</strong>
-					% }else{
+% }else{
 					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
-					% };
+% };
 				</p>
 			</div>
 			</div>
 			<div class="row">
-			<div class="span3">		
-<span class="large-text">8 (391) <nobr>203-03-10</nobr></span>
-			</div>
-			<div class="span6"><p class="align-right"><!--img src="/media/icons/phone.gif">&nbsp;<a href="#">Бесплатный звонок</a-->&nbsp;&nbsp;<img src="/media/icons/chat.gif">&nbsp;<a href="/webim/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/webim/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задать вопрос</a>
+				<div class="span3"><span class="large-text">8 (391) <nobr>203-03-10</nobr></span></div>
+				<div class="span6"><p class="align-right"><!--img src="/media/icons/phone.gif">&nbsp;<a href="#">Бесплатный звонок</a-->&nbsp;&nbsp;<img src="/media/icons/chat.gif">&nbsp;<a href="/webim/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/webim/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задать вопрос</a>
 &nbsp;&nbsp;<img src="/media/icons/cart.gif">&nbsp;<a href="/cart/" title="Переход в корзину">Моя корзина</a></p>
-			</div>
+				</div>
 			</div>
 			</div>
 		</div>
@@ -197,7 +195,7 @@
 				<div class="row">
 					<div class="span12">
 					<hr />
-					<p class="align-justify"><small>Обращаем ваше внимание на&nbsp;то, что данный <nobr>интернет-сайт</nobr> носит исключительно информационный характер и&nbsp;ни&nbsp;при каких условиях не&nbsp;является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о&nbsp;наличии и&nbsp;стоимости указанных товаров и&nbsp;(или) услуг, пожалуйста, обращайтесь к&nbsp;менеджеру сайта с&nbsp;помощью <a href="/about/feedback.html" rel="nofollow">специальной формы связи</a> или по&nbsp;телефону: <nobr>+7 (391) 292-02-29</nobr>.</small></p>
+					<p class="align-justify"><small>Обращаем ваше внимание на&nbsp;то, что данный <nobr>интернет-сайт</nobr> носит исключительно информационный характер и&nbsp;ни&nbsp;при каких условиях не&nbsp;является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о&nbsp;наличии и&nbsp;стоимости указанных товаров и&nbsp;(или) услуг, пожалуйста, обращайтесь к&nbsp;менеджеру сайта с&nbsp;помощью <a href="/about/feedback.html" rel="nofollow">специальной формы связи</a> или по&nbsp;телефону: <nobr>8 (391) 203-03-10</nobr>.</small></p>
 					<p class="align-center">2012-2013, <img src="/media/images/logo/20-20.jpg" alt="Логотип магазина" title="Логотип магазина"> <a href="http://настарт.рф" title="Интернет-магазин НаСтарт.рф" rel=nofollow>НаСтарт.РФ</a>, интернет-магазин</p>
 					</div>
 				</div>				
