@@ -41,40 +41,40 @@
 			<div class="span9">
 			<div class="row">
 			<div class="span9">
-			<p class="toplevel-menu">
+			<ul class="inline">
 % if ($page->{'url'} eq 'index'){
-					<strong>Главная</strong>
+					<li><strong>Главная</strong></li>
 % }else{
-					<a href="/" title="Переход на главную страницу">Главная</a>
+					<li><a href="/" title="Переход на главную страницу">Главная</a></li>
 % };
-					<a href="/blog/" title="Статьи">Статьи</a>
+					<li><a href="/blog/" title="Статьи">Статьи</a></li>
 % if ($page->{'url'} eq 'catalog'){
-					<strong>Каталог товаров</strong>
+					<li><strong>Каталог товаров</strong></li>
 % }else{	
-					<a href="/catalog/" title="Каталог товаров">Каталог товаров</a>
+					<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 % };if ($page->{'url'} eq 'delivery-and-payment'){
-					<strong>Доставка и оплата</strong>
+					<li><strong>Доставка и оплата</strong></li>
 % }else{
-					<a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a>
+					<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
 % };if ($page->{'url'} eq 'change'){
-					<strong>Обмен и возврат</strong>
+					<li><strong>Обмен и возврат</strong></li>
 % }else{
-					<a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a>
+					<li><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
 % };if ($page->{'url'} eq 'contacts'){
-					<strong>Контакты</strong>
+					<li><strong>Контакты</strong></li>
 % }else{
-					<a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a>
+					<li><a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a></li>
 % };
-				</p>
+				</ul>
 			</div>
 			</div>
 			<div class="row">
 				<div class="span9">
 <ul class="inline">
 <li class="middle-size"><nobr><small>8 (391)</small> 203-03-10</nobr> | <nobr>292-02-29</nobr></li>
-<li><img src="/media/icons/phone.gif">&nbsp;<a href="#" id="freecall">Бесплатный звонок</a></li>
-<li><img src="/media/icons/chat.gif"> <a href="/webim/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/webim/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задать вопрос</a></li>
-<li><img src="/media/icons/cart.gif">&nbsp;<a href="/cart/" title="Переход в корзину">Моя корзина</a></li>
+<li><img src="/media/icons/phone.gif" alt="phone">&nbsp;<a href="#" id="freecall" title="Бесплатный звонок с сайта">Бесплатный звонок</a></li>
+<li><img src="/media/icons/chat.gif" alt="chat"> <a href="/webim/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/webim/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'webim', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;" title="Онлайн консультант">Задать вопрос</a></li>
+<li><img src="/media/icons/cart.gif" alt="cart">&nbsp;<a href="/cart/" title="Переход в корзину">Моя корзина</a></li>
 </ul>
 				</div>
 			</div>

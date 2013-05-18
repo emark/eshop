@@ -11,19 +11,13 @@
 <div class="row">
   <div class="span9">
 		<p style="text-align: justify">Добро пожаловать в интернет-магазин &laquo;НаСтарт.РФ&raquo;. Мы рады предложить вам разнообразные <strong>детские спортивные комплексы</strong> от российских производителей, большое количество <strong>навесного оборудования и аксессуаров</strong>. А так же уникальный развивающий комплекс <strong>&laquo;Ранний старт&raquo;</strong> для детей <strong>от 0 до 6 лет</strong>. Физическим развитием необходимо заниматься с самого раннего возраста и мы готовы вам в этом помочь.</p>
-		<p>Почему стоит выбрать покупку именно у нас?</p>
-		<ol>
-			<li><a href="/catalog/">Большой ассортимент товаров и постоянное пополнение склада</a></li>
-			<li><a href="/about/delivery-and-payment.html">Мы принимаем разнообразные способы оплаты</a></li>
-			<li><a href="/about/delivery-and-payment.html">Мы доставляем товары по всей России</a></li>
-			<li><a href="/about/change.html">Гарантия возврата в течении 14 дней</a></li>
-			<li><a href="/about/delivery-and-payment.html">Бесплатная доставка в пункты самовывоза</a></li>
-		</ol>
+		<p class="text-center">Почему стоит выбрать покупку именно у нас?</p>
+<center><img src="/media/images/misc/olimpic_rings.gif"</center>
   </div>
 </div>
 <div class="row">    
   <div class="span9">
-    <h2>Лидеры продаж 	<img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></h2>
+    <p class="large-text">Лидеры продаж 	<img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></p>
 </div>
 </div>
 <div class="row">
