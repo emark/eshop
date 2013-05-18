@@ -146,6 +146,14 @@
 					<ul>
 						<li><%= $age_group %></li>
 					</ul>
+
+% my $warranty = '6 мес.';
+% $warranty = "$product->{warranty} мес." if $product->{warranty};
+				<h3>Гарантийный срок</h3>
+					<ul>
+						<li><%= $warranty %></li>
+					</ul>
+
 % if($product->{'settings'}){
 				<h3>Комплектация</h3>
 					<ol>
