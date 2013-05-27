@@ -15,7 +15,6 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="/assets/ico/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/plugins/shadowbox/shadowbox.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -27,14 +26,6 @@
 	  	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	  	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
-    </script>
-    <script type="text/javascript" src="/plugins/shadowbox/shadowbox.js"></script>
-    <script type="text/javascript">
-		Shadowbox.init();
-    </script>
-    <script type="text/javascript" src="http://userapi.com/js/api/openapi.js"></script>
-    <script type="text/javascript">
-		VK.init({apiId: 3012373, onlyWidgets: true});
     </script>
   </head>
   <body>
