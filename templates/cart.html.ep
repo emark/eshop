@@ -3,6 +3,10 @@
 % stash->{'metadescription'} = 'Страница корзины заказов. На странице можно редактировать и изменять список товаров';
 % my $total_cart = 0;
 % my $cartid = session->{cartid};
+% my $discount = 0;
+% my $discount_sum = 0;
+% my $discount_base = 0;
+% my $discount_cart = 0;
 
 <div>
 	<h1>Корзина</h1>
@@ -31,19 +35,28 @@
 				<td><%= $articul %></td>
 				<td><%= $cartitems->{$itemid}->{'price'} %> руб.</td> 
 				<td><center>
-					<a href="/cart/less/<%= $cartitems->{$itemid}->{productid} %>/" title="Уменьшить количество товара"><img src="/media/images/cart/less.gif" title="Уменьшить количество товара" alt="-"></a>&nbsp;
+					<a href="/cart/less/<%= $cartitems->{$itemid}->{productid} %>/" title="Уменьшить количество"><img src="/media/images/cart/less.gif" title="Уменьшить количество товара" alt="-"></a>&nbsp;
 					<%= $cartitems->{$itemid}->{'count'} %>
-					&nbsp;<a href="/cart/more/<%= $cartitems->{$itemid}->{productid} %>/" title="Увеличить количество товара"><img src="/media/images/cart/more.gif" title="Увеличить количество товара" alt="+"></a></center>
+					&nbsp;<a href="/cart/more/<%= $cartitems->{$itemid}->{productid} %>/" title="Увеличить количество"><img src="/media/images/cart/more.gif" title="Увеличить количество товара" alt="+"></a></center>
 				</td>
 				<td>
 					<%= $cartitems->{$itemid}->{'price'}*$cartitems->{$itemid}->{'count'} %> руб.
 				</td>
 			</tr>
+%		$discount_base = $discount_base+$cartitems->{$itemid}->{'count'}*$cartitems->{$itemid}->{'price'} if ($cartitems->{$itemid}->{discount}==0);
 % 		$total_cart = $total_cart+$cartitems->{$itemid}->{'count'}*$cartitems->{$itemid}->{'price'};
 % 	};
 		</tbody>
 		</table>
-		<h2>Итого:&nbsp;<%=$total_cart%> руб.</h2><p align="left"><a href="/catalog/">продолжить покупки</a></p>
+%	foreach my $key (keys $discounts){
+%		if ($total_cart > $key && $discount < $discounts->{$key}){
+%			$discount = $discounts->{$key};
+%			$discount_sum = sprintf ("%d",$discount_base*$discount/100);
+%		};
+%	};
+%	$discount_cart = $total_cart-$discount_sum;
+		<p>Сумма заказа: <%=$total_cart%> руб.<br /><a href="/about/discounts.html" target=_blank title="Узнайте подробнее о наших скидках">Ваша скидка</a>: <%= $discount %>%</p>
+		<p class="large-text">Итого:&nbsp;<%= $discount_cart %> руб.</p><p align="left"><a href="/catalog/">продолжить покупки</a></p>
 	</div>
 </div>
 <div class="row">

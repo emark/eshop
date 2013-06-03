@@ -16,6 +16,7 @@ chomp @appconf;
 
 my $storename = $appconf[0];
 my $secret = $appconf[4];
+my $discounts = {0 => 0, 7000 => 3, 12001 => 5, 17001 => 7};
 
 our $dbi = DBIx::Custom->connect(
 			dsn => $appconf[1],
@@ -74,6 +75,7 @@ post '/cart/checkout/' => sub {
 		$orderinfo->{sysdate} = \"NOW()";
 		$orderinfo->{status} = 0;
 		$orderinfo->{storename} = $storename;
+
 		$dbi->insert(
 			$orderinfo,
 			table => 'orders',
@@ -83,25 +85,61 @@ post '/cart/checkout/' => sub {
 			table => 'products',
 		);
 		my $products = {};
+
 		while (my $hash = $result->fetch_hash){
 			$products->{$hash->{id}} = $hash;
 		};
+
 		my $cartitems = {};
+		my $discount_base = 0;
+		my $total_cart = 0;
+
 		$result = $dbi->select(
             table => 'cart',
             where => {'cartid' => $cartid},
         );
+
         while(my $hash = $result->fetch_hash){
             $cartitems = $hash;
             $cartitems->{title} = $products->{$hash->{productid}}->{title};
             $cartitems->{price} = $products->{$hash->{productid}}->{price};
+			$cartitems->{discount} = $products->{$hash->{productid}}->{discount};
             $cartitems->{id} = '';
 
 			$dbi->insert(
 				$cartitems,
 				table => 'items',
 			);
+			
+			$discount_base = $discount_base + $cartitems->{price}*$cartitems->{count} if ($cartitems->{discount} == 0);
+			$total_cart = $total_cart + $cartitems->{price}*$cartitems->{count};
         };
+
+		if(!$orderinfo->{discount}){
+			my $discount = {};
+			$discount->{discount} = 0;
+			foreach my $key (keys %{$discounts}){
+				if ($total_cart > $key && $discount->{discount} < $discounts->{$key}){
+					$discount->{discount} = $discounts->{$key};
+				};
+			};
+
+			$discount->{name} = "$storename-$cartid-$discount->{discount}";
+
+			if($discount->{discount} > 0){
+
+				$dbi->insert(
+					$discount,
+					table => 'discounts',	
+				);
+			
+				$dbi->update(
+					{discount => $discount->{name}},
+					table => 'orders',
+					where => {cartid => $cartid}
+				);
+			};
+		};
 
 		$self->session('cartid' => 0);
 		$self->flash('cartid' => $cartid);
@@ -185,6 +223,7 @@ get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
 			$cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};
 			$cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
 			$cartitems->{$hash->{productid}}->{image} = $products->{$hash->{productid}}->{image};
+			$cartitems->{$hash->{productid}}->{discount} = $products->{$hash->{productid}}->{discount};
 		};
 	}else{
 		return $self->render('cart/emptycart');
@@ -223,6 +262,7 @@ get '/cart/:action/:id' => {action => 'view', id => 0} => sub{
     $self->stash(
         page => $page,
 		cartitems => $cartitems,
+		discounts => $discounts,
 	);
 
 	return $self->render('cart/emptycart') unless (%{$cartitems});
@@ -258,6 +298,7 @@ post '/cart/' => sub{
             $cartitems->{$hash->{productid}}->{title} = $products->{$hash->{productid}}->{title};	
             $cartitems->{$hash->{productid}}->{price} = $products->{$hash->{productid}}->{price};
             $cartitems->{$hash->{productid}}->{image} = $products->{$hash->{productid}}->{image};
+			$cartitems->{$hash->{productid}}->{discount} = $products->{$hash->{productid}}->{discount};
         };
     }else{
         $cartid = time;
@@ -281,6 +322,7 @@ post '/cart/' => sub{
 	$self->stash(
     	page => $page,
         cartitems => $cartitems,
+		discounts => $discounts,
     );
 };
 

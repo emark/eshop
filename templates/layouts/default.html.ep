@@ -53,7 +53,7 @@
 % };if ($page->{'url'} eq 'discounts'){
 					<li><strong>Скидки</strong></li>
 % }else{	
-					<li><a href="/about/discounts/" title="Каталог товаров">Скидки</a></li>
+					<li><a href="/about/discounts.html" title="Предлагаемые скидки">Скидки</a></li>
 % };
 					<li><a href="/blog/" title="Статьи">Журнал</a></li>
 % if ($page->{'url'} eq 'delivery-and-payment'){

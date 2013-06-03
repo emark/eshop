@@ -39,31 +39,35 @@
 					<div class="span9">
 						<div class="row">
 							<div class="span9">
-								<ul class="inline">
+			<ul class="inline">
 % if ($page->{'url'} eq 'index'){
-									<li><strong>Главная</strong></li>
+					<li><strong>Главная</strong></li>
 % }else{
-									<li><a href="/" title="Переход на главную страницу">Главная</a></li>
-% };
-									<li><a href="/blog/" title="Узнайте больше о наших товарах">Статьи</a></li>
-% if ($page->{'url'} eq 'catalog'){
-									<li><strong>Каталог товаров</strong></li>
+					<li><a href="/" title="Переход на главную страницу">Главная</a></li>
+% };if ($page->{'url'} eq 'catalog'){
+					<li><strong>Каталог</strong></li>
 % }else{	
-									<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
-% };if ($page->{'url'} eq 'delivery-and-payment'){
-									<li><strong>Доставка и оплата</strong></li>
-% }else{
-									<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
-% };if ($page->{'url'} eq 'change'){
-									<li><strong>Обмен и возврат</strong></li>
-% }else{
-									<li><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
-% };if ($page->{'url'} eq 'contacts'){
-									<li><strong>Контакты</strong></li>
-% }else{
-									<li><a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a></li>
+					<li><a href="/catalog/" title="Каталог товаров">Каталог</a></li>
+% };if ($page->{'url'} eq 'discounts'){
+					<li><strong>Скидки</strong></li>
+% }else{	
+					<li><a href="/about/discounts.html" title="Предлагаемые скидки">Скидки</a></li>
 % };
-								</ul>
+					<li><a href="/blog/" title="Статьи">Журнал</a></li>
+% if ($page->{'url'} eq 'delivery-and-payment'){
+					<li><strong>Доставка и оплата</strong></li>
+% }else{
+					<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
+% };if ($page->{'url'} eq 'change'){
+					<li><strong>Обмен и возврат</strong></li>
+% }else{
+					<li><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
+% };if ($page->{'url'} eq 'contacts'){
+					<li><strong>Контакты</strong></li>
+% }else{
+					<li><a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a></li>
+% };
+				</ul>
 							</div>
 						</div>
 						<div class="row">
