@@ -48,7 +48,7 @@
 % 	};
 		</tbody>
 		</table>
-%	foreach my $key (keys $discounts){
+%	foreach my $key (keys %{$discounts}){
 %		if ($total_cart > $key && $discount < $discounts->{$key}){
 %			$discount = $discounts->{$key};
 %			$discount_sum = sprintf ("%d",$discount_base*$discount/100);
