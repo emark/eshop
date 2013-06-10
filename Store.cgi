@@ -174,14 +174,20 @@ get '/cart/payment/:cartid' => sub{
 			'payment',
 			'delivery',
 			'status',
+			'discount',
 		],
 		where => {cartid => $cartid},
 	);
 	my $orderinfo = $result->one || undef;
-	
+
+	my $discount = $dbi->select(
+		table => 'discounts',
+		where => {name => $orderinfo->{discount}},
+	)->one;	
+
 	$result = $dbi->select(
 		table => 'items',
-		column => ['price','count'],
+		column => ['price','count','discount'],
 		where => {cartid => $cartid},
 	);
 	my $itemprice = $result->fetch_all;
@@ -189,6 +195,7 @@ get '/cart/payment/:cartid' => sub{
 		page => $page,
 		orderinfo => $orderinfo,
 		itemprice => $itemprice,
+		discount => $discount,
 	);
 	$self->render('cart/payment');
 };
