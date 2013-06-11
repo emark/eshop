@@ -40,18 +40,18 @@
 						<div class="row">
 							<div class="span9">
 			<ul class="inline">
-% if ($page->{'url'} eq 'index'){
-					<li><strong>Главная</strong></li>
-% }else{
-					<li><a href="/" title="Переход на главную страницу">Главная</a></li>
-% };if ($page->{'url'} eq 'catalog'){
+% if ($page->{'url'} eq 'catalog'){
 					<li><strong>Каталог</strong></li>
 % }else{	
 					<li><a href="/catalog/" title="Каталог товаров">Каталог</a></li>
 % };if ($page->{'url'} eq 'discounts'){
 					<li><strong>Скидки</strong></li>
 % }else{	
-					<li><a href="/about/discounts.html" title="Предлагаемые скидки">Скидки</a></li>
+					<li><a href="/about/discounts.html" title="Информация о скидках">Скидки</a></li>
+% };if ($page->{'url'} eq 'buy-on-credit'){
+					<li><strong>Купить в кредит</strong></li>
+% }else{
+					<li><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
 % };
 					<li><a href="/blog/" title="Статьи">Журнал</a></li>
 % if ($page->{'url'} eq 'delivery-and-payment'){
