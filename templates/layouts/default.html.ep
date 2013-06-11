@@ -98,7 +98,7 @@
     			<div class="leftbar-menu">
     				<p class="leftbar-block-p">КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>
 		    		<ul class="nav nav-list">
-						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Многоопорный комплекс &laquo;Ранний старт&raquo;</a></li>
+						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Спортивно-игровые комплексы</a></li>
 						<li<%== $active_link{'pristennye-dsk'} %>><a href="/catalog/pristennye-dsk/" title="Пристенные домашние спортивные комплексы">Пристенные спортивные комплексы</a></li>
 						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные домашние спортивные комплексы">Распорные спортивные комплексы</a></li>
 						<li<%== $active_link{'uglovye-dsk'} %>><a href="/catalog/uglovye-dsk/" title="Угловые домашние спортивные комплексы">Угловые спортивные комплексы</a></li>
