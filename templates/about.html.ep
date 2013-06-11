@@ -2,6 +2,10 @@
 % title 'Информация для покупателей';
 % stash->{'metadescription'} = 'Информация для покупателей Интернет-магазина НаСтарт. Справочные руководства и инструкции.';
 
+<ul class=breadcrumb>
+	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
+	<li><span class="muted">Информация для покупателей</span></li>
+</ul>
 <div>
 	<h1>Информация для покупателей</h1>
 </div>

@@ -108,12 +108,13 @@
 		    		<ul class="nav nav-list">
 						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
 						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Аксессуары &laquo;Ранний старт&raquo;</a></li>
-						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Дополнения к любым спорткомплексам</a></li>
+						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Прочее оборудование</a></li>
 						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
 						<li<%== $active_link{'plavanie'} %>><a href="/catalog/plavanie/" title="Надувные круги, матрасы, нарукавники, одежда для бассейна">Аксессуары для плавания</a></li>
 				</ul>
 				<p class="leftbar-block-p">ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 				<ul class="nav nav-list">
+					<li<%== $active_link{'buy-on-credit'} %>><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
 					<li<%== $active_link{'change'} %>><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
 					<li<%== $active_link{'contacts'} %>><a href="/about/contacts.html" title="Информация о контактах, адреса магазинов, банковские реквизиты">Где купить?</a></li>
 					<li<%== $active_link{'feedback'} %>><a href="/about/feedback.html" title="Страница отзывов и предложений">Обратная связь</a></li>
@@ -151,7 +152,6 @@
 					<div class="span3">
 						<h3>Справочная информация</h3>
 						<ul>
-							<li><a href="/blog/" title="Узнайте больше о наших товарах">Статьи о товарах</a></li>
 							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 							<li><a href="/about/discounts.html" title="Информация о скидках">Информация о скидках</a></li>
 							<li><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
@@ -172,14 +172,13 @@
 							<li><a href="/catalog/turniki/" title="Турники">Турники, брусья</a></li>
 							<li><a href="/catalog/gymnastic-mats/" title="Гимнастические маты">Гимнастические маты</a></li>
 							<li><a href="/catalog/rstart-accessories/" title="Аксессуары и навесное оборудование &laquo;Ранний старт&raquo;">Аксессуары &laquo;Ранний старт&raquo;</a></li>
-							<li><a href="/catalog/accessories/" title="Аксессуары и навесное оборудование">Дополнения к любым спорткомплексам</a></li>
+							<li><a href="/catalog/accessories/" title="Аксессуары и навесное оборудование">Прочее спортивное оборудование</a></li>
 							<li><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
 							<li><a href="/catalog/plavanie/" title="Надувные круги, матрасы, нарукавники, одежда для бассейна">Аксессуары для плавания</a></li>
 						</ul>
 						
 					</div>
-					<div class="span3">
-						
+					<div class="span3">			
 						<h3>Мы принимаем</h3>
 						<ul>
 							<li><a href="/about/delivery-and-payment.html">Наличные средства</a></li>
