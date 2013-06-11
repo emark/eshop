@@ -69,7 +69,11 @@
         	<div class="controls">
         		<label class="radio">
 				<%= radio_button 'payment' => 'cash' %>
-				Платёж наличными
+				Наличный платёж
+			</label>
+			<label class="radio">
+				<%= radio_button 'payment' => 'credit' %>
+				Оплата в кредит. <a href="/about/buy-on-credit.html" target=_blank>Подробнее об условиях</a>.
 			</label>
 			<label class="radio">
 				<%= radio_button 'payment' => 'yamoney' %>
