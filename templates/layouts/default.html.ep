@@ -112,6 +112,11 @@
 						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
 						<li<%== $active_link{'plavanie'} %>><a href="/catalog/plavanie/" title="Надувные круги, матрасы, нарукавники, одежда для бассейна">Аксессуары для плавания</a></li>
 				</ul>
+				<p class="leftbar-block-p">РАЗВИВАЮЩИЕ ИГРУШКИ</p>
+		    		<ul class="nav nav-list">
+						<li<%== $active_link{'derevjannye-igrushki'} %>><a href="/catalog/derevjannye-igrushki/" title="Каталог игрушек из дерева">Деревянные игрушки</a></li>
+				<li<%== $active_link{'kartonnye-domiki'} %>><a href="/catalog/kartonnye-domiki/" title="Большой ассортимент картонных домиков">Домики из картона</a></li>
+				</ul>
 				<p class="leftbar-block-p">ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 				<ul class="nav nav-list">
 					<li<%== $active_link{'buy-on-credit'} %>><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
@@ -175,6 +180,8 @@
 							<li><a href="/catalog/accessories/" title="Аксессуары и навесное оборудование">Прочее спортивное оборудование</a></li>
 							<li><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
 							<li><a href="/catalog/plavanie/" title="Надувные круги, матрасы, нарукавники, одежда для бассейна">Аксессуары для плавания</a></li>
+							<li><a href="/catalog/derevjannye-igrushki/" title="Каталог игрушек из дерева">Деревянные игрушки</a></li>
+							<li><a href="/catalog/kartonnye-domiki/" title="Большой ассортимент картонных домиков">Домики из картона</a></li>
 						</ul>
 						
 					</div>
