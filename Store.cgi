@@ -16,7 +16,7 @@ chomp @appconf;
 
 my $storename = $appconf[0];
 my $secret = $appconf[4];
-my $discounts = {split /\W/, $appconf[5]};
+my $discounts = {split /,/, $appconf[5]};
 
 our $dbi = DBIx::Custom->connect(
 			dsn => $appconf[1],

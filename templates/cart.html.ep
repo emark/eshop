@@ -51,11 +51,11 @@
 %	foreach my $key (keys %{$discounts}){
 %		if ($total_cart > $key && $discount < $discounts->{$key}){
 %			$discount = $discounts->{$key};
-%			$discount_sum = sprintf ("%d",$discount_base*$discount/100);
+%			$discount_sum = sprintf ("%d",$discount_base*$discount);
 %		};
 %	};
 %	$discount_cart = $total_cart-$discount_sum;
-		<p>Сумма заказа: <%=$total_cart%> руб.<br /><a href="/about/discounts.html" target=_blank title="Узнайте подробнее о наших скидках">Ваша скидка</a>: <%= $discount %>%</p>
+		<p>Сумма заказа: <%=$total_cart%> руб.<br /><a href="/about/discounts.html" target=_blank title="Узнайте подробнее о наших скидках">Ваша скидка</a>: <%= $discount*100 %>%</p>
 		<p class="large-text">Итого:&nbsp;<%= $discount_cart %> руб.</p><p align="left"><a href="/catalog/">продолжить покупки</a></p>
 	</div>
 </div>
