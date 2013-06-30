@@ -129,7 +129,7 @@ post '/cart/checkout/' => sub {
 				};
 			};
 
-			$discount->{name} = "$cartid-$discount->{discount}";
+			$discount->{name} = $cartid;
 
 			if($discount->{discount} > 0){
 
