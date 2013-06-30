@@ -77,7 +77,6 @@ post '/cart/checkout/' => sub {
 		
 		$orderinfo->{rvcode} = $rvcode;
 		$orderinfo->{cartid} = $cartid;
-		$orderinfo->{sysdate} = \"NOW()";
 		$orderinfo->{status} = 0;
 		$orderinfo->{storename} = $storename;
 		
