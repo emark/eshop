@@ -71,11 +71,16 @@ post '/cart/checkout/' => sub {
 	];
 	my $vresult = $vc->validate($orderinfo, $rule);
 	if($vresult->is_ok && $cartid){
+		my @ltime = localtime(time);
+		my $rvcode = substr $cartid,-6;
+		$rvcode = $rvcode+$ltime[4]+$ltime[5]; 
+		
+		$orderinfo->{rvcode} = $rvcode;
 		$orderinfo->{cartid} = $cartid;
 		$orderinfo->{sysdate} = \"NOW()";
 		$orderinfo->{status} = 0;
 		$orderinfo->{storename} = $storename;
-
+		
 		$dbi->insert(
 			$orderinfo,
 			table => 'orders',

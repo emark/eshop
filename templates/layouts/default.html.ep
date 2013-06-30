@@ -1,4 +1,4 @@
-% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '');
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'feedback' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '', 'derevjannye-igrushki' => '', 'kartonnye-domiki' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
