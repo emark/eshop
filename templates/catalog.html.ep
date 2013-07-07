@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Каталог детских спортивных товаров - купить спортивный уголок в Красноярске';
+% title 'Каталог детских спортивных товаров - купить детский спортивный уголок для дома в Красноярске';
 % stash->{'metadescription'} = 'В каталоге товаров интернет-магазина НаСтарт.РФ всё, что нужно для детского спортивного уголка. Выгодные цены, гарантия качества. Наличие в Красноярске. Доставка в Иркутск, Кемерово, Новосибирск';
 % my %min_price = ();
 % my %category_thumb = ();
@@ -18,21 +18,41 @@
 <div>
 	<h1>Каталог товаров</h1>
 </div>
-% foreach my $category (@{$categories}){
+
 <div class="row">
-	<div class="span3">
+	<div class="span9">
 		<ul class="thumbnails">
+
+% foreach my $category (@{$categories}){
+
 			<li class="span3">
+
 % $category_thumb{$category->{'url'}} = 'noimage' if !$category_thumb{$category->{'url'}};
-					<img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" class="image-center" alt="<%= $category->{'caption'} %>" title="<%= $category->{'title'} %>">
+
+					<a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><img src="/media/products/thumb/<%= $category_thumb{$category->{'url'}} %>.jpg" class="image-center" alt="<%= $category->{'caption'} %>" title="<%= $category->{'title'} %>"></a>
 % $min_price{$category->{'url'}} = 0 if !$min_price{$category->{'url'}};
-				<h3 class="align-center">Цены от <span class="middle-size"><%= $min_price{$category->{'url'}} %></span> руб.</h3>
+
+				<p class="align-center"><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога <%= length($category->{'caption'}) %> "><%= $category->{'caption'} %></a>
+
+% if (length($category->{'caption'}) <= 28){
+
+	<br />&nbsp;
+
+% }
+<br />Цены от <span class="middle-size"><%= $min_price{$category->{'url'}} %></span> руб.</p>
 			</li>
+% };
+
 		</ul>
 	</div>
-	<div class="span6">
-<h2><a href="/catalog/<%= $category->{'url'} %>/" title="Переход в раздел каталога"><%= $category->{'caption'} %></a></h2>
-		<p><%= $category->{'description'} %></p>
+</div>
+<div class="row">
+	<div class="span9">
+<h2>Уважаемые покупатели!</h2>
+<p>В&nbsp;интернет-магазине НаСтарт.РФ&nbsp;представлен широкий выбор детских спортивных уголков для дома, а&nbsp;также снарядов и&nbsp;тренажеров для оборудования детского спортивного уголка. Только у&nbsp;нас в&nbsp;Красноярске вы&nbsp;можете купить детский <a href="http://www.nastartshop.ru/catalog/dsk-rstart/" rel="nofollow">спортивно-игровой комплекс &laquo;Ранний Старт&raquo;</a>, который предназначен для малышей от&nbsp;1 года.</p>
+<p>
+С&nbsp;самого рождения самыми понятными и&nbsp;интересными для детей являются активные подвижные игры. Родителям просто надо с&nbsp;самого начала направить этот мощный поток жизненной энергии в&nbsp;полезное русло. Для развивающих активных игр дома достаточно правильно оборудовать детский уголок со&nbsp;спортивным детским комплексом и&nbsp;полезными для детей тренажерами. Если вы&nbsp;не&nbsp;знаете какой спортивный уголок выбрать, какие тренажеры будут интересны вашему ребенку&nbsp;&mdash; загляните в наш <a href="http://www.nastartshop.ru/blog/">интернет-журнал</a>, там всегда можно найти актуальные и&nbsp;полезные статьи.</p>
+<p>
+А&nbsp;еще у&nbsp;нас появилось новое направление&nbsp;&mdash; <a href="http://www.nastartshop.ru/catalog/derevjannye-igrushki/" rel="nofollow">уникальные деревянные большие конструкторы</a>. Помимо развития множества навыков ребенка и&nbsp;экологичности деталей это реальная экономия места! Подумать только, более 100 ростовых деревянных игрушек (машины, самолеты, паровозы, магазины, каталки, ходунки), которые вы&nbsp;можете легко собрать вместе с&nbsp;ребенком. В&nbsp;этих деревянных игрушках можно ездить, кататься, и&nbsp;можно придумать сотни сюжетно-ролевых игр. А&nbsp;теперь представьте, что они не&nbsp;пылятся грудой на&nbsp;балконе, а&nbsp;умещаются в&nbsp;одну небольшую коробку.</p>
 	</div>
 </div>
-% }
