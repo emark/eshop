@@ -50,6 +50,10 @@
 					<li><strong>Скидки</strong></li>
 % }else{	
 					<li><a href="/about/discounts.html" title="Информация о скидках">Скидки</a></li>
+% };if ($page->{'url'} eq 'reviews'){
+					<li><strong>Отзывы покупателей</strong></li>
+% }else{
+					<li><a href="/reviews/" title="Отзывы покупателей">Отзывы покупателей</a></li>
 % };if ($page->{'url'} eq 'buy-on-credit'){
 					<li><strong>Купить в кредит</strong></li>
 % }else{
@@ -60,10 +64,6 @@
 					<li><strong>Доставка и оплата</strong></li>
 % }else{
 					<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
-% };if ($page->{'url'} eq 'change'){
-					<li><strong>Обмен и возврат</strong></li>
-% }else{
-					<li><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
 % };if ($page->{'url'} eq 'contacts'){
 					<li><strong>Контакты</strong></li>
 % }else{

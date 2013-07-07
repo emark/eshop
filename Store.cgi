@@ -565,6 +565,46 @@ get '/sitemap' => sub{
 	$self->render('sitemap');
 };
 
+get '/reviews/add/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'reviews',
+	};
+	
+	$self->stash(
+		page => $page,
+	);	
+};
+
+post '/reviews/add/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'reviews',
+	};
+	my $orderid = $self->param('order');
+	my $rvcode = $self->param('activation');
+	my $rating = $self->param('rating');
+	my $review = $self->param('review');
+
+	my $cartid = $dbi->select(
+		column => 'cartid',
+		table => 'orders',
+		where => {id => $orderid, rvcode => $rvcode},
+	)->value || 0;
+	
+	if($cartid){
+		$dbi->update(
+			{rating => $rating, review => $review},
+			table => 'orders',
+			where => {cartid => $cartid},
+		);
+	};
+
+	$self->stash(
+		page => $page,
+	);
+};
+
 app->secret($secret);
 app->hook(before_dispatch => sub {
 				my $self = shift;
