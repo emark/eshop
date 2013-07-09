@@ -17,6 +17,7 @@ chomp @appconf;
 my $storename = $appconf[0];
 my $secret = $appconf[4];
 my $discounts = {split /,/, $appconf[5]};
+my $reviewdiscount = $appconf[6];
 
 our $dbi = DBIx::Custom->connect(
 			dsn => $appconf[1],
@@ -619,7 +620,7 @@ post '/reviews/add/' => sub{
 			);
 
 			$dbi->insert(
-				{name => $orderid.$rvcode, discount => 300},
+				{name => $orderid.$rvcode, discount => $reviewdiscount},
 				table => 'discounts',
 			);
 			
@@ -700,7 +701,7 @@ post '/reviews/' => sub{
 app->secret($secret);
 app->hook(before_dispatch => sub {
 				my $self = shift;
-#				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
+				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
 			}
 		);
 app->start;
