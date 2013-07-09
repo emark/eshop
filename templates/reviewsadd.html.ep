@@ -1,0 +1,89 @@
+% layout 'default';
+% title 'Отзывы покупателей';
+% stash->{'metadescription'} = 'Отзывы покупателей интернет-магазина "НаСтарт.РФ"';
+
+<ul class="breadcrumb">
+	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
+	<li><a href="/reviews/" title="Все отзывы покупателей">Отзывы покупателей</a> <span class="divider">/</span></li>
+	<li><span class="muted">Новый отзыв</span></li>
+</ul>
+<div>
+	<h1>Новый отзыв</h1>
+</div>
+<div>
+
+% my $missing = stash->{missing};
+% if ($missing){
+<div class="alert alert-block">
+	<button class="close" data-dismiss="alert">&times;</button>
+	<%= $missing %>
+</div>
+% }
+
+<form class="form-horizontal" method="post">
+
+  <div class="control-group">
+    <label class="control-label" for="Order">Номер заказа</label>
+    <div class="controls">
+      <!--input type="text" id="Order" name="order" class="span1"-->
+	<%= text_field 'order', class => 'span1' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+	<label class="control-label" for="Activation">Код активации</label>
+    <div class="controls">
+      <!--input type="text" id="Activation" name="activation" class="span1"-->
+	<%= text_field 'activation', class => 'span1' %>
+    </div>
+
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="rating">Довольны ли вы покупкой?</label>
+ <div class="controls">
+<label class="radio">
+  <!--input type="radio" name="rating" id="rating" value="1" checked-->
+	<%= radio_button 'rating' => '1' %>
+  <img src="/media/icons/rating/1.gif">&nbsp;Да, магазин буду советовать друзьям.
+</label>
+  </div>  
+
+ <div class="controls">
+<label class="radio">
+  <!--input type="radio" name="rating" id="rating" value="0"-->
+	<%= radio_button 'rating' => '0' %>
+  <img src="/media/icons/rating/0.gif">&nbsp;Обычный магазин, кое-что можно улучшить.
+</label>
+  </div>  
+
+ <div class="controls">
+<label class="radio">
+  <!--input type="radio" name="rating" id="rating" value="-1"-->
+	<%= radio_button 'rating' => '-1' %>
+  <img src="/media/icons/rating/-1.gif">&nbsp;Нет, магазин рекомендовать не буду.
+</label>
+  </div>  
+
+</div>
+
+
+  <div class="control-group">
+	<label class="control-label" for="Review">Текст отзыва</label>
+    <div class="controls">
+	<!--textarea rows="5" class="span6" id="Review" name="review" ></textarea-->
+	<%= text_area 'review' => (rows => 5), class => 'span6' %>
+    </div>
+    </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Отправить отзыв</button>
+    </div>
+
+
+
+  </div>
+</form>
+
+</div>

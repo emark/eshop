@@ -1,0 +1,50 @@
+% layout 'default';
+% title 'Отзывы покупателей';
+% stash->{'metadescription'} = 'Отзывы покупателей интернет-магазина "НаСтарт.РФ"';
+% my %rating = (1 => 'хороший магазин', 0 => 'обычный магазин', -1 => 'плохой магазин');
+
+<ul class="breadcrumb">
+	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
+	<li><span class="muted">Отзывы покупателей</span></li>
+</ul>
+<div>
+	<h1>Отзывы покупателей</h1>
+</div>
+
+% my $lastreview = 0;
+% if(@{$reviews}){
+
+<p><a href="/reviews/add/" class="btn">Добавить свой отзыв</a></p>
+
+% 	foreach my $review (@{$reviews}){
+% 		my $person = 'Покупатель';
+% 		$person = $review->{person} if $review->{person};
+% 		my @orderdate = localtime($review->{cartid});
+% 		$orderdate[5] = $orderdate[5]+1900;
+% 		$orderdate[4] = $orderdate[4]+1;
+
+<p>
+<%= $person %>
+<br /><img src="/media/icons/rating/<%= $review->{rating} %>.gif"> <span class="muted"><%= $rating{$review->{rating}} %></span>
+<span class="muted pull-right">дата заказа: <%= $orderdate[3].'-'.$orderdate[4].'-'.$orderdate[5] %></span>
+</p>
+
+<div class="well">
+<%= $review->{'review'} %>
+</div>
+
+%		$lastreview = $review->{cartid};
+% 	};
+
+<p>
+<form action method="post">
+<input type="hidden" value="<%= $lastreview %>" name="review">
+<input type=submit value="Смотреть ещё отзывы" class="btn">
+</form>
+</p>
+
+% }else{
+
+<p>Отзывов больше нет. Но вы можете добавить свой.</p>
+<p><a href="/reviews/add/" class="btn">Добавить свой отзыв</a></p>
+% };

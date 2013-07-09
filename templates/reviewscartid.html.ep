@@ -1,0 +1,73 @@
+% layout 'default';
+% title 'Отзыв о покупке в интернет-магазине НаСтарт.РФ';
+% stash->{'metadescription'} = 'Отзывы покупателей интернет-магазина "НаСтарт.РФ"';
+% my %rating = (1 => 'Хороший магазин', 0 => 'Обычный магазин', -1 => 'Плохой магазин');
+
+% if($review){
+
+<ul class="breadcrumb">
+	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
+	<li><a href="/reviews/" title="Все отзывы покупателей">Отзывы покупателей</a> <span class="divider">/</span></li>
+	<li><span class="muted">Отзыв <%= $review->{cartid} %></span></li>
+</ul>
+
+
+<div>
+	<h1>Отзыв <%= $cartid %></h1>
+</div>
+
+% my $congratulation = flash 'congratulation' || 0;
+% if($congratulation){
+
+<div class="alert alert-success">
+	<button class="close" data-dismiss="alert">&times;</button>
+	<b>Благодарим за отзыв!</b> Ваш купон активирован! Пожалуйста, поделитесь отзывом с вашими друзьями в социальных сетых.
+</div>
+
+% }
+
+% my $person = 'Покупатель';
+% $person = $review->{person} if $review->{person};
+% my @orderdate = localtime($review->{cartid});
+% $orderdate[5] = $orderdate[5]+1900;
+% $orderdate[4] = $orderdate[4]+1;
+% $orderdate[4] = '0'.$orderdate[4] if $orderdate[4]<10;
+% $orderdate[3] = '0'.$orderdate[3] if $orderdate[3]<10;
+
+
+	<img src="/media/icons/rating/star/<%= $review->{rating} %>.jpg" class="image-center">
+
+	<div itemprop="review" itemscope itemtype="http://schema.org/Review">
+		Автор отзыва: <span itemprop="author"><%= $person %></span><br />
+		<meta itemprop="datePublished" content="<%= $orderdate[5].'-'.$orderdate[4].'-'.$orderdate[3] %>">
+		Дата заказа: <%= $orderdate[3].'-'.$orderdate[4].'-'.$orderdate[5] %><br />
+
+		<div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+			<meta itemprop="worstRating" content="-1" />
+			<span itemprop="ratingValue" content="<%= $review->{rating} %>" />
+			<span itemprop="bestRating" content= "1" />
+		</div>
+
+		<p><span itemprop="name">Оценка: <%= $rating{$review->{rating}} %></span></p>
+
+		Текст отзыва:<p>
+		<span itemprop="description"><%= $review->{'review'} %></span></p>
+
+		<p>Постоянная ссылка на отзыв: <%= text_field 'link' => "http://www.nastartshop.ru/reviews/$cartid/", class=> 'span5' %></p>
+</div>
+
+<div id="sosialshare">
+
+<script type="text/javascript">(function() {
+          if (window.pluso)if (typeof window.pluso.start == "function") return;
+          var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+          s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+          s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+          var h=d[g]('head')[0] || d[g]('body')[0];
+          h.appendChild(s);
+          })();</script>
+        <div class="pluso" data-options="medium,round,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir" data-background="transparent"></div>
+
+</div>
+
+% };
