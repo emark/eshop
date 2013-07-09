@@ -48,6 +48,10 @@
 					<li><strong>Скидки</strong></li>
 % }else{	
 					<li><a href="/about/discounts.html" title="Информация о скидках">Скидки</a></li>
+% };if ($page->{'url'} eq 'reviews'){
+					<li><strong>Отзывы</strong></li>
+% }else{
+					<li><a href="/reviews/" title="Отзывы покупателей">Отзывы</a></li>
 % };if ($page->{'url'} eq 'buy-on-credit'){
 					<li><strong>Купить в кредит</strong></li>
 % }else{
@@ -58,10 +62,6 @@
 					<li><strong>Доставка и оплата</strong></li>
 % }else{
 					<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
-% };if ($page->{'url'} eq 'change'){
-					<li><strong>Обмен и возврат</strong></li>
-% }else{
-					<li><a href="/about/change.html" title="Условия обмена, возврата товаров">Обмен и возврат</a></li>
 % };if ($page->{'url'} eq 'contacts'){
 					<li><strong>Контакты</strong></li>
 % }else{
@@ -122,6 +122,7 @@
 						<ul>
 							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
 							<li><a href="/about/discounts.html" title="Информация о скидках">Информация о скидках</a></li>
+							<li><a href="/reviews/" title="Отзывы покупателей">Отзывы покупателей</a></li>
 							<li><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
 							<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
