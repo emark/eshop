@@ -607,7 +607,7 @@ post '/reviews/add/' => sub{
 		my $cartid = $dbi->select(
 			column => 'cartid',
 			table => 'orders',
-			where => {id => $orderid, rvcode => $rvcode},
+			where => {id => $orderid, rvcode => $rvcode, rating => 'is null'},
 		)->value || 0;
 	
 
@@ -617,6 +617,12 @@ post '/reviews/add/' => sub{
 				table => 'orders',
 				where => {cartid => $cartid},
 			);
+
+			$dbi->insert(
+				{name => $orderid.$rvcode, discount => 300},
+				table => 'discounts',
+			);
+			
 			$self->flash(congratulation => 1);
 			$self->redirect_to("/reviews/$cartid/");
 		}else{
