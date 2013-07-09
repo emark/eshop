@@ -51,9 +51,9 @@
 % }else{	
 					<li><a href="/about/discounts.html" title="Информация о скидках">Скидки</a></li>
 % };if ($page->{'url'} eq 'reviews'){
-					<li><strong>Отзывы покупателей</strong></li>
+					<li><strong>Отзывы</strong></li>
 % }else{
-					<li><a href="/reviews/" title="Отзывы покупателей">Отзывы покупателей</a></li>
+					<li><a href="/reviews/" title="Отзывы покупателей">Отзывы</a></li>
 % };if ($page->{'url'} eq 'buy-on-credit'){
 					<li><strong>Купить в кредит</strong></li>
 % }else{

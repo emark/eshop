@@ -586,29 +586,115 @@ post '/reviews/add/' => sub{
 	my $rating = $self->param('rating');
 	my $review = $self->param('review');
 
-	my $cartid = $dbi->select(
-		column => 'cartid',
-		table => 'orders',
-		where => {id => $orderid, rvcode => $rvcode},
-	)->value || 0;
-	
-	if($cartid){
-		$dbi->update(
-			{rating => $rating, review => $review},
-			table => 'orders',
-			where => {cartid => $cartid},
-		);
-	};
+	my $reviews = $self->req->params->to_hash;
+	my $vc = Validator::Custom->new;
+	my $rule = [
+		order => ['not_blank'],
+		activation => ['not_blank'],
+		rating => ['defined'],
+		review => ['not_blank'],
+	];
+
+	my $vresult = $vc->validate($reviews,$rule);
+
 
 	$self->stash(
 		page => $page,
 	);
+
+	if($vresult->is_ok){
+
+		my $cartid = $dbi->select(
+			column => 'cartid',
+			table => 'orders',
+			where => {id => $orderid, rvcode => $rvcode},
+		)->value || 0;
+	
+
+		if($cartid){
+			$dbi->update(
+				{rating => $rating, review => $review},
+				table => 'orders',
+				where => {cartid => $cartid},
+			);
+			$self->flash(congratulation => 1);
+			$self->redirect_to("/reviews/$cartid/");
+		}else{
+			$self->stash(
+				missing => 'Заказ не найден или ошибочный код активации',
+			);
+		};
+		
+	}else{
+		$self->stash(missing => 'Заполните все поля формы');
+	};
+};
+
+get '/reviews/:cartid/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'reviews',
+	};
+	my $cartid = $self->param('cartid');
+	
+
+	my $review = $dbi->select(
+		columns => ['rating','review','person'],
+		table => 'orders',
+		where => "rating is not null and cartid=$cartid",
+	)->fetch_hash_one;
+	
+	return $self->render(status => 404, template => 'not_found') if !$review;
+
+	$self->stash(
+		page => $page,
+		review => $review,
+	);
+};
+
+get '/reviews/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'reviews',
+	};
+	
+	my $reviews = $dbi->select(
+		columns => ['person','rating','review','cartid'],
+		table => 'orders',
+		where => 'rating is not null',
+		append => 'order by id desc limit 8',
+	)->fetch_hash_all;
+	
+	$self->stash(
+		page => $page,
+		reviews => $reviews,
+	);
+};
+
+post '/reviews/' => sub{
+	my $self = shift;
+	my $page = {
+		url => 'reviews',	
+	};
+
+	my $cartid = $self->param('review');
+	my $reviews = $dbi->select(
+        columns => ['person','rating','review','cartid'],
+        table => 'orders',
+        where => "rating is not null and cartid < $cartid",
+        append => 'order by id desc limit 8',
+    )->fetch_hash_all;
+
+    $self->stash(
+        page => $page,
+        reviews => $reviews,
+    );
 };
 
 app->secret($secret);
 app->hook(before_dispatch => sub {
 				my $self = shift;
-				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
+#				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
 			}
 		);
 app->start;

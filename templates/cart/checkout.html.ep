@@ -86,7 +86,7 @@
 	        </div>
 	</div>
 	<div class="control-group">
-        	<label class="control-label">Дисконт / Промо-код</label>
+        	<label class="control-label <%= $class_muted %>">Дисконт / Промо-код</label>
 		<div class="controls">
 			<%= text_field 'discount', class => 'span3' %>
 			<span class="help-block">Где можно получить <a href="/about/discounts.html" target=_blank>дисконт или промо-код</a>?</span>
