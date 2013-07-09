@@ -604,18 +604,18 @@ post '/reviews/add/' => sub{
 
 	if($vresult->is_ok){
 
-		my $cartid = $dbi->select(
-			column => 'cartid',
+		my $result = $dbi->select(
+			column => ['cartid','rating'],
 			table => 'orders',
-			where => {id => $orderid, rvcode => $rvcode, rating => 'is null'},
-		)->value || 0;
+			where => {id => $orderid, rvcode => $rvcode},
+		)->fetch_hash;
 	
 
-		if($cartid){
+		if($result && !$result->{rating}){
 			$dbi->update(
 				{rating => $rating, review => $review},
 				table => 'orders',
-				where => {cartid => $cartid},
+				where => {cartid => $result->{cartid}},
 			);
 
 			$dbi->insert(
@@ -624,7 +624,7 @@ post '/reviews/add/' => sub{
 			);
 			
 			$self->flash(congratulation => 1);
-			$self->redirect_to("/reviews/$cartid/");
+			$self->redirect_to("/reviews/$result->{cartid}/");
 		}else{
 			$self->stash(
 				missing => 'Заказ не найден или ошибочный код активации',
