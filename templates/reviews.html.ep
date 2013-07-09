@@ -22,6 +22,8 @@
 % 		my @orderdate = localtime($review->{cartid});
 % 		$orderdate[5] = $orderdate[5]+1900;
 % 		$orderdate[4] = $orderdate[4]+1;
+% 		$orderdate[4] = '0'.$orderdate[4] if $orderdate[4]<10;
+% 		$orderdate[3] = '0'.$orderdate[3] if $orderdate[3]<10;
 
 <p>
 <%= $person %>
