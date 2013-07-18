@@ -2,6 +2,10 @@
 % title "Результаты поиска";
 % stash->{'metadescription'} = 'Результаты поиска на сайте интернет-магазина НаСтарт.РФ';
 
+<ul class=breadcrumb>
+	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
+	<li><span class="muted">Результаты поиска</span></li>
+</ul>
 <div>
 	<h1>Результаты поиска</h1>
 </div>
