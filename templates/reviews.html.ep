@@ -14,7 +14,7 @@
 % my $lastreview = 0;
 % if(@{$reviews}){
 
-<p><a href="/reviews/add/" class="btn">Добавить свой отзыв</a></p>
+<p><a href="/reviews/add/">Добавить свой отзыв</a></p>
 
 % 	foreach my $review (@{$reviews}){
 % 		my $person = 'Покупатель';
@@ -41,12 +41,12 @@
 <p>
 <form action method="post">
 <input type="hidden" value="<%= $lastreview %>" name="review">
-<input type=submit value="Смотреть ещё отзывы" class="btn">
+<input type=submit value="Смотреть ещё отзывы" class="btn btn-primary">
 </form>
 </p>
 
 % }else{
 
 <p>Отзывов больше нет. Но вы можете добавить свой.</p>
-<p><a href="/reviews/add/" class="btn">Добавить свой отзыв</a></p>
+<p><a href="/reviews/add/">Добавить свой отзыв</a></p>
 % };
