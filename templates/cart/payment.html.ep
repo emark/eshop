@@ -7,7 +7,7 @@
 %	$discount_base = $discount_base+$item->[0]*$item->[1] if $item->[2] == 0;
 %	$total=$total+$item->[0]*$item->[1];
 % }
-% $discount_base = sprintf("%d",$discount_base*$discount->{discount}/100);
+% $discount_base = sprintf("%d",$discount_base*$discount->{discount});
 % $total = $total-$discount_base;
 
 % my %delivery_type = (store => 'самовывоз', courier => 'курьером', shipping => 'транспортная компания');
