@@ -57,7 +57,7 @@
 % }else{
 					<li><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
 % };
-					<li><a href="/blog/" title="Статьи">Журнал</a></li>
+					<li><a href="/blog/" title="Статьи">Статьи</a></li>
 % if ($page->{'url'} eq 'delivery-and-payment'){
 					<li><strong>Доставка и оплата</strong></li>
 % }else{
