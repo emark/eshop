@@ -90,7 +90,7 @@
 		
 		<div class="row">
 			<div class="span3"><p class="align-center"><a href="/" rel="nofollow" title="Переход на главную страницу">интернет-магазин</a></p></div>
-			<div class="span9"><ul class="inline"><li>Заказ товаров: понедельник-пятница с 11:00 до 19:00, суббота с 12:00 до 18:00</li></ul></div>
+			<div class="span9"><ul class="inline"><li>Заказ товаров: понедельник-пятница с 11:00 до 18:00, суббота с 12:00 до 16:00</li></ul></div>
 		</div>
 		<div class="row">
     		<div class="span3">
@@ -138,7 +138,7 @@
 					});
 				</script>
 				<ul class="nav nav-list"><li><img src="/media/images/misc/dobro24ru/logo.gif"></li>
-				<li><small>информация предоставлена <a href="http://dobro24.ru/%D0%B1%D0%BB%D0%B0%D0%B3%D0%BE%D1%82%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D1%84%D0%BE%D0%BD%D0%B4-%D0%B4%D0%BE%D0%B1%D1%80%D0%BE24-%D1%80%D1%83" target=_blank>БФ&nbsp;"Добро24.ру"</a></small></li>
+				<li><small>информация предоставлена <a href="http://www.dobro24.ru/" target=_blank rel="nofollow">БФ&nbsp;"Добро24.ру"</a></small></li>
 				</ul>
 			</div>	
    		</div>
