@@ -137,7 +137,7 @@
 % 	foreach my $key(@links){
 %		my($name,$link)=split(':',$key);
 
-		<li><img src="/media/icons/gift-32.gif">&nbsp;<a href="http://<%= $link %>"><%= $name %></a></li>
+		<li><img src="/media/icons/gift-32.gif">&nbsp;<a href="http://<%= $link %>" target=_blank rel=nofollow><%= $name %></a></li>
 
 %	}
 
