@@ -115,13 +115,35 @@
 
 % }
 % if($product->{video}){
-	
-		<p><img src="/media/icons/video.gif">&nbsp;&nbsp;<a href="<%= $product->{video} %>" class="various fancybox.iframe">Смотреть видео</a></p>
-% }
 
-% 		if($product->{'action'}){
-		<p><img src="/media/icons/gift-32.png" width=24 height=24>&nbsp;&nbsp;<a href="">Товар доступен по акции</a></p>
-% 		}
+		<ul class="unstyled">
+
+%	my @links=split('#',$product->{video});
+% 	foreach my $key(@links){
+%		my($name,$link)=split(':',$key);
+
+		<li><img src="/media/icons/video.gif">&nbsp;<a href="http://<%= $link %>" class="various fancybox.iframe"><%= $name %></a></li>
+
+%	}
+
+		</ul>
+
+% }
+% if($product->{action}){
+
+		<ul class="unstyled">
+
+%	my @links=split('#',$product->{action});
+% 	foreach my $key(@links){
+%		my($name,$link)=split(':',$key);
+
+		<li><img src="/media/icons/gift-32.gif">&nbsp;<a href="http://<%= $link %>"><%= $name %></a></li>
+
+%	}
+
+		</ul>
+
+% }
 
 	</div>
 </div>
