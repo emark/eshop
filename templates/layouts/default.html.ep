@@ -58,9 +58,7 @@
 					<li><strong>Купить в кредит</strong></li>
 % }else{
 					<li><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
-% };
-					<li><a href="/blog/" title="Статьи">Статьи</a></li>
-% if ($page->{'url'} eq 'delivery-and-payment'){
+% };if ($page->{'url'} eq 'delivery-and-payment'){
 					<li><strong>Доставка и оплата</strong></li>
 % }else{
 					<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
@@ -69,6 +67,7 @@
 % }else{
 					<li><a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a></li>
 % };
+					<li><a href="/blog/" title="Блог">Блог</a></li>
 				</ul>
 			</div>
 			</div>

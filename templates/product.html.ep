@@ -45,7 +45,7 @@
       				<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
 	    			</a>
 			</div>
-			</li>	
+			</li>
 		</ul>
 	</div>
 	<div class="span6">
@@ -118,6 +118,11 @@
 	
 		<p><img src="/media/icons/video.gif">&nbsp;&nbsp;<a href="<%= $product->{video} %>" class="various fancybox.iframe">Смотреть видео</a></p>
 % }
+
+% 		if($product->{'action'}){
+		<p><img src="/media/icons/gift-32.png" width=24 height=24>&nbsp;&nbsp;<a href="">Товар доступен по акции</a></p>
+% 		}
+
 	</div>
 </div>
 <div class="row">
@@ -127,7 +132,7 @@
 			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
 			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
 			<li><a href="#delivery" data-toggle="tab">Оплата и доставка</a></li>
-			<!--li><a href="#credit" data-toggle="tab">Расчет кредита</a></li-->
+			<li><a href="#discounts" data-toggle="tab">Система скидок</a></li>
 		</ul>
 		<div id="prod-ext-info" class="tab-content">
 			<div id="description" class="tab-pane active">
@@ -211,34 +216,26 @@
 				</ul>
 				<p>Подробнее об условиях оплаты и доставки <a href="/about/delivery-and-payment.html" rel="nofollow">читайте здесь</a>.</p>
 			</div>
-			<div id="credit" class="tab-pane">
-% if($credit_sum){
-<h3>Расчет ежемесячных платежей по кредиту*</h3>
-<table class="table table-condensed">
-	<thead>
-	<tr>
-	<th>Месяц</th><th>Сумма платежа</th><th>Остаток кредита</th></tr>
-	</thead>
-	<tbody>
+			<div id="discounts" class="tab-pane">
+				<h3>Скидка при определённой сумме заказа</h3>
+					<ul>
+					<li>3% при заказе от 7000 р. — 12000 р.</li>
+					<li>5% при заказе от 12001 р. — 17000 р.</li>
+					<li>7% при заказе свыше 17001 р.</li>
+					</ul>
+					<p><strong>Условия предоставления скидки</strong><br/>
+					Скидка предоставляется разово на всю сумму заказа за вычетом товаров уже имеющих скидку.<br/>
+					Суммы предыдущих заказов не суммируются.<br/>
+					При расчете скидки, в сумму заказа не включается стоимость дополнительных услуг (доставка, установка).
+					</p>
 
-%#	for (my $i = 1; $i < 11; $i++){
-%#		$credit_balance = sprintf("%d",$credit_balance-$credit_sum);
-%#		if ($i == 10){
-%#			$credit_sum = $credit_sum + $credit_balance;
-%#			$credit_balance = 0;
-%#		};
+				<h3>Скидка за отзыв о покупке</h3>
+				<p>После совершения покупки, напишите свой отзыв в нашем интернет-магазине и получите скидочный купон на 300 рублей.</p>
+				<p><strong>Условия предоставления скидки</strong><br/>
+				Скидка по купону предоставляется на следующий заказ.<br/>
+				Максимальная скидка по купону не может быть более 50% от суммы заказа.</p>
 
-%#	}
-		</table>
-		<form action="/cart/" method="post" class="align-center">
-		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
-		<input type="submit" value="Купить товар в кредит" class="btn btn-large">
-		</form>
-		<small>* указанный расчет является предварительным и не является офертой определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации</small>
-% }else{
-			<p>Отдельная продажа этого товара в кредит невозможна.</p>
-% }
-			<p>Подробнее об условиях предоставления кредита  <a href="/about/buy-on-credit.html">читайте здесь</a>. Телефоны для справок: <nobr>8 (391) 29-202-29</nobr> <nobr>или 8-800-200-6-200</nobr> (звонок по России бесплатный).</p>
+				<p>Подробнее о системе скидок <a href="/about/discounts.html" rel="nofollow">читайте здесь</a>.</p>
 			</div>
 		</div>
 	</div>
