@@ -113,7 +113,8 @@
 						<h3>Социальные сети</h3>
 						<p>
 						<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="ВКонтакте" title="Группа ВКонтакте"></a>
-						<!--a href="https://twitter.com/nastartshop" target=_blank><img src="/media/images/socbuttons/twitter.gif" alt="@nastartshop" title="Наш твиттер"--></a>
+						<a href="https://twitter.com/nastartshop" target=_blank><img src="/media/images/socbuttons/twitter.gif" alt="@nastartshop" title="Наш твиттер"></a>
+						<a href="https://www.facebook.com/nastartshop" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Facebook" title="Страница на Facebook"></a>
 						<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Одноклассники" title="Группа в Одноклассниках"></a>
 						<a href="https://plus.google.com/110471626333836075742/" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="G+" title="Страница на Google+"></a></p>
 					</div>
