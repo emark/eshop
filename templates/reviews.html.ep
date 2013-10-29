@@ -5,7 +5,7 @@
 
 <ul class="breadcrumb">
 	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
-	<li><span class="muted">Отзывы покупателей</span></li>
+	<!--li><span class="muted">Отзывы покупателей</span></li-->
 </ul>
 <div>
 	<h1>Отзывы покупателей</h1>

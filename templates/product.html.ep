@@ -13,23 +13,18 @@
 % my $muted_price = 0;
 % my $facenumber = int(rand(4));
 
-% my $tota_credit_sum = sprintf("%d",$product->{'price'}*1.1);
-% my $credit_sum = 0;
-% ($product->{price} > 3000) ? $credit_sum = sprintf("%d",$tota_credit_sum/11) : 0;
-% my $credit_balance = sprintf("%d",$tota_credit_sum-$credit_sum);
-
 <ul class="breadcrumb">
 	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
 	<li><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> <span class="divider">/</span></li>
 	<li><a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'caption'} %></a> <span class="divider">/</span></li>
 
-% my $trimtitle = $product->{'title'};
-% my $breadcrumb = "Главная/Каталог товаров/$page->{'caption'}/$trimtitle";
-% my $trimcount = length($breadcrumb);
-% $trimcount = $trimcount-80;
-% substr ($trimtitle, -$trimcount, $trimcount, '...') if($trimcount>0);
+%# my $trimtitle = $product->{'title'};
+%# my $breadcrumb = "Главная/Каталог товаров/$page->{'caption'}/$trimtitle";
+%# my $trimcount = length($breadcrumb);
+%# $trimcount = $trimcount-80;
+%# substr ($trimtitle, -$trimcount, $trimcount, '...') if($trimcount>0);
 
-	<li><span class="muted" title="<%= $product->{'title'} %>"><%= $trimtitle %></span></li>
+%#	<li><span class="muted" title="<%= $product->{'title'} %>"><%= $trimtitle %></span></li>
 </ul>
 
 <div>

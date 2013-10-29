@@ -13,7 +13,7 @@
 % };
 <ul class=breadcrumb>
 	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
-	<li><span class="muted">Каталог товаров</span></li>
+	<!--li><span class="muted">Каталог товаров</span></li-->
 </ul>
 <div>
 	<h1>Каталог товаров</h1>
