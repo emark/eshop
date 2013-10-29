@@ -11,10 +11,10 @@
 %		$category_thumb{$key->[0]} = $key->[2] if $key->[3];
 %	};
 % };
-<ul class=breadcrumb>
+<!--ul class=breadcrumb>
 	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
 	<!--li><span class="muted">Каталог товаров</span></li-->
-</ul>
+</ul-->
 <div>
 	<h1>Каталог товаров</h1>
 </div>

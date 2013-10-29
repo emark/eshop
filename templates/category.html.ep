@@ -38,16 +38,18 @@
 		<div style="position:relative;margin: -64px 0 0 136px"><img src="/media/icons/gift.png"></div>
 % 		}
 
-	      				<h3 class="align-center"><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"><%= $productid->{'title'} %></a>
 
-%# my $length = length($productid->{title});
-% if (length($productid->{title}) <= 24){
-
-	<br />&nbsp;
-
+% my $product_title = $productid->{title};
+% my $product_title_count = length($product_title);
+% if ($product_title_count <= 24){
+%	$product_title = $product_title.'<br/>&nbsp';
+% }elsif($product_title_count > 40){
+%	$product_title_count = $product_title_count-40;
+%	substr ($product_title, -$product_title_count, $product_title_count, '...') if($product_title_count > 0);
 % }
-
-</h3>
+	      				<h3 class="align-center">
+						<a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="Описание и харакетиристики <%= $productid->{'title'} %>"><%== $product_title %></a>
+					</h3>
 					<p class="align-center">
 					Цена:
 
