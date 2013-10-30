@@ -5,7 +5,6 @@
 <ul class=breadcrumb>
 	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
 	<li><a href="http://www.nastartshop.ru/about/" title="Справочная информация для покупателей">Информация для покупателей</a> <span class="divider">/</span></li>
-	<!--li><span class="muted"><%= $page->{'title'} %></span></li-->
 </ul>
 <div>
 	<h1><%= $page->{'caption'} %></h1>

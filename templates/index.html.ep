@@ -3,9 +3,6 @@
 % stash->{'metadescription'} = 'Мы предлагаем широкий ассортимент домашних детских спортивных комплексов разной формы и комплектации. Выгодные цены, гарантия качества. Наличие в Красноярске. Доставка в Иркутск, Кемерово, Новосибирск';
 
 <div class="row" id="banner"></div>
-<!--script>
-  $("#banner").load("/misc/banners");
-</script-->
 <script type="text/javascript">
 	$.get("/misc/banners", function(data){
 		var links = new Array;

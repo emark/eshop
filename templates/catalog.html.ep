@@ -11,16 +11,15 @@
 %		$category_thumb{$key->[0]} = $key->[2] if $key->[3];
 %	};
 % };
-<!--ul class=breadcrumb>
-	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
-	<!--li><span class="muted">Каталог товаров</span></li-->
-</ul-->
-<div class="row" id="catalog-offer">
-</div>
-<script>
-  $("#catalog-offer").load("/misc/catalog");
+<div class="row" id="banner"></div>
+<script type="text/javascript">
+	$.get("/misc/banners", function(data){
+		var links = new Array;
+		links = data.split('\n');
+		var r = 0 + Math.floor(Math.random()*(links.length-1));				
+		$('#banner').html(links[r]);
+	});
 </script>
-
 <div>
 	<h1>Каталог товаров</h1>
 </div>
