@@ -400,8 +400,7 @@ get '/catalog/:caturl' => sub {
 			'instore',
 			'discount',
 			'lastmod',
-			'age',
-			'action',
+			'age'
 		],
 		where => {'caturl' => $caturl},
 		append => 'order by instore desc'

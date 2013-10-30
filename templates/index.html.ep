@@ -2,10 +2,17 @@
 % title 'Детские спортивные комплексы для дома - пристенные, распорные и развивающие спорткомплексы купить в магазине  спортивных товаров для детей в Красноярске';
 % stash->{'metadescription'} = 'Мы предлагаем широкий ассортимент домашних детских спортивных комплексов разной формы и комплектации. Выгодные цены, гарантия качества. Наличие в Красноярске. Доставка в Иркутск, Кемерово, Новосибирск';
 
-<div class="row" id="offers">
-</div>
-<script>
-  $("#offers").load("/misc/offers");
+<div class="row" id="banner"></div>
+<!--script>
+  $("#banner").load("/misc/banners");
+</script-->
+<script type="text/javascript">
+	$.get("/misc/banners", function(data){
+		var links = new Array;
+		links = data.split('\n');
+		var r = 0 + Math.floor(Math.random()*(links.length-1));				
+		$('#banner').html(links[r]);
+	});
 </script>
 <div class="row">
   <div class="span9">
@@ -16,7 +23,7 @@
 </div>
 <div class="row">    
   <div class="span9">
-    <p class="large-text">Лидеры продаж 	<img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></p>
+    <p class="large-text">Выбор покупателей <img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"><img src="/media/images/star.png" alt="!"></p>
 </div>
 </div>
 <div class="row">
@@ -33,7 +40,7 @@
 		<p><a href="<%= "/catalog/$productid->{'caturl'}/$productid->{'url'}" %>.html" title="<%= $productid->{'title'} %>">
 		<img src="/media/products/thumb/<%= $image_source %>.jpg" alt="<%= $productid->{'title'} %>" title="<%= $productid->{'title'} %>" class="image-center gift"></a></p>
 
-% 		if($productid->{'action'}){
+% 		if($productid->{'discount'}){
 		<div style="position:relative;margin: -64px 0 0 136px"><img src="/media/icons/gift.png"></div>
 % 		}
 

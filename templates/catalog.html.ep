@@ -15,6 +15,12 @@
 	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
 	<!--li><span class="muted">Каталог товаров</span></li-->
 </ul-->
+<div class="row" id="catalog-offer">
+</div>
+<script>
+  $("#catalog-offer").load("/misc/catalog");
+</script>
+
 <div>
 	<h1>Каталог товаров</h1>
 </div>

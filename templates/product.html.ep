@@ -124,21 +124,6 @@
 		</ul>
 
 % }
-% if($product->{action}){
-
-		<ul class="unstyled">
-
-%	my @links=split('#',$product->{action});
-% 	foreach my $key(@links){
-%		my($name,$link)=split(':',$key);
-
-		<li><img src="/media/icons/gift-24.gif">&nbsp;<a href="http://<%= $link %>" target=_blank rel=nofollow><%= $name %></a></li>
-
-%	}
-
-		</ul>
-
-% }
 
 	</div>
 </div>
