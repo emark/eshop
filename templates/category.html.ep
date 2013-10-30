@@ -71,7 +71,12 @@
 					<br /><span class="<%= $instore_class{$instore} %>"><%= $store_info{$instore} %></p>
 					<form action="/cart/" method="post" class="align-center">
 						<input type=hidden name="productid" value="<%= $productid->{'id'} %>">
+
+%		if ($instore){
 						<input type=submit value="Купить" class="btn btn-primary">
+%		}else{
+						<input type=submit value="Заказать" class="btn">
+%		};
 					</form>
     			</div>
   			</li>

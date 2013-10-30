@@ -17,14 +17,6 @@
 	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
 	<li><a href="/catalog/" title="Список всех разделов каталога">Каталог товаров</a> <span class="divider">/</span></li>
 	<li><a href="/catalog/<%= $page->{'url'} %>/" title="Переход в раздел"><%= $page->{'caption'} %></a> <span class="divider">/</span></li>
-
-%# my $trimtitle = $product->{'title'};
-%# my $breadcrumb = "Главная/Каталог товаров/$page->{'caption'}/$trimtitle";
-%# my $trimcount = length($breadcrumb);
-%# $trimcount = $trimcount-80;
-%# substr ($trimtitle, -$trimcount, $trimcount, '...') if($trimcount>0);
-
-%#	<li><span class="muted" title="<%= $product->{'title'} %>"><%= $trimtitle %></span></li>
 </ul>
 
 <div>
@@ -65,7 +57,12 @@
 		<p><small>Информация о цене и наличии обновлена <%= $lastmod %></small></p>
 		<form action="/cart/" method="post">
 		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
+
+% if ($instore){
 		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary">
+% }else{
+		<input type="submit" value="Заказать товар" class="btn btn-large">
+% };
 		</form>
 		<p><img src="/media/images/misc/faces/face_<%= $facenumber %>.jpg">&nbsp;Сомневаетесь? <a href="/mibew/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/mibew/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'mibew', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задайте вопрос</a> консультанту.</p>
 	</div>
