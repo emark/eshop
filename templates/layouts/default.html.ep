@@ -50,6 +50,10 @@
 					<li><strong>Скидки</strong></li>
 % }else{	
 					<li><a href="/about/discounts.html" title="Информация о скидках">Скидки</a></li>
+% };if ($page->{'url'} eq 'promotion'){
+					<li><strong>Акции</strong></li>
+% }else{	
+					<li><a href="/about/promotion.html" title="Информация о проводимых акциях">Акции</a></li>
 % };if ($page->{'url'} eq 'reviews'){
 					<li><strong>Отзывы</strong></li>
 % }else{
