@@ -54,7 +54,7 @@
             		</label>
 			<label class="radio">
 				<%= radio_button 'delivery' => 'courier' %>
-				Курьерская доставка (Красноярск) <a href="/about/delivery-and-payment.html" target=_blank>Условия доставки</a>.
+				Курьерская доставка (Красноярск)
 			</label>
 			<label class="radio">
 				<%= radio_button 'delivery' => 'shipping' %>
@@ -71,15 +71,15 @@
         	<div class="controls">
         		<label class="radio">
 				<%= radio_button 'payment' => 'cash' %>
-				Наличный платёж
+				Платеж наличными
 			</label>
 			<label class="radio">
 				<%= radio_button 'payment' => 'credit' %>
-				Оплата в кредит. <a href="/about/buy-on-credit.html" target=_blank>Подробнее об условиях</a>.
+				Оплата в кредит (Банк Русский Стандарт)
 			</label>
 			<label class="radio">
 				<%= radio_button 'payment' => 'yamoney' %>
-				ПС &laquo;Яндекс.Деньги&raquo;
+				Оплата в системе &laquo;Яндекс.Деньги&raquo;
 			</label>
 			<label class="radio">
 				<%= radio_button 'payment' => 'check' %>
@@ -91,7 +91,7 @@
         	<label class="control-label <%= $class_muted %>">Промо-код</label>
 		<div class="controls">
 			<%= text_field 'discount', class => 'span3' %>
-			<span class="help-block">Где можно получить <a href="/about/discounts.html#promocodes" target=_blank>промо-код</a>?</span>
+			<span class="help-block">Если у вас есть промо-код укажите его</span>
 		</div>
 	</div>
 	<div class="control-group">
