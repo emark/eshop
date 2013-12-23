@@ -3,11 +3,10 @@
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
-% my %store_info = (0 => 'Временно нет', 1 => 'В наличии', 2 => 'В наличии', 3 => 'В наличии');
-% my %instore_class = (0 => 'color-red',1 => 'color-green');
+% my %store_info = (0 => 'Временно нет', 1 => 'Уточняйте наличие', 2 => 'В наличии');
+% my %instore_class = (0 => 'color-red',1 => 'color-yellow', 2 => 'color-green');
 % my $instore = $product->{'instore'};
-% $instore = 1 if ($instore > 1 && $instore < 4);
-% $instore = 1 if ($instore >= 4);
+% $instore = 2 if ($instore > 1);
 % my $articul = sprintf ("%06s",$product->{'id'});
 % my $saving_sum = 0;
 % my $muted_price = 0;

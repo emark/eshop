@@ -1,8 +1,8 @@
 % layout 'default';
 % title $page->{'title'};
 % stash->{'metadescription'} = $page->{'metadescription'};
-% my %store_info = (0 => 'Временно нет', 1 => 'В наличии');
-% my %instore_class = (0 => 'color-red', 1 => 'color-green');
+% my %store_info = (0 => 'Временно нет', 1 => 'Уточняйте наличие', 2 => 'В наличии');
+% my %instore_class = (0 => 'color-red',1 => 'color-yellow', 2 => 'color-green');
 % my $instore = 0;
 <ul class="breadcrumb">
 	<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
@@ -66,7 +66,7 @@
 
 %		};
 %		$instore = $productid->{'instore'};
-%		$instore = 1 if ($instore > 0);
+%		$instore = 2 if ($instore > 1);
 
 					<br /><span class="<%= $instore_class{$instore} %>"><%= $store_info{$instore} %></p>
 					<form action="/cart/" method="post" class="align-center">
