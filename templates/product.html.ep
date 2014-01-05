@@ -3,7 +3,7 @@
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 % my $image_source = 'noimage';
 % $image_source = $product->{'url'} if $product->{'image'};
-% my %store_info = (0 => 'Временно нет', 1 => 'Уточняйте наличие', 2 => 'В наличии');
+% my %store_info = (0 => 'Временно нет', 1 => 'В наличии, мало', 2 => 'В наличии');
 % my %instore_class = (0 => 'color-red',1 => 'color-yellow', 2 => 'color-green');
 % my $instore = $product->{'instore'};
 % $instore = 2 if ($instore > 1);

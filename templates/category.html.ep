@@ -1,7 +1,7 @@
 % layout 'default';
 % title $page->{'title'};
 % stash->{'metadescription'} = $page->{'metadescription'};
-% my %store_info = (0 => 'Временно нет', 1 => 'Уточняйте наличие', 2 => 'В наличии');
+% my %store_info = (0 => 'Временно нет', 1 => 'В наличии, мало', 2 => 'В наличии');
 % my %instore_class = (0 => 'color-red',1 => 'color-yellow', 2 => 'color-green');
 % my $instore = 0;
 <ul class="breadcrumb">
