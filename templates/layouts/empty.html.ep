@@ -15,6 +15,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="/plugins/fancybox/source/jquery.fancybox.css?v=2.1.4"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -95,13 +96,13 @@
 			<div class="span9"><ul class="inline"><li>Заказ товаров: понедельник-пятница с 11:00 до 18:00, суббота с 12:00 до 16:00</li></ul></div>
 		</div>
 	
-		<div class="row">
-	  		<div class="span12">
+		<!--div class="row">
+	  		<div class="span12"-->
 			<!-- Page content -->
 	   		<%= content %>
 			<!-- /Page content -->
-   			</div>
-		</div>
+   			<!--/div>
+		</div-->
 	<footer>
 			<div class="footer-links">
 				<div class="row">
@@ -186,6 +187,24 @@
     <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/application.js"></script>
+
+<script type="text/javascript" src="/plugins/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".fancybox").fancybox();
+	$(".various").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: false,
+		width		: '70%',
+		height		: '70%',
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+});
+</script>
 
 <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter14441680 = new Ya.Metrika({id:14441680, webvisor:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/14441680" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
 </body>
