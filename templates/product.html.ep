@@ -33,22 +33,27 @@
 <div class="row">
 	<div class="span3">
 
-% my $age_group = 'без ограничений';
+	<ul class="thumbnails">
+% my $age_group = 'любой';
 % $age_group = "от $product->{age} лет" if $product->{age};
-				<h3>Возрастная группа</h3>
-					<ul>
-						<li><%= $age_group %></li>
-					</ul>
+		
+	<li class="span1"><img src="/media/icons/age.png"> <em>возраст <%= $age_group %></em></li>
 
 % my $warranty = '6 мес.';
 % $warranty = "$product->{warranty} мес." if $product->{warranty};
-				<h3>Гарантийный срок</h3>
-					<ul>
-						<li><%= $warranty %></li>
-					</ul>
+
+	<li class="span1"><img src="/media/icons/warranty.png"> <em>гарантия <%= $warranty %></em></li>
+	
+% if($product->{discount}==0){
+
+	<li class="span1"><img src="/media/icons/discount.png"> <em>возможна скидка</em></li>
+
+% };
+
+	</ul>
 
 % if($product->{'settings'}){
-				<h3>Комплектация</h3>
+		<h3>Комплектация</h3>
 					<ol>
 % 	foreach my $key(split('#',$product->{'settings'})){
 						<li><%= $key %></li>
@@ -57,123 +62,116 @@
 % }
 		
 	</div>
-	<div class="span3">
-		<ul class="thumbnails">
+	<div class="span9">
+		<div class="row">
+			<div class="span3">
+			<ul class="thumbnails">
 			<li class="span3">
 				<div>
 				<a href="/media/products/large/<%= $image_source %>.jpg" class="fancybox" rel="group" title="<%= $product->{'title'} %>">
       				<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
 	    			</a>
-			</div>
+				</div>
 			</li>
-		</ul>
-	</div>
-	<div class="span6">
-		<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
+			</ul>
+			</div>
+			<div class="span6">
+			<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
 
 % if ($product->{'discount'}){
 %	$muted_price = $product->{'cost'}*($product->{'margin'}/100)+$product->{'cost'};
 %	$muted_price = sprintf("%d", $muted_price);
 %	$saving_sum = $muted_price-$product->{'price'};
-		<p>Старая цена: <span class="color-red"><%= $muted_price %> руб.</span></p>
+		
+			<p>Старая цена: <span class="color-red"><%= $muted_price %> руб.</span></p>
+
 % }
-		<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 
-%# if ($credit_sum){
+			<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 
-%# }
 % my @local = localtime(time);
 % $local[5] = $local[5]+1900;
 % my @month = ('января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря');
 % my $lastmod = "$local[3] $month[$local[4]] $local[5]";
-		<p><small>Информация о цене и наличии обновлена <%= $lastmod %></small></p>
-		<form action="/cart/" method="post">
-		<input type=hidden value="<%= $product->{'id'} %>" name="productid">
+
+			<p><small>Информация о цене и наличии обновлена <%= $lastmod %></small></p>
+			<form action="/cart/" method="post">
+			<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 
 % if ($instore){
-		<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary">
+
+			<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary">
+
 % }else{
-		<input type="submit" value="Заказать товар" class="btn btn-large">
+
+			<input type="submit" value="Заказать товар" class="btn btn-large">
+
 % };
-		</form>
-		<p><img src="/media/images/misc/faces/face_<%= $facenumber %>.jpg">&nbsp;Сомневаетесь? <a href="/mibew/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/mibew/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'mibew', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задайте вопрос</a> консультанту.</p>
-	</div>
-</div>
-<div class="row">
-<div class="span3">
-		
-	</div>
-	<div class="span3">
+			</form>
+			<p><img src="/media/images/misc/faces/face_<%= $facenumber %>.jpg">&nbsp;Сомневаетесь? <a href="/mibew/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/mibew/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'mibew', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задайте вопрос</a> консультанту.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span3">
 % if ($product->{image} && $product->{image} > 1){
 
-		<ul class="thumbnails">
+			<ul class="thumbnails">
 
 %	for (my $i=1; $i<$product->{image}; $i++){
 %	$image_source = $product->{'url'}."-$i";
 
-		<li class="span1">
-		<a href="/media/products/more/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" class="thumbnail fancybox" rel="group">
-		<img src="/media/products/small/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" alt="Дополнительное изображение #<%= $i %>">
-		</a>
-		</li>
+			<li class="span1">
+				<a href="/media/products/more/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" class="thumbnail fancybox" rel="group">
+				<img src="/media/products/small/<%= $image_source %>.jpg" title="<%= $product->{'title'} %>" alt="Дополнительное изображение #<%= $i %>">
+				</a>
+			</li>
 
 %	}
 
-		</ul>
+			</ul>	
 
 % }
 
-	</div>
-	<div class="span6">
-
+			</div>
+			<div class="span6">
 % if($product->{'links'}){
 
-		<ul class="unstyled">
+			<ul class="unstyled">
 
 %	my @links=split('#',$product->{'links'});
 % 	foreach my $key(@links){
 %		my($name,$link)=split(':',$key);
 
-		<li><img src="/media/icons/arrow.gif">&nbsp;<a href="http://<%= $link %>" target=_blank rel=nofollow><%= $name %></a></li>
+			<li><img src="/media/icons/arrow.gif">&nbsp;<a href="http://<%= $link %>" target=_blank rel=nofollow><%= $name %></a></li>
 
 %	}
 
-		</ul>
+			</ul>
 
 % }
 
-
 % if($product->{video}){
 
-		<ul class="unstyled">
+			<ul class="unstyled">
 
 %	my @links=split('#',$product->{video});
 % 	foreach my $key(@links){
 %		my($name,$link)=split(':',$key);
 
-		<li><img src="/media/icons/video.gif">&nbsp;<a href="http://<%= $link %>" class="various fancybox.iframe"><%= $name %></a></li>
+			<li><img src="/media/icons/video.gif">&nbsp;<a href="http://<%= $link %>" class="various fancybox.iframe"><%= $name %></a></li>
 
 %	}
 
-		</ul>
-
-
+			</ul>
 
 % }
-
+			</div>
+		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="span12">
-
-<ul class="nav nav-tabs">
-			<li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
-			<li><a href="#features" data-toggle="tab">Характеристики</a></li>
-			<li><a href="#delivery" data-toggle="tab">Оплата и доставка</a></li>
-			<li><a href="#discounts" data-toggle="tab">Система скидок</a></li>
-		</ul>
-		<div id="prod-ext-info" class="tab-content">
-			<div id="description" class="tab-pane active">
+	
 % my @content = ();
 % @content = split('#',$product->{'description'});
 
@@ -182,92 +180,67 @@
 % 	foreach my $key(@content){
 %		$pcount++;
 %		if($pcount == 4){		
-				<p id='ext-description-link'><img src="/media/icons/arrow_down.gif"> <a href="#">Показать весь текст описания</a></p>
-				<div id="ext-description" style="display:none">		
+		<p id='ext-description-link'><img src="/media/icons/arrow_down.gif"> <a href="#">Показать весь текст описания</a></p>
+		<div id="ext-description" style="display:none">		
 %		}
-				<p><%== $key %></p>
+		<p><%== $key %></p>
 % 	}
 %	if($pcount > 3){
-				</div>
+		</div>
 %	}
 % }
 %
 
-			</div>
-			<div id="features" class="tab-pane">
-% my $age_group = 'без ограничений';
-% $age_group = "от $product->{age} лет" if $product->{age};
-				<h3>Возрастная группа</h3>
-					<ul>
-						<li><%= $age_group %></li>
-					</ul>
-
-% my $warranty = '6 мес.';
-% $warranty = "$product->{warranty} мес." if $product->{warranty};
-				<h3>Гарантийный срок</h3>
-					<ul>
-						<li><%= $warranty %></li>
-					</ul>
-
-% if($product->{'settings'}){
-				<h3>Комплектация</h3>
-					<ol>
-% 	foreach my $key(split('#',$product->{'settings'})){
-						<li><%= $key %></li>
-% 	}
-					</ol>
-% }
 % @content=split('#',$product->{'features'});
 % if(@content){
-				<h3>Параметры</h3>
-					<table class="table">
-					<tbody>
+		<h2>Характеристики</h2>
+		<table class="table table-bordered table-hover">
+		<tbody>
 % 	foreach my $key(@content){
 %		my($param,$value)=split(':',$key);
-						<tr><td><%= $param %></td><td><%= $value %></td></tr>
+			<tr><td><%= $param %></td><td><%= $value %></td></tr>
 % 	}
-					</tbody>
-					</table>
+		</tbody>
+		</table>
 % }
-			</div>
-			<div id="delivery" class="tab-pane">
-			<h3>Варианты оплаты</h3>
-				<ul>
-					<li>Наличными курьеру или в&nbsp;<a href="/about/contacts.html">пунктах самовывоза</a></li>
-					<li>Банковским переводом</li>
-					<li>Электронными деньгами</li>
-				</ul>
-			<h3>Доставка</h3>
-				<ul>
-					<li>Бесплатно в <a href="/about/contacts.html">пункты самовывоза</a>.</li>
-					<li>Курьерская доставка по&nbsp;г.&nbsp;Красноярску</li>
-					<ul>
-					<li>Доставка товаров (исключая спортивные комплексы) 100 рублей</li>	
-					<li>Спортивные комплексы 450&nbsp;рублей</li>
-					</ul>	
-					<li>Транспортными компаниями по&nbsp;России</li>	
-					<ul>	
-					<li><a href="http://www.pecom.ru/ru/services/pricelist/rates/" rel="nofollow" target=_blank>Компания &laquo;ПЭК&raquo;</a></li>	
-					<li><a href="http://www.dellin.ru/" rel="nofollow" target=_blank>Деловые Линии</a></li>	
-					<li><a href="http://www.nrg-tk.ru/ru/tariff.html" rel="nofollow" target=_blank>ТК&nbsp;Энергия</a></li>	
-					</ul>	
-				</ul>
-				<p>Подробнее об условиях оплаты и доставки <a href="/about/delivery-and-payment.html" rel="nofollow">читайте здесь</a>.</p>
-			</div>
-			<div id="discounts" class="tab-pane">
-				<h3>Скидка при определённой сумме заказа</h3>
-					<ul>
-					<li>3% при заказе от 7000 р. — 12000 р.</li>
-					<li>5% при заказе от 12001 р. — 17000 р.</li>
-					<li>7% при заказе свыше 17001 р.</li>
-					</ul>
-					<p><strong>Условия предоставления скидки</strong><br/>
-					Скидка предоставляется разово на всю сумму заказа за вычетом товаров уже имеющих скидку.<br/>
-					Суммы предыдущих заказов не суммируются.<br/>
-					При расчете скидки, в сумму заказа не включается стоимость дополнительных услуг (доставка, установка).
-					</p>
-				<p>Подробнее о наших скидках <a href="/about/discounts.html" rel="nofollow">читайте здесь</a>.</p>
-			</div>
-		</div>
+
+	</div>
+</div>
+<div class="row">
+	<div class="span6">
+		<h2>Варианты оплаты</h2>
+		<ul>
+			<li>Наличными курьеру или в&nbsp;<a href="/about/contacts.html">пунктах самовывоза</a></li>
+			<li>Банковским переводом</li>
+			<li>Электронными деньгами</li>
+		</ul>
+		<h3>Скидка при определённой сумме заказа</h3>
+		<ul>
+			<li>3% при заказе от 7000 р. — 12000 р.</li>
+			<li>5% при заказе от 12001 р. — 17000 р.</li>
+			<li>7% при заказе свыше 17001 р.</li>
+		</ul>
+		<p>Подробнее о наших скидках <a href="/about/discounts.html" rel="nofollow">читайте здесь</a>.</p>
+	</div>
+	<div class="span6">
+		<h2>Доставка</h2>
+		<ul>
+			<li>Бесплатно в <a href="/about/contacts.html">пункты самовывоза</a>.</li>
+			<li>Курьерская доставка по&nbsp;г.&nbsp;Красноярску</li>
+			<ul>
+				<li>Доставка товаров (исключая спорткомплексы) 100 рублей</li>	
+				<li>Спортивные комплексы 450&nbsp;рублей</li>
+			</ul>	
+			<li>Транспортными компаниями по&nbsp;России</li>	
+				<ul>	
+				<li><a href="http://www.pecom.ru/ru/services/pricelist/rates/" rel="nofollow" target=_blank>Компания &laquo;ПЭК&raquo;</a></li>	
+				<li><a href="http://www.dellin.ru/" rel="nofollow" target=_blank>Деловые Линии</a></li>	
+				<li><a href="http://www.nrg-tk.ru/ru/tariff.html" rel="nofollow" target=_blank>ТК&nbsp;Энергия</a></li>	
+				</ul>	
+		</ul>
+		<p>Подробнее об условиях оплаты и доставки <a href="/about/delivery-and-payment.html" rel="nofollow">читайте здесь</a>.</p>
+		
+	</div>
+	<div class="span6">
 	</div>
 </div>
