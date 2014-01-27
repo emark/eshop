@@ -160,18 +160,25 @@
 						<ul class="unstyled">
 							<li><span itemprop="telephone" class="middle-size">8 (391) 203-03-10</span></li>
 							<li><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи" itemprop="email">hello@nastartshop.ru</a></li>
-							<li><span itemprop="name">НаСтарт.РФ</span></li>
-							<li><a href="http://maps.yandex.ru/-/CVVWF2mk" title="Показать адрес магазина на Яндекс.Карте" target=_blank><img src="/media/images/footer/map2.jpg" border=0></a></li>
+							<li><span itemprop="name">НаСтарт.РФ</span></li>				
 							<li><a href="http://maps.yandex.ru/-/CVVWF2mk" title="Показать адрес магазина на Яндекс.Карте" target=_blank><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск, ул.&nbsp;Телевизорная,&nbsp;1 строение&nbsp;9</span></span></a></li>
 						</ul>
 						</span>
-						<h3>Социальные сети</h3>
+						<!--h3>Социальные сети</h3>
 						<p>
 						<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="ВКонтакте" title="Группа ВКонтакте"></a>
 						<a href="https://twitter.com/nastartshop" target=_blank><img src="/media/images/socbuttons/twitter.gif" alt="@nastartshop" title="Наш твиттер"></a>
 						<a href="https://www.facebook.com/neskuchnoe.razvitie" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Facebook" title="Страница на Facebook"></a>
 						<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Одноклассники" title="Группа в Одноклассниках"></a>
-						<a href="https://plus.google.com/+NastartshopRu" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="G+" title="Страница на Google+"></a></p>
+						<a href="https://plus.google.com/+NastartshopRu" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="G+" title="Страница на Google+"></a>
+						</p-->
+						<script type="text/javascript" src="//vk.com/js/api/openapi.js?105"></script>
+
+						<!-- VK Widget -->
+						<div id="vk_groups"></div>
+						<script type="text/javascript">
+						VK.Widgets.Group("vk_groups", {mode: 1, width: "220", height: "400", color1: 'ffffff', color2: '000000', color3: 'ff0080'}, 40931878);
+						</script>
 					</div>
 					<div class="span3">
 						<h3>Справочная информация</h3>
