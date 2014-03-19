@@ -89,6 +89,13 @@
 
 			<h2>Цена: <%= $product->{'price'} %> руб.</h2>
 
+%	if($product->{price} > 3000){
+%	my $credit_sum = sprintf("%d",$product->{'price'}/10);
+			<p>
+				<a href="http://www.nastartshop.ru/about/buy-on-credit.html" title="Информация о покупке в кредит <%= $product->{'title'} %>">Купить в кредит всего за <strong><%= $credit_sum %> руб.</strong></a><br/>	
+			</p>
+% 	};
+
 % my @local = localtime(time);
 % $local[5] = $local[5]+1900;
 % my @month = ('января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря');
