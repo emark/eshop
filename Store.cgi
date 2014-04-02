@@ -7,7 +7,7 @@ use Mojo::UserAgent;
 use DBIx::Custom;
 use Validator::Custom;
 use utf8;
-#use v5.10.0;
+use v5.10.0;
 
 open (DBCONF,"< app.conf") || die "Error open dbconfig file";
 my @appconf=<DBCONF>;
