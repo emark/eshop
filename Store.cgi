@@ -698,7 +698,7 @@ post '/reviews/' => sub{
     );
 };
 
-app->secret($secret);
+app->secrets($secret);
 app->hook(before_dispatch => sub {
 				my $self = shift;
 				$self->req->url->base(Mojo::URL->new(q{http://www.nastartshop.ru/}));
