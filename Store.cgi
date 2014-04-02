@@ -7,7 +7,7 @@ use Mojo::UserAgent;
 use DBIx::Custom;
 use Validator::Custom;
 use utf8;
-use v5.10.0;
+#use v5.10.0;
 
 open (DBCONF,"< app.conf") || die "Error open dbconfig file";
 my @appconf=<DBCONF>;
@@ -15,7 +15,9 @@ close DBCONF;
 chomp @appconf;
 
 my $storename = $appconf[0];
-my $secret = $appconf[4];
+my $secret = ();
+@{$secret} = split (',', $appconf[4]);
+
 my $discounts = {split /,/, $appconf[5]};
 my $reviewdiscount = $appconf[6];
 
