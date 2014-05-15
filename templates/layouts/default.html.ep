@@ -1,4 +1,4 @@
-% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '', 'derevjannye-igrushki' => '', 'kartonnye-domiki' => '');
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '', 'derevjannye-igrushki' => '', 'kartonnye-domiki' => '', 'ulichnye-sportivnye-kompleksy' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -108,6 +108,7 @@
 						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные домашние спортивные комплексы">Распорные спортивные комплексы</a></li>
 						<li<%== $active_link{'uglovye-dsk'} %>><a href="/catalog/uglovye-dsk/" title="Угловые домашние спортивные комплексы">Угловые спортивные комплексы</a></li>
 						<li<%== $active_link{'turniki'} %>><a href="/catalog/turniki/" title="Турники">Турники, брусья</a></li>
+						<li<%== $active_link{'ulichnye-sportivnye-kompleksy'} %>><a href="/catalog/ulichnye-sportivnye-kompleksy/" title="Спортивные комплексы для занятий на улице">Уличные спортивные комплексы</a></li>
 				</ul>
 				<p class="leftbar-block-p">ОБОРУДОВАНИЕ И АКСЕССУАРЫ</p>
 		    		<ul class="nav nav-list">
