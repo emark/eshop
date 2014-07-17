@@ -115,7 +115,8 @@
 						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
 						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Аксессуары &laquo;Ранний старт&raquo;</a></li>
 						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Спортивные аксессуары</a></li>
-						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
+						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты</a></li>
+						<li<%== $active_link{'gimnasticheskie-mjachi'} %>><a href="/catalog/gimnasticheskie-mjachi/" title="Гимнастические мячи">Гимнастические мячи</a></li>
 						<li<%== $active_link{'plavanie'} %>><a href="/catalog/plavanie/" title="Надувные круги, матрасы, нарукавники, одежда для бассейна">Аксессуары для плавания</a></li>
 				</ul>
 				<p class="leftbar-block-p">РАЗВИВАЮЩИЕ ИГРУШКИ</p>
