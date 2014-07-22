@@ -1,4 +1,4 @@
-% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '', 'derevjannye-igrushki' => '', 'kartonnye-domiki' => '', 'ulichnye-sportivnye-kompleksy' => '');
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '', 'ulichnye-sportivnye-kompleksy' => '', 'gimnasticheskie-mjachi' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -110,7 +110,7 @@
 						<li<%== $active_link{'turniki'} %>><a href="/catalog/turniki/" title="Турники">Турники, брусья</a></li>
 						<li<%== $active_link{'ulichnye-sportivnye-kompleksy'} %>><a href="/catalog/ulichnye-sportivnye-kompleksy/" title="Спортивные комплексы для занятий на улице">Уличные спортивные комплексы</a></li>
 				</ul>
-				<p class="leftbar-block-p">ОБОРУДОВАНИЕ И АКСЕССУАРЫ</p>
+				<p class="leftbar-block-p">ДОПОЛНЕНИЯ И АКСЕССУАРЫ</p>
 		    		<ul class="nav nav-list">
 						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
 						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Аксессуары &laquo;Ранний старт&raquo;</a></li>
@@ -118,11 +118,6 @@
 						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты</a></li>
 						<li<%== $active_link{'gimnasticheskie-mjachi'} %>><a href="/catalog/gimnasticheskie-mjachi/" title="Гимнастические мячи">Гимнастические мячи</a></li>
 						<li<%== $active_link{'plavanie'} %>><a href="/catalog/plavanie/" title="Надувные круги, матрасы, нарукавники, одежда для бассейна">Аксессуары для плавания</a></li>
-				</ul>
-				<p class="leftbar-block-p">РАЗВИВАЮЩИЕ ИГРУШКИ</p>
-		    		<ul class="nav nav-list">
-						<li<%== $active_link{'derevjannye-igrushki'} %>><a href="/catalog/derevjannye-igrushki/" title="Каталог игрушек из дерева">Деревянные игрушки</a></li>
-				<li<%== $active_link{'kartonnye-domiki'} %>><a href="/catalog/kartonnye-domiki/" title="Большой ассортимент картонных домиков">Домики из картона</a></li>
 				</ul>
 				<p class="leftbar-block-p">ИНФОРМАЦИЯ ДЛЯ ПОКУПАТЕЛЕЙ</p>
 				<ul class="nav nav-list">
