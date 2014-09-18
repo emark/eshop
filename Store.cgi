@@ -418,7 +418,7 @@ get '/catalog/:caturl' => sub {
 	$self->render('category');
 };
 
-get '/catalog/:caturl/:produrl.html' => sub {
+get '/catalog/:caturl/:produrl' => sub {
 	my $self = shift;
 	my $caturl = $self->param('caturl');
 	my $produrl = $self->param('produrl');
@@ -432,7 +432,7 @@ get '/catalog/:caturl/:produrl.html' => sub {
 		],
         where => {url => $caturl, storename => $storename},
 	);
-	my $result=$dbi->select(
+	my $result = $dbi->select(
 		table => 'products',
 		where => {
 			url => $produrl,
