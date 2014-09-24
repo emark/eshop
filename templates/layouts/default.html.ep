@@ -10,7 +10,7 @@
     <meta name="author" content="www.nastartshop.ru">
     <link type="text/plain" rel="author" href="http://www.nastartshop.ru/humans.txt" />
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/application.min.css" rel="stylesheet">
+    <link href="/assets/css/application.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -50,18 +50,10 @@
 					<li><strong>Скидки</strong></li>
 % }else{	
 					<li><a href="/about/discounts.html" title="Информация о скидках">Скидки</a></li>
-% };if ($page->{'url'} eq 'promotion'){
-					<li><strong>Акции</strong></li>
-% }else{	
-					<li><a href="/about/promotion.html" title="Информация о проводимых акциях">Акции</a></li>
 % };if ($page->{'url'} eq 'reviews'){
 					<li><strong>Отзывы</strong></li>
 % }else{
 					<li><a href="/reviews/" title="Отзывы покупателей">Отзывы</a></li>
-% };if ($page->{'url'} eq 'buy-on-credit'){
-					<li><strong>Купить в кредит</strong></li>
-% }else{
-					<li><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
 % };if ($page->{'url'} eq 'delivery-and-payment'){
 					<li><strong>Доставка и оплата</strong></li>
 % }else{
@@ -71,7 +63,6 @@
 % }else{
 					<li><a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a></li>
 % };
-					<li><a href="/blog/" title="Блог">Блог</a></li>
 				</ul>
 			</div>
 			</div>
@@ -98,7 +89,7 @@
 		</div>
 		<div class="row">
     		<div class="span3">
-<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff0080', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="utf-8" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#fff', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/', 'webopt': false, 'fontsize': 14, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="utf-8" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
 
     			<div class="leftbar-menu">
     				<p class="leftbar-block-p">КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>

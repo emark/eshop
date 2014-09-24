@@ -1,4 +1,4 @@
-% layout 'empty';
+% layout 'default';
 % title $product->{'title'};
 % stash->{'metadescription'} = $product->{'metadescription'}.' '.$page->{'metadescription'};
 % my $image_source = 'noimage';
@@ -13,9 +13,6 @@
 % my $facenumber = int(rand(4));
 
 <div class="row">
-	<div class="span3">
-	<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#ff0080', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/', 'webopt': false, 'fontsize': 12, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="utf-8" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
-	</div>
 	<div class="span9">
 	<ul class="breadcrumb">
 		<li><a href="http://www.nastartshop.ru/" title="Переход на главную страницу сайта">Главная</a> <span class="divider">/</span></li>
@@ -25,12 +22,12 @@
 	</div>
 </div>
 <div class="row">
-	<div class="span9 offset3">
+	<div class="span9">
 	<h1><%= $product->{'title'} %></h1>
 	<p>Артикул: <%= $articul %></p>
 	</div>
 </div>
-<div class="row">
+<!--div class="row">
 	<div class="span3">
 
 	<ul class="thumbnails">
@@ -51,29 +48,22 @@
 % };
 
 	</ul>
-
-% if($product->{'settings'}){
-		<h3>Комплектация</h3>
-					<ol>
-% 	foreach my $key(split('#',$product->{'settings'})){
-						<li><%= $key %></li>
-% 	}
-					</ol>
-% }
 		
 	</div>
-	<div class="span9">
+	<div class="span9"-->
 		<div class="row">
+		
 			<div class="span3">
-			<ul class="thumbnails">
-			<li class="span3">
-				<div>
-				<a href="/media/products/large/<%= $image_source %>.jpg" class="fancybox" rel="group" title="<%= $product->{'title'} %>">
-      				<img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
-	    			</a>
-				</div>
-			</li>
-			</ul>
+			
+					<ul class="thumbnails">
+						<li class="span3">
+						<div>
+						<a href="/media/products/large/<%= $image_source %>.jpg" class="fancybox" rel="group" title="<%= $product->{'title'} %>"><img src="/media/products/thumb/<%= $image_source %>.jpg" class="image-center" alt="Увеличить изображение <%= $product->{'title'} %>" title="Увеличить изображение <%= $product->{'title'} %>">
+	    				</a>
+						</div>
+						</li>
+					</ul>
+			
 			</div>
 			<div class="span6">
 			<p><span class="<%= $instore_class{$instore} %>"><%== $store_info{$instore} %></span></p>
@@ -88,37 +78,41 @@
 % }
 
 			<h2>Цена: <%= $product->{'price'} %> руб.</h2>
-
-%	if($product->{price} > 3000){
-%	my $credit_sum = sprintf("%d",$product->{'price'}/10);
-			<p>
-				<a href="http://www.nastartshop.ru/about/buy-on-credit.html" title="Информация о покупке в кредит <%= $product->{'title'} %>">Купить в кредит всего за <strong><%= $credit_sum %> руб.</strong></a><br/>	
-			</p>
-% 	};
-
+			
 % my @local = localtime(time);
 % $local[5] = $local[5]+1900;
 % my @month = ('января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря');
 % my $lastmod = "$local[3] $month[$local[4]] $local[5]";
 
 			<p><small>Информация о цене и наличии обновлена <%= $lastmod %></small></p>
-			<form action="/cart/" method="post">
-			<input type=hidden value="<%= $product->{'id'} %>" name="productid">
 
-% if ($instore){
+	<div class="product-ext-info">
+% my $age_group = 'любой';
+% $age_group = "от $product->{age} лет" if $product->{age};
+		
+		<img src="/media/icons/age.png" width=32> <em>возраст <%= $age_group %></em><br>
 
-			<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary">
+% my $warranty = '6 мес.';
+% $warranty = "$product->{warranty} мес." if $product->{warranty};
 
-% }else{
+		<img src="/media/icons/warranty.png" width=32> <em>гарантия <%= $warranty %></em><br>
+	
+% if($product->{discount}==0){
 
-			<input type="submit" value="Заказать товар" class="btn btn-large">
+		<img src="/media/icons/discount.png" width=32> <em>возможна скидка</em><br>
 
 % };
-			</form>
-			<p><img src="/media/images/misc/faces/face_<%= $facenumber %>.jpg">&nbsp;Сомневаетесь? <a href="/mibew/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/mibew/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'mibew', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задайте вопрос</a> консультанту.</p>
+
+%	if($product->{price} > 3000){
+%	my $credit_sum = sprintf("%d",$product->{'price'}/10);
+
+		<img src="/media/icons/warranty.png" width=32> <em><a href="http://www.nastartshop.ru/about/buy-on-credit.html" title="Информация о покупке в кредит <%= $product->{'title'} %>">Купить в кредит всего за <strong><%= $credit_sum %> руб.</strong></a></em><br>
+% 	};
+
+				</div>
 			</div>
 		</div>
-		<div class="row">
+	<div class="row">
 			<div class="span3">
 % if ($product->{image} && $product->{image} > 1){
 
@@ -141,6 +135,82 @@
 
 			</div>
 			<div class="span6">
+	
+			<form action="/cart/" method="post">
+			<input type=hidden value="<%= $product->{'id'} %>" name="productid">
+
+% if ($instore){
+
+			<input type="submit" value="Купить сейчас" class="btn btn-large btn-primary">
+
+% }else{
+
+			<input type="submit" value="Заказать товар" class="btn btn-large">
+
+% };
+			</form>
+			<p><img src="/media/images/misc/faces/face_<%= $facenumber %>.jpg">&nbsp;Сомневаетесь? <a href="/mibew/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('/mibew/client.php?locale=ru&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'mibew', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задайте вопрос</a> консультанту.</p>
+			
+			
+			</div>
+		</div>
+	
+<div class="row">
+	<div class="span9">
+
+% my @content = ();
+% @content = split('#',$product->{'description'});
+
+	<h2>Описание</h2>
+
+% my $pcount = 0;#paragraph count
+% if(@content){
+% 	foreach my $key(@content){
+%		$pcount++;
+%		if($pcount == 4){		
+		<p id='ext-description-link'><img src="/media/icons/arrow_down.gif"> <a href="#">Показать весь текст описания</a></p>
+		<div id="ext-description" style="display:none">		
+%		}
+		<p><%== $key %></p>
+% 	}
+%	if($pcount > 3){
+		</div>
+%	}
+% }
+%
+
+% @content=split('#',$product->{'features'});
+% if(@content){
+		<h2>Характеристики</h2>
+		<table class="table table-bordered table-hover">
+		<tbody>
+
+% if($product->{'settings'}){
+
+	<tr><td>Комплектация</td><td>
+	
+% 	foreach my $key(split('#',$product->{'settings'})){
+%		
+		<%= $key %>,
+% 	}
+% }
+	</td></tr>
+	
+% 	foreach my $key(@content){
+%		my($param,$value)=split(':',$key);
+			<tr><td><%= $param %></td><td><%= $value %></td></tr>
+% 	}
+
+		</tbody>
+		</table>
+% }
+
+	</div>
+</div>
+
+	<div class="row">
+
+			<div class="span9">
 % if($product->{'links'}){
 
 			<ul class="unstyled">
@@ -174,47 +244,9 @@
 % }
 			</div>
 		</div>
-	</div>
-</div>
+
 <div class="row">
-	<div class="span12">
-	
-% my @content = ();
-% @content = split('#',$product->{'description'});
-
-% my $pcount = 0;#paragraph count
-% if(@content){
-% 	foreach my $key(@content){
-%		$pcount++;
-%		if($pcount == 4){		
-		<p id='ext-description-link'><img src="/media/icons/arrow_down.gif"> <a href="#">Показать весь текст описания</a></p>
-		<div id="ext-description" style="display:none">		
-%		}
-		<p><%== $key %></p>
-% 	}
-%	if($pcount > 3){
-		</div>
-%	}
-% }
-%
-
-% @content=split('#',$product->{'features'});
-% if(@content){
-		<h2>Характеристики</h2>
-		<table class="table table-bordered table-hover">
-		<tbody>
-% 	foreach my $key(@content){
-%		my($param,$value)=split(':',$key);
-			<tr><td><%= $param %></td><td><%= $value %></td></tr>
-% 	}
-		</tbody>
-		</table>
-% }
-
-	</div>
-</div>
-<div class="row">
-	<div class="span6">
+	<div class="span4">
 		<h2>Варианты оплаты</h2>
 		<ul>
 			<li>Наличными курьеру или в&nbsp;<a href="/about/contacts.html">пунктах самовывоза</a></li>
@@ -229,7 +261,7 @@
 		</ul>
 		<p>Подробнее о наших скидках <a href="/about/discounts.html" rel="nofollow">читайте здесь</a>.</p>
 	</div>
-	<div class="span6">
+	<div class="span5">
 		<h2>Доставка</h2>
 		<ul>
 			<li>Бесплатно в <a href="/about/contacts.html">пункты самовывоза</a>.</li>
