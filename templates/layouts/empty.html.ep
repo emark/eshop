@@ -112,18 +112,10 @@
 						<ul class="unstyled">
 							<li><span itemprop="telephone" class="middle-size">8 (391) 203-03-10</span></li>
 							<li><a href="mailto:hello@nastartshop.ru" title="Почта для обратной связи" itemprop="email">hello@nastartshop.ru</a></li>
-							<li><span itemprop="name">НаСтарт.РФ</span></li>
-							<li><a href="http://maps.yandex.ru/-/CVVWF2mk" title="Показать адрес магазина на Яндекс.Карты" target=_blank><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск, ул.&nbsp;Телевизорная,&nbsp;1 строение&nbsp;9</span></span></a></li>
+							<li><span itemprop="name">НаСтарт.РФ</span></li>				
+							<li><a href="http://maps.yandex.ru/-/CVVWF2mk" title="Показать адрес магазина на Яндекс.Карте" target=_blank><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск, ул.&nbsp;Телевизорная,&nbsp;1 строение&nbsp;9</span></span></a></li>
 						</ul>
 						</span>
-						<!--h3>Социальные сети</h3>
-						<p>
-						<a href="http://www.vk.com/nastartshop" target=_blank><img src="/media/images/socbuttons/vkontakte.gif" alt="ВКонтакте" title="Группа ВКонтакте"></a>
-						<a href="https://twitter.com/nastartshop" target=_blank><img src="/media/images/socbuttons/twitter.gif" alt="@nastartshop" title="Наш твиттер"></a>
-						<a href="https://www.facebook.com/neskuchnoe.razvitie" target=_blank><img src="/media/images/socbuttons/facebook.gif" alt="Facebook" title="Страница на Facebook"></a>
-						<a href="http://odnoklassniki.ru/group/56114214600757" target=_blank><img src="/media/images/socbuttons/odnoklassniki.gif" alt="Одноклассники" title="Группа в Одноклассниках"></a>
-						<a href="https://plus.google.com/+NastartshopRu" target=_blank rel="publisher"><img src="/media/images/socbuttons/googleplus.gif" alt="G+" title="Страница на Google+"></a>
-						</p-->
 						<script type="text/javascript" src="//vk.com/js/api/openapi.js?105"></script>
 
 						<!-- VK Widget -->
@@ -136,7 +128,7 @@
 						<h3>Справочная информация</h3>
 						<ul>
 							<li><a href="/catalog/" title="Каталог товаров">Каталог товаров</a></li>
-							<li><a href="/about/discounts.html" title="Информация о скидках">Информация о скидках</a></li>
+							<li><a href="/about/discounts.html" title="Информация о скидках">Наши скидки</a></li>
 							<li><a href="/reviews/" title="Отзывы покупателей">Отзывы покупателей</a></li>
 							<li><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
 							<li><a href="/about/change.html" title="Информация об условиях обмена и возврата">Обмен и возврат</a></li>
@@ -154,16 +146,13 @@
 							<li><a href="/catalog/pristennye-dsk/" title="Пристенные спортивные компsексы">Пристенные спортивные комплексы</a></li>
 							<li><a href="/catalog/turniki/" title="Турники">Турники, брусья</a></li>
 							<li><a href="/catalog/gymnastic-mats/" title="Гимнастические маты">Гимнастические маты</a></li>
-							<li><a href="/catalog/rstart-accessories/" title="Аксессуары и навесное оборудование &laquo;Ранний старт&raquo;">Аксессуары &laquo;Ранний старт&raquo;</a></li>
-							<li><a href="/catalog/accessories/" title="Аксессуары и навесное оборудование">Дополнения к любым спорткомплексам</a></li>
-							<li><a href="/catalog/batuty/" title="Батуты для дома и улицы">Батуты, фитболы</a></li>
+							<li><a href="/catalog/batuty/" title="Батуты для дома и улицы">Детские батуты</a></li>
 							<li><a href="/catalog/plavanie/" title="Надувные круги, матрасы, нарукавники, одежда для бассейна">Аксессуары для плавания</a></li>
-							<li><a href="/catalog/derevjannye-igrushki/" title="Каталог игрушек из дерева">Деревянные игрушки</a></li>
-							<li><a href="/catalog/kartonnye-domiki/" title="Большой ассортимент картонных домиков">Домики из картона</a></li>
+							<li><a href="/catalog/gimnasticheskie-mjachi/" title="Гимнастические мячи">Гимнастические мячи</a></li>
 						</ul>
 						
 					</div>
-										<div class="span3">			
+					<div class="span3">			
 						<h3>Мы принимаем</h3>
 						<ul>
 							<li><a href="/about/delivery-and-payment.html">Наличные средства</a></li>

@@ -106,7 +106,7 @@
 %	if($product->{price} > 3000){
 %	my $credit_sum = sprintf("%d",$product->{'price'}/10);
 
-		<img src="/media/icons/credit.png" width="32"> <em>купить в кредит <a href="http://www.nastartshop.ru/about/buy-on-credit.html" title="Информация о покупке в кредит <%= $product->{'title'} %>">всего за <strong><%= $credit_sum %> руб.</strong></a></em><br>
+		<img src="/media/icons/credit.png" width="32"> <em>купить в кредит <a href="http://www.nastartshop.ru/about/buy-on-credit.html" title="Информация о покупке в кредит <%= $product->{'title'} %>" target="blank">всего за <strong><%= $credit_sum %> руб.</strong></a></em><br>
 % 	};
 
 				</div>
