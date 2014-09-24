@@ -1,4 +1,4 @@
-% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '', 'ulichnye-sportivnye-kompleksy' => '', 'gimnasticheskie-mjachi' => '');
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '', 'ulichnye-sportivnye-kompleksy' => '', 'gimnasticheskie-mjachi' => '', 'razvivajushhie-chehly' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -89,23 +89,31 @@
 		</div>
 		<div class="row">
     		<div class="span3">
-<div class="ya-site-form ya-site-form_inited_no" onclick="return {'bg': '#fff', 'target': '_self', 'language': 'ru', 'suggest': true, 'tld': 'ru', 'site_suggest': true, 'action': 'http://www.nastartshop.ru/search/', 'webopt': false, 'fontsize': 14, 'arrow': false, 'fg': '#000000', 'searchid': '1958694', 'logo': 'ww', 'websearch': false, 'type': 2}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694" /><input type="hidden" name="l10n" value="ru" /><input type="hidden" name="reqenc" value="utf-8" /><input type="text" name="text" value="" /><input type="submit" value="Найти" /></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;(' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1&&(e.className+=' ya-page_js_yes');s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+				<div class="ya-site-form ya-site-form_inited_no" onclick="return {'action':'http://www.nastartshop.ru/search/','arrow':false,'bg':'#ffcc00','fontsize':14,'fg':'#000000','language':'ru','logo':'rb','publicname':'Поиск на сайте НаСтарт.РФ','suggest':true,'target':'_self','tld':'ru','type':2,'usebigdictionary':true,'searchid':1958694,'webopt':false,'websearch':false,'input_fg':'#000000','input_bg':'#ffffff','input_fontStyle':'normal','input_fontWeight':'normal','input_placeholder':'Поиск по товарам','input_placeholderColor':'#999999','input_borderColor':'#000000'}"><form action="http://yandex.ru/sitesearch" method="get" target="_self"><input type="hidden" name="searchid" value="1958694"/><input type="hidden" name="l10n" value="ru"/><input type="hidden" name="reqenc" value=""/><input type="text" name="text" value=""/><input type="submit" value="Найти"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
 
     			<div class="leftbar-menu">
-    				<p class="leftbar-block-p">КАТАЛОГ СПОРТИВНЫХ КОМПЛЕКСОВ</p>
+    				<p class="leftbar-block-p">СПОРТИВНО-ИГРОВЫЕ КОМПЛЕКСЫ</p>
 		    		<ul class="nav nav-list">
-						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Спортивно-игровые комплексы</a></li>
-						<li<%== $active_link{'pristennye-dsk'} %>><a href="/catalog/pristennye-dsk/" title="Пристенные домашние спортивные комплексы">Пристенные спортивные комплексы</a></li>
-						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные домашние спортивные комплексы">Распорные спортивные комплексы</a></li>
-						<li<%== $active_link{'uglovye-dsk'} %>><a href="/catalog/uglovye-dsk/" title="Угловые домашние спортивные комплексы">Угловые спортивные комплексы</a></li>
+						<li<%== $active_link{'dsk-rstart'} %>><a href="/catalog/dsk-rstart/" title="Развивающие комплексы Ранний старт">Ранний Старт</a></li>
+						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Дополнительное оборудование</a></li>
+						<li<%== $active_link{'razvivajushhie-chehly'} %>><a href="/catalog/razvivajushhie-chehly/" title="Развивающие чехлы">Развивающие чехлы</a></li>
+					</ul>
+					
+					<p class="leftbar-block-p">ШВЕДСКИЕ СТЕНКИ, СПОРТИВНЫЕ УГОЛКИ, ТУРНИКИ</p>
+		    		<ul class="nav nav-list">
+						<li<%== $active_link{'pristennye-dsk'} %>><a href="/catalog/pristennye-dsk/" title="Пристенные домашние спортивные комплексы">Пристенные</a></li>
+						<li<%== $active_link{'raspornye-dsk'} %>><a href="/catalog/raspornye-dsk/" title="Распорные домашние спортивные комплексы">Распорные</a></li>
+						<li<%== $active_link{'uglovye-dsk'} %>><a href="/catalog/uglovye-dsk/" title="Угловые домашние спортивные комплексы">Угловые</a></li>
 						<li<%== $active_link{'turniki'} %>><a href="/catalog/turniki/" title="Турники">Турники, брусья</a></li>
-						<li<%== $active_link{'ulichnye-sportivnye-kompleksy'} %>><a href="/catalog/ulichnye-sportivnye-kompleksy/" title="Спортивные комплексы для занятий на улице">Уличные спортивные комплексы</a></li>
-				</ul>
-				<p class="leftbar-block-p">ДОПОЛНЕНИЯ И АКСЕССУАРЫ</p>
+						<li<%== $active_link{'ulichnye-sportivnye-kompleksy'} %>><a href="/catalog/ulichnye-sportivnye-kompleksy/" title="Спортивные комплексы для занятий на улице">Дачные спорткомплексы</a></li>
+					</ul>
+					<p class="leftbar-block-p">ДОПОЛНЕНИЯ К СПОРТКОМПЛЕКСАМ</p>
 		    		<ul class="nav nav-list">
-						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Гимнастические маты</a></li>
-						<li<%== $active_link{'rstart-accessories'} %>><a href="/catalog/rstart-accessories/" title="Аксессуары для спорткомплексов Ранний старт">Аксессуары &laquo;Ранний старт&raquo;</a></li>
-						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Спортивные аксессуары</a></li>
+						<li<%== $active_link{'gymnastic-mats'} %>><a href="/catalog/gymnastic-mats/" title="Гимнастические маты для спорткомплексов">Спортивные маты</a></li>
+						<li<%== $active_link{'accessories'} %>><a href="/catalog/accessories/" title="Дополнительные аксессуары для спорткомплексов">Навесное оборудование</a></li>
+					</ul>
+					<p class="leftbar-block-p">ДЕТСКИЕ БАТУТЫ, ГИМНАСТИЧЕСКИЕ МЯЧИ</p>
+		    		<ul class="nav nav-list">
 						<li<%== $active_link{'batuty'} %>><a href="/catalog/batuty/" title="Батуты для дома и улицы">Детские батуты</a></li>
 						<li<%== $active_link{'gimnasticheskie-mjachi'} %>><a href="/catalog/gimnasticheskie-mjachi/" title="Гимнастические мячи">Гимнастические мячи</a></li>
 						<li<%== $active_link{'plavanie'} %>><a href="/catalog/plavanie/" title="Надувные круги, матрасы, нарукавники, одежда для бассейна">Аксессуары для плавания</a></li>
