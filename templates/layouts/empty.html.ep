@@ -1,4 +1,4 @@
-% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '');
+% my %active_link = ('raspornye-dsk' => '', 'pristennye-dsk' => '', 'dsk-rstart' => '', 'accessories' => '', 'contacts' => '', 'change' => '', 'delivery-and-payment' => '', 'catalog' => '', 'index' => '', 'gymnastic-mats' => '', 'news' => '', 'rstart-accessories' => '', 'turniki' => '', 'batuty' => '','buy-on-credit' => '','company' => '', 'uglovye-dsk' => '', 'plavanie' => '', 'ulichnye-sportivnye-kompleksy' => '', 'gimnasticheskie-mjachi' => '', 'razvivajushhie-chehly' => '');
 % $active_link{$page->{'url'}} = ' class="active"';
 <!DOCTYPE html>
 <html lang="ru">
@@ -10,7 +10,7 @@
     <meta name="author" content="www.nastartshop.ru">
     <link type="text/plain" rel="author" href="http://www.nastartshop.ru/humans.txt" />
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/application.min.css" rel="stylesheet">
+    <link href="/assets/css/application.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -33,14 +33,15 @@
   	<div class="container">
 		<div class="row">
 			<div class="span12">
-				<div class="row">
-					<div class="span3">
-						<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.gif" class="image-center" title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a>
-					</div>
-					<div class="span9">
-						<div class="row">
-							<div class="span9">
-			<ul class="inline">
+
+		<div class="row">
+			<div class="span3">
+				<a href="/" title="Переход на главную страницу"><img src="/media/images/logo.gif" class="image-center" title="Переход на главную страницу" alt="Логотип интернет-магазина НаСтарт.рф"></a>
+			</div>
+			<div class="span9">
+			<div class="row">
+			<div class="span9">
+			<ul class="inline header-menu">
 % if ($page->{'url'} eq 'catalog'){
 					<li><strong>Каталог</strong></li>
 % }else{	
@@ -49,20 +50,11 @@
 					<li><strong>Скидки</strong></li>
 % }else{	
 					<li><a href="/about/discounts.html" title="Информация о скидках">Скидки</a></li>
-% };if ($page->{'url'} eq 'promotion'){
-					<li><strong>Акции</strong></li>
-% }else{	
-					<li><a href="/about/promotion.html" title="Информация о проводимых акциях">Акции</a></li>
 % };if ($page->{'url'} eq 'reviews'){
 					<li><strong>Отзывы</strong></li>
 % }else{
 					<li><a href="/reviews/" title="Отзывы покупателей">Отзывы</a></li>
-% };if ($page->{'url'} eq 'buy-on-credit'){
-					<li><strong>Купить в кредит</strong></li>
-% }else{
-					<li><a href="/about/buy-on-credit.html" title="Предложение кредита на покупку">Купить в кредит</a></li>
-% };
-% if ($page->{'url'} eq 'delivery-and-payment'){
+% };if ($page->{'url'} eq 'delivery-and-payment'){
 					<li><strong>Доставка и оплата</strong></li>
 % }else{
 					<li><a href="/about/delivery-and-payment.html" title="Условия доставки и оплаты">Доставка и оплата</a></li>
@@ -71,12 +63,11 @@
 % }else{
 					<li><a href="/about/contacts.html" title="Контактная информация и адреса магазинов">Контакты</a></li>
 % };
-					<li><a href="/blog/" title="Блог">Блог</a></li>
 				</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="span9">
+			</div>
+			</div>
+			<div class="row">
+				<div class="span9">
 <ul class="inline">
 <li class="middle-size">8 (391) 203-03-10</li>
 <li class="middle-size">292-02-29</li>
@@ -84,26 +75,26 @@
 <li><img src="/media/icons/chat.gif" alt="chat">&nbsp;<a href="http://www.nastartshop.ru/mibew/client.php?locale=ru" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open(&#039;http://www.nastartshop.ru/mibew/client.php?locale=ru&amp;url=&#039;+escape(document.location.href)+&#039;&amp;referrer=&#039;+escape(document.referrer), 'mibew', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=480,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;">Задать вопрос</a></li>
 <li><img src="/media/icons/cart.gif" alt="cart">&nbsp;<a href="/cart/" title="Переход в корзину">Моя корзина</a></li>
 </ul>
-							</div>
-						</div>
-					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 
+			</div>
+		</div>
+		
 		<div class="row">
 			<div class="span3"><p class="align-center"><a href="/" rel="nofollow" title="Переход на главную страницу">интернет-магазин</a></p></div>
 			<div class="span9"><ul class="inline"><li>Заказ товаров: понедельник-пятница с 11:00 до 18:00, суббота с 12:00 до 16:00</li></ul></div>
 		</div>
-	
-		<!--div class="row">
-	  		<div class="span12"-->
-			<!-- Page content -->
+		<div class="row">
+	   		<div class="span9">
+<!-- Page content -->
 	   		<%= content %>
-			<!-- /Page content -->
-   			<!--/div>
-		</div-->
-	<footer>
+<!-- /Page content -->
+   			</div>
+		</div>
+		<footer>
 			<div class="footer-links">
 				<div class="row">
 					<div class="span3">
@@ -116,6 +107,7 @@
 							<li><a href="http://maps.yandex.ru/-/CVVWF2mk" title="Показать адрес магазина на Яндекс.Карте" target=_blank><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">660028, Россия, Красноярск, ул.&nbsp;Телевизорная,&nbsp;1 строение&nbsp;9</span></span></a></li>
 						</ul>
 						</span>
+						
 						<script type="text/javascript" src="//vk.com/js/api/openapi.js?105"></script>
 
 						<!-- VK Widget -->
@@ -181,11 +173,10 @@
 			</div>
 		</footer>
     </div>
-    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/application.js"></script>
 
-<script type="text/javascript" src="/plugins/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript" src="/plugins/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".fancybox").fancybox();

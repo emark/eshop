@@ -9,7 +9,6 @@
 <div>
 	<h1>Оформление заказа</h1>
 </div>
-<p>Номер корзины: <%= $cartid %></p>
 
 % if ($missing){
 % $class_muted = 'muted';
