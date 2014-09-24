@@ -41,7 +41,7 @@
 			<div class="span9">
 			<div class="row">
 			<div class="span9">
-			<ul class="inline">
+			<ul class="inline header-menu">
 % if ($page->{'url'} eq 'catalog'){
 					<li><strong>Каталог</strong></li>
 % }else{	
