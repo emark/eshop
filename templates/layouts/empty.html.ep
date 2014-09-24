@@ -88,7 +88,7 @@
 			<div class="span9"><ul class="inline"><li>Заказ товаров: понедельник-пятница с 11:00 до 18:00, суббота с 12:00 до 16:00</li></ul></div>
 		</div>
 		<div class="row">
-	   		<div class="span9">
+	   		<div class="span12">
 <!-- Page content -->
 	   		<%= content %>
 <!-- /Page content -->
